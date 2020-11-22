@@ -14,7 +14,7 @@ public class Chicken_Move : MonoBehaviour
     void Update()
     {
         //테스트용 
-        Vector3 moveVelocity = Vector3.left;
+        Vector3 moveVelocity = Vector3.right;
         transform.position += moveVelocity * Time.deltaTime*0.3f;
     }
 }
