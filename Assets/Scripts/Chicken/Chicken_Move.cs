@@ -12,7 +12,7 @@ public class Chicken_Move : MonoBehaviour
     int PlayTime = 0;
 
     int EggTime = 0;//달걀 낳는 시간
-    int C_EggTime;//달걀 낳는 속도 조정 
+    int C_EggTime = 1000;//달걀 낳는 속도 조정 
 
     int statTime = 0;
 
@@ -140,7 +140,7 @@ public class Chicken_Move : MonoBehaviour
         }
         else
         {
-            if (EggTime > 1000)
+            if (EggTime > C_EggTime)
             {
                 isEggTime = true;
                 EggTime = 0;
