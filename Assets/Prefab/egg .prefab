@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2850414604651452221}
   - component: {fileID: 2850414604651452210}
+  - component: {fileID: 6155848623323331252}
   m_Layer: 0
   m_Name: 'egg '
   m_TagString: Untagged
@@ -82,3 +83,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6155848623323331252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850414604651452211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1be9611f61a425098e2d59683d3ba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
