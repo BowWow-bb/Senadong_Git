@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class ClickObject : MonoBehaviour
 {
-    Cow_Move bring_cow = GameObject.Find("Cow").GetComponent<Cow_Move>();
-    ItemManager item_manager = GameObject.Find("MainCamera").GetComponent<ItemManager>();
-    Text egg_item = GameObject.FindWithTag("egg_item").GetComponent<Text>();
-    Text milk_item= GameObject.FindWithTag("milk_item").GetComponent<Text>();
+    Cow_Move bring_cow; 
+    ItemManager item_manager;
+    Text egg_count;
+    Text milk_count;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        bring_cow = GameObject.Find("Cow").GetComponent<Cow_Move>();
+        item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
+        egg_count = GameObject.FindWithTag("egg_count").GetComponent<Text>();
+        milk_count = GameObject.FindWithTag("milk_count").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -29,6 +32,7 @@ public class ClickObject : MonoBehaviour
 
                 if (hit.transform.gameObject.tag == "hungry")  //hungry 말풍선 클릭
                 {
+                    hit.transform.gameObject.SetActive(false);
                     //if()//알맞은 아이템 있는 경우
                     //{
                     //    hit.transform.gameObject.SetActive(false); 
@@ -48,7 +52,7 @@ public class ClickObject : MonoBehaviour
                 {
                     Debug.Log("우유 획득");
                     item_manager.milk_item++;
-                    milk_item.text = item_manager.milk_item.ToString();
+                    milk_count.text = item_manager.milk_item.ToString();
                     Destroy(hit.transform.gameObject);
                     //우유 아이템 획득 표시
                 }

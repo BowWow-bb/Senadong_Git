@@ -48,19 +48,19 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Poop()
     {
-        if (poop != 100 && poop % 20 == 0)
-        {
-            fPoop.SetActive(true);
-        }
+        //if (poop != 100 && poop % 20 == 0)
+        //{
+        //    fPoop.SetActive(true);
+        //}
         return true;
     }
 
     public bool Cow_Play()
     {
-        if (play != 100 && play % 20 == 0)
-        {
-            fPlay.SetActive(true);
-        }
+        //if (play != 100 && play % 20 == 0)
+        //{
+        //    fPlay.SetActive(true);
+        //}
         return true;
     }
 

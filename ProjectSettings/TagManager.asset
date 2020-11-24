@@ -9,11 +9,11 @@ TagManager:
   - poop
   - play
   - milk
-  - poop_item
-  - play_item
-  - egg_item
-  - milk_item
-  - hungry_item
+  - hungry_count
+  - poop_count
+  - play_count
+  - egg_count
+  - milk_count
   layers:
   - Default
   - TransparentFX
