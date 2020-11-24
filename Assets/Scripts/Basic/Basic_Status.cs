@@ -17,22 +17,22 @@ public class Basic_Status : MonoBehaviour
     bool isPoop = false;//똥
     bool isPlay = false;//심심도
 
-    public GameObject c_d;//똥
-    public GameObject c_b;//밥
-    public GameObject c_p;//놀이
+    public GameObject c_poop;//똥
+    public GameObject c_hungry;//밥
+    public GameObject c_play;//놀이
 
     public void Hungry()
     {
         if (!isPoop && ishunger && !isPlay)
         {
             statTime++;
-            c_b.gameObject.SetActive(true);
+            c_hungry.gameObject.SetActive(true);
             if (statTime > 100)//100동안 지속 
             {
                 statTime = 0;
                 hungryTime = 100;
                 ishunger = false;
-                c_b.gameObject.SetActive(false);
+                c_hungry.gameObject.SetActive(false);
             }
         }
         else
@@ -50,13 +50,13 @@ public class Basic_Status : MonoBehaviour
         if (isPoop && !ishunger && !isPlay)
         {
             statTime++;
-            c_d.gameObject.SetActive(true);
+            c_poop.gameObject.SetActive(true);
             if (statTime > 100)
             {
                 statTime = 0;
                 PoopTime = 100;
                 isPoop = false;
-                c_d.gameObject.SetActive(false);
+                c_poop.gameObject.SetActive(false);
             }
         }
         else
@@ -74,13 +74,13 @@ public class Basic_Status : MonoBehaviour
         if (!isPoop && !ishunger && isPlay)
         {
             statTime++;
-            c_p.gameObject.SetActive(true);
+            c_play.gameObject.SetActive(true);
             if (statTime > 100)
             {
                 statTime = 0;
                 PlayTime = 100;
                 isPlay = false;
-                c_p.gameObject.SetActive(false);
+                c_play.gameObject.SetActive(false);
             }
         }
         else
@@ -96,9 +96,9 @@ public class Basic_Status : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        c_b.gameObject.SetActive(false);//밥 
-        c_d.gameObject.SetActive(false);//똥
-        c_p.gameObject.SetActive(false);//심심도
+        c_hungry.gameObject.SetActive(false);//밥 
+        c_poop.gameObject.SetActive(false);//똥
+        c_play.gameObject.SetActive(false);//심심도
     }
 
     // Update is called once per frame
