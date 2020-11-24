@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - tiger
+  - hungry
+  - poop
+  - play
+  - milk
+  - poop_item
+  - play_item
+  - egg_item
+  - milk_item
+  - hungry_item
   layers:
   - Default
   - TransparentFX
