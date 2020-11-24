@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Egg_Script : MonoBehaviour
+public class On_Clicked : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 10);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("touch"+gameObject);
     }
 }

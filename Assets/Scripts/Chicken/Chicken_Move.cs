@@ -6,149 +6,31 @@ using UnityEngine;
 
 public class Chicken_Move : MonoBehaviour
 {
-    int hungryTime = 0; // 배고픔 재는 시간
-    int PoopTime = 0;
     int MovedTime = 0;
-    int PlayTime = 0;
 
     int EggTime = 0;//달걀 낳는 시간
-    int C_EggTime = 1000;//달걀 낳는 속도 조정 
-
-    int statTime = 0;
+    public int C_EggTime = 1000;//달걀 낳는 속도 조정 
 
     public float movePower = 1f;//움직이는 속도 
     int movementFlag = 0;//0:idle, 1:left, 2:right
 
-    bool ishunger;//배고픔
-    bool isPoop;//똥
-    bool isPlay;//심심도
     bool isEggTime;//달걀 낳는 거 
     bool ismoving = true;
     bool isRight = false;//보는 방향:왼쪽/오른쪽 
 
     public GameObject Egg_Prefab;//달걀 
 
-    public GameObject c_d;//똥
-    public GameObject c_b;//밥
-    public GameObject c_p;//놀이 
-
-    Vector3 movement;//z:-8
-
-    // Start is called before the first frame update
-    //상태 
-    public bool Chicken_Hungry()
+    void Start()
     {
-        if (ishunger)
-        {
-            statTime++;
-            c_b.gameObject.SetActive(true);
-            if (statTime>100)
-            {
-                statTime = 0;
-                hungryTime = 0;
-                ishunger = false;
-                c_b.gameObject.SetActive(false);
-            }
-            return true;
-        }
-        else
-        {
-            if (hungryTime>500)
-            {
-                ishunger = true;
-                hungryTime = 0;
-            }
-            return true;
-        }
+        movementFlag = Random.Range(0, 5);//0,1,2,3,4
     }
 
-    public bool Chicken_Poop()
+    void Update()
     {
-        if (isPoop)
-        {
-            statTime++;
-            c_d.gameObject.SetActive(true);
-            if (statTime > 100)
-            {
-                statTime = 0;
-                PoopTime = 0;
-                isPoop = false;
-                c_d.gameObject.SetActive(false);
-            }
-            return true;
-        }
-        else
-        {
-            if (PoopTime > 300)
-            {
-                isPoop = true;
-                PoopTime = 0;
-            }
-            return true;
-        }
-    }
-
-    public bool Chicken_Play()
-    {
-        if (isPlay)
-        {
-            statTime++;
-            c_p.gameObject.SetActive(true);
-            if (statTime > 100)
-            {
-                statTime = 0;
-                PlayTime = 0;
-                isPlay = false;
-                c_p.gameObject.SetActive(false);
-            }
-
-            return true;
-        }
-        else
-        {
-            if (PlayTime > 100)
-            {
-                isPlay = true;
-                PlayTime = 0;
-            }
-            
-            return true;
-        }
+        EggTime++;
     }
 
     //행동 
-    public bool Chicken_Egg()
-    {
-        if (isEggTime)
-        {
-            Vector3 eggPos;
-            if (isRight)//오른쪽을 보고 있는 경우 
-            {
-                eggPos = new Vector3(transform.position.x - 1, transform.position.y - 0.8f, transform.position.z);
-
-            }
-            else//왼쪽을 보고 있는 경우 
-            {
-                eggPos = new Vector3(transform.position.x + 1, transform.position.y - 0.8f, transform.position.z);
-            }
-            GameObject egg = GameObject.Instantiate(Egg_Prefab);
-            isEggTime = false;
-            egg.transform.position = eggPos;
-            egg.transform.parent = null;
-
-            return true;
-        }
-        else
-        {
-            if (EggTime > C_EggTime)
-            {
-                isEggTime = true;
-                EggTime = 0;
-            }
-            return true;
-        }   
-    }
-
     public bool Chicken_FollowMouse()
     {
         return true;
@@ -194,12 +76,16 @@ public class Chicken_Move : MonoBehaviour
                 transform.localScale = new Vector3(-0.8f, 0.8f, 1);
                 isRight = true;
             }
+            else//movementFlag=0 일 때 
+            {
+                Chicken_Egg();
+            }
 
             gameObject.transform.position += moveVelocity * movePower * Time.deltaTime;
 
             return true;
         }
-        else//상태 바꿀 시간 되면 
+        else//움직이는 방향 바꿀 시간 되면 
         {
             MovedTime = 0;
             movementFlag = Random.Range(0, 5);//0,1,2,3,4
@@ -208,24 +94,33 @@ public class Chicken_Move : MonoBehaviour
             return true;
         }
     }
-    void Start()
+
+    public void Chicken_Egg()
     {
-        //상태 안뜨게 설정 
-        ishunger = false;
+        if (isEggTime)
+        {
+            Vector3 eggPos;
+            if (isRight)//오른쪽을 보고 있는 경우 
+            {
+                eggPos = new Vector3(transform.position.x - 1, transform.position.y - 0.8f, transform.position.z);
 
-        movementFlag = Random.Range(0, 5);//0,1,2,3,4
-
-        c_b.gameObject.SetActive(false);//밥 
-        c_d.gameObject.SetActive(false);//똥
-        c_p.gameObject.SetActive(false);//심심도
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        hungryTime++;
-        PoopTime++;
-        PlayTime++;
-        EggTime++;
+            }
+            else//왼쪽을 보고 있는 경우 
+            {
+                eggPos = new Vector3(transform.position.x + 1, transform.position.y - 0.8f, transform.position.z);
+            }
+            GameObject egg = GameObject.Instantiate(Egg_Prefab);
+            isEggTime = false;
+            egg.transform.position = eggPos;
+            egg.transform.parent = null;
+        }
+        else
+        {
+            if (EggTime > C_EggTime)
+            {
+                isEggTime = true;
+                EggTime = 0;
+            }
+        }
     }
 }

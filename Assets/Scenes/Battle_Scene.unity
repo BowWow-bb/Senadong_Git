@@ -631,5 +631,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'Chicken '
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5482809992429514744, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}

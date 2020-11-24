@@ -6,19 +6,18 @@ public class Chicken_AI : MonoBehaviour
 {
     private Chicken_Sequence root = new Chicken_Sequence();
     private Chicken_Selector selector = new Chicken_Selector();
-    private Chicken_Sequence seqInTheFarm = new Chicken_Sequence();
 
-    //상태 3가지 
-    private Chicken_Hungry hungry = new Chicken_Hungry();
-    private Chicken_Poop poop = new Chicken_Poop();
-    private Chicken_Play play = new Chicken_Play();
+    private Chicken_Sequence seqBehavior = new Chicken_Sequence();
+
     //행동
-    private Chicken_Egg dropegg = new Chicken_Egg();
+    //private Chicken_Egg dropegg = new Chicken_Egg();
     private Chicken_FollowMouse followMouse = new Chicken_FollowMouse();
     private Chicken_Eat eat = new Chicken_Eat();
     private Chicken_BasicMove basicMove = new Chicken_BasicMove();
 
     private Chicken_Move m_chicken;
+    //private Chicken_Status s_chicken;
+
     private IEnumerator behaviorProcess;
     // Start is called before the first frame update
     void Start()
@@ -31,28 +30,18 @@ public class Chicken_AI : MonoBehaviour
         root.AddChild(selector);
 
         //selector에 더함 
-        selector.AddChild(seqInTheFarm);//농장에서 
-
-        hungry.chicken = m_chicken;
-        poop.chicken = m_chicken;
-        play.chicken = m_chicken;
+        selector.AddChild(seqBehavior);//행동
 
         followMouse.chicken = m_chicken;
-        dropegg.chicken = m_chicken;
+        //dropegg.chicken = m_chicken;
         eat.chicken = m_chicken;
         basicMove.chicken = m_chicken;
 
-
-        //seqIntheFarm에 더함 
-        //상태들
-        seqInTheFarm.AddChild(play);
-        seqInTheFarm.AddChild(hungry);
-        seqInTheFarm.AddChild(poop);
         //행동들 
-        seqInTheFarm.AddChild(dropegg);
-        //seqInTheFarm.AddChild(followMouse);
-        //seqInTheFarm.AddChild(eat);
-        seqInTheFarm.AddChild(basicMove);
+        //seqBehavior.AddChild(dropegg);
+        //seqBehavior.AddChild(followMouse);
+        //seqBehavior.AddChild(eat);
+        seqBehavior.AddChild(basicMove);
 
         behaviorProcess = BehaviorProcess();
         StartCoroutine(behaviorProcess);
