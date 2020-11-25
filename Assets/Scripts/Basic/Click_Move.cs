@@ -67,11 +67,6 @@ public class Click_Move : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            chicken_drag = false;
-            chicken = GameObject.FindWithTag("chicken");
-            chicken.GetComponent<Chicken_Move>().isdrag = false;
-        }
+
     }
 }
