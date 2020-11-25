@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Chicken_Move : MonoBehaviour
 {
+    Animator animator;
     int MovedTime = 0;
 
     int EggTime = 0;//달걀 낳는 시간
@@ -22,12 +23,13 @@ public class Chicken_Move : MonoBehaviour
 
     void Start()
     {
+        animator = gameObject.GetComponentInChildren<Animator>();
         movementFlag = Random.Range(0, 5);//0,1,2,3,4
     }
 
     void Update()
     {
-        EggTime++;
+        EggTime++;        
     }
 
     //행동 
@@ -47,10 +49,12 @@ public class Chicken_Move : MonoBehaviour
         {
             Vector3 moveVelocity = Vector3.zero;
             MovedTime++;
-            if(MovedTime>150)//움직인 시간 일정 시간 넘으면 
+            if (MovedTime>200)//움직인 시간 일정 시간 넘으면 
             {
                 ismoving = false;//상태 바꾸기 
             }
+
+            animator.SetBool("is_drop_egg", false);
 
             if (movementFlag == 1)//왼쪽 
             {
@@ -78,6 +82,7 @@ public class Chicken_Move : MonoBehaviour
             }
             else//movementFlag=0 일 때 
             {
+                animator.SetBool("is_drop_egg", true);
                 Chicken_Egg();
             }
 
@@ -100,6 +105,8 @@ public class Chicken_Move : MonoBehaviour
         if (isEggTime)
         {
             Vector3 eggPos;
+            animator.SetBool("is_drop_egg", true);
+            
             if (isRight)//오른쪽을 보고 있는 경우 
             {
                 eggPos = new Vector3(transform.position.x - 1, transform.position.y - 0.8f, transform.position.z);
@@ -109,6 +116,7 @@ public class Chicken_Move : MonoBehaviour
             {
                 eggPos = new Vector3(transform.position.x + 1, transform.position.y - 0.8f, transform.position.z);
             }
+            
             GameObject egg = GameObject.Instantiate(Egg_Prefab);
             isEggTime = false;
             egg.transform.position = eggPos;
