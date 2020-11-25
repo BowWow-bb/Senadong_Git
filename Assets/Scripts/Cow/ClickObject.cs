@@ -42,13 +42,19 @@ public class ClickObject : MonoBehaviour
                 {
 
                 }
+                if (hit.transform.gameObject.tag == "egg") //우유 클릭
+                {
+                    Debug.Log("계란 획득");
+                    item_manager.egg_item++;
+                    egg_count.text = item_manager.egg_item.ToString();
+                    Destroy(hit.transform.gameObject);
+                }
                 if (hit.transform.gameObject.tag == "milk") //우유 클릭
                 {
                     Debug.Log("우유 획득");
                     item_manager.milk_item++;
                     milk_count.text = item_manager.milk_item.ToString();
                     Destroy(hit.transform.gameObject);
-                    //우유 아이템 획득 표시
                 }
             }
         }

@@ -21,6 +21,7 @@ TagManager:
   - egg_item
   - chicken
   - cow
+  - egg
   layers:
   - Default
   - TransparentFX

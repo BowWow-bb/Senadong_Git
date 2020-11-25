@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 5482809992429514745}
   - component: {fileID: 5482809992429514744}
   - component: {fileID: 7177418511496505537}
-  - component: {fileID: 2323268762624037350}
   - component: {fileID: 86346443872655785}
   - component: {fileID: 4890636001043290017}
+  - component: {fileID: 554098594150558152}
+  - component: {fileID: 4671678064753920812}
   m_Layer: 0
   m_Name: 'Chicken '
   m_TagString: Untagged
@@ -119,22 +120,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.7735066, y: 2.9511337, z: 0.2}
   m_Center: {x: 0.0027936697, y: 0.0017499924, z: 0}
---- !u!114 &2323268762624037350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5482809992429514747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e728811ce7214662834e24e41782098, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 5
-  c_poop: {fileID: 0}
-  c_hungry: {fileID: 0}
-  c_play: {fileID: 0}
 --- !u!114 &86346443872655785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +144,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f360663d19da42a6963b70163e95bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &554098594150558152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482809992429514747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91602eb41c4d47f40aac85863f8d25c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4671678064753920812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482809992429514747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e728811ce7214662834e24e41782098, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 5
+  c_poop: {fileID: 3124953304139374773, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
+  c_hungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+  c_play: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
 --- !u!1001 &6893315845350956549
 PrefabInstance:
   m_ObjectHideFlags: 0
