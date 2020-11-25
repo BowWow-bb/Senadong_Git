@@ -87,6 +87,7 @@ public class Chicken_Eat : Chicken_Node
         return _chicken.Chicken_Eat();
     }
 }
+
 public class Chicken_BasicMove : Chicken_Node
 {
     public Chicken_Move chicken
@@ -97,5 +98,18 @@ public class Chicken_BasicMove : Chicken_Node
     public override bool Invoke()
     {
         return _chicken.Chicken_BasicMove();
+    }
+}
+
+public class Chicken_Follow_Food : Chicken_Node
+{
+    public Chicken_Move chicken
+    {
+        set { _chicken = value; }
+    }
+    private Chicken_Move _chicken;
+    public override bool Invoke()
+    {
+        return _chicken.Chicken_Follow_Food();
     }
 }

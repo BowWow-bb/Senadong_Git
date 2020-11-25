@@ -7,15 +7,24 @@ using UnityEngine;
 public class Chicken_Move : MonoBehaviour
 {
     Animator animator;
+
+    GameObject Bap_prefab;
+
     bool is_drag;
     int MovedTime = 0;
 
     int EggTime = 0;//달걀 낳는 시간
     public int C_EggTime = 1000;//달걀 낳는 속도 조정 
 
-    public float movePower = 1f;//움직이는 속도 
+    public float movePower = 1f;//움직이는 속도
+
+    Vector3 Dir;
+    float DirR = 180.0f;
+    float Fspeed = 0.04f;
+
     int movementFlag = 0;//0:idle, 1:left, 2:right
 
+    public bool is_follow_food = false;
     public bool isdrag;
     bool isEggTime;//달걀 낳는 거 
     bool ismoving = true;
@@ -54,9 +63,28 @@ public class Chicken_Move : MonoBehaviour
         return true;
     }
 
+    public bool Chicken_Follow_Food()
+    {
+        if(is_follow_food)
+        {
+            Dir = Bap_prefab.transform.position - gameObject.transform.position;
+            Dir.Normalize();
+
+            Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
+            DirR = Rot.eulerAngles.y;
+            gameObject.transform.localRotation = Rot;
+            gameObject.transform.position += Dir * Fspeed;
+
+            return true;
+        }
+        else
+        {
+            return true;
+        }
+    }
     public bool Chicken_BasicMove()
     {
-        if (ismoving)//움직이는 중인 상태-> 상태 안 바꾸게 
+        if (ismoving && !is_follow_food)//움직이는 중인 상태-> 상태 안 바꾸게 
         {
             Vector3 moveVelocity = Vector3.zero;
             MovedTime++;
