@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ClickObject : MonoBehaviour
 {
-    Cow_Move bring_cow; 
+    Cow_Move bring_cow;
     ItemManager item_manager;
     TextMesh egg_count;
     TextMesh milk_count;
@@ -20,19 +20,20 @@ public class ClickObject : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit))
             {
                 Debug.Log(hit.transform.gameObject + "클릭됨");
 
                 if (hit.transform.gameObject.tag == "hungry")  //hungry 말풍선 클릭
                 {
-                   
+
                 }
                 if (hit.transform.gameObject.tag == "poop") //poop 말풍선 클릭
                 {
@@ -59,5 +60,4 @@ public class ClickObject : MonoBehaviour
             }
         }
     }
-
 }
