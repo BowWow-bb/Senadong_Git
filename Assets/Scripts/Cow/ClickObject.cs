@@ -7,16 +7,16 @@ public class ClickObject : MonoBehaviour
 {
     Cow_Move bring_cow; 
     ItemManager item_manager;
-    Text egg_count;
-    Text milk_count;
+    TextMesh egg_count;
+    TextMesh milk_count;
 
     // Start is called before the first frame update
     void Start()
     {
         bring_cow = GameObject.Find("Cow").GetComponent<Cow_Move>();
         item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
-        egg_count = GameObject.FindWithTag("egg_count").GetComponent<Text>();
-        milk_count = GameObject.FindWithTag("milk_count").GetComponent<Text>();
+        egg_count = GameObject.FindWithTag("egg_count").GetComponent<TextMesh>();
+        milk_count = GameObject.FindWithTag("milk_count").GetComponent<TextMesh>();
     }
 
     // Update is called once per frame
@@ -32,13 +32,7 @@ public class ClickObject : MonoBehaviour
 
                 if (hit.transform.gameObject.tag == "hungry")  //hungry 말풍선 클릭
                 {
-                    hit.transform.gameObject.SetActive(false);
-                    //if()//알맞은 아이템 있는 경우
-                    //{
-                    //    hit.transform.gameObject.SetActive(false); 
-                    //    bring_cow.hungry += 10; //속성값 증가
-                    //}
-
+                   
                 }
                 if (hit.transform.gameObject.tag == "poop") //poop 말풍선 클릭
                 {
