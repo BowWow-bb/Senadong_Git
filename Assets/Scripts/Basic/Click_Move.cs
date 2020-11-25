@@ -11,7 +11,6 @@ public class Click_Move : MonoBehaviour
 
     public bool chicken_drag = false;
 
-    float distance = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +30,7 @@ public class Click_Move : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "chicken")
                 {
+                    chicken_drag = true;
                     if (hit.transform.localScale.x < 0)//오른쪽 
                     {
                         hit.transform.localScale = new Vector3(-chicken_scale, chicken_scale, chicken_scale);
@@ -69,6 +69,7 @@ public class Click_Move : MonoBehaviour
         }
         else
         {
+            chicken_drag = false;
             chicken = GameObject.FindWithTag("chicken");
             chicken.GetComponent<Chicken_Move>().isdrag = false;
         }

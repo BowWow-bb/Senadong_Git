@@ -35,11 +35,11 @@ public class Chicken_Move : MonoBehaviour
         EggTime++;
         if(isdrag)
         {
-            animator.SetBool("is_drag", true);
+            //animator.SetBool("is_drag", true);
         }
         else
         {
-            animator.SetBool("is_drag", false);
+            //animator.SetBool("is_drag", false);
         }
     }
 
@@ -65,7 +65,7 @@ public class Chicken_Move : MonoBehaviour
                 ismoving = false;//상태 바꾸기 
             }
 
-            animator.SetBool("is_drop_egg", false);
+            //animator.SetBool("is_drop_egg", false);
 
             if (movementFlag == 1)//왼쪽 
             {
@@ -93,7 +93,7 @@ public class Chicken_Move : MonoBehaviour
             }
             else//movementFlag=0 일 때 
             {
-                animator.SetBool("is_drop_egg", true);
+                //animator.SetBool("is_drop_egg", true);
                 Chicken_Egg();
             }
 
@@ -116,7 +116,7 @@ public class Chicken_Move : MonoBehaviour
         if (isEggTime)
         {
             Vector3 eggPos;
-            animator.SetBool("is_drop_egg", true);
+            //animator.SetBool("is_drop_egg", true);
             
             if (isRight)//오른쪽을 보고 있는 경우 
             {

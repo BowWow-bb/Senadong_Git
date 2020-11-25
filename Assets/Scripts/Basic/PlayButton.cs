@@ -11,23 +11,27 @@ public class PlayButton : MonoBehaviour
         if (active == false)
         {
             tiger_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
+            tiger_move.playTime = 0;
+            tiger_move.trace_mouse = false;
             active = true;
         }
         else
         {
-            tiger_move.playing = false ; // 비활성화
+            tiger_move.playing = false; // 비활성화
+            tiger_move.playTime = 0;
+
             active = false;
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-        tiger_move = GameObject.FindWithTag("tiger").GetComponent<Tiger_Move>(); 
+        tiger_move = GameObject.FindWithTag("tiger").GetComponent<Tiger_Move>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
