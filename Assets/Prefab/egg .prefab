@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2850414604651452221}
   - component: {fileID: 2850414604651452210}
   - component: {fileID: 6155848623323331252}
+  - component: {fileID: 5353107225998744378}
   m_Layer: 0
   m_Name: 'egg '
   m_TagString: egg
@@ -95,3 +96,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1be9611f61a425098e2d59683d3ba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &5353107225998744378
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850414604651452211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.8, z: 0.2}
+  m_Center: {x: -0.05, y: 0, z: 0}
