@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Click_Move : MonoBehaviour
 {
+    GameObject chicken;
+
     public float chicken_scale;
     public float scale;
+
+    public bool chicken_drag = false;
 
     float distance = 10;
     // Start is called before the first frame update
@@ -62,6 +66,11 @@ public class Click_Move : MonoBehaviour
                     }
                 }
             }
+        }
+        else
+        {
+            chicken = GameObject.FindWithTag("chicken");
+            chicken.GetComponent<Chicken_Move>().isdrag = false;
         }
     }
 }

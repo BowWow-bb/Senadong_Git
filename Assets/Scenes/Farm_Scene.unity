@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chicken_scale: 0.85
-  scale: 1.05
+  scale: 1.02
 --- !u!4 &2098223579
 Transform:
   m_ObjectHideFlags: 0

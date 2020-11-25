@@ -7,6 +7,7 @@ using UnityEngine;
 public class Chicken_Move : MonoBehaviour
 {
     Animator animator;
+    bool is_drag;
     int MovedTime = 0;
 
     int EggTime = 0;//달걀 낳는 시간
@@ -15,6 +16,7 @@ public class Chicken_Move : MonoBehaviour
     public float movePower = 1f;//움직이는 속도 
     int movementFlag = 0;//0:idle, 1:left, 2:right
 
+    public bool isdrag;
     bool isEggTime;//달걀 낳는 거 
     bool ismoving = true;
     bool isRight = false;//보는 방향:왼쪽/오른쪽 
@@ -24,12 +26,21 @@ public class Chicken_Move : MonoBehaviour
     void Start()
     {
         animator = gameObject.GetComponentInChildren<Animator>();
+        is_drag = GameObject.Find("Click_Move").GetComponent<Click_Move>().chicken_drag;
         movementFlag = Random.Range(0, 5);//0,1,2,3,4
     }
 
     void Update()
     {
-        EggTime++;        
+        EggTime++;
+        if(isdrag)
+        {
+            animator.SetBool("is_drag", true);
+        }
+        else
+        {
+            animator.SetBool("is_drag", false);
+        }
     }
 
     //행동 
