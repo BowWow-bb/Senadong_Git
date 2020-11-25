@@ -7,6 +7,7 @@ using UnityEngine;
 public class Chicken_Move : MonoBehaviour
 {
     Animator animator;
+    bool is_drag;
     int MovedTime = 0;
 
     int EggTime = 0;//달걀 낳는 시간
@@ -25,6 +26,7 @@ public class Chicken_Move : MonoBehaviour
     void Start()
     {
         animator = gameObject.GetComponentInChildren<Animator>();
+        is_drag = GameObject.Find("Click_Move").GetComponent<Click_Move>().chicken_drag;
         movementFlag = Random.Range(0, 5);//0,1,2,3,4
     }
 
@@ -33,12 +35,11 @@ public class Chicken_Move : MonoBehaviour
         EggTime++;
         if(isdrag)
         {
-            Debug.Log("isdrag True");
-            animator.SetBool("is_drag", true);
+            //animator.SetBool("is_drag", true);
         }
         else
         {
-            animator.SetBool("is_drag", false);
+            //animator.SetBool("is_drag", false);
         }
     }
 
@@ -64,7 +65,7 @@ public class Chicken_Move : MonoBehaviour
                 ismoving = false;//상태 바꾸기 
             }
 
-            animator.SetBool("is_drop_egg", false);
+            //animator.SetBool("is_drop_egg", false);
 
             if (movementFlag == 1)//왼쪽 
             {
@@ -92,7 +93,7 @@ public class Chicken_Move : MonoBehaviour
             }
             else//movementFlag=0 일 때 
             {
-                animator.SetBool("is_drop_egg", true);
+                //animator.SetBool("is_drop_egg", true);
                 Chicken_Egg();
             }
 
@@ -115,7 +116,7 @@ public class Chicken_Move : MonoBehaviour
         if (isEggTime)
         {
             Vector3 eggPos;
-            animator.SetBool("is_drop_egg", true);
+            //animator.SetBool("is_drop_egg", true);
             
             if (isRight)//오른쪽을 보고 있는 경우 
             {
