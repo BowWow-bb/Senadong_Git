@@ -62,19 +62,6 @@ public class Chicken_Sequence : CompositeChicken_Node
 }
 
 //행동 
-//public class Chicken_Egg : Chicken_Node
-//{
-//    public Chicken_Move chicken
-//    {
-//        set { _chicken = value; }
-//    }
-//    private Chicken_Move _chicken;
-//    public override bool Invoke()
-//    {
-//        return _chicken.Chicken_Egg();
-//    }
-//}
-
 public class Chicken_FollowMouse : Chicken_Node
 {
     public Chicken_Move chicken
