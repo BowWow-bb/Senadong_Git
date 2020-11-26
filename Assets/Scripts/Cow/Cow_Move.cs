@@ -8,31 +8,36 @@ public class Cow_Move : MonoBehaviour
 {
     int statTime = 0;
 
-    int timer = 0;                   //타이머
-    int milkTimer = 0;               //우유 생성 타이머
+    int timer = 0;                       //타이머
+    int milkTimer = 0;                  //우유 생성 타이머
 
     //속성값 관련
     public int hungry = 0; int hungryMax = 100;
     public int poop = 0; int poopMax = 100;
     public int play = 0; int playMax = 100;
 
-    //속성관련 오브젝트 -자식
-    GameObject fHungry;             //체력 오브젝트
-    GameObject fPoop;               //청결 오브젝트
-    GameObject fPlay;               //흥미 오브젝트 
+    //청결 관련
+    public bool isPoop = false;         //똥 싼 유무
+    public int countPoop = 0;           //똥 개수
+    public GameObject CowPoopPrefab;    //똥 오브젝트
 
-    public GameObject MilkPrefab;   //우유 오브젝트
+    //속성관련 오브젝트 -자식
+    GameObject fHungry;                 //체력 오브젝트
+    GameObject fPoop;                   //청결 오브젝트
+    GameObject fPlay;                   //흥미 오브젝트 
+
+    public GameObject MilkPrefab;       //우유 오브젝트
 
     //이동 관련
     int MovedTime = 0;
 
-    public float movePower = 1f;    //움직이는 속도 
-    int movementFlag = 0;           //0:idle, 1:left, 2:right
+    public float movePower = 1f;        //움직이는 속도 
+    int movementFlag = 0;               //0:idle, 1:left, 2:right
 
     bool ismoving = true;
-    bool isRight = false;           //보는 방향:왼쪽/오른쪽 
+    bool isRight = false;               //보는 방향:왼쪽/오른쪽 
 
-    Vector3 movement;               //z:-8
+    Vector3 movement;                   //z:-8
 
     // Start is called before the first frame update
     //상태 
@@ -48,9 +53,22 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Poop()
     {
+        //poop -= countPoop * 10; //똥 하나당 10씩 감소
         //if (poop != 100 && poop % 20 == 0)
         //{
         //    fPoop.SetActive(true);
+
+        //    //화장실 가서 똥 싸기
+        //    //goToilet();
+        //    //toilet_xmin = -12.67 toilet_xmx = -7
+        //    //toilet_ymin = 4.19   toilet_ymax = 6.76
+
+        //    GameObject mini_poop = Instantiate(CowPoopPrefab);
+        //    mini_poop.tag = "cow_poop";
+        //    mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
+
+        //    countPoop++;
+        //    fPoop.SetActive(false); //똥 싼 후 말풍선 비활성화         
         //}
         return true;
     }

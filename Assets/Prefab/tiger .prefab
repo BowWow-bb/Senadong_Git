@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5800524980379892177}
   - component: {fileID: 5800524980379892176}
-  - component: {fileID: 1898100935}
   - component: {fileID: 1898100936}
+  - component: {fileID: 1947859805792295533}
+  - component: {fileID: 381457149153702165}
   m_Layer: 0
   m_Name: 'tiger '
   m_TagString: Untagged
@@ -84,7 +85,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1898100935
+--- !u!114 &1898100936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5800524980379892179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2b766dbfc86e64a855f190c9acd730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1947859805792295533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,8 +109,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57fb0d40ac8fd9499e3d481f1df6f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playTime: 0
   playing: 0
---- !u!114 &1898100936
+  trace_mouse: 0
+  t_Poop: {fileID: 3124953304139374773, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
+  t_Hungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+  t_Play: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
+--- !u!114 &381457149153702165
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,6 +124,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5800524980379892179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2b766dbfc86e64a855f190c9acd730, type: 3}
+  m_Script: {fileID: 11500000, guid: 91602eb41c4d47f40aac85863f8d25c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
