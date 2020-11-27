@@ -120,18 +120,18 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Poop()
     {
-        //if ((poop != valueMax && floating == 2)
-        //    && (!isHungry && !isPoop && !isPlay))
-        //{
-        //    isPoop = true;
-        //    fPoop.SetActive(true);
+        if ((poop != valueMax && floating == 2)
+            && (!isHungry && !isPoop && !isPlay))
+        {
+            isPoop = true;
+            fPoop.SetActive(true);
 
-        //    //화장실 내 랜덤한 위치 설정
-        //    tx = Random.Range(-12.6f, -7.0f);
-        //    ty = Random.Range(4.19f, 6.76f);
-        //    toiletPos = new Vector3(tx, ty, transform.position.z);
-        //    Debug.Log("toiletPos: " + toiletPos);
-        //}
+            //화장실 내 랜덤한 위치 설정
+            tx = Random.Range(-12.6f, -7.0f);
+            ty = Random.Range(4.19f, 6.76f);
+            toiletPos = new Vector3(tx, ty, transform.position.z);
+            Debug.Log("toiletPos: " + toiletPos);
+        }
         return true;
     }
 
