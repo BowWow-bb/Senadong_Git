@@ -8,9 +8,14 @@ public class Chicken_Move : MonoBehaviour
 {
     Animator animator;
 
-    GameObject Bap_prefab;
+    //밥 추적 위함 
+    GameObject Bap;
+    public float follow_distance=15;//밥 추적 범위 
+    float distance;
+    bool is_follow_food = false;//밥 추적 중인지
+    //
 
-    bool is_drag;
+    //bool is_drag;
     int MovedTime = 0;
 
     int EggTime = 0;//달걀 낳는 시간
@@ -18,13 +23,8 @@ public class Chicken_Move : MonoBehaviour
 
     public float movePower = 1f;//움직이는 속도
 
-    Vector3 Dir;
-    float DirR = 180.0f;
-    float Fspeed = 0.04f;
-
     int movementFlag = 0;//0:idle, 1:left, 2:right
-
-    public bool is_follow_food = false;
+  
     public bool isdrag;
     bool isEggTime;//달걀 낳는 거 
     bool ismoving = true;
@@ -35,7 +35,7 @@ public class Chicken_Move : MonoBehaviour
     void Start()
     {
         animator = gameObject.GetComponentInChildren<Animator>();
-        is_drag = GameObject.Find("Click_Move").GetComponent<Click_Move>().chicken_drag;
+        //is_drag = GameObject.Find("Click_Move").GetComponent<Click_Move>().chicken_drag;
         movementFlag = Random.Range(0, 5);//0,1,2,3,4
     }
 
@@ -50,6 +50,16 @@ public class Chicken_Move : MonoBehaviour
         {
             //animator.SetBool("is_drag", false);
         }
+
+        //밥 추적 
+        Bap = GameObject.FindWithTag("hungry_follow_item");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
+        if (Bap != null)//밥 생성 되었는지 
+        {
+            //Debug.Log("밥 생성");
+            distance = Vector3.Distance(this.gameObject.transform.position, Bap.transform.position);//거리 파악
+        }
+        is_follow_food = (Bap != null && distance < follow_distance);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
+        //
     }
 
     //행동 
@@ -64,17 +74,20 @@ public class Chicken_Move : MonoBehaviour
     }
 
     public bool Chicken_Follow_Food()
-    {
-        if(is_follow_food)
+    {   
+        if (is_follow_food)//밥 생성 되었는지 
         {
-            Dir = Bap_prefab.transform.position - gameObject.transform.position;
-            Dir.Normalize();
-
-            Quaternion Rot = Quaternion.LookRotation(Dir, new Vector3(0, 1, 0));
-            DirR = Rot.eulerAngles.y;
-            gameObject.transform.localRotation = Rot;
-            gameObject.transform.position += Dir * Fspeed;
-
+            Debug.Log("밥 생성, 거리 추적 범위");
+            //Debug.Log("밥 위치: ", Bap.transform);
+            if(Bap.transform.position.x<transform.position.x)//밥이 왼쪽 이라면 
+            {
+                transform.localScale = new Vector3(0.8f, 0.8f, 1);
+            }
+            else//밥이 오른쪽이라면 
+            {
+                transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+            }
+            transform.position = Vector3.Lerp(transform.position, Bap.transform.position, 0.008f);
             return true;
         }
         else

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1898100936}
   - component: {fileID: 1947859805792295533}
   - component: {fileID: 381457149153702165}
+  - component: {fileID: 6396162967813062827}
+  - component: {fileID: 7166413711449135259}
   m_Layer: 0
   m_Name: 'tiger '
   m_TagString: Untagged
@@ -125,5 +127,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91602eb41c4d47f40aac85863f8d25c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &6396162967813062827
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5800524980379892179}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2, y: 3.2, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7166413711449135259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5800524980379892179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f360663d19da42a6963b70163e95bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
