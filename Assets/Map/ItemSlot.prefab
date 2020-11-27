@@ -1128,6 +1128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2827448309631519104}
+  - component: {fileID: 7297995280322686644}
   m_Layer: 0
   m_Name: hungry_item
   m_TagString: Untagged
@@ -1151,6 +1152,19 @@ Transform:
   m_Father: {fileID: 3046864456941972261}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7297995280322686644
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8914393033542358854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8914938504117710920
 GameObject:
   m_ObjectHideFlags: 0

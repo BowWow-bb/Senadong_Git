@@ -174,9 +174,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5482809992429514744, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: Bap_prefab
+      value: 
+      objectReference: {fileID: 6063200127748015454, guid: e782b6c0dc0ba4f9f9b91985e223c02f, type: 3}
+    - target: {fileID: 5482809992429514744, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: follow_distance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5482809992429514747, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
       propertyPath: m_Name
       value: 'Chicken '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482809992429514747, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: m_TagString
+      value: chicken
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177418511496505537, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: m_Size.x
+      value: 2.2918653
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177418511496505537, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: m_Center.x
+      value: -0.014667034
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177418511496505537, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: m_Size.y
+      value: 2.6295323
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177418511496505537, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0044181347
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
@@ -244,6 +272,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6869631095095853133, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+      propertyPath: chicken_scale
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869631095095853133, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+      propertyPath: scale
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6869631095095853133, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+      propertyPath: hungry_item_prefab
+      value: 
+      objectReference: {fileID: 6063200127748015454, guid: e782b6c0dc0ba4f9f9b91985e223c02f, type: 3}
     - target: {fileID: 7687067578285476170, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
@@ -291,6 +331,10 @@ PrefabInstance:
     - target: {fileID: 7687067578285476174, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
       propertyPath: m_Name
       value: Cow
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687067578285476174, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+      propertyPath: m_TagString
+      value: cow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
@@ -818,9 +862,25 @@ PrefabInstance:
       propertyPath: m_TagString
       value: milk_item
       objectReference: {fileID: 0}
+    - target: {fileID: 7297995280322686644, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
+      propertyPath: m_Size.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297995280322686644, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
+      propertyPath: m_Size.y
+      value: 1.738749
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297995280322686644, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
+      propertyPath: m_Center.y
+      value: 0.10162139
+      objectReference: {fileID: 0}
     - target: {fileID: 7314324914711217052, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
       propertyPath: m_TagString
       value: play_item
+      objectReference: {fileID: 0}
+    - target: {fileID: 8914393033542358854, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
+      propertyPath: m_TagString
+      value: hungry_item_slot
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
@@ -930,8 +990,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd032caac2e04aa08fdc984ba7a1da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chicken_scale: 1
-  scale: 1.01
+  chicken_scale: 0.9
+  scale: 1.1
   chicken_drag: 0
 --- !u!4 &2098223579
 Transform:

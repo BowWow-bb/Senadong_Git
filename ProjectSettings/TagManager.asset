@@ -23,6 +23,8 @@ TagManager:
   - cow
   - egg
   - cow_poop
+  - hungry_item_slot
+  - hungry_follow_item
   layers:
   - Default
   - TransparentFX

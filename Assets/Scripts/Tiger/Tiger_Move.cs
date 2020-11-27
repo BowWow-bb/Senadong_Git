@@ -27,6 +27,13 @@ public class Tiger_Move : MonoBehaviour
     public GameObject t_Hungry;//밥
     public GameObject t_Play;//놀이
 
+    //밥 추적 위함 
+    GameObject Bap;
+    public float follow_distance = 15;//밥 추적 범위 
+    float distance;
+    bool is_follow_food = false;//밥 추적 중인지
+    //
+
     // Start is called before the first frame update
     public bool Hungry()
     {
@@ -52,6 +59,30 @@ public class Tiger_Move : MonoBehaviour
     {
         return true;
     }
+
+    public bool Tiger_Follow_Food()//알아서 바꿔서 쓰셈 
+    {
+        if (is_follow_food)//밥 생성 되었는지 
+        {
+            Debug.Log("밥 생성, 거리 추적 범위");
+            //Debug.Log("밥 위치: ", Bap.transform);
+            if (Bap.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
+            {
+                transform.localScale = new Vector3(0.8f, 0.8f, 1);
+            }
+            else//밥이 오른쪽이라면 
+            {
+                transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+            }
+            transform.position = Vector3.Lerp(transform.position, Bap.transform.position, 0.008f);
+            return true;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public bool FollowMouse()
     {
         if (playing) // 놀고 있는 상태
@@ -189,7 +220,15 @@ public class Tiger_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //밥 추적 
+        Bap = GameObject.FindWithTag("hungry_follow_item");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
+        if (Bap != null)//밥 생성 되었는지 
+        {
+            //Debug.Log("밥 생성");
+            distance = Vector3.Distance(this.gameObject.transform.position, Bap.transform.position);//거리 파악
+        }
+        is_follow_food = (Bap != null && distance < follow_distance);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
+        //
     }
     private void FixedUpdate()
     {
