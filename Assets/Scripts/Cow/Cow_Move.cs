@@ -98,11 +98,11 @@ public class Cow_Move : MonoBehaviour
         is_follow_food = (Bap != null && distance < follow_distance);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
         //
     }
-    public bool FollowMouse()
+    public bool Cow_FollowMouse()
     {
         if (playing) // 놀고 있는 상태
         {
-
+            Debug.Log("소 놀");
             if (trace_mouse == true) // 추적 중일때
             {
                 float x = Input.mousePosition.x / 1368.0f; // 화면 비율에 맞춘 마우스 좌표 0 ~ 1
@@ -254,10 +254,7 @@ public class Cow_Move : MonoBehaviour
         return true;
     }
 
-    public bool Cow_FollowMouse()
-    {
-        return true;
-    }
+
 
     public bool Cow_Eat()
     {

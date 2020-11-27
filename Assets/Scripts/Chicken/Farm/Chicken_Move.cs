@@ -14,7 +14,8 @@ public class Chicken_Move : MonoBehaviour
     float distance;
     bool is_follow_food = false;//밥 추적 중인지
     //
-
+    public bool trace_mouse;
+    public bool playing = false;
     public bool isdrag = false;//drag 중인지 파악 
     int MovedTime = 0;
 
@@ -40,7 +41,15 @@ public class Chicken_Move : MonoBehaviour
     public int hungry = 0; bool isHungry = false;
     public int poop = 0; bool isPoop = false;
     public int play = 0; bool isPlay = false;
-
+    Vector2 move_vec; // 움직일 방향벡터
+    Vector3 Start_Point; // 움직일때의 시작점
+    Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
+    Vector3 Mouse;
+    bool moving; // 움직이고 있는 상태 인지
+    float move_length = 0; // 얼마나 움직였는지의 벡터
+    float trace_length = 0;
+    public int playTime = 0; // 심심한 시간 재는 시간
+    int check = 0;
     //속성관련 오브젝트 -자식
     GameObject fHungry;                 //체력 오브젝트
     GameObject fPoop;                   //청결 오브젝트
@@ -114,7 +123,85 @@ public class Chicken_Move : MonoBehaviour
     //행동 
     public bool Chicken_FollowMouse()
     {
-        return true;
+        if (playing) // 놀고 있는 상태
+        {
+           
+            if (trace_mouse == true) // 추적 중일때
+            {
+                float x = Input.mousePosition.x / 1368.0f; // 화면 비율에 맞춘 마우스 좌표 0 ~ 1
+                float y = Input.mousePosition.y / 768.0f;
+                Mouse = new Vector3(x, y, -8);
+                x = gameObject.transform.position.x / 26f + 0.5f; // 화면 비율에 맞춘 호랑이좌표 0~1 
+                y = gameObject.transform.position.y / 13f + 0.5f;
+                Start_Point = new Vector3(x, y, -8);
+
+                trace = (Mouse - Start_Point).normalized; // 호랑이와 마우스 사이의 벡터
+                if (trace.x >= 0)
+                    gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                else
+                    gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+
+
+                x = (Start_Point.x + (trace.x * trace_length) - 0.5f) * 26f; // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
+                y = (Start_Point.y + (trace.y * trace_length) - 0.5f) * 13f;
+
+
+
+                gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+
+                trace_length += 0.0001f; // 빨라지는 추적속도
+                if (Vector3.Distance(Start_Point, Mouse) < 0.02f) // 마우스를 잡았다면
+                {
+                    if (check == 5) //총 5번 잡았다면
+                    {
+                        playing = false; // 놀이끝 
+                        check = 0; //초기화
+                        gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
+
+                    }
+                    else
+                    {
+                        check++; //잡은 횟수 +
+                        trace_mouse = false; //잠시 추적종료
+                        playTime = 0;
+                    }
+                }
+            }
+            else // 추적중이지 않을떄 = 마우스를 잡고 잠시 기다림
+            {
+                playTime++;
+                if (playTime > 50) // 기다리는 시간
+                {
+                    trace_mouse = true; // 다시 추적
+                }
+            }
+
+            return true;
+        }
+        else
+        {
+            if ((play != valueMax && floating == 3)
+            && (!isHungry && !isPoop && !isPlay))
+            {
+                isPlay = true;
+                fPlay.SetActive(true);
+                Debug.Log("치킨 놀");
+            }
+
+            if (isPlay)    // 상태 유지
+            {
+                statTime--;
+                if (statTime == 0)
+                {
+                    floating = 4;
+                    isPlay = false;
+                    fPlay.SetActive(false);
+                    statTime = statMax;
+                }
+            }
+            return true;
+        }
+
     }
 
     public bool Chicken_Eat()
