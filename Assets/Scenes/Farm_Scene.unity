@@ -190,6 +190,22 @@ PrefabInstance:
       propertyPath: m_TagString
       value: chicken
       objectReference: {fileID: 0}
+    - target: {fileID: 7177418511496505537, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: m_Size.x
+      value: 2.2918653
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177418511496505537, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: m_Center.x
+      value: -0.014667034
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177418511496505537, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: m_Size.y
+      value: 2.6295323
+      objectReference: {fileID: 0}
+    - target: {fileID: 7177418511496505537, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0044181347
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
 --- !u!1001 &410144493

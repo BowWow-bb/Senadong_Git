@@ -51,14 +51,15 @@ public class Chicken_Move : MonoBehaviour
            animator.SetBool("is_drag", false);
         }
 
-        if(isStop)
+        if(isStop && !is_follow_food)//따라가는 상태가 아니라면 
         {
-            animator.SetBool("is_drop_egg", true);
+            animator.SetBool("is_drop_egg", true); 
         }
         else
         {
             animator.SetBool("is_drop_egg", false);
         }
+        
         
 
         //밥 추적 
@@ -87,7 +88,7 @@ public class Chicken_Move : MonoBehaviour
     {   
         if (is_follow_food)//밥 생성 되었는지 
         {
-            Debug.Log("밥 생성, 거리 추적 범위");
+            //Debug.Log("밥 생성, 거리 추적 범위");
             //Debug.Log("밥 위치: ", Bap.transform);
             if(Bap.transform.position.x<transform.position.x)//밥이 왼쪽 이라면 
             {
