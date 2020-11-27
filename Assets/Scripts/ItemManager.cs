@@ -16,7 +16,8 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        play_item = 10; // 잠시바꿈
+
     }
 
     // Update is called once per frame

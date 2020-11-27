@@ -14,6 +14,8 @@ public class Tiger_Move : MonoBehaviour
     bool hunger; // 배고픈 상태인지 
     bool moving; // 움직이고 있는 상태 인지
     float move_length = 0; // 얼마나 움직였는지의 벡터
+    float trace_length = 0;
+    int check = 0;
     public bool trace_mouse; // 마우스를 향해 달리는 중인지
 
     Vector2 move_vec; // 움직일 방향벡터
@@ -54,58 +56,68 @@ public class Tiger_Move : MonoBehaviour
     {
         if (playing) // 놀고 있는 상태
         {
-            t_Play.gameObject.SetActive(false);
-            if (trace_mouse)
+
+            if (trace_mouse == true) // 추적 중일때
             {
-                Debug.Log("쫓");
-                float x = Start_Point.x - (trace.x * move_length); // 시작점 + 방향벡터 * 거리
-                float y = Start_Point.y - (trace.y * move_length);
+                float x = Input.mousePosition.x / 1368.0f; // 화면 비율에 맞춘 마우스 좌표 0 ~ 1
+                float y = Input.mousePosition.y / 768.0f;
+                Mouse = new Vector3(x, y, -8);
+                x = gameObject.transform.position.x / 26f + 0.5f; // 화면 비율에 맞춘 호랑이좌표 0~1 
+                y = gameObject.transform.position.y / 13f + 0.5f;
+                Start_Point = new Vector3(x, y, -8);
+
+                trace = (Mouse - Start_Point).normalized; // 호랑이와 마우스 사이의 벡터
+                if (trace.x >= 0)
+                    gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                else
+                    gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+
+
+                x = (Start_Point.x + (trace.x * trace_length) - 0.5f) * 26f; // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
+                y = (Start_Point.y + (trace.y * trace_length) - 0.5f) * 13f;
+
 
 
                 gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
-                move_length += 0.1f; // 거리를 차근차근 움직임
-                Debug.Log(move_length);
-                if (move_length > 10f) // 다 움직였다면 다시 움직임 타이머를 잼
+                trace_length += 0.0001f; // 빨라지는 추적속도
+                if (Vector3.Distance(Start_Point, Mouse) < 0.02f) // 마우스를 잡았다면
                 {
-                    move_length = 0;
-                    Debug.Log("ddd");
-                    trace_mouse = false;
-                    playTime = 0;
-                }
-            }
-            else
-            {
-                if (playTime % 50 == 0 && (playTime) > 0)
-                {
-                    Mouse = Input.mousePosition;
-                    //float x = Input.mousePosition.x / 250.0f - 1.0f;
-                    //float y = Input.mousePosition.y / 250.0f - 1.0f;
-                    //float dx = Mathf.Round(x * 10.0f) / 10.0f;
-                    //float dy = Mathf.Round(y * 10.0f) / 10.0f;
-                    //int ix = (int)Mathf.Round(dx * 10.0f + 10.0f);
-                    //int iy = (int)Mathf.Round(10.0f - (dy * 10.0f));
-                    Mouse.z = -8f;
-                    Debug.Log(Mouse);
-                    Start_Point = gameObject.transform.position;
-                    trace = (Mouse - Start_Point).normalized;
-                    if (trace.x >= 0)
-                        gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                    if (check == 5) //총 5번 잡았다면
+                    {
+                        playing = false; // 놀이끝 
+                        check = 0; //초기화
+                        gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
+
+                    }
                     else
-                        gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
-                    move_length = 0;
-                    trace_mouse = true;
+                    {
+                        check++; //잡은 횟수 +
+                        trace_mouse = false; //잠시 추적종료
+                        playTime = 0;
+                    }
                 }
             }
+            else // 추적중이지 않을떄 = 마우스를 잡고 잠시 기다림
+            {
+                playTime++;
+                if (playTime > 50) // 기다리는 시간
+                {
+                    trace_mouse = true; // 다시 추적
+                }
+            }
+            
             return true;
         }
         else
         {
 
-            if (playTime % 400 == 0 && (playTime) > 0) // 일정 시간마다 심심해짐
+            if (playTime % 100 == 0 && (playTime) > 0) // 일정 시간마다 심심해짐
             {
-                t_Play.gameObject.SetActive(true);
-                Debug.Log("호랑이 심심해!");
+                t_Play.gameObject.SetActive(true); // 말풍선 띄움
+                playTime = 0;
+                trace_length = 0;
+                trace_mouse = true; // 추적 시작
             }
             return true;
         }
@@ -124,14 +136,14 @@ public class Tiger_Move : MonoBehaviour
                 float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
                 float y = Start_Point.y + move_vec.y * move_length;
 
-                if (x >= 2.5f) // 울타리를 넘어가지 않기 위해 
-                    x = 2.5f;
+                if (x >= 13f) // 울타리를 넘어가지 않기 위해 
+                    x = 13f;
                 if (x <= -13f)
                     x = -13f;
-                if (y >= -4.5f)
-                    y = -4.5f;
-                if (y <= -9f)
-                    y = -9f;
+                if (y >= 6.5f)
+                    y = 6.5f;
+                if (y <= -6.5f)
+                    y = -6.5f;
 
                 gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
@@ -160,6 +172,11 @@ public class Tiger_Move : MonoBehaviour
                 return true;
             }
         }
+        else
+        {
+            BasicTime = 0;
+            moving = false; 
+        }
         return true;
     }
     void Start()
@@ -179,5 +196,6 @@ public class Tiger_Move : MonoBehaviour
         hungryTime++; // 타이머 
         BasicTime++;
         playTime++;
+        
     }
 }
