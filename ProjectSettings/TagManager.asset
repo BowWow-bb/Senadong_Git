@@ -25,6 +25,8 @@ TagManager:
   - cow_poop
   - hungry_item_slot
   - hungry_follow_item
+  - chicken_poop
+  - tiger_poop
   layers:
   - Default
   - TransparentFX

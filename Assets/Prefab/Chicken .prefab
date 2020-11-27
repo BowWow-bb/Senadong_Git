@@ -105,10 +105,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   follow_distance: 15
+  isdrag: 0
   C_EggTime: 1000
   movePower: 1
-  isdrag: 0
   Egg_Prefab: {fileID: 2850414604651452211, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
+  hungry: 0
+  poop: 0
+  play: 0
 --- !u!65 &7177418511496505537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -248,6 +251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poop
       objectReference: {fileID: 0}
+    - target: {fileID: 3124953304139374773, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
 --- !u!4 &5282391501024167918 stripped
@@ -375,6 +382,10 @@ PrefabInstance:
     - target: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
       propertyPath: m_Name
       value: Hungry
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}

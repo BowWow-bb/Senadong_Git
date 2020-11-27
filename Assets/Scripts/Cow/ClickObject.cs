@@ -36,6 +36,15 @@ public class ClickObject : MonoBehaviour
                         item_manager.play_item--;   //아이템 사용
                     }
                 }
+                if (hit.transform.gameObject.tag == "cow_poop") //소똥 클릭
+                {
+                    if (item_manager.poop_item > 0)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        Debug.Log("소똥 치움");
+                        cow.countPoop--;
+                    }
+                }
                 if (hit.transform.gameObject.tag == "egg") //우유 클릭
                 {
                     Debug.Log("계란 획득");
@@ -50,15 +59,7 @@ public class ClickObject : MonoBehaviour
                     milk_count.text = item_manager.milk_item.ToString();
                     Destroy(hit.transform.gameObject);
                 }
-                if (hit.transform.gameObject.tag == "cow_poop") //소똥 클릭
-                {
-                    if(item_manager.poop_item > 0)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        Debug.Log("소똥 치움");
-                        cow.countPoop--; 
-                    }
-                }
+                
             }
         }
     }

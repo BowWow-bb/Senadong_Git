@@ -34,29 +34,70 @@ public class Tiger_Move : MonoBehaviour
     bool is_follow_food = false;//밥 추적 중인지
     //
 
+    //속성값 관련
+    int floating;                       //말풍선 랜덤 1:hungry, 2:poop, 3:play, 4~100:none
+    int statTime = 500, statMax = 200;  //말풍선 지속 시간
+    int timer = 0;                      //타이머
+    int valueMax = 1000;
+    public int hungry = 0; bool isHungry = false;
+    public int poop = 0; bool isPoop = false;
+    public int play = 0; bool isPlay = false;
+
+    //속성관련 오브젝트 -자식
+    GameObject fHungry;                 //체력 오브젝트
+    GameObject fPoop;                   //청결 오브젝트
+    GameObject fPlay;                   //흥미 오브젝트 
+
     // Start is called before the first frame update
     public bool Hungry()
     {
-        if (hunger && !playing) // 배고픈 상태 일 때
+        if ((hungry != valueMax && floating == 1)
+           && (!isHungry && !isPoop && !isPlay))
         {
-            t_Hungry.gameObject.SetActive(true);
-            return true;
+            isHungry = true;
+            fHungry.SetActive(true);
         }
-        else
+
+        if (isHungry)    // 상태 유지
         {
-            if ((hungryTime / 100) % 100 == 0 && (hungryTime) > 0) // 일정시간마다 배고파짐
+            statTime--;
+            if (statTime == 0)
             {
-                hungryTime = 0;
-                //  Debug.Log("호랑이 배고파!");
-                hunger = true;
-                t_Hungry.gameObject.SetActive(false);
+                floating = 4;
+                isHungry = false;
+                fHungry.SetActive(false);
+                statTime = statMax;
             }
-            return true;
         }
+
+        return true;
 
     }
     public bool Poop()
     {
+        return true;
+    }
+
+    public bool Play()
+    {
+        if ((play != valueMax && floating == 3)
+            && (!isHungry && !isPoop && !isPlay))
+        {
+            isPlay = true;
+            fPlay.SetActive(true);
+        }
+
+        if (isPlay)    // 상태 유지
+        {
+            statTime--;
+            if (statTime == 0)
+            {
+                floating = 4;
+                isPlay = false;
+                fPlay.SetActive(false);
+                statTime = statMax;
+            }
+        }
         return true;
     }
 
@@ -142,13 +183,23 @@ public class Tiger_Move : MonoBehaviour
         }
         else
         {
-
-            if (playTime % 100 == 0 && (playTime) > 0) // 일정 시간마다 심심해짐
+            if ((play != valueMax && floating == 3)
+            && (!isHungry && !isPoop && !isPlay))
             {
-                t_Play.gameObject.SetActive(true); // 말풍선 띄움
-                playTime = 0;
-                trace_length = 0;
-                trace_mouse = true; // 추적 시작
+                isPlay = true;
+                fPlay.SetActive(true);
+            }
+
+            if (isPlay)    // 상태 유지
+            {
+                statTime--;
+                if (statTime == 0)
+                {
+                    floating = 4;
+                    isPlay = false;
+                    fPlay.SetActive(false);
+                    statTime = statMax;
+                }
             }
             return true;
         }
@@ -212,6 +263,19 @@ public class Tiger_Move : MonoBehaviour
     }
     void Start()
     {
+        //속성값 초기 설정
+        hungry = valueMax;
+        poop = valueMax;
+        play = valueMax;
+
+        //말풍선 비활성화
+        fHungry = transform.GetChild(0).gameObject;
+        fHungry.SetActive(false);
+        fPoop = transform.GetChild(1).gameObject;
+        fPoop.SetActive(false);
+        fPlay = transform.GetChild(2).gameObject;
+        fPlay.SetActive(false);
+
         hunger = false; // 변수 초기화
         moving = false;
         playing = false;
@@ -220,6 +284,17 @@ public class Tiger_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        floating = Random.Range(1, 101);
+        timer++;
+
+        if (timer % 100 == 0)
+        {
+            hungry--;
+            poop--;
+            play--;
+            //poop -= countPoop * 5; //똥 개수에 비례하여 감소
+        }
+
         //밥 추적 
         Bap = GameObject.FindWithTag("hungry_follow_item");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
         if (Bap != null)//밥 생성 되었는지 

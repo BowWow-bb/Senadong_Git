@@ -32,8 +32,35 @@ public class Chicken_Move : MonoBehaviour
 
     public GameObject Egg_Prefab;//달걀 
 
+    //속성값 관련
+    int floating;                       //말풍선 랜덤 1:hungry, 2:poop, 3:play, 4~100:none
+    int statTime = 500, statMax = 200;  //말풍선 지속 시간
+    int timer = 0;                      //타이머
+    int valueMax = 1000;
+    public int hungry = 0; bool isHungry = false;
+    public int poop = 0; bool isPoop = false;
+    public int play = 0; bool isPlay = false;
+
+    //속성관련 오브젝트 -자식
+    GameObject fHungry;                 //체력 오브젝트
+    GameObject fPoop;                   //청결 오브젝트
+    GameObject fPlay;                   //흥미 오브젝트
+
     void Start()
     {
+        //속성값 초기 설정
+        hungry = valueMax;
+        poop = valueMax;
+        play = valueMax;
+
+        //말풍선 비활성화
+        fHungry = transform.GetChild(0).gameObject;
+        fHungry.SetActive(false);
+        fPoop = transform.GetChild(1).gameObject;
+        fPoop.SetActive(false);
+        fPlay = transform.GetChild(2).gameObject;
+        fPlay.SetActive(false);
+
         animator = GetComponent<Animator>();
         isdrag = GameObject.Find("Click_Move").GetComponent<Click_Move>().chicken_drag;
         movementFlag = Random.Range(0, 5);//0,1,2,3,4
@@ -41,6 +68,17 @@ public class Chicken_Move : MonoBehaviour
 
     void Update()
     {
+        floating = Random.Range(1, 101);
+        timer++;
+
+        if (timer % 100 == 0)
+        {
+            hungry--;
+            poop--;
+            play--;
+            //poop -= countPoop * 5; //똥 개수에 비례하여 감소
+        }
+
         EggTime++;
         if(isdrag)
         {
@@ -192,5 +230,56 @@ public class Chicken_Move : MonoBehaviour
                 EggTime = 0;
             }
         }
+    }
+
+    public bool Chicken_Hungry()
+    {
+        if ((hungry != valueMax && floating == 1)
+           && (!isHungry && !isPoop && !isPlay))
+        {
+            isHungry = true;
+            fHungry.SetActive(true);
+        }
+
+        if (isHungry)    // 상태 유지
+        {
+            statTime--;
+            if (statTime == 0)
+            {
+                floating = 4;
+                isHungry = false;
+                fHungry.SetActive(false);
+                statTime = statMax;
+            }
+        }
+
+        return true;
+    }
+    public bool Chicken_Poop()
+    {
+ 
+        return true;
+    }
+    public bool Chicken_Play()
+    {
+        if ((play != valueMax && floating == 3)
+            && (!isHungry && !isPoop && !isPlay))
+        {
+            isPlay = true;
+            fPlay.SetActive(true);
+        }
+
+        if (isPlay)    // 상태 유지
+        {
+            statTime--;
+            if (statTime == 0)
+            {
+                floating = 4;
+                isPlay = false;
+                fPlay.SetActive(false);
+                statTime = statMax;
+            }
+        }
+        return true;
     }
 }
