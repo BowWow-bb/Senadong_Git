@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Click_Move : MonoBehaviour
 {
+    GameObject chicken;
+
     public float chicken_scale;
     public float scale;
 
@@ -12,7 +14,7 @@ public class Click_Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        chicken = GameObject.FindWithTag("chicken");
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class Click_Move : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "chicken")
                 {
-                    chicken_drag = true;
+                    chicken.GetComponent<Chicken_Move>().isdrag = true;
                     if (hit.transform.localScale.x < 0)//오른쪽 
                     {
                         hit.transform.localScale = new Vector3(-chicken_scale, chicken_scale, chicken_scale);
@@ -68,6 +70,13 @@ public class Click_Move : MonoBehaviour
                 {
                     hit.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                 }
+            }
+        }
+        else
+        {
+            if(chicken != null)
+            {
+                chicken.GetComponent<Chicken_Move>().isdrag = false;
             }
         }
     }
