@@ -17,6 +17,7 @@ public class Chicken_AI : MonoBehaviour
     //행동
     private Chicken_Follow_Food followFood = new Chicken_Follow_Food();
     private Chicken_FollowMouse followMouse = new Chicken_FollowMouse();
+    private Chicken_Drop_Egg drop_Egg = new Chicken_Drop_Egg();
     private Chicken_Eat eat = new Chicken_Eat();
     private Chicken_BasicMove basicMove = new Chicken_BasicMove();
 
@@ -44,7 +45,7 @@ public class Chicken_AI : MonoBehaviour
 
         followMouse.chicken = m_chicken;
         followFood.chicken = m_chicken;
-        //dropegg.chicken = m_chicken;
+        drop_Egg.chicken = m_chicken;
         eat.chicken = m_chicken;
         basicMove.chicken = m_chicken;
 
@@ -53,7 +54,7 @@ public class Chicken_AI : MonoBehaviour
         seqBehavior.AddChild(hungry);
         seqBehavior.AddChild(poop);
         //행동들 
-        //seqBehavior.AddChild(dropegg);
+        seqBehavior.AddChild(drop_Egg);
         seqBehavior.AddChild(followMouse);
         //seqBehavior.AddChild(eat);
         seqBehavior.AddChild(basicMove);
