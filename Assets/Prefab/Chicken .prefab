@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 7177418511496505537}
   - component: {fileID: 86346443872655785}
   - component: {fileID: 4890636001043290017}
-  - component: {fileID: 554098594150558152}
   - component: {fileID: 4671678064753920812}
   - component: {fileID: 2051835474354174878}
+  - component: {fileID: 466634066006632963}
   m_Layer: 0
   m_Name: 'Chicken '
-  m_TagString: Untagged
+  m_TagString: chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,9 +109,18 @@ MonoBehaviour:
   C_EggTime: 1000
   movePower: 1
   Egg_Prefab: {fileID: 2850414604651452211, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
+  playTime: 0
+  playing: 0
+  trace_mouse: 0
+  timer: 0
   hungry: 0
   poop: 0
   play: 0
+  countPoop: 0
+  ChickenPoopPrefab: {fileID: 3181500524151880679, guid: fe472d41c266df74196f68c2c373d259, type: 3}
+  fHungry: {fileID: 0}
+  fPoop: {fileID: 0}
+  fPlay: {fileID: 0}
 --- !u!65 &7177418511496505537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -149,18 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f360663d19da42a6963b70163e95bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &554098594150558152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5482809992429514747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91602eb41c4d47f40aac85863f8d25c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4671678064753920812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +193,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &466634066006632963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482809992429514747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e1d6b59ceba5e44ad85bf13ab1b219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1875164766097208372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -250,6 +259,10 @@ PrefabInstance:
     - target: {fileID: 3667755121941617325, guid: e7a0c79783de391459754d8ddb6b7ffe, type: 3}
       propertyPath: m_Name
       value: Poop(chicken)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667755121941617325, guid: e7a0c79783de391459754d8ddb6b7ffe, type: 3}
+      propertyPath: m_TagString
+      value: poop
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7a0c79783de391459754d8ddb6b7ffe, type: 3}

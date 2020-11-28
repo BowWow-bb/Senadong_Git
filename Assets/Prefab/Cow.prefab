@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 7687067578285476173}
   - component: {fileID: 7687067578285476172}
   - component: {fileID: 7687067578285476175}
-  - component: {fileID: 6869631095095853133}
   - component: {fileID: 1149951446270383680}
   - component: {fileID: 8696087783626688972}
+  - component: {fileID: 4048092433734046987}
   m_Layer: 0
   m_Name: Cow
-  m_TagString: Untagged
+  m_TagString: cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,26 +114,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfefb8a63bb9e604e8dc0228b77d5f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playTime: 0
+  playing: 0
+  trace_mouse: 0
+  timer: 0
   hungry: 0
   poop: 0
   play: 0
   countPoop: 0
   CowPoopPrefab: {fileID: 3356446923225908269, guid: 5e65141b054c57d4aab1462b50d12939, type: 3}
   follow_distance: 15
+  fHungry: {fileID: 0}
+  fPoop: {fileID: 0}
+  fPlay: {fileID: 0}
   MilkPrefab: {fileID: 7011618860827259365, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
-  movePower: 1
---- !u!114 &6869631095095853133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7687067578285476174}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91602eb41c4d47f40aac85863f8d25c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1149951446270383680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +153,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.2, y: 3.2, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4048092433734046987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7687067578285476174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29bb2ed442f94649b51fa0e0dbaa093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7687067578492103251
 GameObject:
   m_ObjectHideFlags: 0

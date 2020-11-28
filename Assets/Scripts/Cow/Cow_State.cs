@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TIger_State : MonoBehaviour
+public class Cow_State : MonoBehaviour
 {
-    Tiger_Move tiger_move;
+    Cow_Move cow_move;
     ItemManager item_manager;
 
     // Start is called before the first frame update
     void Start()
     {
-        tiger_move = transform.GetComponent<Tiger_Move>();
+        cow_move = transform.GetComponent<Cow_Move>();
         item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
     }
 
@@ -24,29 +24,26 @@ public class TIger_State : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.tag == "tiger_poop") //호랑이 똥클릭 
+                if (hit.transform.gameObject.tag == "cow_poop") //소똥 클릭
                 {
                     if (item_manager.poop_item > 0)
                     {
                         Destroy(hit.transform.gameObject);
-                        Debug.Log("호랑이똥 치움");
-                        tiger_move.countPoop--;
+                        Debug.Log("소똥 치움");
+                        cow_move.countPoop--;
                     }
                 }
                 if (hit.transform.gameObject.tag == "play") //play 말풍선 클릭
                 {
-                    if (item_manager.play_item > 0)
-                    { //아이템 있는 경우만
-
+                    if (item_manager.play_item > 0)  //아이템 있는 경우만
+                    {
                         item_manager.play_item--; // 아이템 사용
-                        tiger_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
-                        tiger_move.playTime = 0;
-                        tiger_move.trace_mouse = false;
-                        tiger_move.fPlay.SetActive(false);
+                        cow_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
+                        cow_move.playTime = 0;
+                        cow_move.trace_mouse = false;
+                        cow_move.fPlay.SetActive(false);
                     }
-                
                 }
-                
             }
         }
     }

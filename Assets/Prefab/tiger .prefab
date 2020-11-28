@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &365744473824856744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2765669990960031773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 333e58af34a9046bf8bbe2804da98c73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  t_Play: {fileID: 2765669990960031773}
 --- !u!1 &5800524980379892179
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,12 +12,12 @@ GameObject:
   - component: {fileID: 5800524980379892176}
   - component: {fileID: 1898100936}
   - component: {fileID: 1947859805792295533}
-  - component: {fileID: 381457149153702165}
   - component: {fileID: 6396162967813062827}
   - component: {fileID: 7166413711449135259}
+  - component: {fileID: 678436427025247674}
   m_Layer: 0
   m_Name: 'tiger '
-  m_TagString: Untagged
+  m_TagString: tiger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,21 +121,15 @@ MonoBehaviour:
   t_Hungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
   t_Play: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
   follow_distance: 15
+  timer: 0
   hungry: 0
   poop: 0
   play: 0
---- !u!114 &381457149153702165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5800524980379892179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91602eb41c4d47f40aac85863f8d25c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  fHungry: {fileID: 0}
+  fPoop: {fileID: 0}
+  fPlay: {fileID: 0}
+  countPoop: 0
+  TigerPoopPrefab: {fileID: 2977839344259296551, guid: 5d0756bbfb8d8fa4b886b58c4e4363e6, type: 3}
 --- !u!65 &6396162967813062827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -172,6 +153,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f360663d19da42a6963b70163e95bf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &678436427025247674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5800524980379892179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 333e58af34a9046bf8bbe2804da98c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &5635891746290139771
@@ -235,11 +228,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
---- !u!1 &2765669990960031773 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
-  m_PrefabInstance: {fileID: 5635891746290139771}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1038414518544880273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4638572575463035114, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
@@ -321,6 +309,10 @@ PrefabInstance:
     - target: {fileID: 2402068328210718058, guid: fcdfd5d920a330142bdc88c1597afc0e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2402068328210718058, guid: fcdfd5d920a330142bdc88c1597afc0e, type: 3}
+      propertyPath: m_TagString
+      value: poop
       objectReference: {fileID: 0}
     - target: {fileID: 9145285352883891163, guid: fcdfd5d920a330142bdc88c1597afc0e, type: 3}
       propertyPath: m_LocalPosition.x

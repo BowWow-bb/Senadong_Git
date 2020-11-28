@@ -14,8 +14,7 @@ public class Chicken_Move : MonoBehaviour
     float distance;
     bool is_follow_food = false;//밥 추적 중인지
     //
-    public bool trace_mouse;
-    public bool playing = false;
+
     public bool isdrag = false;//drag 중인지 파악 
     int MovedTime = 0;
 
@@ -33,27 +32,47 @@ public class Chicken_Move : MonoBehaviour
 
     public GameObject Egg_Prefab;//달걀 
 
-    //속성값 관련
-    int floating;                       //말풍선 랜덤 1:hungry, 2:poop, 3:play, 4~100:none
-    int statTime = 500, statMax = 200;  //말풍선 지속 시간
-    int timer = 0;                      //타이머
-    int valueMax = 1000;
-    public int hungry = 0; bool isHungry = false;
-    public int poop = 0; bool isPoop = false;
-    public int play = 0; bool isPlay = false;
+    //서창 이동
+    int hungryTime = 0; // 배고픔 재는 시간
+    int BasicTime = 0; // 기본 움직임 재는 시간
+    public int playTime = 0; // 심심한 시간 재는 시간
+
+    public bool playing = false; // 노는중 인지
+    bool hunger; // 배고픈 상태인지 
+    bool moving; // 움직이고 있는 상태 인지
+    float move_length = 0; // 얼마나 움직였는지의 벡터
+    float trace_length = 0;
+    int check = 0;
+    public bool trace_mouse; // 마우스를 향해 달리는 중인지
+
     Vector2 move_vec; // 움직일 방향벡터
     Vector3 Start_Point; // 움직일때의 시작점
     Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
     Vector3 Mouse;
-    bool moving; // 움직이고 있는 상태 인지
-    float move_length = 0; // 얼마나 움직였는지의 벡터
-    float trace_length = 0;
-    public int playTime = 0; // 심심한 시간 재는 시간
-    int check = 0;
+
+    //속성값 관련
+    int statTime = 200, statMax = 400;  //말풍선 지속 시간
+    public int timer = 0;               //타이머
+    int nonTimer = 300, ninTimerMax = 300; bool isNon = false;
+    int hungryTimer = 500, hungryTimerMax;
+    int poopTimer = 700, poopTimerMax;
+    int playTimer = 600, playTimerMax;
+
+    int valueMax = 1000;
+    public int hungry = 0; bool isHungry = false;
+    public int poop = 0; bool isPoop = false;
+    public int play = 0; bool isPlay = false;
+
+    //청결 관련
+    public int countPoop = 0;           //똥 개수
+    public GameObject ChickenPoopPrefab;    //똥 오브젝트
+    Vector3 toiletPos;                  //화장실 내 목표 위치
+    float tx, ty;                       //화장실 내 목표 위치 x,y (랜덤)
+
     //속성관련 오브젝트 -자식
-    GameObject fHungry;                 //체력 오브젝트
-    GameObject fPoop;                   //청결 오브젝트
-    GameObject fPlay;                   //흥미 오브젝트
+    public GameObject fHungry;                 //체력 오브젝트
+    public GameObject fPoop;                   //청결 오브젝트
+    public GameObject fPlay;                   //흥미 오브젝트 
 
     void Start()
     {
@@ -70,22 +89,42 @@ public class Chicken_Move : MonoBehaviour
         fPlay = transform.GetChild(2).gameObject;
         fPlay.SetActive(false);
 
+        hunger = false; // 변수 초기화
+        moving = false;
+        playing = false;
+
         animator = GetComponent<Animator>();
         isdrag = GameObject.Find("Click_Move").GetComponent<Click_Move>().chicken_drag;
-        movementFlag = Random.Range(0, 5);//0,1,2,3,4
     }
 
     void Update()
     {
-        floating = Random.Range(1, 101);
         timer++;
+        if (nonTimer == 0)
+        {
+            isNon = true;
+            statTime--;
+            if (statTime == 0)
+            {
+                isNon = false;
+                statTime = statMax;
+            }
+        }
+        if (!isNon)
+            nonTimer--;
+        if (!isHungry)
+            hungryTimer--;
+        if (!isPoop)
+            poopTimer--;
+        if (!isPlay)
+            playTimer--;
 
         if (timer % 100 == 0)
         {
             hungry--;
             poop--;
             play--;
-            //poop -= countPoop * 5; //똥 개수에 비례하여 감소
+            poop -= countPoop * 5; //똥 개수에 비례하여 감소
         }
 
         EggTime++;
@@ -119,13 +158,20 @@ public class Chicken_Move : MonoBehaviour
         is_follow_food = (Bap != null && distance < follow_distance);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
         //
     }
+    private void FixedUpdate()
+    {
+        hungryTime++; // 타이머 
+        BasicTime++;
+        playTime++;
+
+    }
 
     //행동 
     public bool Chicken_FollowMouse()
     {
         if (playing) // 놀고 있는 상태
         {
-           
+
             if (trace_mouse == true) // 추적 중일때
             {
                 float x = Input.mousePosition.x / 1368.0f; // 화면 비율에 맞춘 마우스 좌표 0 ~ 1
@@ -176,31 +222,9 @@ public class Chicken_Move : MonoBehaviour
                 }
             }
 
-            return true;
         }
-        else
-        {
-            if ((play != valueMax && floating == 3)
-            && (!isHungry && !isPoop && !isPlay))
-            {
-                isPlay = true;
-                fPlay.SetActive(true);
-                Debug.Log("치킨 놀");
-            }
+        return true;
 
-            if (isPlay)    // 상태 유지
-            {
-                statTime--;
-                if (statTime == 0)
-                {
-                    floating = 4;
-                    isPlay = false;
-                    fPlay.SetActive(false);
-                    statTime = statMax;
-                }
-            }
-            return true;
-        }
 
     }
 
@@ -233,62 +257,80 @@ public class Chicken_Move : MonoBehaviour
     }
     public bool Chicken_BasicMove()
     {
-        if (ismoving && !is_follow_food)//움직이는 중인 상태-> 상태 안 바꾸게 
+        if (isPoop)    //화장실로 이동
         {
-            Vector3 moveVelocity = Vector3.zero;
-            MovedTime++;
+            //목표지점을 향하는 벡터 이용해 이동
+            transform.position += (toiletPos - transform.position).normalized * Time.deltaTime;
 
-            isStop = false;
+            if ((int)transform.position.x == (int)toiletPos.x
+                && (int)transform.position.y == (int)toiletPos.y) //목표 지점 도달한 경우
+            {
+                GameObject mini_poop = Instantiate(ChickenPoopPrefab);
+                mini_poop.tag = "chicken_poop";
+                mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
 
-            if (MovedTime>200)//움직인 시간 일정 시간 넘으면 
-            {
-                ismoving = false;//상태 바꾸기 
-            }
-
-            if (movementFlag == 1)//왼쪽 
-            {
-                moveVelocity = Vector3.left;//(-1,0,0)
-                transform.localScale = new Vector3(0.8f, 0.8f, 1);
-                isRight = false;
-            }
-            else if (movementFlag == 2)//오른쪽 
-            {
-                moveVelocity = Vector3.right;//(1,0,0)
-                transform.localScale = new Vector3(-0.8f, 0.8f, 1);
-                isRight = true;
-            }
-            else if(movementFlag ==3)//왼쪽 보는 중
-            {
-                moveVelocity = new Vector3(-1, 1, 0);
-                transform.localScale = new Vector3(0.8f, 0.8f, 1);
-                isRight = false;
-            }
-            else if (movementFlag ==4)//오른쪽 보는 중 
-            {
-                moveVelocity = new Vector3(1, -1, 0);
-                transform.localScale = new Vector3(-0.8f, 0.8f, 1);
-                isRight = true;
-            }
-            else if(movementFlag == 0)
-            {
-                isStop = true;
-                Chicken_Egg();
+                statTime = statMax;
+                countPoop++;
+                isPoop = false;
+                fPoop.SetActive(false); //똥 싼 후 말풍선 비활성화   
+                nonTimer = 0;
             }
 
-            gameObject.transform.position += moveVelocity * movePower * Time.deltaTime;
-
-            return true;
         }
-        else//움직이는 방향 바꿀 시간 되면 
+        else   //랜덤 이동
         {
-            MovedTime = 0;
-            movementFlag = Random.Range(0, 5);//0,1,2,3,4
-            ismoving = true;
+            if (!playing)
+            {
+                if (moving) // 노는중 아닐 때 , 움직이는 중
+                {
+                    float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
+                    float y = Start_Point.y + move_vec.y * move_length;
 
-            return true;
+                    if (x >= 13f) // 울타리를 넘어가지 않기 위해 
+                        x = 13f;
+                    if (x <= -13f)
+                        x = -13f;
+                    if (y >= 6.5f)
+                        y = 6.5f;
+                    if (y <= -6.5f)
+                        y = -6.5f;
+
+                    gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+
+                    move_length += 0.05f; // 거리를 차근차근 움직임
+                    if (move_length > 10f) // 다 움직였다면 다시 움직임 타이머를 잼
+                    {
+                        moving = false;
+                        BasicTime = 0;
+                    }
+                    return true;
+                }
+                else
+                {
+                    if (BasicTime % 55 == 0 && BasicTime > 0) // 일정시간마다 혼자 돌아다님
+                    {
+                        BasicTime = 0;
+                        moving = true;
+                        Start_Point = gameObject.transform.position; // 시작점 저장
+                        move_vec = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)); // 상하좌우,대각 랜덤으로 정함
+                        if (move_vec.x >= 0)
+                            gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                        else
+                            gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+                        move_length = 0;
+                    }
+                    return true;
+                }
+            }
+            else
+            {
+                BasicTime = 0;
+                moving = false;
+            }
         }
+        return true;
+
     }
-
     public void Chicken_Egg()
     {
         if (isEggTime)
@@ -321,9 +363,11 @@ public class Chicken_Move : MonoBehaviour
 
     public bool Chicken_Hungry()
     {
-        if ((hungry != valueMax && floating == 1)
-           && (!isHungry && !isPoop && !isPlay))
+        if ((hungry != valueMax && hungryTimer == 0 /*&& hungry<60*/)
+            && (!isHungry && !isPoop && !isPlay && !isNon))
         {
+            hungryTimerMax = Random.Range(300, 900);
+            hungryTimer = hungryTimerMax;
             isHungry = true;
             fHungry.SetActive(true);
         }
@@ -333,10 +377,10 @@ public class Chicken_Move : MonoBehaviour
             statTime--;
             if (statTime == 0)
             {
-                floating = 4;
                 isHungry = false;
                 fHungry.SetActive(false);
                 statTime = statMax;
+                nonTimer = 0;
             }
         }
 
@@ -344,14 +388,29 @@ public class Chicken_Move : MonoBehaviour
     }
     public bool Chicken_Poop()
     {
- 
+        if ((poop != valueMax && poopTimer == 0/*&& poop<60*/)
+            && (!isHungry && !isPoop && !isPlay && !isNon))
+        {
+            poopTimerMax = Random.Range(300, 900);
+            poopTimer = poopTimerMax;
+            isPoop = true;
+            fPoop.SetActive(true);
+
+            //화장실 내 랜덤한 위치 설정
+            tx = Random.Range(-12.6f, -7.0f);
+            ty = Random.Range(4.19f, 6.76f);
+            toiletPos = new Vector3(tx, ty, transform.position.z);
+            Debug.Log("toiletPos: " + toiletPos);
+        }
         return true;
     }
     public bool Chicken_Play()
     {
-        if ((play != valueMax && floating == 3)
-            && (!isHungry && !isPoop && !isPlay))
+        if ((play != valueMax && playTimer == 0/*&& play<60*/)
+           && (!isHungry && !isPoop && !isPlay && !isNon))
         {
+            playTimerMax = Random.Range(300, 900);
+            playTimer = playTimerMax;
             isPlay = true;
             fPlay.SetActive(true);
         }
@@ -361,10 +420,10 @@ public class Chicken_Move : MonoBehaviour
             statTime--;
             if (statTime == 0)
             {
-                floating = 4;
                 isPlay = false;
                 fPlay.SetActive(false);
                 statTime = statMax;
+                nonTimer = 0;
             }
         }
         return true;
