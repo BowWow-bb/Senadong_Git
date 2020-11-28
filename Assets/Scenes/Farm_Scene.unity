@@ -618,7 +618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd032caac2e04aa08fdc984ba7a1da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chicken_scale: 0.9
+  chicken_scale: 1.1
   scale: 1.1
   chicken_drag: 0
 --- !u!4 &2098223579
