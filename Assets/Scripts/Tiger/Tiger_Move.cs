@@ -12,7 +12,7 @@ public class Tiger_Move : MonoBehaviour
 
     public bool playing = false; // 노는중 인지
     bool hunger; // 배고픈 상태인지 
-    bool moving; // 움직이고 있는 상태 인지
+    public bool moving; // 움직이고 있는 상태 인지
     float move_length = 0; // 얼마나 움직였는지의 벡터
     float trace_length = 0;
     int check = 0;
@@ -49,6 +49,7 @@ public class Tiger_Move : MonoBehaviour
     public GameObject fPoop;                   //청결 오브젝트
     public GameObject fPlay;                   //흥미 오브젝트 
 
+    public bool isdrag=false;
     // Start is called before the first frame update
     public bool Hungry()
     {
@@ -210,7 +211,7 @@ public class Tiger_Move : MonoBehaviour
         }
         else   //랜덤 이동
         {
-            if (!playing)
+            if (!playing&& !isdrag)
             {
                 if (moving) // 노는중 아닐 때 , 움직이는 중
                 {
@@ -294,6 +295,7 @@ public class Tiger_Move : MonoBehaviour
         }
         is_follow_food = (Bap != null && distance < follow_distance);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
         //
+
     }
     private void FixedUpdate()
     {

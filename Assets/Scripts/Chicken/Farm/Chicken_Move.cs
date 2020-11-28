@@ -39,7 +39,7 @@ public class Chicken_Move : MonoBehaviour
 
     public bool playing = false; // 노는중 인지
     bool hunger; // 배고픈 상태인지 
-    bool moving; // 움직이고 있는 상태 인지
+    public bool moving; // 움직이고 있는 상태 인지
     float move_length = 0; // 얼마나 움직였는지의 벡터
     float trace_length = 0;
     int check = 0;
@@ -69,7 +69,7 @@ public class Chicken_Move : MonoBehaviour
     public GameObject fPoop;                   //청결 오브젝트
     public GameObject fPlay;                   //흥미 오브젝트 
 
-
+    public bool is_drag = false;
     void Start()
     {
         Timer = 7;
@@ -247,7 +247,7 @@ public class Chicken_Move : MonoBehaviour
         {
             if (!playing)
             {
-                if (moving) // 노는중 아닐 때 , 움직이는 중
+                if (moving && !is_drag) // 노는중 아닐 때 , 움직이는 중
                 {
                     float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
                     float y = Start_Point.y + move_vec.y * move_length;
