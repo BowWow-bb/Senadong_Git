@@ -60,7 +60,44 @@ public class Chicken_Sequence : CompositeChicken_Node
         return !p;
     }
 }
+//상태
+public class Chicken_Hungry : Chicken_Node
+{
+    public Chicken_Move chicken
+    {
+        set { _chicken = value; }
+    }
+    private Chicken_Move _chicken;
+    public override bool Invoke()
+    {
+        return _chicken.Chicken_Hungry();
+    }
+}
+public class Chicken_Poop : Chicken_Node
+{
+    public Chicken_Move chicken
+    {
+        set { _chicken = value; }
+    }
+    private Chicken_Move _chicken;
+    public override bool Invoke()
+    {
+        return _chicken.Chicken_Poop();
+    }
+}
 
+public class Chicken_Play : Chicken_Node
+{
+    public Chicken_Move chicken
+    {
+        set { _chicken = value; }
+    }
+    private Chicken_Move _chicken;
+    public override bool Invoke()
+    {
+        return _chicken.Chicken_Play();
+    }
+}
 //행동 
 public class Chicken_FollowMouse : Chicken_Node
 {

@@ -14,8 +14,9 @@ public class Cow_AI : MonoBehaviour
     private Cow_Play play = new Cow_Play();
 
     //행동
-    private Cow_Milk dropmilk = new Cow_Milk();
     private Cow_FollowMouse followMouse = new Cow_FollowMouse();
+    private Cow_Milk dropmilk = new Cow_Milk();
+    private Cow_Follow_Food followFood = new Cow_Follow_Food();
     private Cow_Eat eat = new Cow_Eat();
     private Cow_BasicMove basicMove = new Cow_BasicMove();
 
@@ -40,6 +41,7 @@ public class Cow_AI : MonoBehaviour
 
         followMouse.cow = m_cow;
         dropmilk.cow = m_cow;
+        followFood.cow = m_cow;
         eat.cow = m_cow;
         basicMove.cow = m_cow;
 
@@ -51,7 +53,8 @@ public class Cow_AI : MonoBehaviour
         seqInTheFarm.AddChild(poop);
         //행동들 
         seqInTheFarm.AddChild(dropmilk);
-        //seqInTheFarm.AddChild(followMouse);
+        seqInTheFarm.AddChild(followMouse);
+        seqInTheFarm.AddChild(followFood);
         //seqInTheFarm.AddChild(eat);
         seqInTheFarm.AddChild(basicMove);
 

@@ -117,17 +117,17 @@ MonoBehaviour:
   playTime: 0
   playing: 0
   trace_mouse: 0
-  timer: 0
+  Timer: 0
   hungry: 0
   poop: 0
   play: 0
   countPoop: 0
   CowPoopPrefab: {fileID: 3356446923225908269, guid: 5e65141b054c57d4aab1462b50d12939, type: 3}
-  follow_distance: 15
-  fHungry: {fileID: 0}
-  fPoop: {fileID: 0}
-  fPlay: {fileID: 0}
+  fHungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+  fPoop: {fileID: 2718687628526028213, guid: 07f88652fc53f2c4aaddf4f28c43cde8, type: 3}
+  fPlay: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
   MilkPrefab: {fileID: 7011618860827259365, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
+  follow_distance: 15
 --- !u!114 &1149951446270383680
 MonoBehaviour:
   m_ObjectHideFlags: 0

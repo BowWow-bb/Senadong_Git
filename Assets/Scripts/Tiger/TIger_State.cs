@@ -26,14 +26,9 @@ public class TIger_State : MonoBehaviour
             {
                 if (hit.transform.gameObject.tag == "tiger_poop") //호랑이 똥클릭 
                 {
-                    if (item_manager.poop_item > 0)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        Debug.Log("호랑이똥 치움");
-                        tiger_move.countPoop--;
-                    }
+                   
                 }
-                if (hit.transform.gameObject.tag == "play") //play 말풍선 클릭
+                if (hit.transform.gameObject == transform.GetChild(2).gameObject) //play 말풍선 클릭
                 {
                     if (item_manager.play_item > 0)
                     { //아이템 있는 경우만

@@ -117,19 +117,16 @@ MonoBehaviour:
   playTime: 0
   playing: 0
   trace_mouse: 0
-  t_Poop: {fileID: 3124953304139374773, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
-  t_Hungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
-  t_Play: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
   follow_distance: 15
-  timer: 0
+  Timer: 0
   hungry: 0
   poop: 0
   play: 0
-  fHungry: {fileID: 0}
-  fPoop: {fileID: 0}
-  fPlay: {fileID: 0}
   countPoop: 0
   TigerPoopPrefab: {fileID: 2977839344259296551, guid: 5d0756bbfb8d8fa4b886b58c4e4363e6, type: 3}
+  fHungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+  fPoop: {fileID: 2402068328210718058, guid: fcdfd5d920a330142bdc88c1597afc0e, type: 3}
+  fPlay: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
 --- !u!65 &6396162967813062827
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -224,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
@@ -288,6 +285,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hungry
       objectReference: {fileID: 0}
+    - target: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
 --- !u!4 &9064223716242019082 stripped
@@ -308,7 +309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2402068328210718058, guid: fcdfd5d920a330142bdc88c1597afc0e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2402068328210718058, guid: fcdfd5d920a330142bdc88c1597afc0e, type: 3}
       propertyPath: m_TagString

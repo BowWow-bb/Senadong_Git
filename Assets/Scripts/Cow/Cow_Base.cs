@@ -150,3 +150,15 @@ public class Cow_BasicMove : Cow_Node
         return _cow.Cow_BasicMove();
     }
 }
+public class Cow_Follow_Food : Cow_Node
+{
+    public Cow_Move cow
+    {
+        set { _cow = value; }
+    }
+    private Cow_Move _cow;
+    public override bool Invoke()
+    {
+        return _cow.Cow_Follow_Food();
+    }
+}

@@ -24,25 +24,26 @@ public class Chicken_State : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.tag == "chicken_poop") //소똥 클릭
+                if (hit.transform.gameObject.tag == "chicken_poop") //똥 클릭
                 {
-                    if (item_manager.poop_item > 0)
-                    {
-                        Destroy(hit.transform.gameObject);
-                        Debug.Log("닭똥 치움");
-                        chicken_move.countPoop--;
-                    }
+                   
                 }
-                if (hit.transform.gameObject.tag == "play") //play 말풍선 클릭
+                if (hit.transform.gameObject == transform.GetChild(2).gameObject) //play 말풍선 클릭
                 {
-                    if (item_manager.play_item > 0)  //아이템 있는 경우만
-                    {
-                        item_manager.play_item--; // 아이템 사용
-                        chicken_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
-                        chicken_move.playTime = 0;
-                        chicken_move.trace_mouse = false;
-                        chicken_move.fPlay.SetActive(false);
-                    }
+                    //확인용 코드 (아이템 없어도 실행되게...)
+                    Debug.Log("플레이풍선 클릭");
+                    chicken_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
+                    chicken_move.playTime = 0;
+                    chicken_move.trace_mouse = true;
+                    chicken_move.fPlay.SetActive(false);
+
+                    //if (item_manager.play_item > 0)  //아이템 있는 경우만
+                    //{
+                    //    chicken_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
+                    //    cow_chicken_movemove.playTime = 0;
+                    //    chicken_move.trace_mouse = true;
+                    //    chicken_move.fPlay.SetActive(false);
+                    //}
                 }
             }
         }

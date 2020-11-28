@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7177418511496505537}
   - component: {fileID: 86346443872655785}
   - component: {fileID: 4890636001043290017}
-  - component: {fileID: 4671678064753920812}
   - component: {fileID: 2051835474354174878}
   - component: {fileID: 466634066006632963}
   m_Layer: 0
@@ -112,15 +111,15 @@ MonoBehaviour:
   playTime: 0
   playing: 0
   trace_mouse: 0
-  timer: 0
+  Timer: 0
   hungry: 0
   poop: 0
   play: 0
   countPoop: 0
   ChickenPoopPrefab: {fileID: 3181500524151880679, guid: fe472d41c266df74196f68c2c373d259, type: 3}
-  fHungry: {fileID: 0}
-  fPoop: {fileID: 0}
-  fPlay: {fileID: 0}
+  fHungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+  fPoop: {fileID: 3667755121941617325, guid: e7a0c79783de391459754d8ddb6b7ffe, type: 3}
+  fPlay: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
 --- !u!65 &7177418511496505537
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -158,22 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f360663d19da42a6963b70163e95bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4671678064753920812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5482809992429514747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e728811ce7214662834e24e41782098, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  time: 5
-  c_poop: {fileID: 3124953304139374773, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
-  c_hungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
-  c_play: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
 --- !u!95 &2051835474354174878
 Animator:
   serializedVersion: 3

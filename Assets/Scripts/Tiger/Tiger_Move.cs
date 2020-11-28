@@ -23,34 +23,20 @@ public class Tiger_Move : MonoBehaviour
     Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
     Vector3 Mouse;
 
-    public GameObject t_Poop;//똥
-    public GameObject t_Hungry;//밥
-    public GameObject t_Play;//놀이
-
     //밥 추적 위함 
     GameObject Bap;
     public float follow_distance = 15;//밥 추적 범위 
     float distance;
     bool is_follow_food = false;//밥 추적 중인지
-    //
+                                //
 
     //속성값 관련
-    int statTime = 200, statMax = 400;  //말풍선 지속 시간
-    public int timer = 0;               //타이머
-    int nonTimer = 300, ninTimerMax = 300; bool isNon = false;
-    int hungryTimer = 500, hungryTimerMax;
-    int poopTimer = 700, poopTimerMax;
-    int playTimer = 600, playTimerMax;
-
+    public int Timer;
+    int statTime = 263, statMax = 263;  //말풍선 지속 시간
     int valueMax = 1000;
-    public int hungry = 0; bool isHungry = false;
-    public int poop = 0; bool isPoop = false;
-    public int play = 0; bool isPlay = false;
-
-    //속성관련 오브젝트 -자식
-    public GameObject fHungry;                 //체력 오브젝트
-    public GameObject fPoop;                   //청결 오브젝트
-    public GameObject fPlay;                   //흥미 오브젝트 
+    public int hungry; bool isHungry = false; int hungryTimer = 1100;
+    public int poop; bool isPoop = false; int poopTimer = 1500;
+    public int play; bool isPlay = false; int playTimer = 1200;
 
     //청결 관련
     public int countPoop = 0;           //똥 개수
@@ -58,40 +44,37 @@ public class Tiger_Move : MonoBehaviour
     Vector3 toiletPos;                  //화장실 내 목표 위치
     float tx, ty;                       //화장실 내 목표 위치 x,y (랜덤)
 
+    //속성관련 오브젝트 -자식
+    public GameObject fHungry;                 //체력 오브젝트
+    public GameObject fPoop;                   //청결 오브젝트
+    public GameObject fPlay;                   //흥미 오브젝트 
+
     // Start is called before the first frame update
     public bool Hungry()
     {
-        if ((hungry != valueMax && hungryTimer == 0 /*&& hungry<60*/)
-            && (!isHungry && !isPoop && !isPlay && !isNon))
+        if ((Timer % hungryTimer == 0)
+            && (!isHungry && !isPoop && !isPlay))
         {
-            hungryTimerMax = Random.Range(300, 900);
-            hungryTimer = hungryTimerMax;
             isHungry = true;
             fHungry.SetActive(true);
         }
-
-        if(isHungry)    // 상태 유지
+        if (isHungry)    // 상태 유지
         {
             statTime--;
-            if(statTime == 0)
+            if (statTime == 0)
             {
                 isHungry = false;
                 fHungry.SetActive(false);
                 statTime = statMax;
-                nonTimer = 0;
             }
         }
-
         return true;
-
     }
     public bool Poop()
     {
-        if ((poop != valueMax && poopTimer == 0/*&& poop<60*/)
-            && (!isHungry && !isPoop && !isPlay && !isNon))
+        if ((Timer % poopTimer == 0)
+            && (!isHungry && !isPoop && !isPlay))
         {
-            poopTimerMax = Random.Range(300, 900);
-            poopTimer = poopTimerMax;
             isPoop = true;
             fPoop.SetActive(true);
 
@@ -99,23 +82,19 @@ public class Tiger_Move : MonoBehaviour
             tx = Random.Range(-12.6f, -7.0f);
             ty = Random.Range(4.19f, 6.76f);
             toiletPos = new Vector3(tx, ty, transform.position.z);
-            Debug.Log("toiletPos: " + toiletPos);
         }
         return true;
     }
 
     public bool Play()
     {
-        if ((play != valueMax && playTimer == 0/*&& play<60*/)
-            && (!isHungry && !isPoop && !isPlay && !isNon))
+        if ((Timer % playTimer == 0)
+             && (!isHungry && !isPoop && !isPlay))
         {
-            playTimerMax = Random.Range(300, 900);
-            playTimer = playTimerMax;
             isPlay = true;
             fPlay.SetActive(true);
         }
-
-        if (isPlay)    // 상태 유지
+        if (isPlay == true && playing == false)    // 상태 유지
         {
             statTime--;
             if (statTime == 0)
@@ -123,7 +102,6 @@ public class Tiger_Move : MonoBehaviour
                 isPlay = false;
                 fPlay.SetActive(false);
                 statTime = statMax;
-                nonTimer = 0;
             }
         }
         return true;
@@ -156,7 +134,6 @@ public class Tiger_Move : MonoBehaviour
     {
         if (playing) // 놀고 있는 상태
         {
-
             if (trace_mouse == true) // 추적 중일때
             {
                 float x = Input.mousePosition.x / 1368.0f; // 화면 비율에 맞춘 마우스 좌표 0 ~ 1
@@ -176,8 +153,6 @@ public class Tiger_Move : MonoBehaviour
                 x = (Start_Point.x + (trace.x * trace_length) - 0.5f) * 26f; // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
                 y = (Start_Point.y + (trace.y * trace_length) - 0.5f) * 13f;
 
-
-
                 gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
                 trace_length += 0.0001f; // 빨라지는 추적속도
@@ -188,7 +163,8 @@ public class Tiger_Move : MonoBehaviour
                         playing = false; // 놀이끝 
                         check = 0; //초기화
                         gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
-
+                        isPlay = false;
+                        statTime = statMax;
                     }
                     else
                     {
@@ -226,16 +202,13 @@ public class Tiger_Move : MonoBehaviour
                 GameObject mini_poop = Instantiate(TigerPoopPrefab);
                 mini_poop.tag = "tiger_poop";
                 mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
-
-                statTime = statMax;
                 countPoop++;
                 isPoop = false;
+                statTime = statMax;
                 fPoop.SetActive(false); //똥 싼 후 말풍선 비활성화   
-                nonTimer = 0;
             }
-
         }
-        else
+        else   //랜덤 이동
         {
             if (!playing)
             {
@@ -286,11 +259,11 @@ public class Tiger_Move : MonoBehaviour
                 moving = false;
             }
         }
-        
         return true;
     }
     void Start()
     {
+        Timer = 7;
         //속성값 초기 설정
         hungry = valueMax;
         poop = valueMax;
@@ -312,34 +285,6 @@ public class Tiger_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer++;
-        if (nonTimer == 0)
-        {
-            isNon = true;
-            statTime--;
-            if (statTime == 0)
-            {
-                isNon = false;
-                statTime = statMax;
-            }
-        }
-        if (!isNon)
-            nonTimer--;
-        if (!isHungry)
-            hungryTimer--;
-        if (!isPoop)
-            poopTimer--;
-        if (!isPlay)
-            playTimer--;
-
-        if (timer % 100 == 0)
-        {
-            hungry--;
-            poop--;
-            play--;
-            //poop -= countPoop * 5; //똥 개수에 비례하여 감소
-        }
-
         //밥 추적 
         Bap = GameObject.FindWithTag("hungry_follow_item");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
         if (Bap != null)//밥 생성 되었는지 
@@ -352,9 +297,16 @@ public class Tiger_Move : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        hungryTime++; // 타이머 
         BasicTime++;
-        playTime++;
-        
+
+        Timer++;
+
+        if (Timer % 100 == 0)
+        {
+            hungry--;
+            poop--;
+            play--;
+            poop -= countPoop * 5; //똥 개수에 비례하여 감소
+        }
     }
 }

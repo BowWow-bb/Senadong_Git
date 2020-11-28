@@ -81,6 +81,18 @@ public class Poop : Node
         return _tiger.Poop();
     }
 }
+public class Play : Node
+{
+    public Tiger_Move tiger
+    {
+        set { _tiger = value; }
+    }
+    private Tiger_Move _tiger;
+    public override bool Invoke()
+    {
+        return _tiger.Play();
+    }
+}
 
 public class FollowMouse : Node
 {
