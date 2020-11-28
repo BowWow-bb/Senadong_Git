@@ -12,6 +12,7 @@ public class Tiger_AI : MonoBehaviour
     private Poop poop = new Poop();
     private Play play = new Play();
     private FollowMouse followMouse = new FollowMouse();
+    private Tiger_Follow_Food follow_Food = new Tiger_Follow_Food();
     private Eat eat = new Eat();
     private BasicMove basicMove = new BasicMove();
 
@@ -29,6 +30,7 @@ public class Tiger_AI : MonoBehaviour
         poop.tiger = m_tiger;
         play.tiger = m_tiger;
         followMouse.tiger = m_tiger;
+        follow_Food.tiger = m_tiger;
         eat.tiger = m_tiger;
         basicMove.tiger = m_tiger;
 
@@ -36,6 +38,7 @@ public class Tiger_AI : MonoBehaviour
         seqInTheFarm.AddChild(poop);
         seqInTheFarm.AddChild(play);
         seqInTheFarm.AddChild(followMouse);
+        seqInTheFarm.AddChild(follow_Food);
         seqInTheFarm.AddChild(eat);
         seqInTheFarm.AddChild(basicMove);
 

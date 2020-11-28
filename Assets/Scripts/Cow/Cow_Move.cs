@@ -241,11 +241,11 @@ public class Cow_Move : MonoBehaviour
             //Debug.Log("밥 위치: ", Bap.transform);
             if (Bap.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
-                transform.localScale = new Vector3(0.8f, 0.8f, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
             else//밥이 오른쪽이라면 
             {
-                transform.localScale = new Vector3(-0.8f, 0.8f, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
             transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.08f);
             return true;

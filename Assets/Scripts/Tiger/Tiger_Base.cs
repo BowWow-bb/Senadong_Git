@@ -131,3 +131,15 @@ public class BasicMove : Node
         return _tiger.BasicMove();
     }
 }
+public class Tiger_Follow_Food:Node
+{
+    public Tiger_Move tiger
+    {
+        set { _tiger = value; }
+    }
+    private Tiger_Move _tiger;
+    public override bool Invoke()
+    {
+        return _tiger.Tiger_Follow_Food();
+    }
+}
