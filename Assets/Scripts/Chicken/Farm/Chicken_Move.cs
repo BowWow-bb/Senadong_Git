@@ -25,9 +25,7 @@ public class Chicken_Move : MonoBehaviour
 
     int movementFlag = 0;//0:idle, 1:left, 2:right
 
-    bool isStop = false;//movementFlag=0
     bool isEggTime;//달걀 낳는 거 
-    bool ismoving = true;
     bool isRight = false;//보는 방향:왼쪽/오른쪽 
 
     public GameObject Egg_Prefab;//달걀 
@@ -107,7 +105,7 @@ public class Chicken_Move : MonoBehaviour
            animator.SetBool("is_drag", false);
         }
 
-        if(isStop && !is_follow_food)//따라가는 상태가 아니라면 
+        if(!moving &&!isPoop&& !is_follow_food)//따라가는 상태가 아니라면 
         {
             animator.SetBool("is_drop_egg", true); 
         }
@@ -247,7 +245,7 @@ public class Chicken_Move : MonoBehaviour
         {
             if (!playing)
             {
-                if (moving) // 노는중 아닐 때 , 움직이는 중
+                if (moving) // 노는중 아닐 때 , 움직이는 중,계란 낳는 중 아닐때 ->움직여라 
                 {
                     float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
                     float y = Start_Point.y + move_vec.y * move_length;
@@ -271,6 +269,7 @@ public class Chicken_Move : MonoBehaviour
                     }
                     return true;
                 }
+
                 else
                 {
                     if (BasicTime % 55 == 0 && BasicTime > 0) // 일정시간마다 혼자 돌아다님
@@ -280,9 +279,15 @@ public class Chicken_Move : MonoBehaviour
                         Start_Point = gameObject.transform.position; // 시작점 저장
                         move_vec = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)); // 상하좌우,대각 랜덤으로 정함
                         if (move_vec.x >= 0)
+                        {
                             gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                            isRight = false;
+                        }
                         else
+                        {
                             gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+                            isRight = true;
+                        }   
                         move_length = 0;
                     }
                     return true;
@@ -297,12 +302,14 @@ public class Chicken_Move : MonoBehaviour
         return true;
     }
 
-    public void Chicken_Egg()
+    public bool Chicken_Egg()
     {
-        if (isEggTime)
+        if (isEggTime && !is_follow_food&&!isPoop)//따라갈 때는 알 낳지 말아라 
         {
+            moving = false;
+            
             Vector3 eggPos;
-            if (isRight)//오른쪽을 보고 있는 경우 
+            if (!isRight)//오른쪽을 보고 있는 경우 -> 반대로 해야함 
             {
                 eggPos = new Vector3(transform.position.x - 1, transform.position.y - 0.8f, transform.position.z);
 
@@ -321,10 +328,12 @@ public class Chicken_Move : MonoBehaviour
         {
             if (EggTime > C_EggTime)
             {
+                moving = false;
                 isEggTime = true;
                 EggTime = 0;
             }
         }
+        return true;
     }
 
     public bool Chicken_Hungry()
@@ -347,6 +356,7 @@ public class Chicken_Move : MonoBehaviour
         }
         return true;
     }
+
     public bool Chicken_Poop()
     {
         if ((Timer % poopTimer == 0)
@@ -362,6 +372,7 @@ public class Chicken_Move : MonoBehaviour
         }
         return true;
     }
+
     public bool Chicken_Play()
     {
         if ((Timer % playTimer == 0)
