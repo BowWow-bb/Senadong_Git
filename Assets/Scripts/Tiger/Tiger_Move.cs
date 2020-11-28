@@ -33,7 +33,7 @@ public class Tiger_Move : MonoBehaviour
     //속성값 관련
     public int Timer;
     int statTime = 263, statMax = 263;  //말풍선 지속 시간
-    int valueMax = 1000;
+    public int valueMax = 1000;
     public int hungry; bool isHungry = false; int hungryTimer = 1100;
     public int poop; bool isPoop = false; int poopTimer = 1500;
     public int play; bool isPlay = false; int playTimer = 1200;
@@ -122,7 +122,7 @@ public class Tiger_Move : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
-            transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.08f);
+            transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.06f);
             return true;
         }
         else
@@ -211,9 +211,9 @@ public class Tiger_Move : MonoBehaviour
         }
         else   //랜덤 이동
         {
-            if (!playing&& !isdrag)
+            if (!playing&& !isdrag&&! is_follow_food)
             {
-                if (moving) // 노는중 아닐 때 , 움직이는 중
+                if (moving) // 노는중 아닐 때,음식따라다니지 않을 때 , 움직이는 중
                 {
                     float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
                     float y = Start_Point.y + move_vec.y * move_length;

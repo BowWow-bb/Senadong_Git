@@ -6,30 +6,6 @@ using UnityEngine;
 
 public class Chicken_Move : MonoBehaviour
 {
-    Animator animator;
-
-    //밥 추적 위함 
-    GameObject Bap;
-    public float follow_distance = 15;//밥 추적 범위 
-    float distance;
-    bool is_follow_food = false;//밥 추적 중인지
-    //
-
-    public bool isdrag = false;//drag 중인지 파악 -> 이동시 순간이동 방지 
-    int MovedTime = 0;
-
-    int EggTime = 0;//달걀 낳는 시간
-    public int C_EggTime = 1000;//달걀 낳는 속도 조정 
-
-    public float movePower = 1f;//움직이는 속도
-
-    int movementFlag = 0;//0:idle, 1:left, 2:right
-
-    bool isEggTime;//달걀 낳는 거 
-    bool isRight = false;//보는 방향:왼쪽/오른쪽 
-
-    public GameObject Egg_Prefab;//달걀 
-
     //서창 이동
     //int hungryTime = 0; // 배고픔 재는 시간
     int BasicTime = 0; // 기본 움직임 재는 시간
@@ -47,11 +23,12 @@ public class Chicken_Move : MonoBehaviour
     Vector3 Start_Point; // 움직일때의 시작점
     Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
     Vector3 Mouse;
+    //
 
     //속성값 관련
     public int Timer;
     int statTime = 263, statMax = 263;  //말풍선 지속 시간
-    int valueMax = 1000;
+    public int valueMax = 1000;
     public int hungry; bool isHungry = false; int hungryTimer = 1100;
     public int poop; bool isPoop = false; int poopTimer = 1500;
     public int play; bool isPlay = false; int playTimer = 1200;
@@ -67,6 +44,24 @@ public class Chicken_Move : MonoBehaviour
     public GameObject fPoop;                   //청결 오브젝트
     public GameObject fPlay;                   //흥미 오브젝트 
 
+    //밥 추적 위함 
+    GameObject Bap;
+    public float follow_distance = 15;//밥 추적 범위 
+    float distance;
+    bool is_follow_food = false;//밥 추적 중인지
+    //
+
+    Animator animator;
+
+    public bool isdrag = false;//drag 중인지 파악 -> 이동시 순간이동 방지  
+
+    int EggTime = 0;//달걀 낳는 시간
+    public int C_EggTime = 1000;//달걀 낳는 속도 조정 
+
+    bool isEggTime;//달걀 낳는 거 
+    bool isRight = false;//보는 방향:왼쪽/오른쪽 
+
+    public GameObject Egg_Prefab;//달걀
 
     void Start()
     {
@@ -89,7 +84,6 @@ public class Chicken_Move : MonoBehaviour
         playing = false;
 
         animator = GetComponent<Animator>();
-        movementFlag = Random.Range(0, 5);//0,1,2,3,4
     }
 
     void Update()
@@ -213,7 +207,7 @@ public class Chicken_Move : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
-            transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.08f);
+            transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.06f);
             return true;
         }
         else
@@ -242,9 +236,9 @@ public class Chicken_Move : MonoBehaviour
         }
         else   //랜덤 이동
         {
-            if (!playing)
+            if (!playing && !isdrag && !is_follow_food)
             {
-                if (moving &&! isdrag) // 노는중 아닐 때 , 움직이는 중,계란 낳는 중 아닐때 ->움직여라 
+                if (moving) // 노는중 아닐 때 , 움직이는 중,계란 낳는 중 아닐때 ->움직여라 
                 {
                     float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
                     float y = Start_Point.y + move_vec.y * move_length;

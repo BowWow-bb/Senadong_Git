@@ -53,12 +53,12 @@ public class Chicken_AI : MonoBehaviour
         seqBehavior.AddChild(play);
         seqBehavior.AddChild(hungry);
         seqBehavior.AddChild(poop);
-        //행동들 
-        seqBehavior.AddChild(drop_Egg);
+        //행동들
         seqBehavior.AddChild(followMouse);
-        //seqBehavior.AddChild(eat);
-        seqBehavior.AddChild(basicMove);
         seqBehavior.AddChild(followFood);
+        seqBehavior.AddChild(drop_Egg);
+        seqBehavior.AddChild(basicMove);
+        //seqBehavior.AddChild(eat);
 
         behaviorProcess = BehaviorProcess();
         StartCoroutine(behaviorProcess);
