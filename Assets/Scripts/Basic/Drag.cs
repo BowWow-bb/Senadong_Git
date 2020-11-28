@@ -57,6 +57,10 @@ public class Drag : MonoBehaviour
                 co_m.transform.localScale = new Vector3(scale, scale, scale);
             }
         }
+        else if(this.tag == "hungry_follow_item")
+        {
+            this.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+        }
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 13);
         this.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
     }

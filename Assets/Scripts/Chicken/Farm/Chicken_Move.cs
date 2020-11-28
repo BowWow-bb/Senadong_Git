@@ -213,7 +213,7 @@ public class Chicken_Move : MonoBehaviour
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
-            transform.position = Vector3.Lerp(transform.position, Bap.transform.position, 0.008f);
+            transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.08f);
             return true;
         }
         else

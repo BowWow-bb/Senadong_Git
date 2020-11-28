@@ -237,7 +237,7 @@ public class Cow_Move : MonoBehaviour
     {
         if (is_follow_food)//밥 생성 되었는지 
         {
-            Debug.Log("밥 생성, 거리 추적 범위");
+            //Debug.Log("밥 생성, 거리 추적 범위");
             //Debug.Log("밥 위치: ", Bap.transform);
             if (Bap.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
@@ -247,7 +247,7 @@ public class Cow_Move : MonoBehaviour
             {
                 transform.localScale = new Vector3(-0.8f, 0.8f, 1);
             }
-            transform.position = Vector3.Lerp(transform.position, Bap.transform.position, 0.008f);
+            transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.08f);
             return true;
         }
         else
