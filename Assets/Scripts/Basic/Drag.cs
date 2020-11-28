@@ -20,7 +20,7 @@ public class Drag : MonoBehaviour
         else if (this.tag == "chicken")
         {
             c_m = transform.GetComponent<Chicken_Move>();
-            c_m.is_drag = true;
+            c_m.isdrag = true;
             c_m.moving = false;
 
         }
@@ -44,7 +44,7 @@ public class Drag : MonoBehaviour
         else if (this.tag == "chicken")
         {
             c_m = transform.GetComponent<Chicken_Move>();
-            c_m.is_drag = false;
+            c_m.isdrag = false;
 
         }
         else if (this.tag == "cow")

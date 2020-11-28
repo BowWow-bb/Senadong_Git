@@ -9,8 +9,6 @@ public class Click_Move : MonoBehaviour
     public float chicken_scale;
     public float scale;
 
-    public bool chicken_drag = false;
-
     // Start is called before the first frame update
     void Start()
     {
