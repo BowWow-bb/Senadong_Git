@@ -236,7 +236,7 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Follow_Food()//알아서 바꿔서 쓰셈 
     {
-        if (is_follow_food)//밥 생성 되었는지 
+        if (is_follow_food && fHungry)//밥 생성 되었는지 
         {
             //Debug.Log("밥 생성, 거리 추적 범위");
             //Debug.Log("밥 위치: ", Bap.transform);
@@ -261,12 +261,20 @@ public class Cow_Move : MonoBehaviour
         if(isPoop)    //화장실로 이동
         {
             //목표지점을 향하는 벡터 이용해 이동
-            transform.position += (toiletPos - transform.position).normalized * Time.deltaTime;
+            Vector3 toilet_vec = (toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
 
-            if((int)transform.position.x == (int)toiletPos.x
+            if (toilet_vec.x <= 0)
+                gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+            else
+                gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+
+            transform.position += toilet_vec;
+
+            if ((int)transform.position.x == (int)toiletPos.x
                 && (int)transform.position.y == (int)toiletPos.y) //목표 지점 도달한 경우
             {
                 GameObject mini_poop = Instantiate(CowPoopPrefab);
+                mini_poop.transform.parent = transform;
                 mini_poop.tag = "cow_poop";
                 mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
                 countPoop++;
@@ -311,7 +319,7 @@ public class Cow_Move : MonoBehaviour
                         moving = true;
                         Start_Point = gameObject.transform.position; // 시작점 저장
                         move_vec = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)); // 상하좌우,대각 랜덤으로 정함
-                        if (move_vec.x >= 0)
+                        if (move_vec.x <= 0)
                             gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
                         else
                             gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄

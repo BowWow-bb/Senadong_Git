@@ -24,8 +24,9 @@ public class Cow_State : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.tag == "cow_poop") //소똥 클릭
+                if (hit.transform.gameObject.tag == "cow_poop" && hit.transform.IsChildOf(transform) == true) //소똥 클릭
                 {
+                    Debug.Log("똥 치움");
                     if (item_manager.poop_item > 0)
                     {
                         Destroy(hit.transform.gameObject);

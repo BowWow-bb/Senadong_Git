@@ -111,7 +111,7 @@ public class Tiger_Move : MonoBehaviour
 
     public bool Tiger_Follow_Food()//알아서 바꿔서 쓰셈 
     {
-        if (is_follow_food)//밥 생성 되었는지 
+        if (is_follow_food && fHungry)//밥 생성 되었는지 
         {
             //Debug.Log("밥 생성, 거리 추적 범위");
             //Debug.Log("밥 위치: ", Bap.transform);
@@ -196,7 +196,14 @@ public class Tiger_Move : MonoBehaviour
         if (isPoop)    //화장실로 이동
         {
             //목표지점을 향하는 벡터 이용해 이동
-            transform.position += (toiletPos - transform.position).normalized * Time.deltaTime;
+            Vector3 toilet_vec = (toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
+
+            if (toilet_vec.x >= 0)
+                gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+            else
+                gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+
+            transform.position += toilet_vec;
 
             if ((int)transform.position.x == (int)toiletPos.x
                 && (int)transform.position.y == (int)toiletPos.y) //목표 지점 도달한 경우
