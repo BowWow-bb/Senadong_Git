@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6157450127481540084}
   - component: {fileID: 6157450127481540085}
+  - component: {fileID: 808934735762957817}
   m_Layer: 0
   m_Name: Chicken_Enemy
   m_TagString: Untagged
@@ -82,3 +83,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &808934735762957817
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6157450127481540086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5004401, y: 3.1000624, z: 0.2}
+  m_Center: {x: 0.049969107, y: -0.049968958, z: 0}

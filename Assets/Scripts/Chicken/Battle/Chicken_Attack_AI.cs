@@ -10,11 +10,10 @@ public class Chicken_Attack_AI : MonoBehaviour
     private Chicken_Attack_Sequence seqBehavior = new Chicken_Attack_Sequence();
 
     //행동
-    //private Chicken_Attack_Egg dropegg = new Chicken_Attack_Egg();
     private Chicken_Basic_Attack basic_Attack = new Chicken_Basic_Attack();
+    private Chicken_Find_Target find_Target = new Chicken_Find_Target();
 
     private Chicken_Attack a_chicken;
-    //private Chicken_Attack_Status s_Chicken_Attack;
 
     private IEnumerator behaviorProcess;
     // Start is called before the first frame update
@@ -30,11 +29,13 @@ public class Chicken_Attack_AI : MonoBehaviour
         //selector에 더함 
         selector.AddChild(seqBehavior);//행동
 
-
+        find_Target.chicken_attack = a_chicken;
         basic_Attack.chicken_attack = a_chicken;
 
-        //행동들 
+        //행동들
+        seqBehavior.AddChild(find_Target);
         seqBehavior.AddChild(basic_Attack);
+        
 
         behaviorProcess = BehaviorProcess();
         StartCoroutine(behaviorProcess);
