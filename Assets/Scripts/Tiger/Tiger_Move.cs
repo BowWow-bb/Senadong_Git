@@ -78,7 +78,8 @@ public class Tiger_Move : MonoBehaviour
         {
             isPoop = true;
             fPoop.SetActive(true);
-
+            moving = false;
+            BasicTime = 0;
             //화장실 내 랜덤한 위치 설정
             tx = Random.Range(-12.6f, -7.0f);
             ty = Random.Range(4.19f, 6.76f);
