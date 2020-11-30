@@ -8,11 +8,12 @@ public class ItemManager : MonoBehaviour
 
     bool isbap=false;
 
-    public int hungry_item = 0;
+    public int hungry_item = 3;
     public int poop_item = 0;
     public int play_item = 0;
     public int egg_item = 0;
     public int milk_item = 0;
+    public TextMesh count;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,17 @@ public class ItemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        count = GameObject.FindWithTag("hungry_count").GetComponent<TextMesh>();
+        count.text = hungry_item.ToString();
+        count = GameObject.FindWithTag("play_count").GetComponent<TextMesh>();
+        count.text = play_item.ToString();
+        count = GameObject.FindWithTag("egg_count").GetComponent<TextMesh>();
+        count.text = egg_item.ToString();
+        count = GameObject.FindWithTag("milk_count").GetComponent<TextMesh>();
+        count.text = milk_item.ToString();
+        count = GameObject.FindWithTag("poop_count").GetComponent<TextMesh>();
+        count.text = poop_item.ToString();
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

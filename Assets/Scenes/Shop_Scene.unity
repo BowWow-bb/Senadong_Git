@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 74165190}
   - component: {fileID: 74165189}
   m_Layer: 5
-  m_Name: Button
+  m_Name: E_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,7 +313,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: ' '
 --- !u!222 &130713418
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -894,7 +894,7 @@ GameObject:
   - component: {fileID: 691524072}
   - component: {fileID: 691524071}
   m_Layer: 5
-  m_Name: Button
+  m_Name: M_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 741963894}
   - component: {fileID: 741963893}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Poop_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1134,7 +1134,7 @@ GameObject:
   - component: {fileID: 793929576}
   - component: {fileID: 793929575}
   m_Layer: 5
-  m_Name: Button
+  m_Name: P_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1509,7 +1509,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: ' '
 --- !u!222 &1256819230
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1588,7 +1588,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: ' '
 --- !u!222 &1437675215
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1667,7 +1667,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: ' '
 --- !u!222 &1457143050
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1689,7 +1689,7 @@ GameObject:
   - component: {fileID: 1458091103}
   - component: {fileID: 1458091102}
   m_Layer: 5
-  m_Name: Button
+  m_Name: H_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2271,7 +2271,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: ' '
 --- !u!222 &2055419421
 CanvasRenderer:
   m_ObjectHideFlags: 0
