@@ -22,7 +22,7 @@ public class Tiger_Move : MonoBehaviour
     Vector3 Start_Point; // 움직일때의 시작점
     Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
     Vector3 Mouse;
-
+    Vector3 tmp_Point;
     //밥 추적 위함 
     GameObject Bap;
     public float follow_distance = 15;//밥 추적 범위 
@@ -225,15 +225,21 @@ public class Tiger_Move : MonoBehaviour
                 {
                     float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
                     float y = Start_Point.y + move_vec.y * move_length;
+                    tmp_Point = gameObject.transform.position;
 
                     if (x >= 13f) // 울타리를 넘어가지 않기 위해 
                         x = 13f;
                     if (x <= -13f)
                         x = -13f;
-                    if (y >= 6.5f)
-                        y = 6.5f;
+                    if (y >= 5.7f)
+                        y = 5.7f;
                     if (y <= -6.5f)
                         y = -6.5f;
+                    if (x >= 3 && y >= -6.5f && y <= -4.5f)
+                    {
+                        x = tmp_Point.x; y = tmp_Point.y;
+                    }
+                    
 
                     gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
