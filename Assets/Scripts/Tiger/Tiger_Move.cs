@@ -49,6 +49,9 @@ public class Tiger_Move : MonoBehaviour
     public GameObject fPoop;                   //청결 오브젝트
     public GameObject fPlay;                   //흥미 오브젝트 
 
+    //애니메이터 
+    Animator animator;
+
     public bool isdrag=false;
     // Start is called before the first frame update
     public bool Hungry()
@@ -295,6 +298,8 @@ public class Tiger_Move : MonoBehaviour
         hunger = false; // 변수 초기화
         moving = false;
         playing = false;
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -309,7 +314,15 @@ public class Tiger_Move : MonoBehaviour
         }
         is_follow_food = (Bap != null && distance < follow_distance);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
         //
-
+        //애니메이터 
+        if(!moving&&!isPoop&&!is_follow_food)
+        {
+            animator.SetBool("is_sleepy", true);
+        }
+        else
+        {
+            animator.SetBool("is_sleepy", false);
+        }
     }
     private void FixedUpdate()
     {
