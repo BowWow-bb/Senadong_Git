@@ -1222,6 +1222,7 @@ GameObject:
   - component: {fileID: 6396162968387388054}
   - component: {fileID: 5800524980952120304}
   - component: {fileID: 5800524980952120303}
+  - component: {fileID: 5800524980952120305}
   m_Layer: 0
   m_Name: 'tiger '
   m_TagString: tiger
@@ -1259,6 +1260,25 @@ MonoBehaviour:
   back_distance: 4
   back_distance_time: 40
   is_Attack: 0
+--- !u!95 &5800524980952120305
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5800524980952120302}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40f5ac9056976461c946e6b100799786, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &6396162968387388054
 BoxCollider:
   m_ObjectHideFlags: 0

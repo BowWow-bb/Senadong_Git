@@ -30,20 +30,20 @@ public class Tiger_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (is_basic_attack)
-        //{
-        //    animator.SetBool("is_Attack", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("is_Attack", false);
-        //}
+        if (is_basic_attack)
+        {
+            animator.SetBool("is_Attack", true);
+        }
+        else
+        {
+            animator.SetBool("is_Attack", false);
+        }
     }
     //행동 
     public bool Tiger_Basic_Attack()
