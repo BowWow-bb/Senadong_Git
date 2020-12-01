@@ -30,18 +30,5 @@ public class milk_egg_clicked : MonoBehaviour
             egg_count.text = item_manager.egg_item.ToString();
             Destroy(this.transform.gameObject);
         }
-        //똥싸기 
-        else if(this.tag == "chicken_poop")
-        {
-            Destroy(this.transform.gameObject);
-        }
-        else if (this.tag == "tiger_poop")
-        {
-            Destroy(this.transform.gameObject);
-        }
-        else if (this.tag == "cow_poop")
-        {
-            Destroy(this.transform.gameObject);
-        }
     }
 }

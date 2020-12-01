@@ -324,7 +324,7 @@ public class Tiger_Move : MonoBehaviour
             animator.SetBool("is_sleepy", false);
         }
     }
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         BasicTime++;
 
@@ -332,9 +332,9 @@ public class Tiger_Move : MonoBehaviour
 
         if (Timer % 100 == 0)
         {
-            hungry--;
-            poop--;
-            play--;
+            hungry-=1;
+            poop-=1;
+            play-=1;
             poop -= countPoop * 5; //똥 개수에 비례하여 감소
         }
     }

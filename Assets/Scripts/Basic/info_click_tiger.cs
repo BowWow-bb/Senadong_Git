@@ -11,8 +11,8 @@ public class info_click_tiger : MonoBehaviour
     float hpbar_sx;         //hp바 스케일 x값
     float hpbar_tx;         //hp바 위치 x값
     float hpbar_tmp;        //hp바 감소 정도
-    int hungry_pre = 1000, poop_pre = 1000, play_pre = 1000; //이전 속성 값
-    string hungry="hungry_hp", poop= "poop_hp", play = "play_hp";
+    public int hungry_pre = 1000, poop_pre = 1000, play_pre = 1000; //이전 속성 값
+    public int hungry_child = 2, poop_child = 4, play_child = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -21,37 +21,29 @@ public class info_click_tiger : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (this.transform.gameObject == transform.gameObject) //info_icon 클릭
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+            FloatingValue = transform.GetChild(0).gameObject;
 
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.transform.gameObject == transform.gameObject) //info_icon 클릭
-                {
-                    FloatingValue = transform.GetChild(0).gameObject;
+            FloatingValue.SetActive(true);
+            hpMove(hungry_child, ref hungry_pre, (tiger.hungry > hungry_pre ? tiger.hungry - hungry_pre : hungry_pre - tiger.hungry));
+            hpMove(poop_child, ref poop_pre, (tiger.poop > poop_pre ? tiger.poop - poop_pre : poop_pre - tiger.poop));
+            hpMove(play_child, ref play_pre, (tiger.play > play_pre ? tiger.play - play_pre : play_pre - tiger.play));
+            StartCoroutine(Disabled(2.0f));
 
-                    FloatingValue.SetActive(true);
-                    hpMove(hungry, ref hungry_pre, (tiger.hungry > hungry_pre ?  tiger.hungry - hungry_pre : hungry_pre - tiger.hungry));
-                    hpMove(poop, ref poop_pre, (tiger.poop > hungry_pre ? tiger.poop - hungry_pre : hungry_pre - tiger.poop));
-                    hpMove(play, ref play_pre, (tiger.play > hungry_pre ? tiger.play - hungry_pre : hungry_pre - tiger.play));
-                    StartCoroutine(Disabled(2.0f));
-
-                }
-            }
         }
     }
+  
     IEnumerator Disabled(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         FloatingValue.SetActive(false);
     }
-    void hpMove(string tag, ref int value, int delta)    //hp바 동작 구현
+    public void hpMove(int child, ref int value, int delta)    //hp바 동작 구현
     {
-        hp_bar = GameObject.FindWithTag(tag);
+        hp_bar = FloatingValue.transform.GetChild(child).gameObject;
         hpbar_sx = hp_bar.transform.localScale.x;
         hpbar_tx = hp_bar.transform.localPosition.x;
         hpbar_tmp = hpbar_sx / tiger.valueMax;   //최대 체력에 따른 hp바 이동량 설정
