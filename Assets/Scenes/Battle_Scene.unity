@@ -196,7 +196,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 2.766571, z: 1}
-  m_Center: {x: -0, y: 0.098142624, z: 0}
+  m_Center: {x: 0.58, y: 0.098142624, z: 0}
 --- !u!1 &106558079
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.80371976, y: 2.6684284, z: 1}
-  m_Center: {x: -0.29, y: -0.00000059604645, z: 0}
+  m_Center: {x: -0.02, y: -0.00000059604645, z: 0}
 --- !u!54 &106558082
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -741,7 +741,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 302122d24c9a64923b1068ab2bf56c9e, type: 2}
+  - {fileID: 2100000, guid: 591374a90b59143d2a1b41d3c5a2201f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -779,7 +779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562297710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9, y: 0, z: 40}
+  m_LocalPosition: {x: 6.4, y: -1.1, z: 47.1}
   m_LocalScale: {x: 150, y: 80, z: 0.01}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1222,6 +1222,7 @@ GameObject:
   - component: {fileID: 6396162968387388054}
   - component: {fileID: 5800524980952120304}
   - component: {fileID: 5800524980952120303}
+  - component: {fileID: 5800524980952120305}
   m_Layer: 0
   m_Name: 'tiger '
   m_TagString: tiger
@@ -1259,6 +1260,25 @@ MonoBehaviour:
   back_distance: 4
   back_distance_time: 40
   is_Attack: 0
+--- !u!95 &5800524980952120305
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5800524980952120302}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 40f5ac9056976461c946e6b100799786, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &6396162968387388054
 BoxCollider:
   m_ObjectHideFlags: 0
