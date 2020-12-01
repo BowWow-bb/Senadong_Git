@@ -29,6 +29,8 @@ public class hungry_item_script : MonoBehaviour
         if(other.gameObject.tag == "chicken" && c_m.is_follow_food)
         {
             Debug.Log("치킨이 먹음");
+            c_m.isHungry = false;
+            c_m.fHungry.SetActive(false);
             if (c_m.hungry + full >= c_m.valueMax)
             {
                 c_m.hungry = c_m.valueMax;
@@ -45,6 +47,8 @@ public class hungry_item_script : MonoBehaviour
         if(other.gameObject.tag == "cow" && co_m.is_follow_food)
         {
             Debug.Log("소가먹음");
+            co_m.isHungry = false;
+            co_m.fHungry.SetActive(false);
             if (co_m.hungry + full >= co_m.valueMax)
             {
                 co_m.hungry = co_m.valueMax;
@@ -59,6 +63,8 @@ public class hungry_item_script : MonoBehaviour
         if (other.gameObject.tag == "tiger" && t_m.is_follow_food)
         {
             Debug.Log("호랑이가 먹음");
+            t_m.isHungry = false;
+            t_m.fHungry.SetActive(false);
             if (t_m.hungry + full >= t_m.valueMax)
             {
                 t_m.hungry = t_m.valueMax;

@@ -34,8 +34,8 @@ public class Tiger_Move : MonoBehaviour
     public int Timer;
     int statTime = 263, statMax = 263;  //말풍선 지속 시간
     public int valueMax = 1000;
-    public int hungry; bool isHungry = false; int hungryTimer = 1150;
-    public int poop; bool isPoop = false; int poopTimer = 1600;
+    public int hungry; public bool isHungry = false; int hungryTimer = 1400;
+    public int poop; bool isPoop = false; int poopTimer = 1150;
     public int play; bool isPlay = false; int playTimer = 1300;
 
     //청결 관련
