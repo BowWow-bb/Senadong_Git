@@ -9,6 +9,7 @@ public class Poop_Fix : MonoBehaviour
     void Start()
     {
         pos = transform.position;
+        transform.position = pos;
     }
 
     // Update is called once per frame

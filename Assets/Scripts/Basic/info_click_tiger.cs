@@ -11,7 +11,8 @@ public class info_click_tiger : MonoBehaviour
     float hpbar_sx;         //hp바 스케일 x값
     float hpbar_tx;         //hp바 위치 x값
     float hpbar_tmp;        //hp바 감소 정도
-    int hungry_pre=1000, poop_pre = 1000, play_pre = 1000; //이전 속성 값
+    int hungry_pre = 1000, poop_pre = 1000, play_pre = 1000; //이전 속성 값
+    string hungry="hungry_hp", poop= "poop_hp", play = "play_hp";
 
     // Start is called before the first frame update
     void Start()
@@ -33,11 +34,10 @@ public class info_click_tiger : MonoBehaviour
                 {
                     FloatingValue = transform.GetChild(0).gameObject;
 
-                    hpMove("hungry_hp", hungry_pre, hungry_pre - tiger.hungry);
-                    hpMove("poop_hp", poop_pre, poop_pre - tiger.hungry);
-                    hpMove("play_hp", play_pre, play_pre - tiger.hungry);
-
                     FloatingValue.SetActive(true);
+                    hpMove(hungry, ref hungry_pre, (tiger.hungry > hungry_pre ?  tiger.hungry - hungry_pre : hungry_pre - tiger.hungry));
+                    hpMove(poop, ref poop_pre, (tiger.poop > hungry_pre ? tiger.poop - hungry_pre : hungry_pre - tiger.poop));
+                    hpMove(play, ref play_pre, (tiger.play > hungry_pre ? tiger.play - hungry_pre : hungry_pre - tiger.play));
                     StartCoroutine(Disabled(2.0f));
 
                 }
@@ -49,7 +49,7 @@ public class info_click_tiger : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         FloatingValue.SetActive(false);
     }
-    public void hpMove(string tag, int value, int delta)    //hp바 동작 구현
+    void hpMove(string tag, ref int value, int delta)    //hp바 동작 구현
     {
         hp_bar = GameObject.FindWithTag(tag);
         hpbar_sx = hp_bar.transform.localScale.x;
