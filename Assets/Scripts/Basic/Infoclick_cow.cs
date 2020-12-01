@@ -4,41 +4,34 @@ using UnityEngine;
 
 public class Infoclick_cow : MonoBehaviour
 {
-    GameObject FloatingValue;
+    public GameObject FloatingPrefab;
+    GameObject floating;
     Cow_Move cow;
+    Vector3 pos;
     BarMove hungry, poop, play;
 
-    public int hungry_child = 2, poop_child = 4, play_child = 6;
-
+    int hungry_idx = 2, poop_idx = 4, play_idx = 6;
     // Start is called before the first frame update
     void Start()
     {
-        cow = transform.GetComponent<Cow_Move>();
-        FloatingValue = transform.GetChild(0).gameObject;
-        FloatingValue.GetComponent<Renderer>().enabled = true;
+        cow = transform.parent.GetComponent<Cow_Move>();
     }
 
     // Update is called once per frame
     private void OnMouseDown()
     {
-        FloatingValue = transform.GetChild(0).gameObject;
-        FloatingValue.SetActive(true);
-        //FloatingValue.GetComponent<Renderer>().enabled = false;
+        floating = GameObject.Instantiate(FloatingPrefab);
+        pos = cow.transform.position;
+        floating.transform.position = new Vector3(pos.x + 1, pos.y, pos.z);
 
-        hungry = (transform.GetChild(0)).GetChild(hungry_child).GetComponent<BarMove>();
-        poop = (transform.GetChild(0)).GetChild(poop_child).GetComponent<BarMove>();
-        play = (transform.GetChild(0)).GetChild(play_child).GetComponent<BarMove>();
+        hungry = (floating.transform.GetChild(hungry_idx).gameObject).GetComponent<BarMove>();
+        poop = (floating.transform.GetChild(poop_idx).gameObject).GetComponent<BarMove>();
+        play = (floating.transform.GetChild(play_idx).gameObject).GetComponent<BarMove>();
 
         hungry.hpMove(cow.hungry);
         poop.hpMove(cow.poop);
         play.hpMove(cow.play);
 
-        StartCoroutine(Disabled(2.0f));
-    }
-    IEnumerator Disabled(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        //FloatingValue.GetComponent<Renderer>().enabled = true;
-        FloatingValue.SetActive(true);
+        Destroy(floating, 2.0f);
     }
 }

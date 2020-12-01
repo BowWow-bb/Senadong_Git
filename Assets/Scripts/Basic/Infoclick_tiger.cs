@@ -4,39 +4,33 @@ using UnityEngine;
 
 public class Infoclick_tiger : MonoBehaviour
 {
-    GameObject FloatingValue;   
+    public GameObject FloatingPrefab;
+    GameObject floating;
     Tiger_Move tiger;
+    Vector3 pos;
     BarMove hungry, poop, play;
 
-    public int hungry_child =2, poop_child =4, play_child =6;
-
+    int hungry_idx = 2, poop_idx = 4, play_idx = 6;
     // Start is called before the first frame update
     void Start()
     {
         tiger = transform.parent.GetComponent<Tiger_Move>();
-        FloatingValue = transform.GetChild(0).gameObject;
-        FloatingValue.GetComponent<Renderer>().enabled = true;
-
     }
     private void OnMouseDown()
     {
-        FloatingValue = transform.GetChild(0).gameObject;
-        FloatingValue.GetComponent<Renderer>().enabled = false;
+        floating = GameObject.Instantiate(FloatingPrefab);
+        pos = tiger.transform.position;
+        floating.transform.position = new Vector3(pos.x + 1, pos.y, pos.z);
 
-        hungry = (transform.GetChild(0)).GetChild(hungry_child).GetComponent<BarMove>();
-        poop = (transform.GetChild(0)).GetChild(poop_child).GetComponent<BarMove>();
-        play = (transform.GetChild(0)).GetChild(play_child).GetComponent<BarMove>();
+        hungry = (floating.transform.GetChild(hungry_idx).gameObject).GetComponent<BarMove>();
+        poop = (floating.transform.GetChild(poop_idx).gameObject).GetComponent<BarMove>();
+        play = (floating.transform.GetChild(play_idx).gameObject).GetComponent<BarMove>();
 
         hungry.hpMove(tiger.hungry);
         poop.hpMove(tiger.poop);
         play.hpMove(tiger.play);
 
-        StartCoroutine(Disabled(2.0f));
+        Destroy(floating, 2.0f);
     }
-    IEnumerator Disabled(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-        FloatingValue.GetComponent<Renderer>().enabled = true;
-    }
-    
+
 }

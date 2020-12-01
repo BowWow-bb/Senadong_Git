@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 54363734864363764}
   m_Layer: 0
   m_Name: FloatingValue_chicken
-  m_TagString: floating_value
+  m_TagString: floating_chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

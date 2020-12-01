@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 56126181014874871}
   m_Layer: 0
   m_Name: FloatingValue_tiger
-  m_TagString: floating_value
+  m_TagString: floating_tiger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

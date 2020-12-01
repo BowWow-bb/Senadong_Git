@@ -594,7 +594,7 @@ GameObject:
   - component: {fileID: 387950252316171817}
   m_Layer: 0
   m_Name: FloatingValue_cow
-  m_TagString: floating_value
+  m_TagString: floating_cow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

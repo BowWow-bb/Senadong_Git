@@ -40,6 +40,9 @@ TagManager:
   - poop_string
   - hungry_string
   - hungry_hp
+  - floating_chicken
+  - floating_cow
+  - floating_tiger
   layers:
   - Default
   - TransparentFX
