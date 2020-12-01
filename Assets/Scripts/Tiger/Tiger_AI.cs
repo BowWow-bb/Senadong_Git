@@ -15,7 +15,7 @@ public class Tiger_AI : MonoBehaviour
     private Tiger_Follow_Food follow_Food = new Tiger_Follow_Food();
     private Eat eat = new Eat();
     private BasicMove basicMove = new BasicMove();
-
+    private Quarrel quarrel = new Quarrel();
     private Tiger_Move m_tiger;
     private IEnumerator behaviorProcess;
     // Start is called before the first frame update
@@ -33,6 +33,7 @@ public class Tiger_AI : MonoBehaviour
         follow_Food.tiger = m_tiger;
         eat.tiger = m_tiger;
         basicMove.tiger = m_tiger;
+        quarrel.tiger = m_tiger;
 
         seqInTheFarm.AddChild(hungry);
         seqInTheFarm.AddChild(poop);
@@ -41,6 +42,7 @@ public class Tiger_AI : MonoBehaviour
         seqInTheFarm.AddChild(follow_Food);
         seqInTheFarm.AddChild(eat);
         seqInTheFarm.AddChild(basicMove);
+        seqInTheFarm.AddChild(quarrel);
 
         behaviorProcess = BehaviorProcess();
         StartCoroutine(behaviorProcess);

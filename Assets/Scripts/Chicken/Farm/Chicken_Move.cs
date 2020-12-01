@@ -18,7 +18,7 @@ public class Chicken_Move : MonoBehaviour
     float trace_length = 0;
     int check = 0;
     public bool trace_mouse; // 마우스를 향해 달리는 중인지
-
+    public bool quarrel = false;
     Vector2 move_vec; // 움직일 방향벡터
     Vector3 Start_Point; // 움직일때의 시작점
     Vector3 trace; // 마우스와 오브젝트 사이의 벡터 

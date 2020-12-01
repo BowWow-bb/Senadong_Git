@@ -143,3 +143,15 @@ public class Tiger_Follow_Food:Node
         return _tiger.Tiger_Follow_Food();
     }
 }
+public class Quarrel : Node
+{
+    public Tiger_Move tiger
+    {
+        set { _tiger = value; }
+    }
+    private Tiger_Move _tiger;
+    public override bool Invoke()
+    {
+        return _tiger.Quarrel();
+    }
+}
