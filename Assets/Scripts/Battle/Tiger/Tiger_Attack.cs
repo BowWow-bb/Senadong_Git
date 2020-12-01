@@ -80,11 +80,13 @@ public class Tiger_Attack : MonoBehaviour
                 {
                     Vector3 pos = new Vector3(cow_enemy.transform.position.x + back_distance, cow_enemy.transform.position.y, cow_enemy.transform.position.z);
                     transform.position = Vector3.MoveTowards(transform.position, pos, 0.1f);
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
                 else//왼쪽으로 가기 
                 {
                     Vector3 pos = new Vector3(cow_enemy.transform.position.x - back_distance, cow_enemy.transform.position.y, cow_enemy.transform.position.z);
                     transform.position = Vector3.MoveTowards(transform.position, pos, 0.1f);
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
             }
             else if (is_target_chicken)
@@ -93,11 +95,13 @@ public class Tiger_Attack : MonoBehaviour
                 {
                     Vector3 pos = new Vector3(chicken_enemy.transform.position.x + back_distance, chicken_enemy.transform.position.y, chicken_enemy.transform.position.z);
                     transform.position = Vector3.MoveTowards(transform.position, pos, 0.1f);
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
                 else//왼쪽으로 가기 
                 {
                     Vector3 pos = new Vector3(chicken_enemy.transform.position.x - back_distance, chicken_enemy.transform.position.y, chicken_enemy.transform.position.z);
                     transform.position = Vector3.MoveTowards(transform.position, pos, 0.1f);
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
             }
             else if (is_target_tiger)
@@ -106,11 +110,13 @@ public class Tiger_Attack : MonoBehaviour
                 {
                     Vector3 pos = new Vector3(tiger_enemy.transform.position.x + back_distance, tiger_enemy.transform.position.y, tiger_enemy.transform.position.z);
                     transform.position = Vector3.MoveTowards(transform.position, pos, 0.1f);
+                    transform.localScale = new Vector3(1, 1, 1);
                 }
                 else//왼쪽으로 가기 
                 {
                     Vector3 pos = new Vector3(tiger_enemy.transform.position.x - back_distance, tiger_enemy.transform.position.y, tiger_enemy.transform.position.z);
                     transform.position = Vector3.MoveTowards(transform.position, pos, 0.1f);
+                    transform.localScale = new Vector3(-1, 1, 1);
                 }
             }
             if (back_time > back_distance_time)
