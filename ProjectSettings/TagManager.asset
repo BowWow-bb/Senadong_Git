@@ -34,6 +34,12 @@ TagManager:
   - poop_hp
   - play_hp
   - exp_hp
+  - floating_value
+  - milk_string
+  - egg_string
+  - play_string
+  - poop_string
+  - hungry_string
   layers:
   - Default
   - TransparentFX
