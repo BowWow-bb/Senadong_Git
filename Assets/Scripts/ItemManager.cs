@@ -14,27 +14,33 @@ public class ItemManager : MonoBehaviour
     public int egg_item = 0;
     public int milk_item = 0;
     public TextMesh count;
+
     // Start is called before the first frame update
     void Start()
     {
         play_item = 10; // 잠시바꿈
-
+       
     }
-
+   
     // Update is called once per frame
     void Update()
     {
         
         count = GameObject.FindWithTag("hungry_count").GetComponent<TextMesh>();
         count.text = hungry_item.ToString();
+        ItemCounter.Variables.Hungry_Num = hungry_item;
         count = GameObject.FindWithTag("play_count").GetComponent<TextMesh>();
         count.text = play_item.ToString();
+        ItemCounter.Variables.Play_Num = play_item;
         count = GameObject.FindWithTag("egg_count").GetComponent<TextMesh>();
         count.text = egg_item.ToString();
+        ItemCounter.Variables.Egg_Num = egg_item;
         count = GameObject.FindWithTag("milk_count").GetComponent<TextMesh>();
         count.text = milk_item.ToString();
+        ItemCounter.Variables.Milk_Num = milk_item;
         count = GameObject.FindWithTag("poop_count").GetComponent<TextMesh>();
         count.text = poop_item.ToString();
+        ItemCounter.Variables.Poop_Num = poop_item;
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
