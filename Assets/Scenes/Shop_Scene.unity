@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 74165191}
   - component: {fileID: 74165190}
   - component: {fileID: 74165189}
+  - component: {fileID: 74165192}
   m_Layer: 5
   m_Name: E_B
   m_TagString: Untagged
@@ -204,7 +205,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 74165190}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 74165192}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: Sell_egg
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &74165190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +256,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 74165187}
   m_CullTransparentMesh: 0
+--- !u!114 &74165192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74165187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36934a78de0359a4a9a81816efee5719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &130713415
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,13 +402,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poop
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3124953304139374773, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217229773312148373, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 9217229773312148373, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
 --- !u!4 &217484527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1650333040660027883, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
   m_PrefabInstance: {fileID: 217484526}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &217484528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3124953304139374773, guid: 9a6f33a7970e5c94bb0501a457a8b4cb, type: 3}
+  m_PrefabInstance: {fileID: 217484526}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &217484529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217484528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &304326680
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,6 +541,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5858850453860343353, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6961080341077899197, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.98
@@ -550,13 +605,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7011618860827259365, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5858850453860343353, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
 --- !u!4 &317067549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6961080341077899197, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
   m_PrefabInstance: {fileID: 317067548}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &317067550 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7011618860827259365, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
+  m_PrefabInstance: {fileID: 317067548}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &317067551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317067550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &577901341
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +899,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'egg '
       objectReference: {fileID: 0}
+    - target: {fileID: 2850414604651452211, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 2850414604651452221, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.93
@@ -874,13 +955,35 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6155848623323331252, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6155848623323331252, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
 --- !u!4 &686597859 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2850414604651452221, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
   m_PrefabInstance: {fileID: 686597858}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &686597860 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2850414604651452211, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
+  m_PrefabInstance: {fileID: 686597858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &686597861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686597860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &691524069
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +996,7 @@ GameObject:
   - component: {fileID: 691524073}
   - component: {fileID: 691524072}
   - component: {fileID: 691524071}
+  - component: {fileID: 691524074}
   m_Layer: 5
   m_Name: M_B
   m_TagString: Untagged
@@ -962,7 +1066,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 691524072}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 691524074}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: Buy_Milk
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &691524072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,6 +1117,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691524069}
   m_CullTransparentMesh: 0
+--- !u!114 &691524074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691524069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36934a78de0359a4a9a81816efee5719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &741963891
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,6 +1141,7 @@ GameObject:
   - component: {fileID: 741963895}
   - component: {fileID: 741963894}
   - component: {fileID: 741963893}
+  - component: {fileID: 741963896}
   m_Layer: 5
   m_Name: Poop_B
   m_TagString: Untagged
@@ -1082,7 +1211,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 741963894}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 741963896}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: Buy_Poop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &741963894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,6 +1262,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741963891}
   m_CullTransparentMesh: 0
+--- !u!114 &741963896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741963891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36934a78de0359a4a9a81816efee5719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &793929573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,6 +1286,7 @@ GameObject:
   - component: {fileID: 793929577}
   - component: {fileID: 793929576}
   - component: {fileID: 793929575}
+  - component: {fileID: 793929578}
   m_Layer: 5
   m_Name: P_B
   m_TagString: Untagged
@@ -1202,7 +1356,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 793929576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 793929578}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: Buy_Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &793929576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1241,6 +1407,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 793929573}
   m_CullTransparentMesh: 0
+--- !u!114 &793929578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793929573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36934a78de0359a4a9a81816efee5719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &958490590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,6 +1866,7 @@ GameObject:
   - component: {fileID: 1458091104}
   - component: {fileID: 1458091103}
   - component: {fileID: 1458091102}
+  - component: {fileID: 1458091105}
   m_Layer: 5
   m_Name: H_B
   m_TagString: Untagged
@@ -1757,7 +1936,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1458091103}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1458091105}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: Buy_Hungry
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1458091103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1796,6 +1987,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458091100}
   m_CullTransparentMesh: 0
+--- !u!114 &1458091105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458091100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36934a78de0359a4a9a81816efee5719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1495206187
 GameObject:
   m_ObjectHideFlags: 0
@@ -2033,13 +2236,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hungry
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6178358823948233531, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6178358823948233531, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
 --- !u!4 &1533193076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1843673785512951259, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
   m_PrefabInstance: {fileID: 1533193075}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1533193077 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
+  m_PrefabInstance: {fileID: 1533193075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1533193078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533193077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1540029702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2047,6 +2276,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 345473630249544314, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4638572575463035114, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.7
@@ -2095,13 +2328,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 345473630249544314, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
 --- !u!4 &1540029703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4638572575463035114, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
   m_PrefabInstance: {fileID: 1540029702}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1540029704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
+  m_PrefabInstance: {fileID: 1540029702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1540029705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540029704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1926312251
 GameObject:
   m_ObjectHideFlags: 0
