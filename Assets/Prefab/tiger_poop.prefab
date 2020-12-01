@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5639914192000152617}
   - component: {fileID: 7513927932098322479}
   - component: {fileID: 3053288051530989006}
+  - component: {fileID: -1942925597676602623}
   m_Layer: 0
   m_Name: tiger_poop
   m_TagString: tiger_poop
@@ -109,3 +110,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.7, z: 0.2}
   m_Center: {x: -0.25, y: 0.1, z: 0}
+--- !u!114 &-1942925597676602623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2977839344259296551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc65f76f8fbda4c53a0655bcb040976d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
