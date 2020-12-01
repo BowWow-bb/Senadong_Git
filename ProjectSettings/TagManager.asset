@@ -30,7 +30,6 @@ TagManager:
   - tiger_enemy
   - cow_enemy
   - chicken_enemy
-  - hungry_hp
   - poop_hp
   - play_hp
   - exp_hp
@@ -40,6 +39,7 @@ TagManager:
   - play_string
   - poop_string
   - hungry_string
+  - hungry_hp
   layers:
   - Default
   - TransparentFX

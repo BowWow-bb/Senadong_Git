@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d6dceee9cfaaa4eb2eb722eff7d837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hungry_child: 2
+  poop_child: 4
+  play_child: 6
 --- !u!1 &5800524980379892179
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +143,7 @@ MonoBehaviour:
   isHungry: 0
   poop: 0
   play: 0
+  exp: 0
   countPoop: 0
   TigerPoopPrefab: {fileID: 2977839344259296551, guid: 5d0756bbfb8d8fa4b886b58c4e4363e6, type: 3}
   fHungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
@@ -412,11 +416,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 56126181014874871, guid: 32433579e80bb5e40a2a96a8f42576ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3700001
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: 56126181014874871, guid: 32433579e80bb5e40a2a96a8f42576ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.06
+      value: 2.51
       objectReference: {fileID: 0}
     - target: {fileID: 56126181014874871, guid: 32433579e80bb5e40a2a96a8f42576ad, type: 3}
       propertyPath: m_LocalPosition.z
@@ -469,6 +473,10 @@ PrefabInstance:
     - target: {fileID: 2197161086887293322, guid: 32433579e80bb5e40a2a96a8f42576ad, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934444279832630031, guid: 32433579e80bb5e40a2a96a8f42576ad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32433579e80bb5e40a2a96a8f42576ad, type: 3}

@@ -37,6 +37,7 @@ public class Tiger_Move : MonoBehaviour
     public int hungry; public bool isHungry = false; int hungryTimer = 1400;
     public int poop; bool isPoop = false; int poopTimer = 1150;
     public int play; bool isPlay = false; int playTimer = 1300;
+    public int exp;
 
     //청결 관련
     public int countPoop = 0;           //똥 개수
@@ -120,11 +121,13 @@ public class Tiger_Move : MonoBehaviour
             //Debug.Log("밥 위치: ", Bap.transform);
             if (Bap.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                //transform.localScale = new Vector3(1, 1, 1);
             }
             else//밥이 오른쪽이라면 
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                //transform.localScale = new Vector3(-1, 1, 1);
             }
             transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.06f);
             return true;
@@ -150,9 +153,11 @@ public class Tiger_Move : MonoBehaviour
 
                 trace = (Mouse - Start_Point).normalized; // 호랑이와 마우스 사이의 벡터
                 if (trace.x >= 0)
-                    gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                    gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                //gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
                 else
-                    gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+                    gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                //gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
 
 
                 x = (Start_Point.x + (trace.x * trace_length) - 0.5f) * 26f; // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
@@ -202,9 +207,11 @@ public class Tiger_Move : MonoBehaviour
             Vector3 toilet_vec = (toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
 
             if (toilet_vec.x >= 0)
-                gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+            //gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
             else
-                gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+            //gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
 
             transform.position += toilet_vec;
 
@@ -263,9 +270,11 @@ public class Tiger_Move : MonoBehaviour
                         Start_Point = gameObject.transform.position; // 시작점 저장
                         move_vec = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)); // 상하좌우,대각 랜덤으로 정함
                         if (move_vec.x >= 0)
-                            gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                            gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+                        //gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
                         else
-                            gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+                            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                        //gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
                         move_length = 0;
                     }
                     return true;
@@ -330,12 +339,19 @@ public class Tiger_Move : MonoBehaviour
 
         Timer++;
 
-        if (Timer % 100 == 0)
+        if (Timer % 10 == 0)
         {
             hungry-=1;
             poop-=1;
             play-=1;
             poop -= countPoop * 5; //똥 개수에 비례하여 감소
+
+            if (hungry > 0 | poop > 0 | play > 0)
+                exp += 1; 
+            else
+            {
+                exp -= 1;
+            }
         }
     }
 }

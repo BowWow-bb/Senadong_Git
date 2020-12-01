@@ -15,18 +15,18 @@ public class Drag : MonoBehaviour
     {
         if(this.tag == "tiger")
         {
-            t_m = transform.GetComponent<Tiger_Move>();
-            t_m.isdrag = true;
-            t_m.moving = false;
+            //t_m = transform.GetComponent<Tiger_Move>();
+            //t_m.isdrag = true;
+            //t_m.moving = false;
 
-            if (t_m.transform.localScale.x < 0)//오른쪽 
-            {
-                t_m.transform.localScale = new Vector3(-scale, scale, scale);
-            }
-            else
-            {
-                t_m.transform.localScale = new Vector3(scale, scale, scale);
-            }
+            //if (t_m.transform.localScale.x < 0)//오른쪽 
+            //{
+            //    t_m.transform.localScale = new Vector3(-scale, scale, scale);
+            //}
+            //else
+            //{
+            //    t_m.transform.localScale = new Vector3(scale, scale, scale);
+            //}
         }
         else if (this.tag == "chicken")
         {
@@ -68,16 +68,16 @@ public class Drag : MonoBehaviour
     {
         if (this.tag == "tiger")
         {
-            t_m = transform.GetComponent<Tiger_Move>();
-            t_m.isdrag = false;
-            if (t_m.transform.localScale.x < 0)//오른쪽 
-            {
-                t_m.transform.localScale = new Vector3(-1, 1, 1);
-            }
-            else
-            {
-                t_m.transform.localScale = new Vector3(1, 1, 1);
-            }
+            //t_m = transform.GetComponent<Tiger_Move>();
+            //t_m.isdrag = false;
+            //if (t_m.transform.localScale.x < 0)//오른쪽 
+            //{
+            //    t_m.transform.localScale = new Vector3(-1, 1, 1);
+            //}
+            //else
+            //{
+            //    t_m.transform.localScale = new Vector3(1, 1, 1);
+            //}
         }
         else if (this.tag == "chicken")
         {

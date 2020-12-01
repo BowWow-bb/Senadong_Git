@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6de36b44bb08dc4f8fe9ffa51cbe946, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hungry_child: 2
+  poop_child: 4
+  play_child: 6
 --- !u!1 &5482809992429514747
 GameObject:
   m_ObjectHideFlags: 0
