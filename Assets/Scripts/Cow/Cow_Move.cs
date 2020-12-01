@@ -33,6 +33,7 @@ public class Cow_Move : MonoBehaviour
     public int hungry;  public bool isHungry = false;  int hungryTimer = 1100;
     public int poop;    bool isPoop = false;    int poopTimer = 1500;
     public int play;    bool isPlay = false;    int playTimer = 1200;
+    public int exp;
 
     //청결 관련
     public int countPoop = 0;           //똥 개수
@@ -93,16 +94,20 @@ public class Cow_Move : MonoBehaviour
     private void FixedUpdate()
     {
         BasicTime++;
-
         Timer++;
         milkTimer++;
 
-        if (Timer % 100 == 0)
+        if (Timer % 20 == 0)
         {
-            hungry--;
-            poop--;
-            play--;
+            hungry -= 1;
+            poop -= 1;
+            play -= 1;
             poop -= countPoop * 5; //똥 개수에 비례하여 감소
+
+            if (hungry > 0 && poop > 0 && play > 0)
+                exp += 1;
+            else
+                exp -= 5;
         }
     }
 

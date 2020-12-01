@@ -418,7 +418,6 @@ GameObject:
   - component: {fileID: 2309987700073985161}
   - component: {fileID: 2327818996693035024}
   - component: {fileID: 1935565200164878245}
-  - component: {fileID: 6135692760665600225}
   m_Layer: 0
   m_Name: poop_hp
   m_TagString: poop_hp
@@ -502,18 +501,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6135692760665600225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3413202528342786968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499c45d086a6fba43a329ed0c7e8d0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3740774437968282381
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +608,6 @@ GameObject:
   - component: {fileID: 4677251862658607695}
   - component: {fileID: 7716708290083599974}
   - component: {fileID: 1598642901714242343}
-  - component: {fileID: 7928365244022945582}
   m_Layer: 0
   m_Name: hungry_hp
   m_TagString: hungry_hp
@@ -705,18 +691,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7928365244022945582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4006402959048507204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499c45d086a6fba43a329ed0c7e8d0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5167765400756059260
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,7 +703,6 @@ GameObject:
   - component: {fileID: 4676489379180106668}
   - component: {fileID: 1680812615640727611}
   - component: {fileID: 6343122134052078822}
-  - component: {fileID: 9097525060159539705}
   m_Layer: 0
   m_Name: exp_hp
   m_TagString: exp_hp
@@ -813,18 +786,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9097525060159539705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5167765400756059260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499c45d086a6fba43a329ed0c7e8d0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9189707622515140216
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +798,6 @@ GameObject:
   - component: {fileID: 9194753250091728880}
   - component: {fileID: 3479622866235422556}
   - component: {fileID: 3739218542073269376}
-  - component: {fileID: 4912165268117147641}
   m_Layer: 0
   m_Name: play_hp
   m_TagString: play_hp
@@ -921,15 +881,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4912165268117147641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9189707622515140216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 499c45d086a6fba43a329ed0c7e8d0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

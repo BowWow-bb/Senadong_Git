@@ -44,6 +44,7 @@ public class Chicken_Move : MonoBehaviour
     public GameObject fHungry;                 //체력 오브젝트
     public GameObject fPoop;                   //청결 오브젝트
     public GameObject fPlay;                   //흥미 오브젝트 
+    public int exp;
 
     //밥 추적 위함 
     GameObject Bap;
@@ -121,15 +122,19 @@ public class Chicken_Move : MonoBehaviour
     private void FixedUpdate()
     {
         BasicTime++;
-
         Timer++;
 
-        if (Timer % 100 == 0)
+        if (Timer % 20 == 0)
         {
-            hungry--;
-            poop--;
-            play--;
+            hungry -= 1;
+            poop -= 1;
+            play -= 1;
             poop -= countPoop * 5; //똥 개수에 비례하여 감소
+
+            if (hungry > 0 && poop > 0 && play > 0)
+                exp += 1;
+            else
+                exp -= 5;
         }
     }
     //행동 
