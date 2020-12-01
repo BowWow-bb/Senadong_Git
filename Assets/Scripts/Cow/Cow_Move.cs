@@ -54,6 +54,7 @@ public class Cow_Move : MonoBehaviour
     public bool is_follow_food = false;//밥 추적 중인지
     //
     public bool isdrag=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -280,7 +281,7 @@ public class Cow_Move : MonoBehaviour
                 countPoop++;
                 isPoop = false;
                 statTime = statMax;
-                fPoop.SetActive(false); //똥 싼 후 말풍선 비활성화   
+                fPoop.SetActive(false); //똥 싼 후 말풍선 비활성화 
             }
         }
         else   //랜덤 이동
