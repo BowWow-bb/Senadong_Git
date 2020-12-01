@@ -27,16 +27,16 @@ public class Tiger_Move : MonoBehaviour
     GameObject Bap;
     public float follow_distance = 15;//밥 추적 범위 
     float distance;
-    bool is_follow_food = false;//밥 추적 중인지
+    public bool is_follow_food = false;//밥 추적 중인지
                                 //
 
     //속성값 관련
     public int Timer;
     int statTime = 263, statMax = 263;  //말풍선 지속 시간
     public int valueMax = 1000;
-    public int hungry; bool isHungry = false; int hungryTimer = 1100;
-    public int poop; bool isPoop = false; int poopTimer = 1500;
-    public int play; bool isPlay = false; int playTimer = 1200;
+    public int hungry; bool isHungry = false; int hungryTimer = 1150;
+    public int poop; bool isPoop = false; int poopTimer = 1600;
+    public int play; bool isPlay = false; int playTimer = 1300;
 
     //청결 관련
     public int countPoop = 0;           //똥 개수
@@ -56,7 +56,7 @@ public class Tiger_Move : MonoBehaviour
     // Start is called before the first frame update
     public bool Hungry()
     {
-        if ((Timer % hungryTimer == 0)
+        if ((Timer != 0 && Timer % hungryTimer == 0)
             && (!isHungry && !isPoop && !isPlay))
         {
             isHungry = true;
@@ -76,7 +76,7 @@ public class Tiger_Move : MonoBehaviour
     }
     public bool Poop()
     {
-        if ((Timer % poopTimer == 0)
+        if ((Timer != 0 && Timer % poopTimer == 0)
             && (!isHungry && !isPoop && !isPlay))
         {
             isPoop = true;
@@ -93,7 +93,7 @@ public class Tiger_Move : MonoBehaviour
 
     public bool Play()
     {
-        if ((Timer % playTimer == 0)
+        if ((Timer != 0 && Timer % playTimer == 0)
              && (!isHungry && !isPoop && !isPlay))
         {
             isPlay = true;
@@ -114,7 +114,7 @@ public class Tiger_Move : MonoBehaviour
 
     public bool Tiger_Follow_Food()//알아서 바꿔서 쓰셈 
     {
-        if (is_follow_food && fHungry)//밥 생성 되었는지 
+        if (is_follow_food)//밥 생성 되었는지 
         {
             //Debug.Log("밥 생성, 거리 추적 범위");
             //Debug.Log("밥 위치: ", Bap.transform);
@@ -312,7 +312,7 @@ public class Tiger_Move : MonoBehaviour
             //Debug.Log("밥 생성");
             distance = Vector3.Distance(this.gameObject.transform.position, Bap.transform.position);//거리 파악
         }
-        is_follow_food = (Bap != null && distance < follow_distance);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
+        is_follow_food = (Bap != null && distance < follow_distance && isHungry == true);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
         //
         //애니메이터 
         if(!moving&&!isPoop&&!is_follow_food)

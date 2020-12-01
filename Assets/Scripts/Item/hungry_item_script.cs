@@ -26,7 +26,7 @@ public class hungry_item_script : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "chicken")
+        if(other.gameObject.tag == "chicken" && c_m.is_follow_food)
         {
             Debug.Log("치킨이 먹음");
             if (c_m.hungry + full >= c_m.valueMax)
@@ -42,7 +42,7 @@ public class hungry_item_script : MonoBehaviour
             Destroy(gameObject);
 
         }
-        if(other.gameObject.tag == "cow")
+        if(other.gameObject.tag == "cow" && co_m.is_follow_food)
         {
             Debug.Log("소가먹음");
             if (co_m.hungry + full >= co_m.valueMax)
@@ -56,7 +56,7 @@ public class hungry_item_script : MonoBehaviour
             
             Destroy(gameObject);
         } 
-        if (other.gameObject.tag == "tiger")
+        if (other.gameObject.tag == "tiger" && t_m.is_follow_food)
         {
             Debug.Log("호랑이가 먹음");
             if (t_m.hungry + full >= t_m.valueMax)

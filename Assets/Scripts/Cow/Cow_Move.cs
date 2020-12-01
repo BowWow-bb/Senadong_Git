@@ -51,7 +51,7 @@ public class Cow_Move : MonoBehaviour
     GameObject Bap;
     public float follow_distance = 15;//밥 추적 범위 
     float distance;
-    bool is_follow_food = false;//밥 추적 중인지
+    public bool is_follow_food = false;//밥 추적 중인지
     //
     public bool isdrag=false;
     // Start is called before the first frame update
@@ -86,7 +86,7 @@ public class Cow_Move : MonoBehaviour
             //Debug.Log("밥 생성");
             distance = Vector3.Distance(this.gameObject.transform.position, Bap.transform.position);//거리 파악
         }
-        is_follow_food = (Bap != null && distance < follow_distance);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
+        is_follow_food = (Bap != null && distance < follow_distance && isHungry == true);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
         //
     }
     private void FixedUpdate()
@@ -162,7 +162,7 @@ public class Cow_Move : MonoBehaviour
     }
     public bool Cow_Hungry()
     {
-        if ((Timer % hungryTimer == 0)
+        if ((Timer != 0 && Timer % hungryTimer == 0)
             && (!isHungry && !isPoop && !isPlay))
         { 
             isHungry = true;
@@ -183,7 +183,7 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Poop()
     {
-        if ((Timer % poopTimer == 0)
+        if ((Timer != 0 && Timer % poopTimer == 0)
             && (!isHungry && !isPoop && !isPlay))
         {
             isPoop = true;
@@ -200,7 +200,7 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Play()
     {
-        if ((Timer % playTimer == 0)
+        if ((Timer != 0 && Timer % playTimer == 0)
             && (!isHungry && !isPoop && !isPlay))
         {
             isPlay = true;
@@ -236,7 +236,7 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Follow_Food()//알아서 바꿔서 쓰셈 
     {
-        if (is_follow_food && fHungry)//밥 생성 되었는지 
+        if (is_follow_food)//밥 생성 되었는지 
         {
             //Debug.Log("밥 생성, 거리 추적 범위");
             //Debug.Log("밥 위치: ", Bap.transform);
