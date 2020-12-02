@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3411894541426098061}
   - component: {fileID: 743558611760646856}
   - component: {fileID: 7629690341006814689}
-  - component: {fileID: -2851028535596170700}
+  - component: {fileID: 7216978705387931958}
   m_Layer: 0
   m_Name: chicken_poop
   m_TagString: chicken_poop
@@ -110,7 +110,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.7, z: 0.2}
   m_Center: {x: -0.35, y: 0.1, z: 0}
---- !u!114 &-2851028535596170700
+--- !u!114 &7216978705387931958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,6 +119,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3181500524151880679}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc65f76f8fbda4c53a0655bcb040976d, type: 3}
+  m_Script: {fileID: 11500000, guid: 27e1d6b59ceba5e44ad85bf13ab1b219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

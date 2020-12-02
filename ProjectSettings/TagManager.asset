@@ -43,6 +43,7 @@ TagManager:
   - floating_chicken
   - floating_cow
   - floating_tiger
+  - expmax_panel
   layers:
   - Default
   - TransparentFX

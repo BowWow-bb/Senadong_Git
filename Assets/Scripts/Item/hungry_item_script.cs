@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class hungry_item_script : MonoBehaviour
 {
+    ItemManager item_manager;
     Chicken_Move c_m;
     Tiger_Move t_m;
     Cow_Move co_m;
@@ -13,9 +14,11 @@ public class hungry_item_script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
         c_m = GameObject.FindWithTag("chicken").GetComponent<Chicken_Move>();
         t_m = GameObject.FindWithTag("tiger").GetComponent<Tiger_Move>();
         co_m = GameObject.FindWithTag("cow").GetComponent<Cow_Move>();
+        item_manager.hungry_item--;
     }
 
     // Update is called once per frame
@@ -39,10 +42,7 @@ public class hungry_item_script : MonoBehaviour
             {
                 c_m.hungry += full;
             }
-            
-
             Destroy(gameObject);
-
         }
         if(other.gameObject.tag == "cow" && co_m.is_follow_food)
         {
@@ -56,8 +56,7 @@ public class hungry_item_script : MonoBehaviour
             else
             {
                 co_m.hungry += full;
-            }
-            
+            }            
             Destroy(gameObject);
         } 
         if (other.gameObject.tag == "tiger" && t_m.is_follow_food)
@@ -75,23 +74,5 @@ public class hungry_item_script : MonoBehaviour
             }
             Destroy(gameObject);
         }
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        //if (other.gameObject.tag == "chicken")
-        //{
-        //    Debug.Log("치킨이 먹음");
-        //    Destroy(gameObject);
-        //}
-        //if (other.gameObject.tag == "cow")
-        //{
-        //    Debug.Log("소가먹음");
-        //    Destroy(gameObject);
-        //}
-        //if (other.gameObject.tag == "tiger")
-        //{
-        //    Debug.Log("호랑이가 먹음");
-        //    Destroy(gameObject);
-        //}
     }
 }

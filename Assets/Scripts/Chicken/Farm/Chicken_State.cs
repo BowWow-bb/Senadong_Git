@@ -6,7 +6,7 @@ public class Chicken_State : MonoBehaviour
 {
     Chicken_Move chicken_move;
     ItemManager item_manager;
-
+    int plus = 100; //요구충족 시, 속성 증가 값
     // Start is called before the first frame update
     void Start()
     {
@@ -15,35 +15,42 @@ public class Chicken_State : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0))
+        //if (this.transform.gameObject.tag == "chciken_poop" && this.transform.IsChildOf(transform) == true) //소똥 클릭
+        //{
+        //    if (item_manager.poop_item > 0)
+        //    {
+        //        Destroy(this.transform.gameObject);
+        //        chicken_move.countPoop--;
+        //        item_manager.poop_item--;
+        //        if (chicken_move.hungry + plus >= chicken_move.valueMax)
+        //        {
+        //            chicken_move.hungry = chicken_move.valueMax;
+        //        }
+        //        else
+        //        {
+        //            chicken_move.hungry += plus;
+        //        }
+        //    }
+        //}
+        if (this.transform.gameObject == transform.GetChild(2).gameObject) //play 말풍선 클릭
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            Debug.Log("플풍클릭");
+            if (item_manager.play_item > 0)  //아이템 있는 경우만
             {
-                if (hit.transform.gameObject.tag == "chicken_poop") //똥 클릭
+                chicken_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
+                chicken_move.playTime = 0;
+                chicken_move.trace_mouse = true;
+                chicken_move.fPlay.SetActive(false);
+                item_manager.play_item--;
+                if (chicken_move.play + plus >= chicken_move.valueMax)
                 {
-                   
+                    chicken_move.play = chicken_move.valueMax;
                 }
-                if (hit.transform.gameObject == transform.GetChild(2).gameObject) //play 말풍선 클릭
+                else
                 {
-                    //확인용 코드 (아이템 없어도 실행되게...)
-                    Debug.Log("플레이풍선 클릭");
-                    chicken_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
-                    chicken_move.playTime = 0;
-                    chicken_move.trace_mouse = true;
-                    chicken_move.fPlay.SetActive(false);
-
-                    //if (item_manager.play_item > 0)  //아이템 있는 경우만
-                    //{
-                    //    chicken_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
-                    //    cow_chicken_movemove.playTime = 0;
-                    //    chicken_move.trace_mouse = true;
-                    //    chicken_move.fPlay.SetActive(false);
-                    //}
+                    chicken_move.play += plus;
                 }
             }
         }

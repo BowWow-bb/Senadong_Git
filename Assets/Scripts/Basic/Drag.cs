@@ -10,7 +10,6 @@ public class Drag : MonoBehaviour
     Cow_Move co_m;
 
     public float scale=1.1f;
-
     void OnMouseDrag()
     {
         if(this.tag == "tiger")
@@ -57,7 +56,7 @@ public class Drag : MonoBehaviour
                 co_m.transform.localScale = new Vector3(scale, scale, scale);
             }
         }
-        else if(this.tag == "hungry_follow_item")
+        else if(this.tag == "hungry_follow_item")   //농장에 가져다 놓은 밥 이동
         {
             this.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }

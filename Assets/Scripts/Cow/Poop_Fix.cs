@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Poop_Fix : MonoBehaviour
 {
+    Transform parent;
     Vector3 pos;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,9 @@ public class Poop_Fix : MonoBehaviour
     void Update()
     {
         //부모에 따라 움직이지 않게 똥 고정
+        parent = transform.parent;
+        transform.parent = null;
         transform.position = pos;
+        transform.parent = parent;
     }
 }

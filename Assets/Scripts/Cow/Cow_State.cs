@@ -6,7 +6,7 @@ public class Cow_State : MonoBehaviour
 {
     Cow_Move cow_move;
     ItemManager item_manager;
-
+    int plus = 100; //요구충족 시, 속성 증가 값
     // Start is called before the first frame update
     void Start()
     {
@@ -17,32 +17,49 @@ public class Cow_State : MonoBehaviour
     // Update is called once per frame
     void OnMouseDown()
     {
-        if (this.transform.gameObject.tag == "cow_poop" && this.transform.IsChildOf(transform) == true) //소똥 클릭
-        {
-            Debug.Log("똥 치움");
-            if (item_manager.poop_item > 0)
+        if (this.tag == "cow_poop") //소똥 클릭
+        {          
+            if (this.transform.parent == transform && item_manager.poop_item > 0)
             {
+                Debug.Log("소똥자식이 맞아!");
+                this.transform.parent = null;
                 Destroy(this.transform.gameObject);
-                Debug.Log("소똥 치움");
                 cow_move.countPoop--;
+                item_manager.poop_item--;
+
+                if (cow_move.hungry + plus >= cow_move.valueMax)
+                {
+                    cow_move.hungry = cow_move.valueMax;
+                }
+                else
+                {
+                    cow_move.hungry += plus;
+                }
             }
         }
-        if (this.transform.gameObject == transform.GetChild(2).gameObject) //play 말풍선 클릭
-        {
-            //확인용 코드 (아이템 없어도 실행되게...)
-            Debug.Log("플레이풍선 클릭");
-            cow_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
-            cow_move.playTime = 0;
-            cow_move.trace_mouse = true;
-            cow_move.fPlay.SetActive(false);
+        else
+        {//play_floating, poop 동시 사용 위해...
+            if (this.transform.gameObject == transform.GetChild(2).gameObject) //play 말풍선 클릭
+            {
+                if (item_manager.play_item > 0)  //아이템 있는 경우만
+                {
+                    Debug.Log("소놀풍선 클릭됨");
+                    cow_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
+                    cow_move.playTime = 0;
+                    cow_move.trace_mouse = true;
+                    cow_move.fPlay.SetActive(false);
+                    item_manager.play_item--;
 
-            //if (item_manager.play_item > 0)  //아이템 있는 경우만
-            //{
-            //    cow_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
-            //    cow_move.playTime = 0;
-            //    cow_move.trace_mouse = true;
-            //    cow_move.fPlay.SetActive(false);
-            //}
+                    if (cow_move.play + plus >= cow_move.valueMax)
+                    {
+                        cow_move.play = cow_move.valueMax;
+                    }
+                    else
+                    {
+                        cow_move.play += plus;
+                    }
+                }
+            }
         }
     }
 }

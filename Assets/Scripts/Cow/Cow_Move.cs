@@ -28,12 +28,11 @@ public class Cow_Move : MonoBehaviour
 
     //속성값 관련
     public int Timer;
-    int statTime = 263, statMax = 263;  //말풍선 지속 시간
+    int statTime = 450, statMax = 450;  //말풍선 지속 시간
     public int valueMax = 1000;
     public int hungry;  public bool isHungry = false;  int hungryTimer = 1100;
     public int poop;    bool isPoop = false;    int poopTimer = 1500;
     public int play;    bool isPlay = false;    int playTimer = 1200;
-    public int exp;
 
     //청결 관련
     public int countPoop = 0;           //똥 개수
@@ -45,12 +44,13 @@ public class Cow_Move : MonoBehaviour
     public GameObject fHungry;                 //체력 오브젝트
     public GameObject fPoop;                   //청결 오브젝트
     public GameObject fPlay;                   //흥미 오브젝트 
+    public int exp = 0;
 
     public GameObject MilkPrefab;       //우유 오브젝트
 
     //밥 추적 위함 
     GameObject Bap;
-    public float follow_distance = 15;//밥 추적 범위 
+    public float follow_distance = 5;//밥 추적 범위 
     float distance;
     public bool is_follow_food = false;//밥 추적 중인지
     //
@@ -119,17 +119,42 @@ public class Cow_Move : MonoBehaviour
         Timer++;
         milkTimer++;
 
-        if (Timer % 20 == 0)
+        if(Timer > 10000 && exp == 0)    // 사망
         {
-            hungry -= 1;
-            poop -= 1;
-            play -= 1;
-            poop -= countPoop * 5; //똥 개수에 비례하여 감소
+            transform.Find("die_msg").gameObject.SetActive(true);
+            Destroy(transform.gameObject, 1.0f);
+        }
+        if(exp == valueMax)  //성장 완료
+        {
+            GameObject.Find("Canvas").transform.Find("Panel").gameObject.SetActive(true);
+            ChildClone cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(1).GetComponent<ChildClone>();
+            cc.tagname = transform.tag;
+            Destroy(transform.gameObject);
+        }
 
+        if (Timer % 40 == 0)
+        {
+            //시간에 따라 계속 속성 값 감소
+            if (hungry - 1 < 0) hungry = 0;
+            else hungry--;
+
+            if (poop - 1 < 0) poop = 0;
+            else poop--;
+
+            if (play - 1 < 0) play = 0;
+            else play--;
+
+            //똥 안치우면 poop속성값 더 많이 감소
+            if (poop - countPoop * 5 < 0) poop = 0;
+            else   poop -= countPoop * 5;
+
+            //속성값 0인 항목이 있는 경우 경험치 감소
             if (hungry > 0 && poop > 0 && play > 0)
-                exp += 1;
+                if (exp + 1 > valueMax) exp = valueMax;
+                else   exp += 1;
             else
-                exp -= 5;
+                if (exp - 5 < 0) exp = 0;
+                else exp -= 5;
         }
     }
 
@@ -303,7 +328,6 @@ public class Cow_Move : MonoBehaviour
             {
                 GameObject mini_poop = Instantiate(CowPoopPrefab);
                 mini_poop.transform.parent = transform;
-                mini_poop.tag = "cow_poop";
                 mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
                 countPoop++;
                 isPoop = false;
