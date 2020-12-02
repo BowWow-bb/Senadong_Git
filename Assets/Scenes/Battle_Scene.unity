@@ -303,8 +303,11 @@ MonoBehaviour:
   cow_enemy: {fileID: 2039064750}
   chicken_enemy: {fileID: 561222360}
   tiger_enemy: {fileID: 172800600}
+  chicken_wind: {fileID: 2740113527527679001, guid: 46fe9442a01594ce6ac0ff8e68dc890f, type: 3}
   back_distance: 3
   back_distance_time: 40
+  C_windTime: 100
+  is_go_right: 0
   is_Attack: 0
 --- !u!1 &266970225
 GameObject:
