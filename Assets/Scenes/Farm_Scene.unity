@@ -825,6 +825,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2701849671355611131, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+      propertyPath: follow_distance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2701849671355611131, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+      propertyPath: isdrag
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2701849671355611132, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
       propertyPath: m_Name
       value: Cow

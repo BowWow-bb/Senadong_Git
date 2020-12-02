@@ -273,6 +273,7 @@ public class Chicken_Move : MonoBehaviour
                 && (int)transform.position.y == (int)toiletPos.y) //목표 지점 도달한 경우
             {
                 GameObject mini_poop = Instantiate(ChickenPoopPrefab);
+                mini_poop.transform.parent = transform;
                 mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
                 countPoop++;
                 isPoop = false;

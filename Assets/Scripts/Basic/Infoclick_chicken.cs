@@ -7,12 +7,17 @@ public class Infoclick_chicken : MonoBehaviour
     GameObject floating, hungry, poop, play, exp;
     Chicken_Move chicken;
 
+    float hpbar_tx, hpbar_sx, hpbar_tmp;
     int hungry_idx = 2, poop_idx = 4, play_idx = 6, exp_idx = 8;
     // Start is called before the first frame update
     void Start()
     {
         chicken = transform.parent.GetComponent<Chicken_Move>();
         floating = (transform.parent).transform.GetChild(4).gameObject;
+
+        hpbar_tx = floating.transform.GetChild(2).localPosition.x;
+        hpbar_sx = floating.transform.GetChild(2).localScale.x;
+        hpbar_tmp = hpbar_sx / 1000;   //최대 체력에 따른 hp바 이동량 설정
     }
     private void OnMouseDown()
     {
@@ -26,23 +31,18 @@ public class Infoclick_chicken : MonoBehaviour
         hpMove(poop, chicken.poop);
         hpMove(play, chicken.play);
         hpMove(exp, chicken.exp);
-
+        StartCoroutine(delay(2.0f));
     }
     public void hpMove(GameObject bar, int value)    //hp바 동작 구현
     {
         if (value < 0)
             value = 0;
 
-        float hpbar_sx = bar.transform.localScale.x;
-        float hpbar_tx = bar.transform.localPosition.x;
-        float hpbar_tmp = hpbar_sx / 1000;   //최대 체력에 따른 hp바 이동량 설정
         int delta = 1000 - value;
         float move = delta * hpbar_tmp; //hp바 이동할 크기
 
         bar.transform.localScale = new Vector3(hpbar_sx - move, bar.transform.localScale.y, bar.transform.localScale.z);
         bar.transform.localPosition = new Vector3(hpbar_tx - move / 2.0f, bar.transform.localPosition.y, bar.transform.localPosition.z);
-
-        StartCoroutine(delay(2.0f));
     }
 
     IEnumerator delay(float waitTime)

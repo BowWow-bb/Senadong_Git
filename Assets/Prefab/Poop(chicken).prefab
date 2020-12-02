@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 2999303612231557932}
   - component: {fileID: 982411259390655678}
   - component: {fileID: 1138415857586612006}
-  - component: {fileID: 4823286623407206990}
   m_Layer: 0
   m_Name: Poop(chicken)
   m_TagString: poop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2999303612231557932
 Transform:
   m_ObjectHideFlags: 0
@@ -97,15 +96,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.4, y: 1, z: 0.2}
   m_Center: {x: 0.9, y: 1, z: 0}
---- !u!114 &4823286623407206990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3667755121941617325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91602eb41c4d47f40aac85863f8d25c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

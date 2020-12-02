@@ -11,14 +11,13 @@ GameObject:
   - component: {fileID: 4638572575463035114}
   - component: {fileID: 3597514762435489948}
   - component: {fileID: 1007228937496245428}
-  - component: {fileID: 345473630249544314}
   m_Layer: 0
   m_Name: Play
   m_TagString: play
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4638572575463035114
 Transform:
   m_ObjectHideFlags: 0
@@ -97,15 +96,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.4, y: 1, z: 0.2}
   m_Center: {x: 0.9, y: 1, z: 0}
---- !u!114 &345473630249544314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7518504057322826342}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91602eb41c4d47f40aac85863f8d25c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -10,7 +10,7 @@ public class Cow_State : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        cow_move = transform.GetComponent<Cow_Move>();
+        cow_move = transform.parent.GetComponent<Cow_Move>();
         item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
     }
 
@@ -19,9 +19,8 @@ public class Cow_State : MonoBehaviour
     {
         if (this.tag == "cow_poop") //소똥 클릭
         {          
-            if (this.transform.parent == transform && item_manager.poop_item > 0)
+            if (this.transform.parent == transform.parent && item_manager.poop_item > 0)
             {
-                Debug.Log("소똥자식이 맞아!");
                 this.transform.parent = null;
                 Destroy(this.transform.gameObject);
                 cow_move.countPoop--;
@@ -39,7 +38,7 @@ public class Cow_State : MonoBehaviour
         }
         else
         {//play_floating, poop 동시 사용 위해...
-            if (this.transform.gameObject == transform.GetChild(2).gameObject) //play 말풍선 클릭
+            if (this.transform.gameObject == (transform.parent).transform.GetChild(2).gameObject) //play 말풍선 클릭
             {
                 if (item_manager.play_item > 0)  //아이템 있는 경우만
                 {
