@@ -19,6 +19,7 @@ public class Chicken_Move : MonoBehaviour
     int check = 0;
     public bool trace_mouse; // 마우스를 향해 달리는 중인지
     public bool quarrel = false;
+    public bool hurt = false;
     Vector2 move_vec; // 움직일 방향벡터
     Vector3 Start_Point; // 움직일때의 시작점
     Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
@@ -138,6 +139,14 @@ public class Chicken_Move : MonoBehaviour
         }
     }
     //행동 
+    public bool Chicken_Quarrel()
+    {
+        if(quarrel == true)
+        {
+            quarrel = false;
+        }
+        return true;
+    }
     public bool Chicken_FollowMouse()
     {
         if (playing) // 놀고 있는 상태
@@ -314,7 +323,7 @@ public class Chicken_Move : MonoBehaviour
 
     public bool Chicken_Egg()
     {
-        if (isEggTime && !is_follow_food && !isPoop && !moving)//따라갈 때는 알 낳지 말아라 
+        if (isEggTime && !is_follow_food && !isPoop && !moving && !quarrel)//따라갈 때는 알 낳지 말아라 
         {
             moving = false;
 
@@ -349,7 +358,7 @@ public class Chicken_Move : MonoBehaviour
     public bool Chicken_Hungry()
     {
         if ((Timer != 0 && Timer % hungryTimer == 0)
-            && (!isHungry && !isPoop && !isPlay))
+            && (!isHungry && !isPoop && !isPlay && !quarrel))
         {
             isHungry = true;
             fHungry.SetActive(true);
@@ -370,7 +379,7 @@ public class Chicken_Move : MonoBehaviour
     public bool Chicken_Poop()
     {
         if ((Timer != 0 && Timer % poopTimer == 0)
-                   && (!isHungry && !isPoop && !isPlay))
+                   && (!isHungry && !isPoop && !isPlay && !quarrel))
         {
             isPoop = true;
             fPoop.SetActive(true);
@@ -387,7 +396,7 @@ public class Chicken_Move : MonoBehaviour
     public bool Chicken_Play()
     {
         if ((Timer != 0 && Timer % playTimer == 0)
-            && (!isHungry && !isPoop && !isPlay))
+            && (!isHungry && !isPoop && !isPlay && !quarrel))
         {
             isPlay = true;
             fPlay.SetActive(true);

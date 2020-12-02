@@ -94,7 +94,7 @@ public class Tiger_Move : MonoBehaviour
     }
     public bool Quarrel()
     {
-        
+
         //if (quarreling && (!isHungry && !isPoop && !isPlay))
         //{
         //    Debug.Log("qua");
@@ -119,11 +119,14 @@ public class Tiger_Move : MonoBehaviour
         //    gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
         //    trace_length += 0.000001f; // 빨라지는 추적속도
-        //    if (Vector3.Distance(Start_Point, quarrel_point) < 0.02f) // 마우스를 잡았다면
+        //    if (Vector3.Distance(Start_Point, quarrel_point) < 5f) 
         //    {
         //        if (tmp.tag == "chicken")
-        //            tmp.GetComponent<Chicken_Move>().quarrel = true;
-                
+        //        {
+        //            Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
+        //            c_m.hurt = true;
+                    
+        //        }
         //        quarreling = false;
         //        // else if (tmp.tag == "cow")
         //        //   tmp.GetComponent<Cow_Move>().quarrel = true;
@@ -149,8 +152,16 @@ public class Tiger_Move : MonoBehaviour
 
         //    if (quarrel_check > 3) // 조정 
         //    {
-        //        quarrel_check = 0;
-        //        quarreling = true;
+        //        if (tmp.tag == "chicken")
+        //        {
+        //            Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
+        //            if(!c_m.playing && !c_m.isdrag && !c_m.is_follow_food)
+        //            {
+        //                quarrel_check = 0;
+        //                c_m.quarrel = true;
+        //                quarreling = true;
+        //            }
+        //        }
         //    }
         //}
         return true;

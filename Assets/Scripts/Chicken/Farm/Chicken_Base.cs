@@ -163,3 +163,16 @@ public class Chicken_Drop_Egg : Chicken_Node
         return _chicken.Chicken_Egg();
     }
 }
+
+public class Chicken_Quarrel : Chicken_Node
+{
+    public Chicken_Move chicken
+    {
+        set { _chicken = value; }
+    }
+    private Chicken_Move _chicken;
+    public override bool Invoke()
+    {
+        return _chicken.Chicken_Quarrel();
+    }
+}
