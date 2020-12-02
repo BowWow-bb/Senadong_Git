@@ -75,6 +75,18 @@ public class Chicken_Basic_Attack : Chicken_Attack_Node
         return _chicken_Attack.Chicken_Basic_Attack();
     }
 }
+public class Chicken_Special_Attack : Chicken_Attack_Node
+{
+    public Chicken_Attack chicken_attack
+    {
+        set { _chicken_Attack = value; }
+    }
+    private Chicken_Attack _chicken_Attack;
+    public override bool Invoke()
+    {
+        return _chicken_Attack.Chicken_Special_Attack();
+    }
+}
 public class Chicken_Find_Target : Chicken_Attack_Node
 {
     public Chicken_Attack chicken_attack

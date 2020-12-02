@@ -11,6 +11,7 @@ public class Chicken_Attack_AI : MonoBehaviour
 
     //행동
     private Chicken_Basic_Attack basic_Attack = new Chicken_Basic_Attack();
+    private Chicken_Special_Attack special_Attack = new Chicken_Special_Attack();
     private Chicken_Find_Target find_Target = new Chicken_Find_Target();
 
     private Chicken_Attack a_chicken;
@@ -31,12 +32,13 @@ public class Chicken_Attack_AI : MonoBehaviour
 
         find_Target.chicken_attack = a_chicken;
         basic_Attack.chicken_attack = a_chicken;
+        special_Attack.chicken_attack = a_chicken;
 
         //행동들
         seqBehavior.AddChild(find_Target);
         seqBehavior.AddChild(basic_Attack);
+        seqBehavior.AddChild(special_Attack);
         
-
         behaviorProcess = BehaviorProcess();
         StartCoroutine(behaviorProcess);
     }
