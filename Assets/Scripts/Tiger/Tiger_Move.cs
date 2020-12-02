@@ -63,6 +63,35 @@ public class Tiger_Move : MonoBehaviour
     public bool isdrag=false;
     // Start is called before the first frame update
 
+    void Update()
+    {
+        //밥 추적 
+        Bap = GameObject.FindWithTag("hungry_follow_item");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
+        if (Bap != null)//밥 생성 되었는지 
+        {
+            //Debug.Log("밥 생성");
+            distance = Vector3.Distance(this.gameObject.transform.position, Bap.transform.position);//거리 파악
+        }
+        is_follow_food = (Bap != null && distance < follow_distance && isHungry == true);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
+        //
+        //애니메이터 
+        if (!moving && !isPoop && !is_follow_food)
+        {
+            animator.SetBool("is_sleepy", true);
+        }
+        else
+        {
+            animator.SetBool("is_sleepy", false);
+        }
+        if(isPlay)
+        {
+            animator.SetBool("is_attack", true);
+        }
+        else
+        {
+            animator.SetBool("is_attack", false);
+        }
+    }
     public bool Quarrel()
     {
         
@@ -378,27 +407,7 @@ public class Tiger_Move : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        //밥 추적 
-        Bap = GameObject.FindWithTag("hungry_follow_item");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
-        if (Bap != null)//밥 생성 되었는지 
-        {
-            //Debug.Log("밥 생성");
-            distance = Vector3.Distance(this.gameObject.transform.position, Bap.transform.position);//거리 파악
-        }
-        is_follow_food = (Bap != null && distance < follow_distance && isHungry == true);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
-        //
-        //애니메이터 
-        if(!moving&&!isPoop&&!is_follow_food)
-        {
-            animator.SetBool("is_sleepy", true);
-        }
-        else
-        {
-            animator.SetBool("is_sleepy", false);
-        }
-    }
+    
     public void FixedUpdate()
     {
         BasicTime++;
