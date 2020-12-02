@@ -56,6 +56,9 @@ public class Cow_Move : MonoBehaviour
     //
     public bool isdrag=false;
 
+    //애니메이터 
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -76,11 +79,30 @@ public class Cow_Move : MonoBehaviour
         hunger = false; // 변수 초기화
         moving = false;
         playing = false;
+
+        animator = GetComponent<Animator>();//애니메이터 
     }
 
     // Update is called once per frame
     void Update()
     {
+        //애니메이터 
+        if (!moving && isPoop && !is_follow_food)
+        {
+            animator.SetBool("is_ddong", true);
+        }
+        else
+        {
+            animator.SetBool("is_ddong", false);
+        }
+        if (!moving && is_follow_food)
+        {
+            animator.SetBool("is_find_bap", true);
+        }
+        else
+        {
+            animator.SetBool("is_find_bap", false);
+        }
         //밥 추적 
         Bap = GameObject.FindWithTag("hungry_follow_item");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
         if (Bap != null)//밥 생성 되었는지 
