@@ -317,11 +317,11 @@ public class Cow_Move : MonoBehaviour
         {
             if (Bap.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
             else//밥이 오른쪽이라면 
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
             transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.06f);
             return true;
@@ -338,11 +338,11 @@ public class Cow_Move : MonoBehaviour
         {
             if (Milk.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
             else//밥이 오른쪽이라면 
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
             transform.position = Vector3.MoveTowards(transform.position, Milk.transform.position, 0.06f);
             return true;
@@ -359,11 +359,11 @@ public class Cow_Move : MonoBehaviour
         {
             if (Egg.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
             else//밥이 오른쪽이라면 
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(1, 1, 1);
             }
             transform.position = Vector3.MoveTowards(transform.position, Egg.transform.position, 0.06f);
             return true;
