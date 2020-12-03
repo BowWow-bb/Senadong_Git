@@ -60,6 +60,14 @@ public class Drag : MonoBehaviour
         {
             this.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }
+        else if (this.tag == "milk_item_follow")   //농장에 가져다 우유 이동 
+        {
+            this.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+        }
+        else if (this.tag == "egg_item_follow")   //농장에 가져다 계란 이동 
+        {
+            this.transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+        }
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 13);
         this.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
     }

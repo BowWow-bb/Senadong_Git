@@ -12,7 +12,11 @@ public class Tiger_AI : MonoBehaviour
     private Poop poop = new Poop();
     private Play play = new Play();
     private FollowMouse followMouse = new FollowMouse();
+
     private Tiger_Follow_Food follow_Food = new Tiger_Follow_Food();
+    private Tiger_Follow_Milk follow_Milk = new Tiger_Follow_Milk();
+    private Tiger_Follow_Egg follow_Egg = new Tiger_Follow_Egg();
+
     private Eat eat = new Eat();
     private BasicMove basicMove = new BasicMove();
     private Quarrel quarrel = new Quarrel();
@@ -31,6 +35,8 @@ public class Tiger_AI : MonoBehaviour
         play.tiger = m_tiger;
         followMouse.tiger = m_tiger;
         follow_Food.tiger = m_tiger;
+        follow_Egg.tiger = m_tiger;
+        follow_Milk.tiger = m_tiger;
         eat.tiger = m_tiger;
         basicMove.tiger = m_tiger;
         quarrel.tiger = m_tiger;
@@ -39,7 +45,11 @@ public class Tiger_AI : MonoBehaviour
         seqInTheFarm.AddChild(poop);
         seqInTheFarm.AddChild(play);
         seqInTheFarm.AddChild(followMouse);
+
         seqInTheFarm.AddChild(follow_Food);
+        seqInTheFarm.AddChild(follow_Milk);
+        seqInTheFarm.AddChild(follow_Egg);
+
         seqInTheFarm.AddChild(eat);
         seqInTheFarm.AddChild(basicMove);
         seqInTheFarm.AddChild(quarrel);

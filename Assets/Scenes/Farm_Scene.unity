@@ -430,6 +430,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 40, y: 0, z: 0}
+--- !u!1 &1554543066 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6963423976474070388, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
+  m_PrefabInstance: {fileID: 1868721667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1554543068
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554543066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9853601, y: 1.8926805, z: 1}
+  m_Center: {x: 0.00000047683716, y: 0.046340287, z: 0}
 --- !u!1001 &1628854281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -504,6 +522,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1691398234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4988592700443691458, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
+  m_PrefabInstance: {fileID: 1868721667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1691398236
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1691398234}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4222784, y: 1.9721198, z: 1}
+  m_Center: {x: -0.2184596, y: -0.006619692, z: 0}
 --- !u!1001 &1701415071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -515,6 +551,14 @@ PrefabInstance:
       propertyPath: Bab_Prefab
       value: 
       objectReference: {fileID: 6063200127748015454, guid: e782b6c0dc0ba4f9f9b91985e223c02f, type: 3}
+    - target: {fileID: 1415452947461563157, guid: 87b94df9dca329c42b77f610d5a03838, type: 3}
+      propertyPath: Egg_Prefab
+      value: 
+      objectReference: {fileID: 6978090392047311515, guid: 93b0da333f49a46eb8beb42301f46ac5, type: 3}
+    - target: {fileID: 1415452947461563157, guid: 87b94df9dca329c42b77f610d5a03838, type: 3}
+      propertyPath: Milk_Prefab
+      value: 
+      objectReference: {fileID: 9087585364310318384, guid: 2f22ee8533c564c328389e18544cf6cd, type: 3}
     - target: {fileID: 1415452947461563158, guid: 87b94df9dca329c42b77f610d5a03838, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -656,6 +700,14 @@ PrefabInstance:
     - target: {fileID: 4985651962382621693, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
       propertyPath: m_TagString
       value: milk_item
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988592700443691458, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
+      propertyPath: m_TagString
+      value: milk_item_slot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6963423976474070388, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
+      propertyPath: m_TagString
+      value: egg_item_slot
       objectReference: {fileID: 0}
     - target: {fileID: 7297995280322686644, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
       propertyPath: m_Size.x

@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     public GameObject Bab_Prefab;
+    public GameObject Egg_Prefab;
+    public GameObject Milk_Prefab;
 
     bool isbap=false;
 
@@ -55,6 +57,22 @@ public class ItemManager : MonoBehaviour
                     
                     bapPos = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
                     bap.transform.position = bapPos;
+                }
+                if (hit.transform.gameObject.tag == "egg_item_slot" && egg_item > 0)  //hungry 아이템 슬롯 누름 
+                {
+                    Vector3 eggPos;
+                    GameObject egg = GameObject.Instantiate(Egg_Prefab);
+
+                    eggPos = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
+                    egg.transform.position = eggPos;
+                }
+                if (hit.transform.gameObject.tag == "milk_item_slot" && milk_item > 0)  //hungry 아이템 슬롯 누름 
+                {
+                    Vector3 milkPos;
+                    GameObject milk = GameObject.Instantiate(Milk_Prefab);
+
+                    milkPos = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
+                    milk.transform.position = milkPos;
                 }
             }
         }

@@ -50,9 +50,15 @@ public class Cow_Move : MonoBehaviour
 
     //밥 추적 위함 
     GameObject Bap;
+    GameObject Milk;
+    GameObject Egg;
     public float follow_distance = 5;//밥 추적 범위 
     float distance;
+    float distance_milk;
+    float distance_egg;
     public bool is_follow_food = false;//밥 추적 중인지
+    public bool is_follow_milk = false;//우유 추적 중인지
+    public bool is_follow_egg = false;//계란 추적 중인지
     //
     public bool isdrag=false;
 
@@ -87,7 +93,7 @@ public class Cow_Move : MonoBehaviour
     void Update()
     {
         //애니메이터 
-        if (!moving && isPoop && !is_follow_food)
+        if (!moving && isPoop && !is_follow_food && !is_follow_egg && !is_follow_milk)
         {
             animator.SetBool("is_ddong", true);
         }
@@ -103,6 +109,8 @@ public class Cow_Move : MonoBehaviour
         {
             animator.SetBool("is_find_bap", false);
         }
+
+        //추적 우선 순위: 밥> 우유 > 계란
         //밥 추적 
         Bap = GameObject.FindWithTag("hungry_follow_item");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
         if (Bap != null)//밥 생성 되었는지 
@@ -111,6 +119,23 @@ public class Cow_Move : MonoBehaviour
             distance = Vector3.Distance(this.gameObject.transform.position, Bap.transform.position);//거리 파악
         }
         is_follow_food = (Bap != null && distance < follow_distance && isHungry == true);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
+
+        //우유 아이템 추적 
+        Milk = GameObject.FindWithTag("milk_item_follow");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
+        if (Milk != null)//우선 순위
+        {
+            distance_milk = Vector3.Distance(this.gameObject.transform.position, Milk.transform.position);//거리 파악
+        }
+        is_follow_milk = (Milk != null && distance_milk < follow_distance && isHungry == true);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
+
+        //계란 아이템 추적 
+        Egg = GameObject.FindWithTag("egg_item_follow");//밥 아이템 찾기 -> 문제: 여러 개 생성되었으면 제일 위에것만 따라감 
+        if (Egg != null)//밥 생성 되었는지 
+        {
+            //Debug.Log("계란 생성");
+            distance_egg = Vector3.Distance(this.gameObject.transform.position, Egg.transform.position);//거리 파악
+        }
+        is_follow_egg = (Egg != null && distance_egg < follow_distance && isHungry == true);//밥이 생성 되었고 거리가 follow_distance 미만이라면 is_follow_food true
         //
     }
     private void FixedUpdate()
@@ -290,8 +315,6 @@ public class Cow_Move : MonoBehaviour
     {
         if (is_follow_food)//밥 생성 되었는지 
         {
-            //Debug.Log("밥 생성, 거리 추적 범위");
-            //Debug.Log("밥 위치: ", Bap.transform);
             if (Bap.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
                 transform.localScale = new Vector3(1, 1, 1);
@@ -301,6 +324,48 @@ public class Cow_Move : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
             }
             transform.position = Vector3.MoveTowards(transform.position, Bap.transform.position, 0.06f);
+            return true;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public bool Cow_Follow_Milk()
+    {
+        if (is_follow_milk)//밥 생성 되었는지 
+        {
+            if (Milk.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else//밥이 오른쪽이라면 
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            transform.position = Vector3.MoveTowards(transform.position, Milk.transform.position, 0.06f);
+            return true;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public bool Cow_Follow_Egg()
+    {
+        if (is_follow_egg)//밥 생성 되었는지 
+        {
+            if (Egg.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else//밥이 오른쪽이라면 
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            transform.position = Vector3.MoveTowards(transform.position, Egg.transform.position, 0.06f);
             return true;
         }
         else
@@ -336,7 +401,7 @@ public class Cow_Move : MonoBehaviour
         }
         else   //랜덤 이동
         {
-            if (!playing && !isdrag && !is_follow_food)
+            if (!playing && !isdrag && !is_follow_food && !is_follow_egg && !is_follow_milk)
             {
                 if (moving) // 노는중 아닐 때 , 움직이는 중
                 {

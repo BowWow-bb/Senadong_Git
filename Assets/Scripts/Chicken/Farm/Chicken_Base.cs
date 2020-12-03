@@ -151,6 +151,32 @@ public class Chicken_Follow_Food : Chicken_Node
     }
 }
 
+public class Chicken_Follow_Milk : Chicken_Node
+{
+    public Chicken_Move chicken
+    {
+        set { _chicken = value; }
+    }
+    private Chicken_Move _chicken;
+    public override bool Invoke()
+    {
+        return _chicken.Chicken_Follow_Milk();
+    }
+}
+
+public class Chicken_Follow_Egg : Chicken_Node
+{
+    public Chicken_Move chicken
+    {
+        set { _chicken = value; }
+    }
+    private Chicken_Move _chicken;
+    public override bool Invoke()
+    {
+        return _chicken.Chicken_Follow_Egg();
+    }
+}
+
 public class Chicken_Drop_Egg : Chicken_Node
 {
     public Chicken_Move chicken

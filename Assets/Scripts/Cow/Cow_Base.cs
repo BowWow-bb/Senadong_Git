@@ -162,3 +162,28 @@ public class Cow_Follow_Food : Cow_Node
         return _cow.Cow_Follow_Food();
     }
 }
+public class Cow_Follow_Milk : Cow_Node
+{
+    public Cow_Move cow
+    {
+        set { _cow = value; }
+    }
+    private Cow_Move _cow;
+    public override bool Invoke()
+    {
+        return _cow.Cow_Follow_Milk();
+    }
+}
+
+public class Cow_Follow_Egg : Cow_Node
+{
+    public Cow_Move cow
+    {
+        set { _cow = value; }
+    }
+    private Cow_Move _cow;
+    public override bool Invoke()
+    {
+        return _cow.Cow_Follow_Egg();
+    }
+}

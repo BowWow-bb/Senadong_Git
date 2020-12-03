@@ -44,6 +44,10 @@ TagManager:
   - floating_cow
   - floating_tiger
   - expmax_panel
+  - egg_item_slot
+  - milk_item_slot
+  - egg_item_follow
+  - milk_item_follow
   layers:
   - Default
   - TransparentFX
