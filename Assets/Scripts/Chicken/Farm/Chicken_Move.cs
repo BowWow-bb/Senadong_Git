@@ -78,9 +78,9 @@ public class Chicken_Move : MonoBehaviour
     {
         Timer = 7;
         //속성값 초기 설정
-        hungry = valueMax;
-        poop = valueMax;
-        play = valueMax;
+        Stat_Manager.Variables.chi_hungry = valueMax;
+        Stat_Manager.Variables.chi_poop = valueMax;
+        Stat_Manager.Variables.chi_play = valueMax;
 
         //말풍선 비활성화
         fHungry = transform.GetChild(0).gameObject;
@@ -168,26 +168,26 @@ public class Chicken_Move : MonoBehaviour
         if (Timer % 40 == 0)
         {
             //시간에 따라 계속 속성 값 감소
-            if (hungry - 1 < 0) hungry = 0;
-            else hungry--;
+            if (Stat_Manager.Variables.chi_hungry - 1 < 0) Stat_Manager.Variables.chi_hungry = 0;
+            else Stat_Manager.Variables.chi_hungry--;
 
-            if (poop - 1 < 0) poop = 0;
-            else poop--;
+            if (Stat_Manager.Variables.chi_poop - 1 < 0) Stat_Manager.Variables.chi_poop = 0;
+            else Stat_Manager.Variables.chi_poop--;
 
-            if (play - 1 < 0) play = 0;
-            else play--;
+            if (Stat_Manager.Variables.chi_play - 1 < 0) Stat_Manager.Variables.chi_play = 0;
+            else Stat_Manager.Variables.chi_play--;
 
             //똥 안치우면 poop속성값 더 많이 감소
-            if (poop - countPoop * 5 < 0) poop = 0;
-            else poop -= countPoop * 5;
+            if (Stat_Manager.Variables.chi_poop - countPoop * 5 < 0) Stat_Manager.Variables.chi_poop = 0;
+            else Stat_Manager.Variables.chi_poop -= countPoop * 5;
 
             //속성값 0인 항목이 있는 경우 경험치 감소
-            if (hungry > 0 && poop > 0 && play > 0)
-                if (exp + 5 > valueMax) exp = valueMax;
-                else exp += 5;
+            if (Stat_Manager.Variables.chi_hungry > 0 && Stat_Manager.Variables.chi_poop > 0 && Stat_Manager.Variables.chi_play > 0)
+                if (Stat_Manager.Variables.chi_exp + 5 > valueMax) Stat_Manager.Variables.chi_exp = valueMax;
+                else Stat_Manager.Variables.chi_exp += 5;
             else
-                if (exp - 30 < 0) exp = 0;
-            else exp -= 30;
+                if (Stat_Manager.Variables.chi_exp - 30 < 0) Stat_Manager.Variables.chi_exp = 0;
+            else Stat_Manager.Variables.chi_exp -= 30;
         }
     }
     //행동 
