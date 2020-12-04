@@ -17,12 +17,16 @@ public class ItemManager : MonoBehaviour
     public int milk_item = 0;
     public TextMesh count;
 
+    public int coin = 0;    
+
     // Start is called before the first frame update
     void Start()
     {
         hungry_item = 5;
         poop_item = 5;
         play_item = 5;
+
+        coin = 1000;
      }
    
     // Update is called once per frame
