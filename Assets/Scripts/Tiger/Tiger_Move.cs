@@ -9,7 +9,7 @@ public class Tiger_Move : MonoBehaviour
     int hungryTime = 0; // 배고픔 재는 시간
     int BasicTime = 0; // 기본 움직임 재는 시간
     public int playTime = 0; // 심심한 시간 재는 시간
-
+    int wait=0;
     public bool quarreling = false; // 시비거는중 인지
     public bool playing = false; // 노는중 인지
     bool hunger; // 배고픈 상태인지 
@@ -21,7 +21,7 @@ public class Tiger_Move : MonoBehaviour
 
     Vector2 move_vec; // 움직일 방향벡터
     Vector3 Start_Point; // 움직일때의 시작점
-    Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
+    public Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
     Vector3 Mouse;
     Vector3 tmp_Point;
 
@@ -123,13 +123,13 @@ public class Tiger_Move : MonoBehaviour
         if (quarreling && (!isHungry && !isPoop && !isPlay))
         {
             Debug.Log("qua");
-            float x = gameObject.transform.position.x / 26f + 0.5f; // 화면 비율에 맞춘 호랑이좌표 0~1 
-            float y = gameObject.transform.position.y / 13f + 0.5f;
+            float x = gameObject.transform.position.x;
+            float y = gameObject.transform.position.y;
             Start_Point = new Vector3(x, y, -8);
             x = tmp.transform.position.x;
             y = tmp.transform.position.y;
             Vector3 quarrel_point = new Vector3(x, y, -8);
-            trace = (quarrel_point - Start_Point); // 호랑이와 마우스 사이의 벡터
+            trace = (quarrel_point - Start_Point); // ㅎㅎㅗㄹㅏㅇㅇㅣㅇㅗ
             if (trace.x >= 0)
                 gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
             //gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
@@ -138,33 +138,28 @@ public class Tiger_Move : MonoBehaviour
             //gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
 
 
-            x = (Start_Point.x + (trace.x * trace_length) - 0.5f) * 26f; // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
-            y = (Start_Point.y + (trace.y * trace_length) - 0.5f) * 13f;
+            x = Start_Point.x + (trace.x * trace_length);  // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
+            y = Start_Point.y + (trace.y * trace_length);
 
             gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
-            trace_length += 0.000001f; // 빨라지는 추적속도
-            if (Vector3.Distance(Start_Point, quarrel_point) < 5f)
+            trace_length += 0.01f; // 빨라지는 추적속도
+            if (Vector3.Distance(gameObject.transform.position, quarrel_point) < 1f)
             {
-                if (tmp.tag == "chicken")
-                {
-                    Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
-                    c_m.hurt = true;
-
-                }
-                quarreling = false;
+                quarrel_check = 0;
                 // else if (tmp.tag == "cow")
                 //   tmp.GetComponent<Cow_Move>().quarrel = true;
-                Debug.Log("잡");
+                Debug.Log("잡" + trace_length);
+
                 gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
                 trace_length = 0;
+                quarreling = false;
             }
         }
         else
         {
 
-
-            if (Vector3.Distance(Cow.transform.position, gameObject.transform.position) < 10f) // 닭 / 소가 호랑이의 일정범위 내의 들어온다면 
+            if (Vector3.Distance(Cow.transform.position, gameObject.transform.position) < 5f) // 닭 / 소가 호랑이의 일정범위 내의 들어온다면 
             {
                 tmp = Cow; // 바로 전에 보인 동물
                 quarrel_check++; // 눈앞에 걸리적거림 +1
@@ -173,21 +168,28 @@ public class Tiger_Move : MonoBehaviour
             {
                 tmp = Chicken;
                 quarrel_check++;
+                Debug.Log("qq" + quarrel_check);
             }
 
-            if (quarrel_check > 3) // 조정 
+            if (quarrel_check > 500) // 조정 
             {
-                if (tmp.tag == "chicken")
+                quarrel_check = 0;
+                if (!isHungry && !isPoop && !isPlay && !quarreling )
                 {
-                    Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
-                    if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food)
+                    if (tmp.tag == "chicken")
                     {
-                        quarrel_check = 0;
-                        c_m.quarrel = true;
-                        quarreling = true;
+                        Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
+                        if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food
+                            && !c_m.isEggTime && !c_m.is_follow_food && !c_m.is_follow_milk && !c_m.is_follow_egg && !c_m.isPoop)
+                        {
+                            quarrel_check = 0;
+                            c_m.quarrel = true;
+                            quarreling = true;
+                        }
                     }
                 }
             }
+
         }
         return true;
     }
