@@ -18,7 +18,9 @@ public class Cow_Move : MonoBehaviour
     float trace_length = 0;
     int check = 0;
     public bool trace_mouse; // 마우스를 향해 달리는 중인지
-
+    public bool quarrel;
+    bool hurt;
+    Vector3 hurt_vec;
     Vector2 move_vec; // 움직일 방향벡터
     Vector3 Start_Point; // 움직일때의 시작점
     Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
@@ -31,7 +33,7 @@ public class Cow_Move : MonoBehaviour
     int statTime = 450, statMax = 450;  //말풍선 지속 시간
     public int valueMax = 1000;
     public int hungry;  public bool isHungry = false;  int hungryTimer = 1100;
-    public int poop;    bool isPoop = false;    int poopTimer = 1500;
+    public int poop;    public bool isPoop = false;    int poopTimer = 1500;
     public int play;    bool isPlay = false;    int playTimer = 1200;
 
     //청결 관련
@@ -354,7 +356,59 @@ public class Cow_Move : MonoBehaviour
             return true;
         }
     }
+    public bool Cow_Quarrel()
+    {
+        GameObject tiger = GameObject.FindWithTag("tiger");
+        Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
+        if (quarrel)
+        {
+            if (hurt)
+            {
+                trace_length += 0.3f;
+                float x = Start_Point.x + (hurt_vec.x * trace_length);  // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
+                float y = Start_Point.y + (hurt_vec.y * trace_length);
+                tmp_Point = gameObject.transform.position;
 
+                if (x >= 13f) // 울타리를 넘어가지 않기 위해 
+                    x = 13f;
+                if (x <= -13f)
+                    x = -13f;
+                if (y >= 5.7f)
+                    y = 5.7f;
+                if (y <= -6.5f)
+                    y = -6.5f;
+                if (x >= 3 && y >= -6.5f && y <= -4.5f)
+                {
+                    x = tmp_Point.x; y = tmp_Point.y;
+                }
+                gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+
+                if (trace_length > 3f)
+                {
+                    trace_length = 0;
+                    hurt = false;
+                    quarrel = false;
+                }
+
+            }
+            else
+            {
+
+
+                if ((Vector3.Distance(Start_Point, tiger.transform.position)) < 1f)
+                {
+                    hurt = true;
+                }
+                else
+                {
+                    Start_Point = gameObject.transform.position;
+                    hurt_vec = T_m.trace;
+                    trace_length = 0;
+                }
+            }
+        }
+        return true;
+    }
     public bool Cow_Follow_Egg()
     {
         if (is_follow_egg)//밥 생성 되었는지 
@@ -403,7 +457,7 @@ public class Cow_Move : MonoBehaviour
         }
         else   //랜덤 이동
         {
-            if (!playing && !isdrag && !is_follow_food && !is_follow_egg && !is_follow_milk)
+            if (!playing && !isdrag && !is_follow_food && !is_follow_egg && !is_follow_milk&&!quarrel)
             {
                 if (moving) // 노는중 아닐 때 , 움직이는 중
                 {

@@ -122,7 +122,6 @@ public class Tiger_Move : MonoBehaviour
 
         if (quarreling && (!isHungry && !isPoop && !isPlay))
         {
-            Debug.Log("qua");
             float x = gameObject.transform.position.x;
             float y = gameObject.transform.position.y;
             Start_Point = new Vector3(x, y, -8);
@@ -147,9 +146,6 @@ public class Tiger_Move : MonoBehaviour
             if (Vector3.Distance(gameObject.transform.position, quarrel_point) < 1f)
             {
                 quarrel_check = 0;
-                // else if (tmp.tag == "cow")
-                //   tmp.GetComponent<Cow_Move>().quarrel = true;
-                Debug.Log("잡" + trace_length);
 
                 gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
                 trace_length = 0;
@@ -168,10 +164,9 @@ public class Tiger_Move : MonoBehaviour
             {
                 tmp = Chicken;
                 quarrel_check++;
-                Debug.Log("qq" + quarrel_check);
             }
 
-            if (quarrel_check > 500) // 조정 
+            if (quarrel_check > 300) // 조정 
             {
                 quarrel_check = 0;
                 if (!isHungry && !isPoop && !isPlay && !quarreling )
@@ -181,6 +176,18 @@ public class Tiger_Move : MonoBehaviour
                         Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
                         if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food
                             && !c_m.isEggTime && !c_m.is_follow_food && !c_m.is_follow_milk && !c_m.is_follow_egg && !c_m.isPoop)
+                        {
+                            quarrel_check = 0;
+                            c_m.quarrel = true;
+                            quarreling = true;
+                        }
+
+                    }
+                    else if (tmp.tag == "cow")
+                    {
+                        Cow_Move c_m = tmp.GetComponent<Cow_Move>();
+                        if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food
+                            && !c_m.is_follow_food && !c_m.is_follow_milk && !c_m.is_follow_egg && !c_m.isPoop)
                         {
                             quarrel_check = 0;
                             c_m.quarrel = true;

@@ -21,7 +21,7 @@ public class Cow_AI : MonoBehaviour
     private Cow_Follow_Egg follow_Egg = new Cow_Follow_Egg();
     private Cow_Eat eat = new Cow_Eat();
     private Cow_BasicMove basicMove = new Cow_BasicMove();
-
+    private Cow_Quarrel quarrel = new Cow_Quarrel();
     private Cow_Move m_cow;
     private IEnumerator behaviorProcess;
     // Start is called before the first frame update
@@ -44,6 +44,7 @@ public class Cow_AI : MonoBehaviour
         followMouse.cow = m_cow;
         dropmilk.cow = m_cow;
 
+        quarrel.cow = m_cow;
         followFood.cow = m_cow;
         follow_Egg.cow = m_cow;
         follow_Milk.cow = m_cow;
@@ -62,6 +63,7 @@ public class Cow_AI : MonoBehaviour
         seqInTheFarm.AddChild(followFood);
         seqInTheFarm.AddChild(follow_Milk);
         seqInTheFarm.AddChild(follow_Egg);
+        seqInTheFarm.AddChild(quarrel);
         //seqInTheFarm.AddChild(eat);
         seqInTheFarm.AddChild(basicMove);
 

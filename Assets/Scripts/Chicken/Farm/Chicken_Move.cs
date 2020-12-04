@@ -199,7 +199,6 @@ public class Chicken_Move : MonoBehaviour
         {
             if (hurt)
             {
-                Debug.Log("속이뻥");
                 trace_length += 0.3f;
                 float x = Start_Point.x + (hurt_vec.x * trace_length);  // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
                 float y = Start_Point.y + (hurt_vec.y * trace_length);
@@ -221,8 +220,6 @@ public class Chicken_Move : MonoBehaviour
 
                 if (trace_length >3f)
                 {
-                    Debug.Log("끝");
-
                     trace_length = 0;
                     hurt = false;
                     quarrel = false;
@@ -236,11 +233,9 @@ public class Chicken_Move : MonoBehaviour
                 if ((Vector3.Distance(Start_Point, tiger.transform.position)) < 1f)
                 {
                     hurt = true;
-                    Debug.Log("아팟");
                 }
                 else
                 {
-                    Debug.Log("깔깔");
                     Start_Point = gameObject.transform.position;
                     hurt_vec = T_m.trace;
                     trace_length = 0;
