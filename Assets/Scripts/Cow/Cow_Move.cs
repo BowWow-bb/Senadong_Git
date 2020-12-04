@@ -300,7 +300,7 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Milk()
     {
-        if(milkTimer != 0 && milkTimer % 1000 == 0)
+        if(milkTimer != 0 && milkTimer % 2000 == 0)
         {
             //우유 생산
             GameObject milk = Instantiate(MilkPrefab);

@@ -67,7 +67,7 @@ public class Chicken_Move : MonoBehaviour
     public bool isdrag = false;//drag 중인지 파악 -> 이동시 순간이동 방지  
 
     int EggTime = 0;//달걀 낳는 시간
-    public int C_EggTime = 1000;//달걀 낳는 속도 조정 
+    public int C_EggTime = 2000;//달걀 낳는 속도 조정 
 
     public bool isEggTime;//달걀 낳는 거 
     bool isRight = false;//보는 방향:왼쪽/오른쪽 
