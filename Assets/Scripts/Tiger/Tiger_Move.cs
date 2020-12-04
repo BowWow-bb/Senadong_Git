@@ -119,7 +119,6 @@ public class Tiger_Move : MonoBehaviour
     }
     public bool Quarrel()
     {
-
         if (quarreling && (!isHungry && !isPoop && !isPlay))
         {
             float x = gameObject.transform.position.x;

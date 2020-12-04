@@ -99,7 +99,7 @@ public class Chicken_Move : MonoBehaviour
     void Update()
     {
         EggTime++;
-        if (isdrag)
+        if (isdrag || hurt)
         {
             animator.SetBool("is_drag", true);
         }
@@ -108,7 +108,7 @@ public class Chicken_Move : MonoBehaviour
             animator.SetBool("is_drag", false);
         }
 
-        if (!moving && !isPoop && !is_follow_food &&!is_follow_egg && !is_follow_milk)//따라가는 상태가 아니라면 
+        if (!moving && !isPoop && !is_follow_food &&!is_follow_egg && !is_follow_milk &&!quarrel)//따라가는 상태가 아니라면 
         {
             animator.SetBool("is_drop_egg", true);
         }
@@ -196,6 +196,7 @@ public class Chicken_Move : MonoBehaviour
         Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
         if (quarrel)
         {
+            Debug.Log("quarrel true");
             if (hurt)
             {
                 trace_length += 0.3f;
@@ -222,13 +223,12 @@ public class Chicken_Move : MonoBehaviour
                     trace_length = 0;
                     hurt = false;
                     quarrel = false;
+                    Debug.Log("quarrel false");
                 }
 
             }
             else
             {
-
-
                 if ((Vector3.Distance(Start_Point, tiger.transform.position)) < 1f)
                 {
                     hurt = true;
@@ -401,7 +401,7 @@ public class Chicken_Move : MonoBehaviour
         }
         else   //랜덤 이동
         {
-            if (!playing && !isdrag && !is_follow_food &&!is_follow_egg && !is_follow_milk&&!quarrel)
+            if (!playing && !isdrag && !is_follow_food &&!is_follow_egg && !is_follow_milk &&!quarrel)
             {
                 if (moving) // 노는중 아닐 때 , 움직이는 중,계란 낳는 중 아닐때 ->움직여라 
                 {
