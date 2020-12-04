@@ -99,13 +99,21 @@ public class Chicken_Move : MonoBehaviour
     void Update()
     {
         EggTime++;
-        if (isdrag || hurt)
+        if (isdrag && !quarrel)
         {
             animator.SetBool("is_drag", true);
         }
         else
         {
             animator.SetBool("is_drag", false);
+        }
+        if(hurt && !isdrag)
+        {
+            animator.SetBool("is_attacked", true);
+        }
+        else
+        {
+            animator.SetBool("is_attacked", false);
         }
 
         if (!moving && !isPoop && !is_follow_food &&!is_follow_egg && !is_follow_milk &&!quarrel)//따라가는 상태가 아니라면 

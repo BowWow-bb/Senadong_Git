@@ -81,7 +81,7 @@ public class Tiger_Move : MonoBehaviour
         {
             animator.SetBool("is_sleepy", false);
         }
-        if(isPlay)
+        if(isPlay||quarreling)
         {
             animator.SetBool("is_attack", true);
         }
