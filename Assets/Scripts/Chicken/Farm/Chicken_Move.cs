@@ -181,11 +181,11 @@ public class Chicken_Move : MonoBehaviour
 
             //속성값 0인 항목이 있는 경우 경험치 감소
             if (hungry > 0 && poop > 0 && play > 0)
-                if (exp + 1 > valueMax) exp = valueMax;
-                else exp += 1;
+                if (exp + 5 > valueMax) exp = valueMax;
+                else exp += 5;
             else
-                if (exp - 5 < 0) exp = 0;
-            else exp -= 5;
+                if (exp - 30 < 0) exp = 0;
+            else exp -= 30;
         }
     }
     //행동 
@@ -232,6 +232,8 @@ public class Chicken_Move : MonoBehaviour
                         gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
                         isPlay = false;
                         statTime = statMax;
+                        play += 100;
+                        exp += 50;
                     }
                     else
                     {

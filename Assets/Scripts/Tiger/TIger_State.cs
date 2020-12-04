@@ -23,6 +23,8 @@ public class TIger_State : MonoBehaviour
             {
                 this.transform.parent = null;
                 Destroy(this.transform.gameObject);
+                tiger_move.poop += 100;
+                tiger_move.exp += 50;
                 tiger_move.countPoop--;
                 item_manager.poop_item--;
 
