@@ -29,7 +29,7 @@ public class Tiger_Move : MonoBehaviour
     GameObject Bap;
     GameObject Milk;
     GameObject Egg;
-    public float follow_distance = 5;//밥 추적 범위 
+    public float follow_distance = 10;//밥 추적 범위 
     float distance;
     float distance_milk;
     float distance_egg;
@@ -349,6 +349,8 @@ public class Tiger_Move : MonoBehaviour
                         isPlay = false;
                         statTime = statMax;
                         trace_length = 0;
+                        play += 100;
+                        exp += 50;
                     }
                     else
                     {
@@ -491,10 +493,10 @@ public class Tiger_Move : MonoBehaviour
         BasicTime++;
         Timer++;
 
-        if (Timer > 10000 && exp == 0)    // 사망
+        if (Timer > 1000 && exp == 0)    // 사망
         {
             transform.Find("die_msg").gameObject.SetActive(true);
-            Destroy(transform.gameObject, 1.0f);
+            Destroy(transform.gameObject, 2.0f);
         }
         if (exp == valueMax)  //성장 완료
         {
@@ -522,11 +524,11 @@ public class Tiger_Move : MonoBehaviour
 
             //속성값 0인 항목이 있는 경우 경험치 감소
             if (hungry > 0 && poop > 0 && play > 0)
-                if (exp + 1 > valueMax) exp = valueMax;
-                else exp += 1;
+                if (exp + 5 > valueMax) exp = valueMax;
+                else exp += 5;
             else
-                if (exp - 5 < 0) exp = 0;
-            else exp -= 5;
+                if (exp - 30 < 0) exp = 0;
+            else exp -= 30;
         }
     }
 }

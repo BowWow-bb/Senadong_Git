@@ -23,6 +23,8 @@ public class Cow_State : MonoBehaviour
             {
                 this.transform.parent = null;
                 Destroy(this.transform.gameObject);
+                cow_move.poop += 100;
+                cow_move.exp += 50;
                 cow_move.countPoop--;
                 item_manager.poop_item--;
 

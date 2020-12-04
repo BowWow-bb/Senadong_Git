@@ -52,7 +52,7 @@ public class Cow_Move : MonoBehaviour
     GameObject Bap;
     GameObject Milk;
     GameObject Egg;
-    public float follow_distance = 5;//밥 추적 범위 
+    public float follow_distance = 10;//밥 추적 범위 
     float distance;
     float distance_milk;
     float distance_egg;
@@ -144,7 +144,7 @@ public class Cow_Move : MonoBehaviour
         Timer++;
         milkTimer++;
 
-        if(Timer > 10000 && exp == 0)    // 사망
+        if(Timer > 1000 && exp == 0)    // 사망
         {
             transform.Find("die_msg").gameObject.SetActive(true);
             Destroy(transform.gameObject, 1.0f);
