@@ -122,11 +122,13 @@ MonoBehaviour:
   playing: 0
   moving: 0
   trace_mouse: 0
+  quarrel: 0
   Timer: 0
   valueMax: 1000
   hungry: 0
   isHungry: 0
   poop: 0
+  isPoop: 0
   play: 0
   countPoop: 0
   CowPoopPrefab: {fileID: 3356446923225908269, guid: 5e65141b054c57d4aab1462b50d12939, type: 3}
@@ -137,6 +139,8 @@ MonoBehaviour:
   MilkPrefab: {fileID: 7011618860827259365, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
   follow_distance: 5
   is_follow_food: 0
+  is_follow_milk: 0
+  is_follow_egg: 0
   isdrag: 0
 --- !u!114 &2701849671355611128
 MonoBehaviour:

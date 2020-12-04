@@ -23,19 +23,12 @@ public class Chicken_State : MonoBehaviour
             {
                 this.transform.parent = null;
                 Destroy(this.transform.gameObject);
-                chicken_move.poop += 100;
-                chicken_move.exp += 50;
                 chicken_move.countPoop--;
                 item_manager.poop_item--;
-
-                if (chicken_move.hungry + plus >= chicken_move.valueMax)
-                {
-                    chicken_move.hungry = chicken_move.valueMax;
-                }
-                else
-                {
-                    chicken_move.hungry += plus;
-                }
+                if (chicken_move.poop + 100 > chicken_move.valueMax) chicken_move.poop = chicken_move.valueMax;
+                else chicken_move.poop += 100;
+                if (chicken_move.exp + 100 > chicken_move.valueMax) chicken_move.exp = chicken_move.valueMax;
+                else chicken_move.exp += 100;
             }
         }
         else
@@ -44,21 +37,12 @@ public class Chicken_State : MonoBehaviour
             {
                 if (item_manager.play_item > 0)  //아이템 있는 경우만
                 {
-                    Debug.Log("소놀풍선 클릭됨");
+                    Debug.Log("치킨놀풍선 클릭됨");
                     chicken_move.playing = true; // 놀아주기 비활성화 시에 놀아주기 활성화
                     chicken_move.playTime = 0;
                     chicken_move.trace_mouse = true;
                     chicken_move.fPlay.SetActive(false);
                     item_manager.play_item--;
-
-                    if (chicken_move.play + plus >= chicken_move.valueMax)
-                    {
-                        chicken_move.play = chicken_move.valueMax;
-                    }
-                    else
-                    {
-                        chicken_move.play += plus;
-                    }
                 }
             }
         }

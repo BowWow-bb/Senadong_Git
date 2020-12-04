@@ -9,8 +9,6 @@ public class hungry_item_script : MonoBehaviour
     Tiger_Move t_m;
     Cow_Move co_m;
 
-    public int full=100;//음식먹고 얻는 수치 (hungry)
-
     // Start is called before the first frame update
     void Start()
     {
@@ -32,52 +30,34 @@ public class hungry_item_script : MonoBehaviour
         if(other.gameObject.tag == "chicken" && c_m.is_follow_food)
         {
             Debug.Log("치킨이 먹음");
-            c_m.hungry += 100;
-            c_m.exp += 50;
             c_m.isHungry = false;
             c_m.fHungry.SetActive(false);
-            if (c_m.hungry + full >= c_m.valueMax)
-            {
-                c_m.hungry = c_m.valueMax;
-            }
-            else
-            {
-                c_m.hungry += full;
-            }
+            if (c_m.hungry + 100 > c_m.valueMax) c_m.hungry = c_m.valueMax;
+            else c_m.hungry += 100;
+            if (c_m.exp + 100 > c_m.valueMax) c_m.exp = c_m.valueMax;
+            else c_m.exp += 100;
             Destroy(gameObject);
         }
         if(other.gameObject.tag == "cow" && co_m.is_follow_food)
         {
             Debug.Log("소가먹음");
-            co_m.hungry += 100;
-            co_m.exp += 50;
             co_m.isHungry = false;
             co_m.fHungry.SetActive(false);
-            if (co_m.hungry + full >= co_m.valueMax)
-            {
-                co_m.hungry = co_m.valueMax;
-            }
-            else
-            {
-                co_m.hungry += full;
-            }            
+            if (co_m.hungry + 100 > co_m.valueMax) co_m.hungry = co_m.valueMax;
+            else co_m.hungry += 100;
+            if (co_m.exp + 100 > co_m.valueMax) co_m.exp = co_m.valueMax;
+            else co_m.exp += 100;
             Destroy(gameObject);
         } 
         if (other.gameObject.tag == "tiger" && t_m.is_follow_food)
         {
             Debug.Log("호랑이가 먹음");
-            t_m.hungry += 100;
-            t_m.exp += 50;
             t_m.isHungry = false;
             t_m.fHungry.SetActive(false);
-            if (t_m.hungry + full >= t_m.valueMax)
-            {
-                t_m.hungry = t_m.valueMax;
-            }
-            else
-            {
-                t_m.hungry += full;
-            }
+            if (t_m.hungry + 100 > t_m.valueMax) t_m.hungry = t_m.valueMax;
+            else t_m.hungry += 100;
+            if (t_m.exp + 100 > t_m.valueMax) t_m.exp = t_m.valueMax;
+            else t_m.exp += 100;
             Destroy(gameObject);
         }
     }

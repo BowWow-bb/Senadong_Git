@@ -23,19 +23,13 @@ public class TIger_State : MonoBehaviour
             {
                 this.transform.parent = null;
                 Destroy(this.transform.gameObject);
-                tiger_move.poop += 100;
-                tiger_move.exp += 50;
                 tiger_move.countPoop--;
                 item_manager.poop_item--;
+                if (tiger_move.poop + 100 > tiger_move.valueMax) tiger_move.poop = tiger_move.valueMax;
+                else tiger_move.poop += 100;
+                if (tiger_move.exp + 100 > tiger_move.valueMax) tiger_move.exp = tiger_move.valueMax;
+                else tiger_move.exp += 100;
 
-                if (tiger_move.hungry + plus >= tiger_move.valueMax)
-                {
-                    tiger_move.hungry = tiger_move.valueMax;
-                }
-                else
-                {
-                    tiger_move.hungry += plus;
-                }
             }
         }
         else
@@ -49,15 +43,6 @@ public class TIger_State : MonoBehaviour
                     tiger_move.trace_mouse = true;
                     tiger_move.fPlay.SetActive(false);
                     item_manager.play_item--;
-
-                    if (tiger_move.play + plus >= tiger_move.valueMax)
-                    {
-                        tiger_move.play = tiger_move.valueMax;
-                    }
-                    else
-                    {
-                        tiger_move.play += plus;
-                    }
                 }
             }
         }

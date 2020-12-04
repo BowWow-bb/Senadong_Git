@@ -23,19 +23,12 @@ public class Cow_State : MonoBehaviour
             {
                 this.transform.parent = null;
                 Destroy(this.transform.gameObject);
-                cow_move.poop += 100;
-                cow_move.exp += 50;
                 cow_move.countPoop--;
                 item_manager.poop_item--;
-
-                if (cow_move.hungry + plus >= cow_move.valueMax)
-                {
-                    cow_move.hungry = cow_move.valueMax;
-                }
-                else
-                {
-                    cow_move.hungry += plus;
-                }
+                if (cow_move.poop + 100 > cow_move.valueMax) cow_move.poop = cow_move.valueMax;
+                else cow_move.poop += 100;
+                if (cow_move.exp + 100 > cow_move.valueMax) cow_move.exp = cow_move.valueMax;
+                else cow_move.exp += 100;
             }
         }
         else
@@ -50,15 +43,6 @@ public class Cow_State : MonoBehaviour
                     cow_move.trace_mouse = true;
                     cow_move.fPlay.SetActive(false);
                     item_manager.play_item--;
-
-                    if (cow_move.play + plus >= cow_move.valueMax)
-                    {
-                        cow_move.play = cow_move.valueMax;
-                    }
-                    else
-                    {
-                        cow_move.play += plus;
-                    }
                 }
             }
         }

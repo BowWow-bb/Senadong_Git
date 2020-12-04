@@ -22,31 +22,33 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hungry_item = ItemCounter.Variables.Hungry_Num;
-        poop_item = ItemCounter.Variables.Poop_Num;
-        play_item = ItemCounter.Variables.Play_Num;
+        hungry_item = 5;
+        poop_item = 5;
+        play_item = 5;
 
-        coin = 1000;
+        coin = 2000;
      }
    
     // Update is called once per frame
     void Update()
     {       
         count = GameObject.FindWithTag("hungry_count").GetComponent<TextMesh>();
-        count.text = ItemCounter.Variables.Hungry_Num.ToString();
+        count.text = hungry_item.ToString();
 
         count = GameObject.FindWithTag("play_count").GetComponent<TextMesh>();
-        count.text = ItemCounter.Variables.Play_Num.ToString();
+        count.text = play_item.ToString();
  
         count = GameObject.FindWithTag("egg_count").GetComponent<TextMesh>();
-        count.text = ItemCounter.Variables.Egg_Num.ToString();
+        count.text = egg_item.ToString();
 
         count = GameObject.FindWithTag("milk_count").GetComponent<TextMesh>();
-        count.text = ItemCounter.Variables.Milk_Num.ToString();
+        count.text = milk_item.ToString();
 
         count = GameObject.FindWithTag("poop_count").GetComponent<TextMesh>();
-        count.text = ItemCounter.Variables.Poop_Num.ToString();
-        //   ItemCounter.Variables.Poop_Num = poop_item;
+        count.text = poop_item.ToString();
+
+        count = GameObject.FindWithTag("coin").GetComponent<TextMesh>();
+        count.text = coin.ToString();
 
         if (Input.GetMouseButtonDown(0))
         {

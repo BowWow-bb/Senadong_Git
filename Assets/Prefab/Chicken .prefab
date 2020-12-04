@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2321365779303792290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228285168187144822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e1d6b59ceba5e44ad85bf13ab1b219, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4128683475729064462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,6 +153,7 @@ MonoBehaviour:
   hungry: 0
   isHungry: 0
   poop: 0
+  isPoop: 0
   play: 0
   countPoop: 0
   ChickenPoopPrefab: {fileID: 3181500524151880679, guid: fe472d41c266df74196f68c2c373d259, type: 3}
@@ -150,8 +163,11 @@ MonoBehaviour:
   exp: 0
   follow_distance: 5
   is_follow_food: 0
+  is_follow_milk: 0
+  is_follow_egg: 0
   isdrag: 0
   C_EggTime: 1000
+  isEggTime: 0
   Egg_Prefab: {fileID: 2850414604651452211, guid: 14c90f77aae9c4edd85b8c536e0a779a, type: 3}
 --- !u!65 &7177418511496505537
 BoxCollider:
@@ -220,18 +236,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2321365779303792290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 228285168187144822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27e1d6b59ceba5e44ad85bf13ab1b219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1875164766097208372

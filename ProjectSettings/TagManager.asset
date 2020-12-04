@@ -48,6 +48,7 @@ TagManager:
   - milk_item_slot
   - egg_item_follow
   - milk_item_follow
+  - coin
   layers:
   - Default
   - TransparentFX

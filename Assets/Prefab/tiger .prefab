@@ -147,8 +147,11 @@ MonoBehaviour:
   playing: 0
   moving: 0
   trace_mouse: 0
+  trace: {x: 0, y: 0, z: 0}
   follow_distance: 5
   is_follow_food: 0
+  is_follow_milk: 0
+  is_follow_egg: 0
   Timer: 0
   valueMax: 1000
   hungry: 0
