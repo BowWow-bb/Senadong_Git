@@ -27,23 +27,18 @@ public class attackArea : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //적이랑 닿으면 camera 움직임 
         if(other.gameObject.tag =="chicken_enemy")
         {
             chicken.is_Attack = true;
-            camera_shake = true;
-            Debug.Log("닿음");
         }
         if (other.gameObject.tag == "tiger_enemy")
         {
             chicken.is_Attack = true;
-            camera_shake = true;
-            Debug.Log("닿음");
         }
         if (other.gameObject.tag == "cow_enemy")
         {
             chicken.is_Attack = true;
-            camera_shake = true;
-            Debug.Log("닿음");
         }
     }
     private void OnTriggerExit(Collider other)

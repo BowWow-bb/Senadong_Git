@@ -306,7 +306,8 @@ MonoBehaviour:
   chicken_wind: {fileID: 2740113527527679001, guid: 46fe9442a01594ce6ac0ff8e68dc890f, type: 3}
   back_distance: 3
   back_distance_time: 40
-  C_windTime: 100
+  C_battackTime: 100
+  C_windTime: 500
   is_go_right: 0
   is_Attack: 0
 --- !u!1 &266970225
@@ -320,8 +321,8 @@ GameObject:
   - component: {fileID: 266970227}
   - component: {fileID: 266970226}
   m_Layer: 0
-  m_Name: Chicken_Enemy (1)
-  m_TagString: Untagged
+  m_Name: 'big_Chicken_Enemy '
+  m_TagString: big_chicken_enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -549,8 +550,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTransform: {fileID: 0}
-  shake: 0.5
-  shakeAmount: 0.5
+  shake: 0.15
+  shakeAmount: 0.4
   decreaseFactor: 1
   cameraOn: 0
 --- !u!1 &561222360 stripped
@@ -952,8 +953,8 @@ GameObject:
   - component: {fileID: 1824685054}
   - component: {fileID: 1824685053}
   m_Layer: 0
-  m_Name: Chicken_0
-  m_TagString: Untagged
+  m_Name: big_chicken
+  m_TagString: big_chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

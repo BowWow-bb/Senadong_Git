@@ -49,6 +49,8 @@ TagManager:
   - egg_item_follow
   - milk_item_follow
   - coin
+  - big_chicken
+  - big_chicken_enemy
   layers:
   - Default
   - TransparentFX

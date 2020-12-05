@@ -19,14 +19,16 @@ public class Chicken_Attack : MonoBehaviour
     float back_time;//뒤로 물러서는 시간 -> 증가되는 값 
 
     int windTime = 0;//장풍 쏘는 시간
-    public int C_windTime = 500;//장풍 쏘는 시간 조정
+    int battackTime = 0;//기본 공격 시간
+    public int C_battackTime = 100;//장풍 쏘는 시간 조정
+    public int C_windTime = 800;//장풍 쏘는 시간 조정
 
     bool is_target_cow = false;
     bool is_target_chicken = false;
     bool is_target_tiger = false;
 
     bool is_find_target = false;
-    bool is_basic_attack = false;
+    bool is_basic_attack = true;
     bool is_special_attack = false;//장풍 쏘기
     bool is_special_attack_time = false;
 
@@ -44,6 +46,7 @@ public class Chicken_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        battackTime++;
         windTime++;
         if(is_special_attack)
         {
@@ -59,7 +62,6 @@ public class Chicken_Attack : MonoBehaviour
     {
         //기본: 거리 파악-> 가장 가까운 애한테 공격 (모두 체력 같을 때)->update로 할 경우 계속 바뀜 
         //체력이 다르다면 -> 체력 가장 낮은 애한테 공격... 추후에 
-        is_basic_attack = true;//기본 공격 중임 
         if(is_basic_attack)
         {
             if (!is_Attack)//닿지 않았다면 계속 가기,닿으면 그만 
@@ -138,9 +140,20 @@ public class Chicken_Attack : MonoBehaviour
                 }
                 if (back_time > back_distance_time)
                 {
+                    //Debug.Log("뒤로 가는 중 끝남");
                     back_time = 0;
-                    is_Attack = false;//근접 공격 false로 바꿔줘서 다시 다가갈 수 있게 
+                    is_Attack = false;//근접 공격 false로 바꿔줘서 다시 다가갈 수 있게
+                    is_basic_attack = false;//공격 한 번 끝 
                 }
+            }
+        }
+        else
+        {
+            if((battackTime>C_battackTime)&&!is_special_attack_time)//기본 공격 시간 제어 
+            {
+                is_special_attack = false;
+                is_basic_attack = true;
+                battackTime = 0;
             }
         }
         
@@ -166,7 +179,6 @@ public class Chicken_Attack : MonoBehaviour
             }
             
             is_special_attack_time = false;//중복 제어 
-            is_special_attack = true;//애니메이션 제어 
             wind.transform.position = Pos;
             wind.transform.parent = null;
         }
@@ -174,7 +186,7 @@ public class Chicken_Attack : MonoBehaviour
         {
             if(windTime > C_windTime)
             {
-                is_special_attack = false;
+                is_special_attack = true;
                 is_special_attack_time = true;
                 windTime = 0;
             }
