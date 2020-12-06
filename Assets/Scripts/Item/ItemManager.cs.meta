@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 542d3d89d5bfc7c4e8554b30d25b276e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Bab_Prefab: {fileID: 6063200127748015454, guid: e782b6c0dc0ba4f9f9b91985e223c02f, type: 3}
+  - Egg_Prefab: {fileID: 6978090392047311515, guid: 93b0da333f49a46eb8beb42301f46ac5, type: 3}
+  - Milk_Prefab: {fileID: 9087585364310318384, guid: 2f22ee8533c564c328389e18544cf6cd, type: 3}
+  - count: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

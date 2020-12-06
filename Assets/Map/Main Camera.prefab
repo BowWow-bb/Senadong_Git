@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 1415452947461563178}
   - component: {fileID: 1415452947461563179}
   - component: {fileID: 1415452947461563156}
-  - component: {fileID: 1415452947461563157}
-  - component: {fileID: 5717964603580377467}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -85,33 +83,3 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415452947461563158}
   m_Enabled: 1
---- !u!114 &1415452947461563157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415452947461563158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542d3d89d5bfc7c4e8554b30d25b276e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bab_Prefab: {fileID: 6063200127748015454, guid: e782b6c0dc0ba4f9f9b91985e223c02f, type: 3}
-  hungry_item: 0
-  poop_item: 0
-  play_item: 0
-  egg_item: 0
-  milk_item: 0
---- !u!114 &5717964603580377467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415452947461563158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91602eb41c4d47f40aac85863f8d25c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

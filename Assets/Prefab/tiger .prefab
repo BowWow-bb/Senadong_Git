@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 6396162967813062827}
   - component: {fileID: 7166413711449135259}
   - component: {fileID: 593155645437948758}
-  - component: {fileID: 7206159473176064878}
+  - component: {fileID: 4079651826369743858}
   m_Layer: 0
   m_Name: 'tiger '
   m_TagString: tiger
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5800524980379892179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8}
+  m_LocalPosition: {x: -9.1, y: 0, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9064223716242019082}
@@ -213,7 +213,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7206159473176064878
+--- !u!114 &4079651826369743858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -11,7 +11,7 @@ public class Cow_State : MonoBehaviour
     void Start()
     {
         cow_move = transform.parent.GetComponent<Cow_Move>();
-        item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
+        item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
     }
 
     // Update is called once per frame

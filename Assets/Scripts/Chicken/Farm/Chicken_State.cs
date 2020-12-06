@@ -11,7 +11,7 @@ public class Chicken_State : MonoBehaviour
     void Start()
     {
         chicken_move = transform.parent.GetComponent<Chicken_Move>();
-        item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
+        item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
     }
 
     // Update is called once per frame

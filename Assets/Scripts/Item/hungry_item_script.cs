@@ -12,7 +12,7 @@ public class hungry_item_script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
+        item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         c_m = GameObject.FindWithTag("chicken").GetComponent<Chicken_Move>();
         t_m = GameObject.FindWithTag("tiger").GetComponent<Tiger_Move>();
         co_m = GameObject.FindWithTag("cow").GetComponent<Cow_Move>();
