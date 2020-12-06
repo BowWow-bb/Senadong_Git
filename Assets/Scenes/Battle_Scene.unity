@@ -308,6 +308,7 @@ MonoBehaviour:
   back_distance_time: 40
   C_battackTime: 100
   C_windTime: 500
+  is_basic_attack: 1
   is_go_right: 0
   is_Attack: 0
 --- !u!1 &266970225
@@ -399,13 +400,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1956260490243308271, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7242062
+      objectReference: {fileID: 0}
+    - target: {fileID: 1956260490243308271, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
+      propertyPath: m_Center.x
+      value: 0.13789696
+      objectReference: {fileID: 0}
+    - target: {fileID: 5523003799925955392, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
+      propertyPath: chicken
+      value: 
+      objectReference: {fileID: 5482809993986223288}
+    - target: {fileID: 5523003799925955392, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
+      propertyPath: tiger
+      value: 
+      objectReference: {fileID: 5800524980952120302}
+    - target: {fileID: 5523003799925955392, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
+      propertyPath: cow
+      value: 
+      objectReference: {fileID: 7687067579504572344}
+    - target: {fileID: 5523003799925955392, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
+      propertyPath: C_battackTime
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6157450127481540084, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6157450127481540084, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.8
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 6157450127481540084, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
       propertyPath: m_LocalPosition.z

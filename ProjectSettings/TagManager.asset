@@ -51,6 +51,7 @@ TagManager:
   - coin
   - big_chicken
   - big_chicken_enemy
+  - chicken_wind
   layers:
   - Default
   - TransparentFX

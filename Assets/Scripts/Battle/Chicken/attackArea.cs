@@ -28,7 +28,7 @@ public class attackArea : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //적이랑 닿으면 camera 움직임 
-        if(other.gameObject.tag =="chicken_enemy")
+        if((other.gameObject.tag =="chicken_enemy")&&chicken.is_basic_attack)
         {
             chicken.is_Attack = true;
         }
@@ -54,6 +54,23 @@ public class attackArea : MonoBehaviour
         if (other.gameObject.tag == "cow_enemy")
         {
             camera_shake = false;
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "chicken_enemy")
+        {
+            if (other.gameObject.transform.position == chicken.transform.position)
+            {
+                if(chicken.is_go_right)//적이 왼쪽 
+                {
+                    chicken.transform.position = new Vector3(chicken.transform.position.x + 1, chicken.transform.position.y, chicken.transform.position.z);
+                }
+                else
+                {
+                    chicken.transform.position = new Vector3(chicken.transform.position.x - 1, chicken.transform.position.y, chicken.transform.position.z);
+                }
+            }
         }
     }
 }

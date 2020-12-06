@@ -40,6 +40,7 @@ public class Chicken_wind : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Vector3 pos;
         //적이랑 닿으면 camera 움직임 
         if (other.gameObject.tag == "chicken_enemy")
         {
@@ -49,12 +50,15 @@ public class Chicken_wind : MonoBehaviour
             {
                 if (chicken.is_go_right)//적이 왼쪽 이면 
                 {
-                    other.transform.position = new Vector3(other.transform.position.x - 1, other.transform.position.y, other.transform.position.z);
+                    pos = new Vector3(other.transform.position.x - 1, other.transform.position.y, other.transform.position.z);
+                    //other.transform.position = new Vector3(other.transform.position.x - 1, other.transform.position.y, other.transform.position.z);
                 }
                 else//적이 오른쪽이면 
                 {
-                    other.transform.position = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
+                    pos = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
+                    //other.transform.position = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
                 }
+                transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
                 attacked = true;
             }
         }
