@@ -31,8 +31,22 @@ public class E_ch_attackArea : MonoBehaviour
     {
         //적이랑 닿으면 camera 움직임 
         if ((other.gameObject.tag == "chicken") && E_chicken.is_basic_attack)
-        {
+        { 
             E_chicken.is_Attack = true;
+        }
+        if(other.gameObject.tag =="chicken_wind")
+        {
+            Debug.Log("chickenwind");
+            //E_chicken.is_basic_attack = false;
+            if(E_chicken.is_go_right)//왼쪽에 적이 존재 
+            {
+                E_chicken.transform.position = new Vector3(E_chicken.transform.position.x + 1.5f, E_chicken.transform.position.y, E_chicken.transform.position.z);
+            }
+            else//적이 오른쪽 
+            {
+                E_chicken.transform.position = new Vector3(E_chicken.transform.position.x - 1.5f, E_chicken.transform.position.y, E_chicken.transform.position.z);
+            }
+            E_chicken.is_basic_attack = false;
         }
         if (other.gameObject.tag == "tiger")
         {

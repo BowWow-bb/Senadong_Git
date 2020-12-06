@@ -27,23 +27,18 @@ public class attackArea_tiger : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //적이랑 닿으면 camera 움직임 
         if (other.gameObject.tag == "chicken_enemy")
         {
             tiger.is_Attack = true;
-            camera_shake = true;
-            Debug.Log("닿음");
         }
         if (other.gameObject.tag == "tiger_enemy")
         {
             tiger.is_Attack = true;
-            camera_shake = true;
-            Debug.Log("닿음");
         }
         if (other.gameObject.tag == "cow_enemy")
         {
             tiger.is_Attack = true;
-            camera_shake = true;
-            Debug.Log("닿음");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -59,6 +54,31 @@ public class attackArea_tiger : MonoBehaviour
         if (other.gameObject.tag == "cow_enemy")
         {
             camera_shake = false;
+        }
+    }
+    //겹쳤을 경우-> 타겟 다시 찾기 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "chicken_enemy")
+        {
+            if (other.gameObject.transform.position == tiger.transform.position)
+            {
+                tiger.is_find_target = false;
+            }
+        }
+        if (other.gameObject.tag == "cow_enemy")
+        {
+            if (other.gameObject.transform.position == tiger.transform.position)
+            {
+                tiger.is_find_target = false;
+            }
+        }
+        if (other.gameObject.tag == "tiger_enemy")
+        {
+            if (other.gameObject.transform.position == tiger.transform.position)
+            {
+                tiger.is_find_target = false;
+            }
         }
     }
 }

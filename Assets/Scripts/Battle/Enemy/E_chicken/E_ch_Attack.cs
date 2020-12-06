@@ -13,7 +13,7 @@ public class E_ch_Attack : MonoBehaviour
     float tiger_distance;
     float min_distance = 10000;
 
-    public float back_distance = 4;//뒤로 물러서는 거리
+    public float back_distance = 3;//뒤로 물러서는 거리
     public float back_distance_time = 40;//보다 크면 다시 공격
     float back_time;//뒤로 물러서는 시간 -> 증가되는 값 
 
