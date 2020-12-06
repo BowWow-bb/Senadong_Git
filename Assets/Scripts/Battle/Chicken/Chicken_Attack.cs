@@ -148,9 +148,9 @@ public class Chicken_Attack : MonoBehaviour
         }
         else
         {
-            if((battackTime>C_battackTime))//기본 공격 시간 제어 
+            if((battackTime>C_battackTime)&&!is_special_attack_time)//기본 공격 시간 제어 
             {
-                //is_special_attack = false;
+                is_special_attack = false;
                 is_basic_attack = true;
                 battackTime = 0;
             }
@@ -205,7 +205,7 @@ public class Chicken_Attack : MonoBehaviour
             if (cow_enemy != null)
             {
                 cow_distance = Vector3.Distance(this.gameObject.transform.position, cow_enemy.transform.position);//거리 파악
-                if (min_distance > cow_distance)
+                if ((min_distance > cow_distance) && cow_distance != 0)
                 {
                     min_distance = cow_distance; 
                 }
@@ -213,7 +213,7 @@ public class Chicken_Attack : MonoBehaviour
             if (chicken_enemy != null)
             {
                 chicken_distance = Vector3.Distance(this.gameObject.transform.position, chicken_enemy.transform.position);//거리 파악
-                if (min_distance > chicken_distance && chicken_distance!=0)
+                if ((min_distance > chicken_distance) && chicken_distance!=0)
                 {
                     min_distance = chicken_distance;
                 }
@@ -221,7 +221,7 @@ public class Chicken_Attack : MonoBehaviour
             if (tiger_enemy != null)
             {
                 tiger_distance = Vector3.Distance(this.gameObject.transform.position, tiger_enemy.transform.position);//거리 파악
-                if (min_distance > tiger_distance)
+                if ((min_distance > tiger_distance) && tiger_distance != 0)
                 {
                     min_distance = tiger_distance;
                 }

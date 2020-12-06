@@ -5,6 +5,7 @@ using UnityEngine;
 public class attackArea : MonoBehaviour
 {
     Chicken_Attack chicken;
+    E_ch_Attack E_chicken;
     camera_shake Camera;
 
     bool camera_shake = false;
@@ -13,6 +14,7 @@ public class attackArea : MonoBehaviour
     void Start()
     {
         chicken = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
+        E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
         Camera = GameObject.FindWithTag("MainCamera").GetComponent<camera_shake>();
     }
 
@@ -56,20 +58,28 @@ public class attackArea : MonoBehaviour
             camera_shake = false;
         }
     }
+    //겹쳤을 경우-> 타겟 다시 찾기 
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag == "chicken_enemy")
         {
             if (other.gameObject.transform.position == chicken.transform.position)
             {
-                if(chicken.is_go_right)//적이 왼쪽 
-                {
-                    chicken.transform.position = new Vector3(chicken.transform.position.x + 1, chicken.transform.position.y, chicken.transform.position.z);
-                }
-                else
-                {
-                    chicken.transform.position = new Vector3(chicken.transform.position.x - 1, chicken.transform.position.y, chicken.transform.position.z);
-                }
+                chicken.is_find_target = false;
+            }
+        }
+        if (other.gameObject.tag == "cow_enemy")
+        {
+            if (other.gameObject.transform.position == chicken.transform.position)
+            {
+                chicken.is_find_target = false;
+            }
+        }
+        if (other.gameObject.tag == "tiger_enemy")
+        {
+            if (other.gameObject.transform.position == chicken.transform.position)
+            {
+                chicken.is_find_target = false;
             }
         }
     }

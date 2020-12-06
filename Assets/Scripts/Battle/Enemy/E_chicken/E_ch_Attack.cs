@@ -149,33 +149,31 @@ public class E_ch_Attack : MonoBehaviour
     {
         if (!is_find_target)//target을 찾지 않았다면 
         {
+            min_distance = 10000;
             //!is_find_target시점에 적과의 거리 파악 위함 -> 제일 가까운 적 찾기
             //체력 가장 낮은 애 공격 -> 나중에 할거임 
             if (cow != null)
             {
                 cow_distance = Vector3.Distance(this.gameObject.transform.position, cow.transform.position);//거리 파악
-                if (min_distance > cow_distance)
+                if ((min_distance > cow_distance) && cow_distance != 0)
                 {
                     min_distance = cow_distance;
-                    //Debug.Log("cow_distance: " + cow_distance);
                 }
             }
             if (chicken != null)
             {
                 chicken_distance = Vector3.Distance(this.gameObject.transform.position, chicken.transform.position);//거리 파악
-                if (min_distance > chicken_distance && chicken_distance !=0)
+                if ((min_distance > chicken_distance) && chicken_distance != 0)
                 {
                     min_distance = chicken_distance;
-                    //Debug.Log("chicken_distance: " + chicken_distance);
                 }
             }
             if (tiger != null)
             {
                 tiger_distance = Vector3.Distance(this.gameObject.transform.position, tiger.transform.position);//거리 파악
-                if (min_distance > tiger_distance)
+                if ((min_distance > tiger_distance) && tiger_distance != 0)
                 {
                     min_distance = tiger_distance;
-                    //Debug.Log("tiger_distance: " + tiger_distance);
                 }
             }
             is_find_target = true;//target 찾음 
