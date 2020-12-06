@@ -12,7 +12,7 @@ public class Drag : MonoBehaviour
     public float scale=1.1f;
     void OnMouseDrag()
     {
-        if(this.tag == "tiger")
+        if (this.tag == "tiger")
         {
             t_m = transform.GetComponent<Tiger_Move>();
             t_m.isdrag = true;
@@ -42,7 +42,7 @@ public class Drag : MonoBehaviour
             }
 
         }
-        else if(this.tag == "cow")
+        else if (this.tag == "cow")
         {
             co_m = transform.GetComponent<Cow_Move>();
             co_m.isdrag = true;
@@ -56,7 +56,7 @@ public class Drag : MonoBehaviour
                 co_m.transform.localScale = new Vector3(scale, scale, scale);
             }
         }
-        else if(this.tag == "hungry_follow_item")   //농장에 가져다 놓은 밥 이동
+        else if (this.tag == "hungry_follow_item")   //농장에 가져다 놓은 밥 이동
         {
             this.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
         }
@@ -70,8 +70,11 @@ public class Drag : MonoBehaviour
         }
         Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 13);
         this.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+        this.transform.position = new Vector3(transform.position.x,transform.position.y, -8);
     }
-   void OnMouseUp()
+ 
+   
+    void OnMouseUp()
     {
         if (this.tag == "tiger")
         {

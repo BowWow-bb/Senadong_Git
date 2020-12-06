@@ -68,6 +68,7 @@ public class Tiger_Move : MonoBehaviour
     Animator animator;
 
     public bool isdrag=false;
+    bool move_check = false;
     // Start is called before the first frame update
 
     void Update()
@@ -430,13 +431,13 @@ public class Tiger_Move : MonoBehaviour
                         y = 5.7f;
                     if (y <= -6.5f)
                         y = -6.5f;
-                    if (x >= 3 &&( y >= -6.5f && y <= -1.5f))
+                    if (x >= 3 && (y >= -6.5f && y <= -1.5f))
                     {
+
                         x = tmp_Point.x; y = tmp_Point.y;
                     }
-                    
-
-                    gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+                    else
+                        gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
                     move_length += 0.05f; // 거리를 차근차근 움직임
                     if (move_length > 10f) // 다 움직였다면 다시 움직임 타이머를 잼

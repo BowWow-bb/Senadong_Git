@@ -204,7 +204,6 @@ public class Chicken_Move : MonoBehaviour
         Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
         if (quarrel)
         {
-            Debug.Log("quarrel true");
             if (hurt)
             {
                 trace_length += 0.3f;
@@ -231,7 +230,6 @@ public class Chicken_Move : MonoBehaviour
                     trace_length = 0;
                     hurt = false;
                     quarrel = false;
-                    Debug.Log("quarrel false");
                 }
 
             }
