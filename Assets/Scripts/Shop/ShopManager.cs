@@ -40,25 +40,25 @@ public class ShopManager : MonoBehaviour
     }
     public void Buy_Hungry()
     {
-        if(item_manager.coin>100)
+        if(item_manager.coin >= 500)
         {
-            item_manager.coin -= 100;
+            item_manager.coin -= 500;
             item_manager.hungry_item++;
         }
     }
     public void Buy_Poop()
     {
-        if (item_manager.coin > 100)
+        if (item_manager.coin >= 500)
         {
-            item_manager.coin -= 100;
+            item_manager.coin -= 500;
             item_manager.poop_item++;
         }
     }
     public void Buy_Play()
     {
-        if (item_manager.coin > 100)
+        if (item_manager.coin >= 500)
         {
-            item_manager.coin -= 100;
+            item_manager.coin -= 500;
             item_manager.play_item++;
         }
     }
@@ -67,7 +67,7 @@ public class ShopManager : MonoBehaviour
         if (item_manager.egg_item > 0)
         {
             item_manager.egg_item--;
-            item_manager.coin += 100;
+            item_manager.coin += 500;
         }
             
     }
@@ -76,7 +76,7 @@ public class ShopManager : MonoBehaviour
         if (item_manager.milk_item > 0)
         {
             item_manager.milk_item--;
-            item_manager.coin += 100;
+            item_manager.coin += 500;
         }
     }
 }
