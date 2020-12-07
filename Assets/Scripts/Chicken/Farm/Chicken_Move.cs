@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Chicken_Move : MonoBehaviour
 {
+    ItemManager item_manager;
+    int exp_check;
+
     //서창 이동
     //int hungryTime = 0; // 배고픔 재는 시간
     int BasicTime = 0; // 기본 움직임 재는 시간
@@ -76,6 +79,9 @@ public class Chicken_Move : MonoBehaviour
 
     void Start()
     {
+        item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
+        exp_check = 100;
+
         //속성값 초기 설정
         hungry = valueMax;
         poop = valueMax;
@@ -167,7 +173,7 @@ public class Chicken_Move : MonoBehaviour
         if (exp == valueMax)  //성장 완료
         {
             GameObject.Find("Canvas").transform.Find("Panel").gameObject.SetActive(true);
-            ChildClone cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(1).GetComponent<ChildClone>();
+            GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(1).GetComponent<GetCoin>();
             cc.tagname = transform.tag;
             Destroy(transform.gameObject);
         }
@@ -195,6 +201,13 @@ public class Chicken_Move : MonoBehaviour
             else
                 if (exp - 30 < 0) exp = 0;
                 else exp -= 30;
+        }
+
+        //공격 레벨 설정
+        if (exp > exp_check && exp_check < valueMax)
+        {
+            item_manager.chicken_level++;   //공격 레벨 증가
+            exp_check += 100;           //임계점 상향  
         }
     }
     //행동 

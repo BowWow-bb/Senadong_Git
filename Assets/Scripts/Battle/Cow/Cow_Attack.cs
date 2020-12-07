@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Cow_Attack : MonoBehaviour
 {
+    ItemManager item_manager;
+    int level;  //공격력
+
     public GameObject cow_enemy;
     public GameObject chicken_enemy;
     public GameObject tiger_enemy;
@@ -35,6 +38,10 @@ public class Cow_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //공격 레벨 가져오기
+        item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
+        level = item_manager.cow_level;
+
         //animator = GetComponent<Animator>();
     }
 

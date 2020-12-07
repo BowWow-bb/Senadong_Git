@@ -11,9 +11,7 @@ public class DontDestroyOnLoad : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log(SceneManager.GetActiveScene().name);
         index = count;
-        Debug.Log("awake, " + gameObject.name + ", index is " + index);
         if (index == 0)
         {
             DontDestroyOnLoad(gameObject);

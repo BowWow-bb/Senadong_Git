@@ -11,7 +11,7 @@ public class milk_egg_clicked : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
+        item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         egg_count = GameObject.FindWithTag("egg_count").GetComponent<TextMesh>();
         milk_count = GameObject.FindWithTag("milk_count").GetComponent<TextMesh>();
     }

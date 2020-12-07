@@ -19,6 +19,11 @@ public class ItemManager : MonoBehaviour
 
     public int coin = 0;    
 
+    //공격 레벨
+    public int chicken_level;
+    public int cow_level;
+    public int tiger_level;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +31,11 @@ public class ItemManager : MonoBehaviour
         poop_item = 5;
         play_item = 5;
 
-        coin = 2000;
+        coin = 1000;
+
+        chicken_level = 0;
+        cow_level = 0;
+        tiger_level = 0;
      }
    
     // Update is called once per frame

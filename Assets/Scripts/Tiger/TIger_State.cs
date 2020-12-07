@@ -6,12 +6,12 @@ public class TIger_State : MonoBehaviour
 {
     Tiger_Move tiger_move;
     ItemManager item_manager;
-    int plus = 100; //요구충족 시, 속성 증가 값
+
     // Start is called before the first frame update
     void Start()
     {
         tiger_move = transform.parent.GetComponent<Tiger_Move>();
-        item_manager = GameObject.Find("Main Camera").GetComponent<ItemManager>();
+        item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
     }
 
     // Update is called once per frame
