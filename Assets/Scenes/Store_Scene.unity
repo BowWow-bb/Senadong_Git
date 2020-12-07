@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 272533654}
   - component: {fileID: 272533653}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Back_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2933,7 +2933,7 @@ GameObject:
   - component: {fileID: 917571546}
   - component: {fileID: 917571545}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Back_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
