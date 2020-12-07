@@ -60,7 +60,7 @@ public class ItemManager : MonoBehaviour
                 {
                     Vector3 bapPos;
                     GameObject bap = GameObject.Instantiate(Bab_Prefab);
-                    
+                    bap.transform.parent = GameObject.Find("ItemManager").GetComponent<ItemManager>().transform;
                     bapPos = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
                     bap.transform.position = bapPos;
                 }
@@ -68,7 +68,7 @@ public class ItemManager : MonoBehaviour
                 {
                     Vector3 eggPos;
                     GameObject egg = GameObject.Instantiate(Egg_Prefab);
-
+                    egg.transform.parent = GameObject.Find("ItemManager").GetComponent<ItemManager>().transform;
                     eggPos = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
                     egg.transform.position = eggPos;
                 }
@@ -76,7 +76,7 @@ public class ItemManager : MonoBehaviour
                 {
                     Vector3 milkPos;
                     GameObject milk = GameObject.Instantiate(Milk_Prefab);
-
+                    milk.transform.parent = GameObject.Find("ItemManager").GetComponent<ItemManager>().transform;
                     milkPos = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, hit.transform.position.z);
                     milk.transform.position = milkPos;
                 }

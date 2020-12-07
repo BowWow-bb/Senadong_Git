@@ -14,5 +14,6 @@ public class Battle : MonoBehaviour
     public void OnClick()
     {
         SceneManager.LoadScene("Battle_Scene");
+
     }
 }

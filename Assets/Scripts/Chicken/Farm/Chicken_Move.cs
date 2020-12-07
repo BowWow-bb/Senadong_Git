@@ -489,8 +489,8 @@ public class Chicken_Move : MonoBehaviour
 
             GameObject egg = GameObject.Instantiate(Egg_Prefab);
             isEggTime = false;
+            egg.transform.parent = GameObject.Find("ItemManager").GetComponent<ItemManager>().transform;
             egg.transform.position = eggPos;
-            egg.transform.parent = null;
         }
         else
         {

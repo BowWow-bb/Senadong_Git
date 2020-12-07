@@ -309,6 +309,7 @@ public class Cow_Move : MonoBehaviour
         {
             //우유 생산
             GameObject milk = Instantiate(MilkPrefab);
+            milk.transform.parent= GameObject.Find("ItemManager").GetComponent<ItemManager>().transform;
             milk.transform.position = transform.position;
         }
         return true;

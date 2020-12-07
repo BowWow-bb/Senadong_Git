@@ -14,5 +14,6 @@ public class Store : MonoBehaviour
     public void OnClick()
     {
         SceneManager.LoadScene("Store_Scene");
+
     }
 }

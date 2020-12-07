@@ -11,6 +11,7 @@ public class DontDestroyOnLoad : MonoBehaviour
 
     void Awake()
     {
+        Debug.Log(SceneManager.GetActiveScene().name);
         index = count;
         Debug.Log("awake, " + gameObject.name + ", index is " + index);
         if (index == 0)
@@ -23,10 +24,11 @@ public class DontDestroyOnLoad : MonoBehaviour
     private void Start()
     {
         count++;
-        if(SceneManager.GetActiveScene().name == "Battle_Scene")   //배틀씬인 경우
-        {
-            gameObject.SetActive(false);
-        }
+        
+        //if(SceneManager.GetActiveScene().name == "Battle_Scene")   //배틀씬인 경우
+        //{
+        //    gameObject.SetActive(false);
+        //}
 
     }
 }
