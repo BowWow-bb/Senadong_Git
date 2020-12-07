@@ -493,6 +493,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 3944576118160846349, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4178863002681327459, guid: 2a1d3d32baa5dbc41b3bdf8c166557cb, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
