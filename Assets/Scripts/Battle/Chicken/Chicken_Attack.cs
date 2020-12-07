@@ -54,14 +54,14 @@ public class Chicken_Attack : MonoBehaviour
     {
         battackTime++;
         windTime++;
-        if(is_special_attack)
-        {
-            animator.SetBool("is_Attack", true);
-        }
-        else
-        {
-            animator.SetBool("is_Attack", false);
-        }
+        //if(is_special_attack)
+        //{
+        //    animator.SetBool("is_Attack", true);
+        //}
+        //else
+        //{
+        //    animator.SetBool("is_Attack", false);
+        //}
     }
     //행동 
     public bool Chicken_Basic_Attack()

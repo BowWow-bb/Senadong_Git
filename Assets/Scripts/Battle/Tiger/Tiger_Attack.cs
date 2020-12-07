@@ -48,14 +48,14 @@ public class Tiger_Attack : MonoBehaviour
     void Update()
     {
         battackTime++;
-        if (is_basic_attack)
-        {
-            animator.SetBool("is_Attack", true);
-        }
-        else
-        {
-            animator.SetBool("is_Attack", false);
-        }
+        //if (is_basic_attack)
+        //{
+        //    animator.SetBool("is_Attack", true);
+        //}
+        //else
+        //{
+        //    animator.SetBool("is_Attack", false);
+        //}
     }
     //행동 
     public bool Tiger_Basic_Attack()
