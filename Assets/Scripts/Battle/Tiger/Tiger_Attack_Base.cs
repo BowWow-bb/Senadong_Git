@@ -87,3 +87,16 @@ public class Tiger_Find_Target : Tiger_Attack_Node
         return _Tiger_Attack.Tiger_Find_Target();
     }
 }
+
+public class Tiger_Skill : Tiger_Attack_Node
+{
+    public Tiger_Attack Tiger_attack
+    {
+        set { _Tiger_Attack = value; }
+    }
+    private Tiger_Attack _Tiger_Attack;
+    public override bool Invoke()
+    {
+        return _Tiger_Attack.Tiger_Skill();
+    }
+}

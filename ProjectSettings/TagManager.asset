@@ -55,6 +55,7 @@ TagManager:
   - ItemManager
   - coincoin
   - ItemSlot
+  - Pazik
   layers:
   - Default
   - TransparentFX

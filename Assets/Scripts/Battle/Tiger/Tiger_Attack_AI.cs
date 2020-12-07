@@ -12,9 +12,9 @@ public class Tiger_Attack_AI : MonoBehaviour
     //행동
     private Tiger_Basic_Attack basic_Attack = new Tiger_Basic_Attack();
     private Tiger_Find_Target find_Target = new Tiger_Find_Target();
-
+    private Tiger_Skill skill = new Tiger_Skill();
     private Tiger_Attack a_Tiger;
-
+    
     private IEnumerator behaviorProcess;
     // Start is called before the first frame update
     void Start()
@@ -31,11 +31,11 @@ public class Tiger_Attack_AI : MonoBehaviour
 
         find_Target.Tiger_attack = a_Tiger;
         basic_Attack.Tiger_attack = a_Tiger;
-
+        skill.Tiger_attack = a_Tiger;
         //행동들
         seqBehavior.AddChild(find_Target);
         seqBehavior.AddChild(basic_Attack);
-
+        seqBehavior.AddChild(skill);
 
         behaviorProcess = BehaviorProcess();
         StartCoroutine(behaviorProcess);

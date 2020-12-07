@@ -232,7 +232,7 @@ public class Chicken_Move : MonoBehaviour
                     y = 5.7f;
                 if (y <= -6.5f)
                     y = -6.5f;
-                if (x >= 3 && y >= -6.5f && y <= -4.5f)
+                if (x >= 3 && y >= -6.5f && y <= -4f)
                 {
                     x = tmp_Point.x; y = tmp_Point.y;
                 }

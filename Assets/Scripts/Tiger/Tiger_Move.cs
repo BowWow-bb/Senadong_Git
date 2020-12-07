@@ -60,7 +60,7 @@ public class Tiger_Move : MonoBehaviour
     public GameObject fHungry;                 //체력 오브젝트
     public GameObject fPoop;                   //청결 오브젝트
     public GameObject fPlay;                   //흥미 오브젝트 
-
+    public GameObject fPazik;                  //시비걸기 오브젝트 
     //시비 걸 동물
     public GameObject Chicken;
     public GameObject Cow;
@@ -153,6 +153,7 @@ public class Tiger_Move : MonoBehaviour
                 gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
                 trace_length = 0;
                 quarreling = false;
+                fPazik.SetActive(false);
             }
         }
         else
@@ -183,6 +184,7 @@ public class Tiger_Move : MonoBehaviour
                             quarrel_check = 0;
                             c_m.quarrel = true;
                             quarreling = true;
+                            fPazik.SetActive(true);
                         }
 
                     }
@@ -195,6 +197,7 @@ public class Tiger_Move : MonoBehaviour
                             quarrel_check = 0;
                             c_m.quarrel = true;
                             quarreling = true;
+                            fPazik.SetActive(true);
                         }
                     }
                 }
@@ -434,7 +437,7 @@ public class Tiger_Move : MonoBehaviour
                         y = 5.7f;
                     if (y <= -6.5f)
                         y = -6.5f;
-                    if (x >= 3 && (y >= -6.5f && y <= -1.5f))
+                    if (x >= 3 && (y >= -6.5f && y <= -4f))
                     {
 
                         x = tmp_Point.x; y = tmp_Point.y;
@@ -492,6 +495,8 @@ public class Tiger_Move : MonoBehaviour
         fPoop.SetActive(false);
         fPlay = transform.GetChild(2).gameObject;
         fPlay.SetActive(false);
+        fPazik = transform.GetChild(6).gameObject;
+        fPazik.SetActive(false);
 
         hunger = false; // 변수 초기화
         moving = false;

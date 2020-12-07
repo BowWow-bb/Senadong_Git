@@ -5,7 +5,7 @@ using UnityEngine;
 public class Chicken_Attack : MonoBehaviour
 {
     ItemManager item_manager;
-    int level;  //공격력
+    public float level;  //공격력
 
     public GameObject cow_enemy;
     public GameObject chicken_enemy;

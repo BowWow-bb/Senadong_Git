@@ -483,11 +483,11 @@ public class Cow_Move : MonoBehaviour
                         x = 13f;
                     if (x <= -13f)
                         x = -13f;
-                    if (y >= 6.5f)
-                        y = 6.5f;
+                    if (y >= 5.7f)
+                        y = 5.7f;
                     if (y <= -6.5f)
                         y = -6.5f;
-                    if (x >= 3 && (y >= -6.5f && y <= -1.5f))
+                    if (x >= 3 && (y >= -6.5f && y <= -4f))
                     {
                         x = tmp_Point.x;
                         y = tmp_Point.y;

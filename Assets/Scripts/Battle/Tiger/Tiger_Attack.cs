@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tiger_Attack : MonoBehaviour
 {
     ItemManager item_manager;
-    int level;  //공격력
+    float level;  //공격력
 
     public GameObject cow_enemy;
     public GameObject chicken_enemy;
@@ -21,8 +21,10 @@ public class Tiger_Attack : MonoBehaviour
     float back_time;//뒤로 물러서는 시간 -> 증가되는 값
 
     int battackTime = 0;//기본 공격 시간
+    int skillTime = 0;
     public int C_battackTime = 100;//기본 공격 시간 조정
-
+    public int C_skillTime=800;
+    public bool is_skill_time = false;
     bool is_target_cow = false;
     bool is_target_chicken = false;
     bool is_target_tiger = false;
@@ -32,11 +34,21 @@ public class Tiger_Attack : MonoBehaviour
 
     public bool is_go_right = false;//왼쪽에 적이 존재함 
     public bool is_Attack = false;
-
+    public GameObject fPazik;
+    public Cow_Attack cow;
+    public Chicken_Attack chicken;
+    float tmp_tiger;
+    float tmp_cow;
+    float tmp_chicken;
     Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        fPazik = transform.GetChild(1).gameObject;
+        fPazik.SetActive(false);
+        cow = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
+        chicken = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
+
         //공격 레벨 가져오기
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         level = item_manager.tiger_level;
@@ -182,6 +194,43 @@ public class Tiger_Attack : MonoBehaviour
             }
             is_find_target = true;//target 찾음 
         }
+        return true;
+    }
+    public bool Tiger_Skill()
+    {
+        //if(is_skill_time)
+        //{
+        //    skillTime++;
+        //    if(skillTime> 3*battackTime)
+        //    {
+        //        cow.level = tmp_cow;
+        //        chicken.level = tmp_cow;
+        //        level = tmp_tiger;
+
+        //        skillTime = 0;
+        //        fPazik.SetActive(false);
+        //        is_skill_time = false;
+        //    }
+        //}
+        //else
+        //{
+        //    skillTime++;
+        //    if(skillTime > C_skillTime && !is_basic_attack)
+        //    {
+        //        fPazik.SetActive(true);
+        //        skillTime = 0;
+        //        is_skill_time = true;
+        //        tmp_cow = cow.level;
+        //        cow.level = tmp_cow * 1.2f;
+
+        //        tmp_chicken = chicken.level;
+        //        chicken.level = tmp_chicken * 1.2f;
+
+        //        tmp_tiger = level;
+        //        level = tmp_tiger * 1.2f;
+                
+        //    }
+        //}
         return true;
     }
 
