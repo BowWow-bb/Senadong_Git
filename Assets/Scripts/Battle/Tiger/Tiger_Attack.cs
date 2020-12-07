@@ -5,7 +5,17 @@ using UnityEngine;
 public class Tiger_Attack : MonoBehaviour
 {
     ItemManager item_manager;
-    float level;  //공격력
+    int level;  //캐릭터 레벨
+
+    Attack_Data attack_data;
+    int attack; //공격력
+
+    int hp;                 //hp
+    int HPMax;              //최대 체력
+    GameObject hp_bar;      //hp바
+    float hpbar_sx;         //hp바 스케일 x값
+    float hpbar_tx;         //hp바 위치 x값
+    float hpbar_tmp;        //hp바 감소 정도
 
     public GameObject cow_enemy;
     public GameObject chicken_enemy;
@@ -44,6 +54,14 @@ public class Tiger_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HPMax = 1000;
+        hp = HPMax;
+        hp_bar = GameObject.FindWithTag("TigerHp");
+        hpbar_sx = hp_bar.transform.localScale.x;
+        hpbar_tx = hp_bar.transform.localPosition.x;
+        hpbar_tmp = hpbar_sx / HPMax;   //최대 체력에 따른 hp바 이동량 설정
+
+
         fPazik = transform.GetChild(1).gameObject;
         fPazik.SetActive(false);
         cow = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
@@ -52,6 +70,10 @@ public class Tiger_Attack : MonoBehaviour
         //공격 레벨 가져오기
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         level = item_manager.tiger_level;
+
+        //공격력 가져오기
+        attack_data = GameObject.Find("AttackData").GetComponent<Attack_Data>();
+        attack = attack_data.getAttackValue(level);
 
         animator = GetComponent<Animator>();
     }
@@ -232,6 +254,20 @@ public class Tiger_Attack : MonoBehaviour
         //    }
         //}
         return true;
+    }
+    public void hpMove(int hp_delta)    //hp바 동작 구현
+    {
+        if (hp - hp_delta <= 0)   //0이하로 내려가는 경우 죽은걸로 판단
+            Destroy(gameObject);
+
+        float move = ((HPMax - hp) + hp_delta) * hpbar_tmp; //hp바 이동할 크기
+        hp -= hp_delta; //hp 재설정
+
+        Vector3 Scale = hp_bar.transform.localScale;    //현재 스케일 값
+        hp_bar.transform.localScale = new Vector3(hpbar_sx - move, Scale.y, Scale.z);
+
+        Vector3 Pos = hp_bar.transform.localPosition;   //현재 포지션 값
+        hp_bar.transform.localPosition = new Vector3(hpbar_tx - move / 2.0f, Pos.y, Pos.z);   //스케일 변화의 절반 만큼 이동시, 자연스러운 감소효과 나타낼 수 o
     }
 
 }

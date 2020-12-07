@@ -56,6 +56,12 @@ TagManager:
   - coincoin
   - ItemSlot
   - Pazik
+  - CowHp
+  - ChickenHp
+  - TigerHp
+  - ECowHp
+  - EChickenHp
+  - ETigerHp
   layers:
   - Default
   - TransparentFX

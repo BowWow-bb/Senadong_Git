@@ -702,6 +702,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1873814346010586337, guid: 2cb13112423bcc34e8aba454d8c1e26d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873814346737909360, guid: 2cb13112423bcc34e8aba454d8c1e26d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3179174467407799081, guid: 2cb13112423bcc34e8aba454d8c1e26d, type: 3}
       propertyPath: m_Sprite
       value: 
