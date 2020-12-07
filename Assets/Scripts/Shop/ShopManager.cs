@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class ShopManager : MonoBehaviour
 {
     ItemManager item_manager;
     public TextMesh String;
+    public Text String2;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,20 +16,23 @@ public class ShopManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        String = GameObject.FindWithTag("hungry_string").GetComponent<TextMesh>();
-        String.text = item_manager.hungry_item.ToString() + "개";
+        //String = GameObject.FindWithTag("hungry_string").GetComponent<TextMesh>();
+        //String.text = item_manager.hungry_item.ToString() + "개";
 
-        String = GameObject.FindWithTag("poop_string").GetComponent<TextMesh>();
-        String.text = item_manager.poop_item.ToString() + "개";
+        //String = GameObject.FindWithTag("poop_string").GetComponent<TextMesh>();
+        //String.text = item_manager.poop_item.ToString() + "개";
 
-        String = GameObject.FindWithTag("play_string").GetComponent<TextMesh>();
-        String.text = item_manager.play_item.ToString() + "개";
+        //String = GameObject.FindWithTag("play_string").GetComponent<TextMesh>();
+        //String.text = item_manager.play_item.ToString() + "개";
 
-        String = GameObject.FindWithTag("egg_string").GetComponent<TextMesh>();
-        String.text = item_manager.egg_item.ToString() + "개";
+        //String = GameObject.FindWithTag("egg_string").GetComponent<TextMesh>();
+        //String.text = item_manager.egg_item.ToString() + "개";
 
-        String = GameObject.FindWithTag("milk_string").GetComponent<TextMesh>();
-        String.text = item_manager.milk_item.ToString() + "개";
+        String2 = GameObject.FindWithTag("egg_string").GetComponent<Text>();
+        String2.text = item_manager.egg_item.ToString();
+
+        String2 = GameObject.FindWithTag("milk_string").GetComponent<Text>();
+        String2.text = item_manager.milk_item.ToString();
 
         String = GameObject.FindWithTag("coin").GetComponent<TextMesh>();
         String.text = item_manager.coin.ToString();
