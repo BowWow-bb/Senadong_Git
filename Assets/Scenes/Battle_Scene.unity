@@ -2956,9 +2956,9 @@ MonoBehaviour:
   is_find_target: 0
   is_go_right: 0
   is_Attack: 0
-  fPazik: {fileID: 0}
-  cow: {fileID: 0}
-  chicken: {fileID: 0}
+  fPazik: {fileID: 1873374242}
+  cow: {fileID: 7687067579504572346}
+  chicken: {fileID: 198988005}
 --- !u!95 &5800524980952120305
 Animator:
   serializedVersion: 3
