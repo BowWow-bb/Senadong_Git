@@ -105,22 +105,23 @@ public class Chicken_Move : MonoBehaviour
     void Update()
     {
         EggTime++;
-        if (isdrag && !quarrel)
+        if (isdrag || hurt)
         {
+            //Debug.Log("drag");
             animator.SetBool("is_drag", true);
         }
         else
         {
             animator.SetBool("is_drag", false);
         }
-        if(hurt && !isdrag)
-        {
-            animator.SetBool("is_attacked", true);
-        }
-        else
-        {
-            animator.SetBool("is_attacked", false);
-        }
+        //if(hurt && !isdrag)
+        //{
+        //    animator.SetBool("is_attacked", true);
+        //}
+        //else
+        //{
+        //    animator.SetBool("is_attacked", false);
+        //}
 
         if (!moving && !isPoop && !is_follow_food &&!is_follow_egg && !is_follow_milk &&!quarrel)//따라가는 상태가 아니라면 
         {
@@ -396,6 +397,7 @@ public class Chicken_Move : MonoBehaviour
     {
         if (isPoop)    //화장실로 이동
         {
+            Debug.Log("isPoop");
             //목표지점을 향하는 벡터 이용해 이동
             Vector3 toilet_vec = (toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
 
