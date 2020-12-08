@@ -125,8 +125,82 @@ Transform:
   - {fileID: 2244405870038615220}
   - {fileID: 8954273366382104735}
   m_Father: {fileID: 8630146778440577840}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7685288846383070503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8358308298877853401}
+  - component: {fileID: 3943235515824765880}
+  - component: {fileID: 6075910425317479864}
+  - component: {fileID: 8813968614486555778}
+  m_Layer: 0
+  m_Name: attackArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8358308298877853401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685288846383070503}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8630146778440577840}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3943235515824765880
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685288846383070503}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.8840322, z: 1}
+  m_Center: {x: 0, y: -0.07006788, z: 0}
+--- !u!54 &6075910425317479864
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685288846383070503}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8813968614486555778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685288846383070503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5950a5bba04c491192718666bf5f789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8630146778440577843
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +214,8 @@ GameObject:
   - component: {fileID: 8630146778440577842}
   - component: {fileID: 5038093219301040861}
   - component: {fileID: 5691088713654564469}
+  - component: {fileID: 9106784291726152782}
+  - component: {fileID: 4199840582268742344}
   m_Layer: 0
   m_Name: tiger_Enemy
   m_TagString: tiger_enemy
@@ -158,6 +234,7 @@ Transform:
   m_LocalPosition: {x: 4.94, y: -3.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 8358308298877853401}
   - {fileID: 5102033350616937930}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -262,6 +339,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 151b16d17a29f4c0bb45cb52c588700e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9106784291726152782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630146778440577843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a4e1bc2a8624c5eb2ac4610de2280e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4199840582268742344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630146778440577843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e244735aa7b8247fbacb9c8c2b5e14d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9169567325552786593

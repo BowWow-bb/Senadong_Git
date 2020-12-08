@@ -33,6 +33,7 @@ public class attackArea : MonoBehaviour
         if((other.gameObject.tag =="chicken_enemy")&&chicken.is_basic_attack)
         {
             chicken.is_Attack = true;
+            
         }
         if (other.gameObject.tag == "tiger_enemy")
         {

@@ -3067,6 +3067,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7051184721238683261, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
+      propertyPath: cow
+      value: 
+      objectReference: {fileID: 7687067579504572344}
+    - target: {fileID: 7051184721238683261, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
+      propertyPath: chicken
+      value: 
+      objectReference: {fileID: 5482809993986223288}
+    - target: {fileID: 7051184721238683261, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
+      propertyPath: tiger
+      value: 
+      objectReference: {fileID: 5800524980952120302}
+    - target: {fileID: 7051184721238683261, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
+      propertyPath: back_distance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7057757901577457006, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
       propertyPath: m_Name
       value: CowEnemy
@@ -3115,7 +3131,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9026594787040645731, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026594787040645731, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
+      propertyPath: m_Size.y
+      value: 2.1118908
+      objectReference: {fileID: 0}
+    - target: {fileID: 9026594787040645731, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
+      propertyPath: m_Center.y
+      value: -0.34746647
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 20562242154518767, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
+    - {fileID: 7888140926206696465, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
 --- !u!65 &7177418511012359042
 BoxCollider:
@@ -3257,6 +3287,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4199840582268742344, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
+      propertyPath: cow
+      value: 
+      objectReference: {fileID: 7687067579504572344}
+    - target: {fileID: 4199840582268742344, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
+      propertyPath: chicken
+      value: 
+      objectReference: {fileID: 5482809993986223288}
+    - target: {fileID: 4199840582268742344, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
+      propertyPath: tiger
+      value: 
+      objectReference: {fileID: 5800524980952120302}
+    - target: {fileID: 4199840582268742344, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
+      propertyPath: back_distance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8630146778440577840, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.94
@@ -3305,7 +3351,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: tiger_Enemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5038093219301040861, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
+    - {fileID: 5691088713654564469, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
 --- !u!65 &8696087782411777850
 BoxCollider:
