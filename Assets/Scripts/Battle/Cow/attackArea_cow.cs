@@ -38,7 +38,7 @@ public class attackArea_cow : MonoBehaviour
             E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
             E_chicken.hpMove(cow.attack);
 
-            Debug.Log("소 공격력: "+cow.attack);
+            //Debug.Log("소 공격력: "+cow.attack);
             cow.is_Attack = true;
             camera_shake = true;
         }

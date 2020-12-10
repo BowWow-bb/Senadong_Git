@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfefb8a63bb9e604e8dc0228b77d5f2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDie: 0
   playTime: 0
   playing: 0
   moving: 0
@@ -137,7 +138,7 @@ MonoBehaviour:
   fPlay: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
   exp: 0
   MilkPrefab: {fileID: 7011618860827259365, guid: c253d9d5b8118c64497d0c00562c4956, type: 3}
-  follow_distance: 5
+  follow_distance: 10
   is_follow_food: 0
   is_follow_milk: 0
   is_follow_egg: 0

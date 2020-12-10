@@ -31,6 +31,7 @@ public class Battle : MonoBehaviour
 
         if (item_manager.coin >= 2000)
         {
+            
             cow.SetActive(false);
             tiger.SetActive(false);
             chicken.SetActive(false);

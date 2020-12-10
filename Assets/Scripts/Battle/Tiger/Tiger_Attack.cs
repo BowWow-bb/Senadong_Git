@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tiger_Attack : MonoBehaviour
 {
+    public bool isDie = false;
+
     ItemManager item_manager;
     public int level;  //캐릭터 레벨
 
@@ -60,6 +62,8 @@ public class Tiger_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDie = GameObject.Find("Tiger_p").transform.GetChild(0).GetComponent<Tiger_Move>().isDie;
+
         HPMax = 1000;
         hp = HPMax;
         hp_bar = GameObject.FindWithTag("TigerHp");
@@ -94,6 +98,13 @@ public class Tiger_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDie)
+        {
+            transform.position = new Vector3(-30.0f, transform.position.y, transform.position.z);
+            Destroy(gameObject);
+        }
+            
+        
         battackTime++;
         if (is_target_chicken)
         {

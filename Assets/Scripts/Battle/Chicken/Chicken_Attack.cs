@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Chicken_Attack : MonoBehaviour
 {
+    public bool isDie= false;
+
     ItemManager item_manager;
     public int level;  //캐릭터 레벨
 
@@ -58,6 +60,7 @@ public class Chicken_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDie = GameObject.Find("Chicken_p").transform.GetChild(0).GetComponent<Chicken_Move>().isDie;
         HPMax = 1000;
         hp = HPMax;
         hp_bar = GameObject.FindWithTag("ChickenHp");
@@ -87,6 +90,11 @@ public class Chicken_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDie)
+        {
+            transform.position = new Vector3(-30.0f, transform.position.y, transform.position.z);
+            Destroy(gameObject);
+        }
         battackTime++;
         windTime++;
         if (is_target_chicken)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cow_Attack : MonoBehaviour
 {
+    public bool isDie = false;
+
     ItemManager item_manager;
     public int level;  //캐릭터 레벨
 
@@ -59,6 +61,7 @@ public class Cow_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isDie = GameObject.Find("Cow_p").transform.GetChild(0).GetComponent<Cow_Move>().isDie;
         HPMax = 1000;
         hp = HPMax;
         hp_bar = GameObject.FindWithTag("CowHp");
@@ -87,6 +90,11 @@ public class Cow_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isDie)
+        {
+            transform.position = new Vector3(-30.0f, transform.position.y, transform.position.z);
+            Destroy(gameObject);
+        }
         //Debug.Log(attack);
         battackTime++;
         sattackTime++;

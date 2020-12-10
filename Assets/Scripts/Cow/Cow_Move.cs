@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Cow_Move : MonoBehaviour
 {
+    public bool isDie = false;
     ItemManager item_manager;
     int exp_check;
 
@@ -147,59 +148,66 @@ public class Cow_Move : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        exp = 1000;
         BasicTime++;
         Timer++;
         milkTimer++;
-
-        if(Timer > 1000 && exp == 0)    // 사망
+        if (isDie)
+            transform.position = new Vector3(-30.0f, transform.position.y, transform.position.z);
+        if (!isDie)
         {
-            transform.Find("die_msg").gameObject.SetActive(true);
-            Destroy(transform.gameObject, 2.0f);
-        }
-        if(exp == valueMax)  //성장 완료
-        {
-            GameObject.Find("Canvas").transform.Find("Panel").gameObject.SetActive(true);
-            GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(1).GetComponent<GetCoin>();
-            cc.tagname = "cow";
-            Destroy(transform.gameObject);
-        }
+            if (Timer > 1000 && exp == 0)    // 사망
+            {
+                transform.Find("die_msg").gameObject.SetActive(true);
+                isDie = true;
+                //Destroy(transform.gameObject, 2.0f);
+            }
+            if (exp == valueMax)  //성장 완료
+            {
+                GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
+                GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(2).GetComponent<GetCoin>();
+                cc.tagname = "cow";
+                Destroy(gameObject);
+            }
 
-        if (Timer % 40 == 0)
-        {
-            //시간에 따라 계속 속성 값 감소
-            if (hungry - 1 < 0) hungry = 0;
-            else hungry--;
+            if (Timer % 40 == 0)
+            {
+                //시간에 따라 계속 속성 값 감소
+                if (hungry - 1 < 0) hungry = 0;
+                else hungry--;
 
-            if (poop - 1 < 0) poop = 0;
-            else poop--;
+                if (poop - 1 < 0) poop = 0;
+                else poop--;
 
-            if (play - 1 < 0) play = 0;
-            else play--;
+                if (play - 1 < 0) play = 0;
+                else play--;
 
-            //똥 안치우면 poop속성값 더 많이 감소
-            if (poop - countPoop * 5 < 0) poop = 0;
-            else poop -= countPoop * 5;
+                //똥 안치우면 poop속성값 더 많이 감소
+                if (poop - countPoop * 5 < 0) poop = 0;
+                else poop -= countPoop * 5;
 
-            //속성값 0인 항목이 있는 경우 경험치 감소
-            if (hungry > 0 && poop > 0 && play > 0)
-                if (exp + 1 > valueMax) exp = valueMax;
-                else exp += 1;
-            else
-                if (exp - 30 < 0) exp = 0;
+                //속성값 0인 항목이 있는 경우 경험치 감소
+                if (hungry > 0 && poop > 0 && play > 0)
+                    if (exp + 1 > valueMax) exp = valueMax;
+                    else exp += 1;
+                else
+                    if (exp - 30 < 0) exp = 0;
                 else exp -= 30;
-        }
+            }
 
-        //공격 레벨 설정
-        if(exp > exp_check && exp_check<valueMax)
-        {
-            item_manager.cow_level++;   //공격 레벨 증가
-            exp_check += 100;           //임계점 상향  
+            //공격 레벨 설정
+            if (exp > exp_check && exp_check < valueMax)
+            {
+                item_manager.cow_level++;   //공격 레벨 증가
+                exp_check += 100;           //임계점 상향  
+            }
         }
+       
     }
 
     public bool Cow_FollowMouse()
     {
-        if (playing) // 놀고 있는 상태
+        if (playing && !isDie) // 놀고 있는 상태
         {
             if (trace_mouse == true) // 추적 중일때
             {
@@ -318,7 +326,7 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Milk()
     {
-        if(milkTimer != 0 && milkTimer % 2000 == 0)
+        if(milkTimer != 0 && milkTimer % 2000 == 0 && !isDie)
         {
             //우유 생산
             GameObject milk = Instantiate(MilkPrefab);
@@ -334,7 +342,7 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Follow_Food()//알아서 바꿔서 쓰셈 
     {
-        if (is_follow_food)//밥 생성 되었는지 
+        if (is_follow_food && !isDie)//밥 생성 되었는지 
         {
             if (Bap.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
@@ -355,7 +363,7 @@ public class Cow_Move : MonoBehaviour
 
     public bool Cow_Follow_Milk()
     {
-        if (is_follow_milk)//밥 생성 되었는지 
+        if (is_follow_milk && !isDie)//밥 생성 되었는지 
         {
             if (Milk.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
@@ -375,58 +383,62 @@ public class Cow_Move : MonoBehaviour
     }
     public bool Cow_Quarrel()
     {
-        GameObject tiger = GameObject.FindWithTag("tiger");
-        Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
-        if (quarrel)//쫓기고 있을 때 
+        if (!isDie)
         {
-            if (hurt)//피해를 입었다
+            GameObject tiger = GameObject.FindWithTag("tiger");
+            Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
+            if (quarrel)//쫓기고 있을 때 
             {
-                trace_length += 0.3f;
-                float x = Start_Point.x + (hurt_vec.x * trace_length);  //호랑이가 밀어버린 벡터의 방향으로 밀림
-                float y = Start_Point.y + (hurt_vec.y * trace_length);
-                tmp_Point = gameObject.transform.position;
-
-                if (x >= 13f) // 울타리를 넘어가지 않기 위해 
-                    x = 13f;
-                if (x <= -13f)
-                    x = -13f;
-                if (y >= 5.7f)
-                    y = 5.7f;
-                if (y <= -6.5f)
-                    y = -6.5f;
-                if (x >= 3 && y >= -6.5f && y <= -4.5f)
+                if (hurt)//피해를 입었다
                 {
-                    x = tmp_Point.x; y = tmp_Point.y;
-                }
-                gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+                    trace_length += 0.3f;
+                    float x = Start_Point.x + (hurt_vec.x * trace_length);  //호랑이가 밀어버린 벡터의 방향으로 밀림
+                    float y = Start_Point.y + (hurt_vec.y * trace_length);
+                    tmp_Point = gameObject.transform.position;
 
-                if (trace_length > 3f) //일정 거리 밀렸다면 변수 비활성 
-                {
-                    trace_length = 0;
-                    hurt = false;
-                    quarrel = false;
-                }
+                    if (x >= 13f) // 울타리를 넘어가지 않기 위해 
+                        x = 13f;
+                    if (x <= -13f)
+                        x = -13f;
+                    if (y >= 5.7f)
+                        y = 5.7f;
+                    if (y <= -6.5f)
+                        y = -6.5f;
+                    if (x >= 3 && y >= -6.5f && y <= -4.5f)
+                    {
+                        x = tmp_Point.x; y = tmp_Point.y;
+                    }
+                    gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
-            }
-            else 
-            {
-                if ((Vector3.Distance(Start_Point, tiger.transform.position)) < 1f)
-                {
-                    hurt = true; //호랑이에게 잡혔다면 hurt활성화
+                    if (trace_length > 3f) //일정 거리 밀렸다면 변수 비활성 
+                    {
+                        trace_length = 0;
+                        hurt = false;
+                        quarrel = false;
+                    }
+
                 }
                 else
                 {
-                    Start_Point = gameObject.transform.position;
-                    hurt_vec = T_m.trace; // 호랑이가 쫓아오는 벡터
-                    trace_length = 0;
+                    if ((Vector3.Distance(Start_Point, tiger.transform.position)) < 1f)
+                    {
+                        hurt = true; //호랑이에게 잡혔다면 hurt활성화
+                    }
+                    else
+                    {
+                        Start_Point = gameObject.transform.position;
+                        hurt_vec = T_m.trace; // 호랑이가 쫓아오는 벡터
+                        trace_length = 0;
+                    }
                 }
             }
         }
+        
         return true;
     }
     public bool Cow_Follow_Egg()
     {
-        if (is_follow_egg)//밥 생성 되었는지 
+        if (is_follow_egg && !isDie)//밥 생성 되었는지 
         {
             if (Egg.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
@@ -446,90 +458,94 @@ public class Cow_Move : MonoBehaviour
     }
     public bool Cow_BasicMove()
     {
-        if(isPoop)    //화장실로 이동
+        if(!isDie)
         {
-            //목표지점을 향하는 벡터 이용해 이동
-            Vector3 toilet_vec = 5*(toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
-
-            if (toilet_vec.x <= 0)
-                gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
-            else
-                gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
-
-            transform.position += toilet_vec;
-
-            if ((int)transform.position.x == (int)toiletPos.x
-                && (int)transform.position.y == (int)toiletPos.y) //목표 지점 도달한 경우
+            if (isPoop)    //화장실로 이동
             {
-                GameObject mini_poop = Instantiate(CowPoopPrefab);
-                mini_poop.transform.parent = transform;
-                mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
-                countPoop++;
-                isPoop = false;
-                statTime = statMax;
-                fPoop.SetActive(false); //똥 싼 후 말풍선 비활성화 
-            }
-        }
-        else   //랜덤 이동
-        {
-            if (!playing && !isdrag && !is_follow_food && !is_follow_egg && !is_follow_milk&&!quarrel)
-            {
-                if (moving) // 노는중 아닐 때 , 움직이는 중
+                //목표지점을 향하는 벡터 이용해 이동
+                Vector3 toilet_vec = 5 * (toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
+
+                if (toilet_vec.x <= 0)
+                    gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                else
+                    gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+
+                transform.position += toilet_vec;
+
+                if ((int)transform.position.x == (int)toiletPos.x
+                    && (int)transform.position.y == (int)toiletPos.y) //목표 지점 도달한 경우
                 {
-                    float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
-                    float y = Start_Point.y + move_vec.y * move_length;
-                    tmp_Point = gameObject.transform.position;
-                    if (x >= 13f) // 울타리를 넘어가지 않기 위해 
-                        x = 13f;
-                    if (x <= -13f)
-                        x = -13f;
-                    if (y >= 5.7f)
-                        y = 5.7f;
-                    if (y <= -6.5f)
-                        y = -6.5f;
-                    if (x >= 3f && (y >= -6.5f && y <= -4f))
+                    GameObject mini_poop = Instantiate(CowPoopPrefab);
+                    mini_poop.transform.parent = transform;
+                    mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
+                    countPoop++;
+                    isPoop = false;
+                    statTime = statMax;
+                    fPoop.SetActive(false); //똥 싼 후 말풍선 비활성화 
+                }
+            }
+            else   //랜덤 이동
+            {
+                if (!playing && !isdrag && !is_follow_food && !is_follow_egg && !is_follow_milk && !quarrel)
+                {
+                    if (moving) // 노는중 아닐 때 , 움직이는 중
                     {
-                        x = tmp_Point.x;
-                        y = tmp_Point.y;
-                    }
-                    if(x>=5.5f && (y<=6.5f && y>=5f))
-                    {
-                        x = tmp_Point.x;
-                        y = tmp_Point.y;
-                    }
-                    gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+                        float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
+                        float y = Start_Point.y + move_vec.y * move_length;
+                        tmp_Point = gameObject.transform.position;
+                        if (x >= 13f) // 울타리를 넘어가지 않기 위해 
+                            x = 13f;
+                        if (x <= -13f)
+                            x = -13f;
+                        if (y >= 5.7f)
+                            y = 5.7f;
+                        if (y <= -6.5f)
+                            y = -6.5f;
+                        if (x >= 3f && (y >= -6.5f && y <= -4f))
+                        {
+                            x = tmp_Point.x;
+                            y = tmp_Point.y;
+                        }
+                        if (x >= 5.5f && (y <= 6.5f && y >= 5f))
+                        {
+                            x = tmp_Point.x;
+                            y = tmp_Point.y;
+                        }
+                        gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
-                    move_length += 0.05f; // 거리를 차근차근 움직임
-                    if (move_length > 10f) // 다 움직였다면 다시 움직임 타이머를 잼
-                    {
-                        moving = false;
-                        BasicTime = 0;
+                        move_length += 0.05f; // 거리를 차근차근 움직임
+                        if (move_length > 10f) // 다 움직였다면 다시 움직임 타이머를 잼
+                        {
+                            moving = false;
+                            BasicTime = 0;
+                        }
+                        return true;
                     }
-                    return true;
+                    else
+                    {
+                        if (BasicTime % 55 == 0 && BasicTime > 0) // 일정시간마다 혼자 돌아다님
+                        {
+                            BasicTime = 0;
+                            moving = true;
+                            Start_Point = gameObject.transform.position; // 시작점 저장
+                            move_vec = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)); // 상하좌우,대각 랜덤으로 정함
+                            if (move_vec.x <= 0)
+                                gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                            else
+                                gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+                            move_length = 0;
+                        }
+                        return true;
+                    }
                 }
                 else
                 {
-                    if (BasicTime % 55 == 0 && BasicTime > 0) // 일정시간마다 혼자 돌아다님
-                    {
-                        BasicTime = 0;
-                        moving = true;
-                        Start_Point = gameObject.transform.position; // 시작점 저장
-                        move_vec = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)); // 상하좌우,대각 랜덤으로 정함
-                        if (move_vec.x <= 0)
-                            gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
-                        else
-                            gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
-                        move_length = 0;
-                    }
-                    return true;
+                    BasicTime = 0;
+                    moving = false;
                 }
             }
-            else
-            {
-                BasicTime = 0;
-                moving = false;
-            }
         }
+        
         return true;
 
     }

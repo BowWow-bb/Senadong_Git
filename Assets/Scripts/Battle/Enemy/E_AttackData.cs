@@ -15,7 +15,7 @@ public class E_AttackData : MonoBehaviour
     public int Etiger_attack = 0;
 
     int timer = 0;
-    int threshold = 700;
+    int threshold = 500;
     int rand_tmp = 0;
 
     public bool isBattle = false;
@@ -34,7 +34,7 @@ public class E_AttackData : MonoBehaviour
             timer++;
             if (timer > threshold) //임계점 도달
             {
-                threshold += 1000;   //임계점 업뎃
+                threshold += 1500;   //임계점 업뎃
 
                 //적군 레벨 업
                 Echicken_level++;

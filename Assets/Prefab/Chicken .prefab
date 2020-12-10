@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bc42604592f94cc5b1defc9f10bb8f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDie: 0
   playTime: 0
   playing: 0
   moving: 0
@@ -161,7 +162,7 @@ MonoBehaviour:
   fPoop: {fileID: 3667755121941617325, guid: e7a0c79783de391459754d8ddb6b7ffe, type: 3}
   fPlay: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
   exp: 0
-  follow_distance: 5
+  follow_distance: 10
   is_follow_food: 0
   is_follow_milk: 0
   is_follow_egg: 0

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Tiger_Move : MonoBehaviour
 {
+    public bool isDie = false;
     ItemManager item_manager;
     int exp_check;
 
@@ -122,85 +123,89 @@ public class Tiger_Move : MonoBehaviour
     }
     public bool Quarrel()
     {
-        if (quarreling && (!isHungry && !isPoop && !isPlay))
+        if(!isDie)
         {
-            float x = gameObject.transform.position.x;
-            float y = gameObject.transform.position.y;
-            Start_Point = new Vector3(x, y, -8); //현재 호랑이의 위치
-            x = tmp.transform.position.x;
-            y = tmp.transform.position.y;
-            Vector3 quarrel_point = new Vector3(x, y, -8); // 시비 걸 대상의 위치
-            trace = (quarrel_point - Start_Point); // 쫓아갈 벡터 생성
-            if (trace.x >= 0)
-                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0); // 좌우 반전
-
-            else
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            x = Start_Point.x + (trace.x * trace_length);  // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
-            y = Start_Point.y + (trace.y * trace_length);
-
-            gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
-
-            trace_length += 0.01f; // 빨라지는 추적속도
-            if (Vector3.Distance(gameObject.transform.position, quarrel_point) < 1f) //따라잡았다면
+            if (quarreling && (!isHungry && !isPoop && !isPlay))
             {
-                quarrel_check = 0; 
+                float x = gameObject.transform.position.x;
+                float y = gameObject.transform.position.y;
+                Start_Point = new Vector3(x, y, -8); //현재 호랑이의 위치
+                x = tmp.transform.position.x;
+                y = tmp.transform.position.y;
+                Vector3 quarrel_point = new Vector3(x, y, -8); // 시비 걸 대상의 위치
+                trace = (quarrel_point - Start_Point); // 쫓아갈 벡터 생성
+                if (trace.x >= 0)
+                    gameObject.transform.rotation = Quaternion.Euler(0, 180, 0); // 좌우 반전
 
-                gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
-                trace_length = 0; // 변수 초기화
-                quarreling = false; // 시비걸기 초기화
-                fPazik.SetActive(false); 
-            }
-        }
-        else
-        {
+                else
+                    gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 
-            if (Vector3.Distance(Cow.transform.position, gameObject.transform.position) < 5f) // 닭 / 소가 호랑이의 일정범위 내의 들어온다면 
-            {
-                tmp = Cow; // 바로 전에 보인 동물
-                quarrel_check++; // 눈앞에 걸리적거림 +1
-            }
-            else if (Vector3.Distance(Chicken.transform.position, gameObject.transform.position) < 10f)
-            {
-                tmp = Chicken;
-                quarrel_check++;
-            }
+                x = Start_Point.x + (trace.x * trace_length);  // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
+                y = Start_Point.y + (trace.y * trace_length);
 
-            if (quarrel_check > 500) // 눈앞에 걸리적거림이 인내를 넘어섰다면
-            {
-                quarrel_check = 0;
-                if (!isHungry && !isPoop && !isPlay && !quarreling ) //딴짓중 아닐 때
+                gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+
+                trace_length += 0.01f; // 빨라지는 추적속도
+                if (Vector3.Distance(gameObject.transform.position, quarrel_point) < 1f) //따라잡았다면
                 {
-                    if (tmp.tag == "chicken") // 치킨이나 소 하나 찾아서 치킨,소가 딴짓중 아닐 때 시비걸기 ON 
-                    {
-                        Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
-                        if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food
-                            && !c_m.isEggTime && !c_m.is_follow_food && !c_m.is_follow_milk && !c_m.is_follow_egg && !c_m.isPoop)
-                        {
-                            quarrel_check = 0;
-                            c_m.quarrel = true; // 소(치킨)의 변수 바꿔 
-                            quarreling = true;
-                            fPazik.SetActive(true);
-                        }
+                    quarrel_check = 0;
 
-                    }
-                    else if (tmp.tag == "cow")
+                    gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
+                    trace_length = 0; // 변수 초기화
+                    quarreling = false; // 시비걸기 초기화
+                    fPazik.SetActive(false);
+                }
+            }
+            else
+            {
+
+                if (Vector3.Distance(Cow.transform.position, gameObject.transform.position) < 5f) // 닭 / 소가 호랑이의 일정범위 내의 들어온다면 
+                {
+                    tmp = Cow; // 바로 전에 보인 동물
+                    quarrel_check++; // 눈앞에 걸리적거림 +1
+                }
+                else if (Vector3.Distance(Chicken.transform.position, gameObject.transform.position) < 10f)
+                {
+                    tmp = Chicken;
+                    quarrel_check++;
+                }
+
+                if (quarrel_check > 500) // 눈앞에 걸리적거림이 인내를 넘어섰다면
+                {
+                    quarrel_check = 0;
+                    if (!isHungry && !isPoop && !isPlay && !quarreling) //딴짓중 아닐 때
                     {
-                        Cow_Move c_m = tmp.GetComponent<Cow_Move>();
-                        if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food
-                            && !c_m.is_follow_food && !c_m.is_follow_milk && !c_m.is_follow_egg && !c_m.isPoop)
+                        if (tmp.tag == "chicken") // 치킨이나 소 하나 찾아서 치킨,소가 딴짓중 아닐 때 시비걸기 ON 
                         {
-                            quarrel_check = 0;
-                            c_m.quarrel = true;
-                            quarreling = true;
-                            fPazik.SetActive(true);
+                            Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
+                            if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food
+                                && !c_m.isEggTime && !c_m.is_follow_food && !c_m.is_follow_milk && !c_m.is_follow_egg && !c_m.isPoop)
+                            {
+                                quarrel_check = 0;
+                                c_m.quarrel = true; // 소(치킨)의 변수 바꿔 
+                                quarreling = true;
+                                fPazik.SetActive(true);
+                            }
+
+                        }
+                        else if (tmp.tag == "cow")
+                        {
+                            Cow_Move c_m = tmp.GetComponent<Cow_Move>();
+                            if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food
+                                && !c_m.is_follow_food && !c_m.is_follow_milk && !c_m.is_follow_egg && !c_m.isPoop)
+                            {
+                                quarrel_check = 0;
+                                c_m.quarrel = true;
+                                quarreling = true;
+                                fPazik.SetActive(true);
+                            }
                         }
                     }
                 }
-            }
 
+            }
         }
+        
         return true;
     }
     public bool Hungry()
@@ -263,7 +268,7 @@ public class Tiger_Move : MonoBehaviour
 
     public bool Tiger_Follow_Food()//알아서 바꿔서 쓰셈 
     {
-        if (is_follow_food)//밥 생성 되었는지 
+        if (is_follow_food && !isDie)//밥 생성 되었는지 
         {
             //Debug.Log("밥 생성, 거리 추적 범위");
             //Debug.Log("밥 위치: ", Bap.transform);
@@ -286,7 +291,7 @@ public class Tiger_Move : MonoBehaviour
 
     public bool Tiger_Follow_Milk()
     {
-        if (is_follow_milk)//밥 생성 되었는지 
+        if (is_follow_milk && !isDie)//밥 생성 되었는지 
         {
             if (Milk.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
@@ -307,7 +312,7 @@ public class Tiger_Move : MonoBehaviour
 
     public bool Tiger_Follow_Egg()
     {
-        if (is_follow_egg)//밥 생성 되었는지 
+        if (is_follow_egg &&!isDie)//밥 생성 되었는지 
         {
             if (Egg.transform.position.x < transform.position.x)//밥이 왼쪽 이라면 
             {
@@ -328,7 +333,7 @@ public class Tiger_Move : MonoBehaviour
 
     public bool FollowMouse()
     {
-        if (playing) // 놀고 있는 상태
+        if (playing && !isDie) // 놀고 있는 상태
         {
             if (trace_mouse == true) // 추적 중일때
             {
@@ -392,91 +397,95 @@ public class Tiger_Move : MonoBehaviour
     }
     public bool BasicMove()
     {
-        if (isPoop)    //화장실로 이동
+        if(!isDie)
         {
-            //목표지점을 향하는 벡터 이용해 이동
-            Vector3 toilet_vec = 5f*(toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
-
-            if (toilet_vec.x >= 0)
-                gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
-            else
-                gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
-
-            transform.position += toilet_vec;
-
-            if ((int)transform.position.x == (int)toiletPos.x
-                && (int)transform.position.y == (int)toiletPos.y) //목표 지점 도달한 경우
+            if (isPoop)    //화장실로 이동
             {
-                GameObject mini_poop = Instantiate(TigerPoopPrefab);
-                mini_poop.transform.parent = transform;
-                mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
-                countPoop++;
-                isPoop = false;
-                statTime = statMax;
-                fPoop.SetActive(false); //똥 싼 후 말풍선 비활성화 
-            }
-        }
-        else   //랜덤 이동
-        {
-            if (!playing&& !isdrag&&! is_follow_food && !quarreling && !is_follow_egg && !is_follow_milk)
-            {
-                if (moving) // 노는중 아닐 때,음식따라다니지 않을 때 , 움직이는 중
+                //목표지점을 향하는 벡터 이용해 이동
+                Vector3 toilet_vec = 5f * (toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
+
+                if (toilet_vec.x >= 0)
+                    gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                else
+                    gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+
+                transform.position += toilet_vec;
+
+                if ((int)transform.position.x == (int)toiletPos.x
+                    && (int)transform.position.y == (int)toiletPos.y) //목표 지점 도달한 경우
                 {
-                    float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
-                    float y = Start_Point.y + move_vec.y * move_length;
-                    tmp_Point = gameObject.transform.position;
-
-                    if (x >= 13f) // 울타리를 넘어가지 않기 위해 
-                        x = 13f;
-                    if (x <= -13f)
-                        x = -13f;
-                    if (y >= 5.7f)
-                        y = 5.7f;
-                    if (y <= -6.5f)
-                        y = -6.5f;
-                    if (x >= 3 && (y >= -6.5f && y <= -4f)) //밑의 아이템슬롯이나 위의 상점 버튼 겹치지 않게
+                    GameObject mini_poop = Instantiate(TigerPoopPrefab);
+                    mini_poop.transform.parent = transform;
+                    mini_poop.transform.position = transform.position;  //현재 위치에 똥 싸기
+                    countPoop++;
+                    isPoop = false;
+                    statTime = statMax;
+                    fPoop.SetActive(false); //똥 싼 후 말풍선 비활성화 
+                }
+            }
+            else   //랜덤 이동
+            {
+                if (!playing && !isdrag && !is_follow_food && !quarreling && !is_follow_egg && !is_follow_milk)
+                {
+                    if (moving) // 노는중 아닐 때,음식따라다니지 않을 때 , 움직이는 중
                     {
+                        float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
+                        float y = Start_Point.y + move_vec.y * move_length;
+                        tmp_Point = gameObject.transform.position;
 
-                        x = tmp_Point.x; y = tmp_Point.y;
-                    }
-                    if (x >= 5.5f && (y <= 6.5f && y >= 5f))
-                    {
-                        x = tmp_Point.x;
-                        y = tmp_Point.y;
-                    }
-                    gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+                        if (x >= 13f) // 울타리를 넘어가지 않기 위해 
+                            x = 13f;
+                        if (x <= -13f)
+                            x = -13f;
+                        if (y >= 5.7f)
+                            y = 5.7f;
+                        if (y <= -6.5f)
+                            y = -6.5f;
+                        if (x >= 3 && (y >= -6.5f && y <= -4f)) //밑의 아이템슬롯이나 위의 상점 버튼 겹치지 않게
+                        {
 
-                    move_length += 0.05f; // 거리를 차근차근 움직임
-                    if (move_length > 10f) // 다 움직였다면 다시 움직임 타이머를 잼
-                    {
-                        moving = false;
-                        BasicTime = 0;
+                            x = tmp_Point.x; y = tmp_Point.y;
+                        }
+                        if (x >= 5.5f && (y <= 6.5f && y >= 5f))
+                        {
+                            x = tmp_Point.x;
+                            y = tmp_Point.y;
+                        }
+                        gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+
+                        move_length += 0.05f; // 거리를 차근차근 움직임
+                        if (move_length > 10f) // 다 움직였다면 다시 움직임 타이머를 잼
+                        {
+                            moving = false;
+                            BasicTime = 0;
+                        }
+                        return true;
                     }
-                    return true;
+                    else
+                    {
+                        if (BasicTime % 55 == 0 && BasicTime > 0) // 일정시간마다 혼자 돌아다님
+                        {
+                            BasicTime = 0;
+                            moving = true;
+                            Start_Point = gameObject.transform.position; // 시작점 저장
+                            move_vec = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)); // 상하좌우,대각 랜덤으로 정함
+                            if (move_vec.x >= 0)
+                                gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                            else
+                                gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
+                            move_length = 0;
+                        }
+                        return true;
+                    }
                 }
                 else
                 {
-                    if (BasicTime % 55 == 0 && BasicTime > 0) // 일정시간마다 혼자 돌아다님
-                    {
-                        BasicTime = 0;
-                        moving = true;
-                        Start_Point = gameObject.transform.position; // 시작점 저장
-                        move_vec = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)); // 상하좌우,대각 랜덤으로 정함
-                        if (move_vec.x >= 0)
-                            gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
-                        else
-                            gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
-                        move_length = 0;
-                    }
-                    return true;
+                    BasicTime = 0;
+                    moving = false;
                 }
             }
-            else
-            {
-                BasicTime = 0;
-                moving = false;
-            }
         }
+       
         return true;
     }
     void Start()
@@ -515,50 +524,57 @@ public class Tiger_Move : MonoBehaviour
     {
         BasicTime++;
         Timer++;
+        if (isDie)
+            transform.position = new Vector3(-30.0f, transform.position.y, transform.position.z);
 
-        if (Timer > 1000 && exp == 0)    // 사망
+        if(!isDie)
         {
-            transform.Find("die_msg").gameObject.SetActive(true);
-            Destroy(transform.gameObject, 2.0f);
-        }
-        if (exp == valueMax)  //성장 완료
-        {
-            GameObject.Find("Canvas").transform.Find("Panel").gameObject.SetActive(true);
-            GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(1).GetComponent<GetCoin>();
-            cc.tagname = "tiger";
-            Destroy(transform.gameObject);
-        }
+            if (Timer > 1000 && exp == 0)    // 사망
+            {
+                transform.Find("die_msg").gameObject.SetActive(true);
+                isDie = true;
+                //Destroy(transform.gameObject, 2.0f);
+            }
+            if (exp == valueMax)  //성장 완료
+            {
+                GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
+                GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(2).GetComponent<GetCoin>();
+                cc.tagname = "tiger";
+                Destroy(transform.gameObject);
+            }
 
-        if (Timer % 40 == 0)
-        {
-            //시간에 따라 계속 속성 값 감소
-            if (hungry - 1 < 0) hungry = 0;
-            else hungry--;
+            if (Timer % 40 == 0)
+            {
+                //시간에 따라 계속 속성 값 감소
+                if (hungry - 1 < 0) hungry = 0;
+                else hungry--;
 
-            if (poop - 1 < 0) poop = 0;
-            else poop--;
+                if (poop - 1 < 0) poop = 0;
+                else poop--;
 
-            if (play - 1 < 0) play = 0;
-            else play--;
+                if (play - 1 < 0) play = 0;
+                else play--;
 
-            //똥 안치우면 poop속성값 더 많이 감소
-            if (poop - countPoop * 5 < 0) poop = 0;
-            else poop -= countPoop * 5;
+                //똥 안치우면 poop속성값 더 많이 감소
+                if (poop - countPoop * 5 < 0) poop = 0;
+                else poop -= countPoop * 5;
 
-            //속성값 0인 항목이 있는 경우 경험치 감소
-            if (hungry > 0 && poop > 0 && play > 0)
-                if (exp + 1 > valueMax) exp = valueMax;
-                else exp += 1;
-            else
-                if (exp - 30 < 0) exp = 0;
+                //속성값 0인 항목이 있는 경우 경험치 감소
+                if (hungry > 0 && poop > 0 && play > 0)
+                    if (exp + 1 > valueMax) exp = valueMax;
+                    else exp += 1;
+                else
+                    if (exp - 30 < 0) exp = 0;
                 else exp -= 30;
-        }
+            }
 
-        //공격 레벨 설정
-        if (exp > exp_check && exp_check < valueMax)
-        {
-            item_manager.tiger_level++;   //공격 레벨 증가
-            exp_check += 100;           //임계점 상향  
+            //공격 레벨 설정
+            if (exp > exp_check && exp_check < valueMax)
+            {
+                item_manager.tiger_level++;   //공격 레벨 증가
+                exp_check += 100;           //임계점 상향  
+            }
         }
+        
     }
 }

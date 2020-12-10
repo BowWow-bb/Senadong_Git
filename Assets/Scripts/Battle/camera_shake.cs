@@ -18,8 +18,7 @@ public class camera_shake : MonoBehaviour
 	public bool cameraOn = false;
 
 	Vector3 originalPos;
-
-	void Awake()
+    void Awake()
 	{
 		if (camTransform == null)
 		{

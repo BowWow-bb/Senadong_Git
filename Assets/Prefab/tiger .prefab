@@ -143,13 +143,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57fb0d40ac8fd9499e3d481f1df6f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDie: 0
   playTime: 0
   quarreling: 0
   playing: 0
   moving: 0
   trace_mouse: 0
   trace: {x: 0, y: 0, z: 0}
-  follow_distance: 5
+  follow_distance: 10
   is_follow_food: 0
   is_follow_milk: 0
   is_follow_egg: 0
