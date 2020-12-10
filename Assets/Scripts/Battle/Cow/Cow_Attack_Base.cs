@@ -75,6 +75,18 @@ public class Cow_Basic_Attack : Cow_Attack_Node
         return _Cow_Attack.Cow_Basic_Attack();
     }
 }
+public class Cow_Special_Attack : Cow_Attack_Node
+{
+    public Cow_Attack Cow_attack
+    {
+        set { _Cow_Attack = value; }
+    }
+    private Cow_Attack _Cow_Attack;
+    public override bool Invoke()
+    {
+        return _Cow_Attack.Cow_Special_Attack();
+    }
+}
 public class Cow_Find_Target : Cow_Attack_Node
 {
     public Cow_Attack Cow_attack

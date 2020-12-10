@@ -5,10 +5,10 @@ using UnityEngine;
 public class Chicken_Attack : MonoBehaviour
 {
     ItemManager item_manager;
-    public float level;  //캐릭터 레벨
+    public int level;  //캐릭터 레벨
 
     Attack_Data attack_data;
-    public float attack; //공격력
+    public int attack; //공격력
 
     public int hp;                 //hp
     int HPMax;              //최대 체력
@@ -78,6 +78,8 @@ public class Chicken_Attack : MonoBehaviour
         //공격력 가져오기
         attack_data = GameObject.Find("AttackData").GetComponent<Attack_Data>();
         attack = attack_data.getAttackValue(level);
+
+        Debug.Log("닭 레벨: " + level + ", 공격력: " + attack);
 
         animator = GetComponent<Animator>();
     }

@@ -5,10 +5,10 @@ using UnityEngine;
 public class Cow_Attack : MonoBehaviour
 {
     ItemManager item_manager;
-    public float level;  //캐릭터 레벨
+    public int level;  //캐릭터 레벨
 
     Attack_Data attack_data;
-    public float attack; //공격력
+    public int attack; //공격력
 
     public int hp;                 //hp
     int HPMax;              //최대 체력
@@ -37,7 +37,7 @@ public class Cow_Attack : MonoBehaviour
     float back_time;//뒤로 물러서는 시간 -> 증가되는 값
 
     int battackTime = 0;//기본 공격 시간
-    public int C_battackTime = 100;//기본 공격 시간 조정
+    public int C_battackTime = 700;//기본 공격 시간 조정
 
     bool is_target_cow = false;
     bool is_target_chicken = false;
@@ -48,6 +48,11 @@ public class Cow_Attack : MonoBehaviour
 
     public bool is_go_right = false;//왼쪽에 적이 존재함 
     public bool is_Attack = false;
+
+    bool is_special_attack = false;
+    public bool is_special_attack_time = false;
+    int sattackTime = 0;    //고유 공격 시간
+    int full_sattackTime = 700; //고유 공격 시간 조정
 
 
     //Animator animator;
@@ -74,14 +79,17 @@ public class Cow_Attack : MonoBehaviour
         attack_data = GameObject.Find("AttackData").GetComponent<Attack_Data>();
         attack = attack_data.getAttackValue(level);
 
+        Debug.Log("소 레벨: " + level + ", 공격력: " + attack);
+
         //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(attack);
+        //Debug.Log(attack);
         battackTime++;
+        sattackTime++;
         //죽었는지 파악 
         if (is_target_chicken)
         {
@@ -205,12 +213,98 @@ public class Cow_Attack : MonoBehaviour
         }
         else
         {
-            if (battackTime > C_battackTime)//기본 공격 시간 제어 
+            if ((battackTime > C_battackTime) && !is_special_attack_time)//기본 공격 시간 제어 
             {
+                is_special_attack = false;
                 is_basic_attack = true;
                 battackTime = 0;
             }
         }
+        return true;
+    }
+    public bool Cow_Special_Attack()    //들이 받기(고유 공격)
+    {
+        if(is_special_attack_time)   //고유 공격 실행
+        {
+            Vector3 pos;
+
+            if(min_distance == chicken_distance)    //치킨과 가까울 때
+            {
+                Debug.Log("소가 닭 고유공격 !");
+                pos = chicken_enemy.transform.position;
+                if(transform.position.x > pos.x)   //소가 오른쪽 위치
+                {
+                    transform.position = chicken_enemy.transform.position;  // 적치킨 한테 순간 이동
+                    if(Mathf.Abs(pos.x-5)>=13.8)    //경계 예외처리
+                        chicken_enemy.transform.position = new Vector3(-13.8f, pos.y, pos.z);
+                    else
+                        chicken_enemy.transform.position = new Vector3(pos.x - 5, pos.y, pos.z);    //뒤로 밀려남
+                }
+                else if(transform.position.x <= pos.x) //소가 왼쪽 위치
+                {
+                    transform.position = chicken_enemy.transform.position;  // 적치킨 한테 순간 이동
+                    if (Mathf.Abs(pos.x + 5) >= 13.8)    //경계 예외처리
+                        chicken_enemy.transform.position = new Vector3(13.8f, pos.y, pos.z);
+                    else
+                        chicken_enemy.transform.position = new Vector3(pos.x + 5, pos.y, pos.z);    //뒤로 밀려남
+                }
+                
+            }
+            else if(min_distance == cow_distance)   //소와 가까울 때
+            {
+                Debug.Log("소가 소 고유공격 !");
+                pos = cow_enemy.transform.position;
+                if (transform.position.x > pos.x)   //소가 오른쪽 위치
+                {
+                    transform.position = cow_enemy.transform.position;  // 적소 한테 순간 이동
+                    if (Mathf.Abs(pos.x - 5) >= 13.8)    //경계 예외처리
+                        cow_enemy.transform.position = new Vector3(-13.8f, pos.y, pos.z);
+                    else
+                        cow_enemy.transform.position = new Vector3(pos.x - 5, pos.y, pos.z);    //뒤로 밀려남
+                }
+                else if (transform.position.x <= pos.x) //소가 왼쪽 위치
+                {
+                    transform.position = cow_enemy.transform.position;  // 적소 한테 순간 이동
+                    if (Mathf.Abs(pos.x + 5) >= 13.8)    //경계 예외처리
+                        cow_enemy.transform.position = new Vector3(13.8f, pos.y, pos.z);
+                    else
+                        cow_enemy.transform.position = new Vector3(pos.x + 5, pos.y, pos.z);    //뒤로 밀려남
+                }
+            }
+            else if(min_distance == tiger_distance) //호랑이와 가까울 때
+            {
+                Debug.Log("소가 호랑이 고유공격 !");
+                pos =tiger_enemy.transform.position;
+                if (transform.position.x > pos.x)   //소가 오른쪽 위치
+                {
+                    transform.position = tiger_enemy.transform.position;  // 적호랑이 한테 순간 이동
+                    if (Mathf.Abs(pos.x - 5) >= 13.8)    //경계 예외처리
+                        tiger_enemy.transform.position = new Vector3(-13.8f, pos.y, pos.z);
+                    else
+                        tiger_enemy.transform.position = new Vector3(pos.x - 5, pos.y, pos.z);    //뒤로 밀려남
+                }
+                else if (transform.position.x <= pos.x) //소가 왼쪽 위치
+                {
+                    transform.position = tiger_enemy.transform.position;  // 적호랑이 한테 순간 이동
+                    if (Mathf.Abs(pos.x + 5) >= 13.8)    //경계 예외처리
+                        tiger_enemy.transform.position = new Vector3(13.8f, pos.y, pos.z);
+                    else
+                        tiger_enemy.transform.position = new Vector3(pos.x + 5, pos.y, pos.z);    //뒤로 밀려남
+                }
+            }
+
+            is_special_attack_time = false; //중복 제어 
+        }
+        else
+        {
+            if(sattackTime > full_sattackTime)
+            {
+                is_special_attack = true;
+                is_special_attack_time = true;
+                sattackTime = 0;
+            }
+        }
+
         return true;
     }
 

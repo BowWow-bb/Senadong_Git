@@ -29,18 +29,21 @@ public class GetCoin : MonoBehaviour
             {
                 GameObject clone = Instantiate(ChickenPrefab);
                 clone.transform.position = Pos;
+                clone.transform.parent = GameObject.Find("Chicken_p").transform;
                 item_manager.chicken_level += 2;
             }
             else if (tagname == "cow")
             {
                 GameObject clone = Instantiate(CowPrefab);
                 clone.transform.position = Pos;
+                clone.transform.parent = GameObject.Find("Cow_p").transform;
                 item_manager.cow_level += 2;
             }
             else if (tagname == "tiger")
             {
                 GameObject clone = Instantiate(TigerPrefab);
                 clone.transform.position = Pos;
+                clone.transform.parent = GameObject.Find("Tiger_p").transform;
                 item_manager.tiger_level += 2;
             }
 

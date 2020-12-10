@@ -11,7 +11,7 @@ public class Chicken_wind : MonoBehaviour
 
     camera_shake Camera;
 
-    int power = 200;//후에 공격력으로 수정해주삼요~
+    //int power = 200;//후에 공격력으로 수정해주삼요~
 
     bool camera_shake = false;
     bool attacked = false;
@@ -64,7 +64,7 @@ public class Chicken_wind : MonoBehaviour
                     pos = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
                 }
                 transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
-                E_chicken.hpMove(power);
+                E_chicken.hpMove(chicken.attack);
                 attacked = true;
             }
         }
@@ -84,7 +84,7 @@ public class Chicken_wind : MonoBehaviour
                     pos = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
                 }
                 transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
-                E_tiger.hpMove(power);
+                E_tiger.hpMove(chicken.attack);
                 attacked = true;
             }
 
@@ -105,7 +105,7 @@ public class Chicken_wind : MonoBehaviour
                     pos = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
                 }
                 transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
-                E_cow.hpMove(power);
+                E_cow.hpMove(chicken.attack);
                 attacked = true;
             }
 

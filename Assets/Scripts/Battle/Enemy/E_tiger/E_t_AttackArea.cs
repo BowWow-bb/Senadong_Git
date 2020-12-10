@@ -10,7 +10,7 @@ public class E_t_AttackArea : MonoBehaviour
     Cow_Attack cow;
     Tiger_Attack tiger;
 
-    int power = 100;//후에 공격력 
+    //int power = 100;//후에 공격력 
 
     camera_shake Camera;
 
@@ -21,6 +21,7 @@ public class E_t_AttackArea : MonoBehaviour
     {
         E_t = GameObject.FindWithTag("tiger_enemy").GetComponent<E_t_Attack>();
         Camera = GameObject.FindWithTag("MainCamera").GetComponent<camera_shake>();
+        cow = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
     }
 
     // Update is called once per frame
@@ -36,24 +37,24 @@ public class E_t_AttackArea : MonoBehaviour
     {
         //공격 함 
         //적이랑 닿으면 camera 움직임 
-        if ((other.gameObject.tag == "cow") && E_t.is_basic_attack)
+        if ((other.gameObject.tag == "cow") && E_t.is_basic_attack && !cow.is_special_attack_time)//소가 고유공격 안할때 데미지 줌
         {
-            cow = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
-            cow.hpMove(power);
+            //cow = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
+            cow.hpMove(E_t.attack);
 
             E_t.is_Attack = true;
         }
         if ((other.gameObject.tag == "tiger") && E_t.is_basic_attack)
         {
             tiger = GameObject.FindWithTag("tiger").GetComponent<Tiger_Attack>();
-            tiger.hpMove(power);
+            tiger.hpMove(E_t.attack);
 
             E_t.is_Attack = true;
         }
         if ((other.gameObject.tag == "chicken")&& E_t.is_basic_attack)
         {
             chicken = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
-            chicken.hpMove(power);
+            chicken.hpMove(E_t.attack);
 
             E_t.is_Attack = true;
         }

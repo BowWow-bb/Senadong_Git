@@ -5,10 +5,10 @@ using UnityEngine;
 public class Tiger_Attack : MonoBehaviour
 {
     ItemManager item_manager;
-    float level;  //캐릭터 레벨
+    public int level;  //캐릭터 레벨
 
     Attack_Data attack_data;
-    float attack; //공격력
+    public int attack; //공격력
 
     public int hp;                 //hp
     int HPMax;              //최대 체력
@@ -53,9 +53,9 @@ public class Tiger_Attack : MonoBehaviour
     public GameObject fPazik;
     public Cow_Attack cow;
     public Chicken_Attack chicken;
-    float tmp_tiger;
-    float tmp_cow;
-    float tmp_chicken;
+    int tmp_tiger;
+    int tmp_cow;
+    int tmp_chicken;
     Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -85,6 +85,8 @@ public class Tiger_Attack : MonoBehaviour
         //공격력 가져오기
         attack_data = GameObject.Find("AttackData").GetComponent<Attack_Data>();
         attack = attack_data.getAttackValue(level);
+
+        Debug.Log("호랑이 레벨: " + level + ", 공격력: " + attack);
 
         animator = GetComponent<Animator>();
     }
@@ -284,13 +286,14 @@ public class Tiger_Attack : MonoBehaviour
                 skillTime = 0;
                 is_skill_time = true;
                 tmp_cow = cow.attack;
-                cow.attack = tmp_cow * 1.2f;
-
+                //cow.attack = tmp_cow * 1.2f;
+                cow.attack = tmp_cow + 2;
                 tmp_chicken = chicken.attack;
-                chicken.attack = tmp_chicken * 1.2f;
-
+                //chicken.attack = tmp_chicken * 1.2f;
+                chicken.attack = tmp_chicken + 2;
                 tmp_tiger = attack;
-                attack = tmp_tiger * 1.2f;
+                //attack = tmp_tiger * 1.2f;
+                attack = tmp_tiger + 2;
 
             }
         }

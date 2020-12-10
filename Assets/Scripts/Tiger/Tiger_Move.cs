@@ -525,7 +525,7 @@ public class Tiger_Move : MonoBehaviour
         {
             GameObject.Find("Canvas").transform.Find("Panel").gameObject.SetActive(true);
             GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(1).GetComponent<GetCoin>();
-            cc.tagname = transform.tag;
+            cc.tagname = "tiger";
             Destroy(transform.gameObject);
         }
 

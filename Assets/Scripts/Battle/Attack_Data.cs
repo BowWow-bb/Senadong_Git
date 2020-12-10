@@ -37,9 +37,9 @@ public class Attack_Data : MonoBehaviour
 
     }
     // Update is called once per frame
-    public float getAttackValue(float level)
+    public int getAttackValue(int level)
     {
-        float attack_value;
+        int attack_value;
         attack_value = level * 10;
         return attack_value;
     }

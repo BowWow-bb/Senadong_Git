@@ -11,7 +11,7 @@ public class attackArea_cow : MonoBehaviour
 
     camera_shake Camera;
 
-    int power = 100;//후에 공격력 
+    //int power = 100;//후에 공격력 
 
     bool camera_shake = false;
 
@@ -33,23 +33,24 @@ public class attackArea_cow : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "chicken_enemy" && cow.is_basic_attack)
+        if (other.gameObject.tag == "chicken_enemy" && (cow.is_basic_attack || cow.is_special_attack_time)) //충돌+(기본공격 or 고유공격 중)
         {
             E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
-            E_chicken.hpMove(power);
+            E_chicken.hpMove(cow.attack);
 
+            Debug.Log("소 공격력: "+cow.attack);
             cow.is_Attack = true;
             camera_shake = true;
         }
-        if (other.gameObject.tag == "tiger_enemy" && cow.is_basic_attack)
+        if (other.gameObject.tag == "tiger_enemy" && (cow.is_basic_attack || cow.is_special_attack_time))
         {
             cow.is_Attack = true;
             camera_shake = true;
         }
-        if (other.gameObject.tag == "cow_enemy" && cow.is_basic_attack)
+        if (other.gameObject.tag == "cow_enemy" && (cow.is_basic_attack || cow.is_special_attack_time))
         {
             E_cow = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
-            E_cow.hpMove(power);
+            E_cow.hpMove(cow.attack);
 
             cow.is_Attack = true;
             camera_shake = true;

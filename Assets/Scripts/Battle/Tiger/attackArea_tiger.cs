@@ -12,7 +12,7 @@ public class attackArea_tiger : MonoBehaviour
 
     camera_shake Camera;
 
-    int power = 100;//후에 공격력으로 수정해주삼요~
+    //int power = 100;//후에 공격력으로 수정해주삼요~
 
     bool camera_shake = false;
 
@@ -38,21 +38,21 @@ public class attackArea_tiger : MonoBehaviour
         if (other.gameObject.tag == "chicken_enemy" && tiger.is_basic_attack)
         {
             E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
-            E_chicken.hpMove(power);
+            E_chicken.hpMove(tiger.attack);
 
             tiger.is_Attack = true;
         }
         if (other.gameObject.tag == "tiger_enemy" && tiger.is_basic_attack)
         {
             E_tiger = GameObject.FindWithTag("tiger_enemy").GetComponent<E_t_Attack>();
-            E_tiger.hpMove(power);
+            E_tiger.hpMove(tiger.attack);
 
             tiger.is_Attack = true;
         }
         if (other.gameObject.tag == "cow_enemy" && tiger.is_basic_attack)
         {
             E_cow = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
-            E_cow.hpMove(power);
+            E_cow.hpMove(tiger.attack);
 
             tiger.is_Attack = true;
         }

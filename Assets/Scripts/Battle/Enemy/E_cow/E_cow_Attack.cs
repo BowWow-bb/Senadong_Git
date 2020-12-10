@@ -14,6 +14,9 @@ public class E_cow_Attack : MonoBehaviour
     Tiger_Attack tiger_hp;
     //
 
+    E_AttackData e_attack_data; //공격력 가져오기
+    public int attack; //공격력
+
     public int hp;                 //hp
     int HPMax;              //최대 체력
     GameObject hp_bar;      //hp바
@@ -59,6 +62,10 @@ public class E_cow_Attack : MonoBehaviour
         chicken_hp = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
         cow_hp = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
         tiger_hp = GameObject.FindWithTag("tiger").GetComponent<Tiger_Attack>();
+
+        e_attack_data = GameObject.Find("E_AttackData").GetComponent<E_AttackData>();
+        attack = e_attack_data.Ecow_attack;
+        Debug.Log("적소 공격력: " + attack);
     }
 
     // Update is called once per frame

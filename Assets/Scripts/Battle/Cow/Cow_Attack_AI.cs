@@ -11,6 +11,7 @@ public class Cow_Attack_AI : MonoBehaviour
 
     //행동
     private Cow_Basic_Attack basic_Attack = new Cow_Basic_Attack();
+    private Cow_Special_Attack special_Attack = new Cow_Special_Attack();
     private Cow_Find_Target find_Target = new Cow_Find_Target();
 
     private Cow_Attack a_Cow;
@@ -31,10 +32,12 @@ public class Cow_Attack_AI : MonoBehaviour
 
         find_Target.Cow_attack = a_Cow;
         basic_Attack.Cow_attack = a_Cow;
+        special_Attack.Cow_attack = a_Cow;
 
         //행동들
         seqBehavior.AddChild(find_Target);
         seqBehavior.AddChild(basic_Attack);
+        seqBehavior.AddChild(special_Attack);
 
 
         behaviorProcess = BehaviorProcess();
