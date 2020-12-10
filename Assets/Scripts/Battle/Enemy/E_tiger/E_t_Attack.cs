@@ -11,6 +11,8 @@ public class E_t_Attack : MonoBehaviour
     //
     Chicken_Attack chicken_hp;
     Cow_Attack cow_hp;
+    Tiger_Attack tiger_hp;
+    //
 
     public int hp;                 //hp
     int HPMax;              //최대 체력
@@ -57,6 +59,7 @@ public class E_t_Attack : MonoBehaviour
 
         chicken_hp = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
         cow_hp = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
+        tiger_hp = GameObject.FindWithTag("tiger").GetComponent<Tiger_Attack>();
     }
 
     // Update is called once per frame
@@ -80,6 +83,16 @@ public class E_t_Attack : MonoBehaviour
                 Debug.Log("소 죽음 ");
                 is_Attack = true;
                 is_target_cow = false;
+                is_find_target = false;
+            }
+        }
+        if (is_target_tiger)
+        {
+            if (tiger_hp.hp <= 0)
+            {
+                Debug.Log("호랑이 죽음");
+                is_Attack = true;
+                is_target_tiger = false;
                 is_find_target = false;
             }
         }
