@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 465721728}
   m_Layer: 0
   m_Name: HpBar
-  m_TagString: Untagged
+  m_TagString: TigerHp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1757,7 +1757,7 @@ GameObject:
   - component: {fileID: 1636117822}
   m_Layer: 0
   m_Name: HpBar
-  m_TagString: Untagged
+  m_TagString: CowHp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3102,11 +3102,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057757901577457009, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.58
+      value: 3.45
       objectReference: {fileID: 0}
     - target: {fileID: 7057757901577457009, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 1.23
       objectReference: {fileID: 0}
     - target: {fileID: 7057757901577457009, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3318,11 +3318,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8630146778440577840, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.94
+      value: 3.02
       objectReference: {fileID: 0}
     - target: {fileID: 8630146778440577840, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.44
+      value: -3.33
       objectReference: {fileID: 0}
     - target: {fileID: 8630146778440577840, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
       propertyPath: m_LocalPosition.z

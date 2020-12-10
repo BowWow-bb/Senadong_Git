@@ -60,6 +60,15 @@ public class E_ch_Attack : MonoBehaviour
     void Update()
     {
         battackTime++;
+        if (is_target_chicken)
+        {
+            if (chicken_hp.hp <= 0)
+            {
+                Debug.Log("치킨 죽음 ");
+                is_target_chicken = false;
+                is_find_target = false;
+            }
+        }
     }
     //행동 
     public bool E_ch_Basic_Attack()
@@ -68,15 +77,6 @@ public class E_ch_Attack : MonoBehaviour
         //체력이 다르다면 -> 체력 가장 낮은 애한테 공격... 추후에 
         if (is_basic_attack)
         {
-            if (is_target_chicken)
-            {
-                if (chicken_hp.hp <= 0)
-                {
-                    Debug.Log("치킨 죽음 ");
-                    is_target_chicken = false;
-                    is_find_target = false;
-                }
-            }
             if (!is_Attack)//닿지 않았다면 계속 가기,닿으면 그만 
             {
                 if (min_distance == cow_distance)
