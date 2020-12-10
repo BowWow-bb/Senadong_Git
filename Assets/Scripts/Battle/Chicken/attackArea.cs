@@ -5,7 +5,10 @@ using UnityEngine;
 public class attackArea : MonoBehaviour
 {
     Chicken_Attack chicken;
+
     E_ch_Attack E_chicken;
+    E_cow_Attack E_cow;
+
     camera_shake Camera;
 
     int power=100;//후에 공격력으로 수정해주삼요~
@@ -38,12 +41,15 @@ public class attackArea : MonoBehaviour
 
             chicken.is_Attack = true;
         }
-        if (other.gameObject.tag == "tiger_enemy")
+        if (other.gameObject.tag == "tiger_enemy" && chicken.is_basic_attack)
         {
             chicken.is_Attack = true;
         }
-        if (other.gameObject.tag == "cow_enemy")
+        if (other.gameObject.tag == "cow_enemy" && chicken.is_basic_attack)
         {
+            E_cow = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
+            E_cow.hpMove(power);
+
             chicken.is_Attack = true;
         }
     }

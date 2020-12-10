@@ -5,7 +5,13 @@ using UnityEngine;
 public class attackArea_cow : MonoBehaviour
 {
     Cow_Attack cow;
+
+    E_ch_Attack E_chicken;
+    E_cow_Attack E_cow;
+
     camera_shake Camera;
+
+    int power = 100;//후에 공격력 
 
     bool camera_shake = false;
 
@@ -27,18 +33,24 @@ public class attackArea_cow : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "chicken_enemy")
+        if (other.gameObject.tag == "chicken_enemy" && cow.is_basic_attack)
+        {
+            E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
+            E_chicken.hpMove(power);
+
+            cow.is_Attack = true;
+            camera_shake = true;
+        }
+        if (other.gameObject.tag == "tiger_enemy" && cow.is_basic_attack)
         {
             cow.is_Attack = true;
             camera_shake = true;
         }
-        if (other.gameObject.tag == "tiger_enemy")
+        if (other.gameObject.tag == "cow_enemy" && cow.is_basic_attack)
         {
-            cow.is_Attack = true;
-            camera_shake = true;
-        }
-        if (other.gameObject.tag == "cow_enemy")
-        {
+            E_cow = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
+            E_cow.hpMove(power);
+
             cow.is_Attack = true;
             camera_shake = true;
         }

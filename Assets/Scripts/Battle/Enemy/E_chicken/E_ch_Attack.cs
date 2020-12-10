@@ -8,7 +8,9 @@ public class E_ch_Attack : MonoBehaviour
     public GameObject chicken;
     public GameObject tiger;
 
+    //
     Chicken_Attack chicken_hp;
+    Cow_Attack cow_hp;
 
     public int hp;                 //hp
     int HPMax;              //최대 체력
@@ -54,6 +56,7 @@ public class E_ch_Attack : MonoBehaviour
         hpbar_tmp = hpbar_sx / HPMax;   //최대 체력에 따른 hp바 이동량 설정
 
         chicken_hp = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
+        cow_hp = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
     }
 
     // Update is called once per frame
@@ -65,7 +68,18 @@ public class E_ch_Attack : MonoBehaviour
             if (chicken_hp.hp <= 0)
             {
                 Debug.Log("치킨 죽음 ");
+                is_Attack = true;
                 is_target_chicken = false;
+                is_find_target = false;
+            }
+        }
+        if (is_target_cow)
+        {
+            if (cow_hp.hp <= 0)
+            {
+                Debug.Log("소 죽음 ");
+                is_Attack = true;
+                is_target_cow = false;
                 is_find_target = false;
             }
         }

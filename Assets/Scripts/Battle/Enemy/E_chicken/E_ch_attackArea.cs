@@ -5,7 +5,9 @@ using UnityEngine;
 public class E_ch_attackArea : MonoBehaviour
 {
     E_ch_Attack E_chicken;
+
     Chicken_Attack chicken;
+    Cow_Attack cow;
     camera_shake Camera;
 
     int power=100;//후에 공격력 
@@ -50,12 +52,15 @@ public class E_ch_attackArea : MonoBehaviour
             }
             E_chicken.is_basic_attack = false;
         }
-        if (other.gameObject.tag == "tiger")
+        if (other.gameObject.tag == "tiger" && E_chicken.is_basic_attack)
         {
             E_chicken.is_Attack = true;
         }
-        if (other.gameObject.tag == "cow")
+        if (other.gameObject.tag == "cow" && E_chicken.is_basic_attack)
         {
+            cow = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
+            cow.hpMove(power);
+
             E_chicken.is_Attack = true;
         }
     }

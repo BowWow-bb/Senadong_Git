@@ -305,7 +305,7 @@ MonoBehaviour:
   chicken_enemy: {fileID: 561222360}
   tiger_enemy: {fileID: 172800600}
   chicken_wind: {fileID: 2740113527527679001, guid: 46fe9442a01594ce6ac0ff8e68dc890f, type: 3}
-  back_distance: 3
+  back_distance: 4
   back_distance_time: 40
   C_battackTime: 100
   C_windTime: 500
@@ -3027,13 +3027,17 @@ PrefabInstance:
       propertyPath: C_battackTime
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 6432968098728297369, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
+      propertyPath: back_distance
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6432968098728297373, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.1
+      value: 3.11
       objectReference: {fileID: 0}
     - target: {fileID: 6432968098728297373, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.56
+      value: 1.01
       objectReference: {fileID: 0}
     - target: {fileID: 6432968098728297373, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3102,11 +3106,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057757901577457009, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.45
+      value: 2.38
       objectReference: {fileID: 0}
     - target: {fileID: 7057757901577457009, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.23
+      value: 4.78
       objectReference: {fileID: 0}
     - target: {fileID: 7057757901577457009, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3217,6 +3221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746671d26e24a460f960dfb5ce015e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
   cow_enemy: {fileID: 2039064750}
   chicken_enemy: {fileID: 561222360}
   tiger_enemy: {fileID: 172800600}
@@ -3224,6 +3229,7 @@ MonoBehaviour:
   back_distance_time: 40
   C_battackTime: 100
   is_find_target: 0
+  is_basic_attack: 1
   is_go_right: 0
   is_Attack: 0
 --- !u!212 &7687067579504572347

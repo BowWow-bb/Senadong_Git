@@ -17,7 +17,9 @@ public class Chicken_Attack : MonoBehaviour
     float hpbar_tx;         //hp바 위치 x값
     float hpbar_tmp;        //hp바 감소 정도
 
+    //hp 파악 위함 
     E_ch_Attack E_chicken_hp;
+    E_cow_Attack E_cow_hp;
 
     public GameObject cow_enemy;
     public GameObject chicken_enemy;
@@ -61,7 +63,9 @@ public class Chicken_Attack : MonoBehaviour
         hpbar_tx = hp_bar.transform.localPosition.x;
         hpbar_tmp = hpbar_sx / HPMax;   //최대 체력에 따른 hp바 이동량 설정
 
+        //hp 가져오기 
         E_chicken_hp = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
+        E_cow_hp = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
 
         //공격 레벨 가져오기
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
@@ -83,8 +87,20 @@ public class Chicken_Attack : MonoBehaviour
         {
             if (E_chicken_hp.hp <= 0)
             {
+                is_Attack = true;
                 Debug.Log("적 치킨 죽음 ");
+               
                 is_target_chicken = false;
+                is_find_target = false;
+            }
+        }
+        if(is_target_cow)
+        {
+            if(E_cow_hp.hp<=0)
+            {
+                is_Attack = true;
+                Debug.Log("적 소 죽음");
+                is_target_cow = false;
                 is_find_target = false;
             }
         }
