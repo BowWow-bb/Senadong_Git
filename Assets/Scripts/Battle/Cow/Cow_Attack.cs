@@ -17,9 +17,11 @@ public class Cow_Attack : MonoBehaviour
     float hpbar_tx;         //hp바 위치 x값
     float hpbar_tmp;        //hp바 감소 정도
 
-    //hp파악 위함
+    //hp 파악 위함 
     E_ch_Attack E_chicken_hp;
     E_cow_Attack E_cow_hp;
+    E_t_Attack E_tiger_hp;
+    //
 
     public GameObject cow_enemy;
     public GameObject chicken_enemy;
@@ -62,7 +64,8 @@ public class Cow_Attack : MonoBehaviour
         //hp 가져오기 
         E_chicken_hp = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
         E_cow_hp = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
-
+        E_tiger_hp = GameObject.FindWithTag("tiger_enemy").GetComponent<E_t_Attack>();
+        //
         //공격 레벨 가져오기
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         level = item_manager.cow_level;
@@ -78,6 +81,7 @@ public class Cow_Attack : MonoBehaviour
     void Update()
     {
         battackTime++;
+        //죽었는지 파악 
         if (is_target_chicken)
         {
             if (E_chicken_hp.hp <= 0)
@@ -95,6 +99,16 @@ public class Cow_Attack : MonoBehaviour
                 Debug.Log("적 소 죽음 ");
                 is_Attack = true;
                 is_target_cow = false;
+                is_find_target = false;
+            }
+        }
+        if (is_target_tiger)
+        {
+            if (E_tiger_hp.hp <= 0)
+            {
+                is_Attack = true;
+                Debug.Log("적 호랑이 죽음");
+                is_target_tiger = false;
                 is_find_target = false;
             }
         }

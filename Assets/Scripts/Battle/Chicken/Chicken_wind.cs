@@ -6,6 +6,9 @@ public class Chicken_wind : MonoBehaviour
 {
     Chicken_Attack chicken;
     E_ch_Attack E_chicken;
+    E_cow_Attack E_cow;
+    E_t_Attack E_tiger;
+
     camera_shake Camera;
 
     int power = 200;//후에 공격력으로 수정해주삼요~
@@ -55,12 +58,10 @@ public class Chicken_wind : MonoBehaviour
                 if (chicken.is_go_right)//적이 왼쪽 이면 
                 {
                     pos = new Vector3(other.transform.position.x - 1, other.transform.position.y, other.transform.position.z);
-                    //other.transform.position = new Vector3(other.transform.position.x - 1, other.transform.position.y, other.transform.position.z);
                 }
                 else//적이 오른쪽이면 
                 {
                     pos = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
-                    //other.transform.position = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
                 }
                 transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
                 E_chicken.hpMove(power);
@@ -69,15 +70,45 @@ public class Chicken_wind : MonoBehaviour
         }
         if (other.gameObject.tag == "tiger_enemy")
         {
+            E_tiger = GameObject.FindWithTag("tiger_enemy").GetComponent<E_t_Attack>();
             chicken.is_Attack = true;
             camera_shake = true;
-            //Debug.Log("닿음");
+            if (!attacked)//중복 방지 
+            {
+                if (chicken.is_go_right)//적이 왼쪽 이면 
+                {
+                    pos = new Vector3(other.transform.position.x - 1, other.transform.position.y, other.transform.position.z);
+                }
+                else//적이 오른쪽이면 
+                {
+                    pos = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
+                }
+                transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
+                E_tiger.hpMove(power);
+                attacked = true;
+            }
+
         }
         if (other.gameObject.tag == "cow_enemy")
         {
+            E_cow = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
             chicken.is_Attack = true;
             camera_shake = true;
-            //Debug.Log("닿음");
+            if (!attacked)//중복 방지 
+            {
+                if (chicken.is_go_right)//적이 왼쪽 이면 
+                {
+                    pos = new Vector3(other.transform.position.x - 1, other.transform.position.y, other.transform.position.z);
+                }
+                else//적이 오른쪽이면 
+                {
+                    pos = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
+                }
+                transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
+                E_cow.hpMove(power);
+                attacked = true;
+            }
+
         }
     }
     private void OnTriggerExit(Collider other)

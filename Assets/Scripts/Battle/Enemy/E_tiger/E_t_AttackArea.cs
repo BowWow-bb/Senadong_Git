@@ -5,7 +5,13 @@ using UnityEngine;
 public class E_t_AttackArea : MonoBehaviour
 {
     E_t_Attack E_t;
+
+    Chicken_Attack chicken;
+    Cow_Attack cow;
     Tiger_Attack tiger;
+
+    int power = 100;//후에 공격력 
+
     camera_shake Camera;
 
     bool camera_shake = false;
@@ -14,7 +20,6 @@ public class E_t_AttackArea : MonoBehaviour
     void Start()
     {
         E_t = GameObject.FindWithTag("tiger_enemy").GetComponent<E_t_Attack>();
-        tiger = GameObject.FindWithTag("tiger").GetComponent<Tiger_Attack>();
         Camera = GameObject.FindWithTag("MainCamera").GetComponent<camera_shake>();
     }
 
@@ -29,18 +34,41 @@ public class E_t_AttackArea : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //공격 함 
         //적이랑 닿으면 camera 움직임 
         if ((other.gameObject.tag == "cow") && E_t.is_basic_attack)
         {
+            cow = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
+            cow.hpMove(power);
+
             E_t.is_Attack = true;
         }
         if ((other.gameObject.tag == "tiger") && E_t.is_basic_attack)
         {
+            tiger = GameObject.FindWithTag("tiger").GetComponent<Tiger_Attack>();
+            tiger.hpMove(power);
+
             E_t.is_Attack = true;
         }
         if ((other.gameObject.tag == "chicken")&& E_t.is_basic_attack)
         {
+            chicken = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
+            chicken.hpMove(power);
+
             E_t.is_Attack = true;
+        }
+        //공격 받음 
+        if (other.gameObject.tag == "chicken_wind")
+        {
+            if (E_t.is_go_right)//왼쪽에 적이 존재 
+            {
+                E_t.transform.position = new Vector3(E_t.transform.position.x + 1.5f, E_t.transform.position.y, E_t.transform.position.z);
+            }
+            else//적이 오른쪽 
+            {
+                E_t.transform.position = new Vector3(E_t.transform.position.x - 1.5f, E_t.transform.position.y, E_t.transform.position.z);
+            }
+            E_t.is_basic_attack = false;
         }
     }
     //겹침 방지 

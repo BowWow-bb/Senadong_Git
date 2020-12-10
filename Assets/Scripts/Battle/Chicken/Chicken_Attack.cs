@@ -20,6 +20,8 @@ public class Chicken_Attack : MonoBehaviour
     //hp 파악 위함 
     E_ch_Attack E_chicken_hp;
     E_cow_Attack E_cow_hp;
+    E_t_Attack E_tiger_hp;
+    //
 
     public GameObject cow_enemy;
     public GameObject chicken_enemy;
@@ -66,6 +68,8 @@ public class Chicken_Attack : MonoBehaviour
         //hp 가져오기 
         E_chicken_hp = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
         E_cow_hp = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
+        E_tiger_hp = GameObject.FindWithTag("tiger_enemy").GetComponent<E_t_Attack>();
+        //
 
         //공격 레벨 가져오기
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
@@ -89,7 +93,6 @@ public class Chicken_Attack : MonoBehaviour
             {
                 is_Attack = true;
                 Debug.Log("적 치킨 죽음 ");
-               
                 is_target_chicken = false;
                 is_find_target = false;
             }
@@ -101,6 +104,16 @@ public class Chicken_Attack : MonoBehaviour
                 is_Attack = true;
                 Debug.Log("적 소 죽음");
                 is_target_cow = false;
+                is_find_target = false;
+            }
+        }
+        if(is_target_tiger)
+        {
+            if(E_tiger_hp.hp<=0)
+            {
+                is_Attack = true;
+                Debug.Log("적 호랑이 죽음");
+                is_target_tiger= false;
                 is_find_target = false;
             }
         }
@@ -120,7 +133,6 @@ public class Chicken_Attack : MonoBehaviour
         //체력이 다르다면 -> 체력 가장 낮은 애한테 공격... 추후에 
         if(is_basic_attack)
         {
-            
             if (!is_Attack)//닿지 않았다면 계속 가기,닿으면 그만 
             {
                 if (min_distance == cow_distance)

@@ -8,6 +8,7 @@ public class attackArea : MonoBehaviour
 
     E_ch_Attack E_chicken;
     E_cow_Attack E_cow;
+    E_t_Attack E_tiger;
 
     camera_shake Camera;
 
@@ -43,6 +44,9 @@ public class attackArea : MonoBehaviour
         }
         if (other.gameObject.tag == "tiger_enemy" && chicken.is_basic_attack)
         {
+            E_tiger = GameObject.FindWithTag("tiger_enemy").GetComponent<E_t_Attack>();
+            E_tiger.hpMove(power);
+
             chicken.is_Attack = true;
         }
         if (other.gameObject.tag == "cow_enemy" && chicken.is_basic_attack)

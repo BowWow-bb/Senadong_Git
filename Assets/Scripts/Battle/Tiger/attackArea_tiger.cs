@@ -5,7 +5,14 @@ using UnityEngine;
 public class attackArea_tiger : MonoBehaviour
 {
     Tiger_Attack tiger;
+
+    E_ch_Attack E_chicken;
+    E_cow_Attack E_cow;
+    E_t_Attack E_tiger;
+
     camera_shake Camera;
+
+    int power = 100;//후에 공격력으로 수정해주삼요~
 
     bool camera_shake = false;
 
@@ -28,16 +35,25 @@ public class attackArea_tiger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //적이랑 닿으면 camera 움직임 
-        if (other.gameObject.tag == "chicken_enemy")
+        if (other.gameObject.tag == "chicken_enemy" && tiger.is_basic_attack)
         {
+            E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
+            E_chicken.hpMove(power);
+
             tiger.is_Attack = true;
         }
-        if (other.gameObject.tag == "tiger_enemy")
+        if (other.gameObject.tag == "tiger_enemy" && tiger.is_basic_attack)
         {
+            E_tiger = GameObject.FindWithTag("tiger_enemy").GetComponent<E_t_Attack>();
+            E_tiger.hpMove(power);
+
             tiger.is_Attack = true;
         }
-        if (other.gameObject.tag == "cow_enemy")
+        if (other.gameObject.tag == "cow_enemy" && tiger.is_basic_attack)
         {
+            E_cow = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
+            E_cow.hpMove(power);
+
             tiger.is_Attack = true;
         }
     }

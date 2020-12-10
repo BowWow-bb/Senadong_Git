@@ -8,6 +8,8 @@ public class E_ch_attackArea : MonoBehaviour
 
     Chicken_Attack chicken;
     Cow_Attack cow;
+    Tiger_Attack tiger;
+
     camera_shake Camera;
 
     int power=100;//후에 공격력 
@@ -40,20 +42,12 @@ public class E_ch_attackArea : MonoBehaviour
  
             E_chicken.is_Attack = true;
         }
-        if(other.gameObject.tag =="chicken_wind")
-        {
-            if(E_chicken.is_go_right)//왼쪽에 적이 존재 
-            {
-                E_chicken.transform.position = new Vector3(E_chicken.transform.position.x + 1.5f, E_chicken.transform.position.y, E_chicken.transform.position.z);
-            }
-            else//적이 오른쪽 
-            {
-                E_chicken.transform.position = new Vector3(E_chicken.transform.position.x - 1.5f, E_chicken.transform.position.y, E_chicken.transform.position.z);
-            }
-            E_chicken.is_basic_attack = false;
-        }
+        
         if (other.gameObject.tag == "tiger" && E_chicken.is_basic_attack)
         {
+            tiger = GameObject.FindWithTag("tiger").GetComponent<Tiger_Attack>();
+            tiger.hpMove(power);
+
             E_chicken.is_Attack = true;
         }
         if (other.gameObject.tag == "cow" && E_chicken.is_basic_attack)
@@ -62,6 +56,18 @@ public class E_ch_attackArea : MonoBehaviour
             cow.hpMove(power);
 
             E_chicken.is_Attack = true;
+        }
+        if (other.gameObject.tag == "chicken_wind")
+        {
+            if (E_chicken.is_go_right)//왼쪽에 적이 존재 
+            {
+                E_chicken.transform.position = new Vector3(E_chicken.transform.position.x + 1.5f, E_chicken.transform.position.y, E_chicken.transform.position.z);
+            }
+            else//적이 오른쪽 
+            {
+                E_chicken.transform.position = new Vector3(E_chicken.transform.position.x - 1.5f, E_chicken.transform.position.y, E_chicken.transform.position.z);
+            }
+            E_chicken.is_basic_attack = false;
         }
     }
     //겹침 방지 
