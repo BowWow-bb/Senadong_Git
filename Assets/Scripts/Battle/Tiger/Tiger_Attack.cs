@@ -266,11 +266,11 @@ public class Tiger_Attack : MonoBehaviour
         if (is_skill_time)
         {
             skillTime++;
-            if (skillTime > 3 * battackTime)
+            if (skillTime > 5 * battackTime)
             {
-                cow.attack = tmp_cow;
-                chicken.attack = tmp_cow;
-                attack = tmp_tiger;
+                cow.attack = cow.attack  -3 * cow.level;
+                chicken.attack = chicken.attack - 3 * chicken.level;
+                attack = attack - 3 * level;
 
                 skillTime = 0;
                 fPazik.SetActive(false);
@@ -287,13 +287,11 @@ public class Tiger_Attack : MonoBehaviour
                 is_skill_time = true;
                 tmp_cow = cow.attack;
                 //cow.attack = tmp_cow * 1.2f;
-                cow.attack = tmp_cow + 2;
-                tmp_chicken = chicken.attack;
+                cow.attack = cow.attack + 3*cow.level;
                 //chicken.attack = tmp_chicken * 1.2f;
-                chicken.attack = tmp_chicken + 2;
-                tmp_tiger = attack;
+                chicken.attack = chicken.attack + 3*chicken.level;
                 //attack = tmp_tiger * 1.2f;
-                attack = tmp_tiger + 2;
+                attack = attack + 3*level;
 
             }
         }

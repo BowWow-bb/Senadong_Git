@@ -165,6 +165,7 @@ MonoBehaviour:
   fHungry: {fileID: 3663087726117578541, guid: b7837f9a386b9a24e84a8c0deb5dee73, type: 3}
   fPoop: {fileID: 2402068328210718058, guid: fcdfd5d920a330142bdc88c1597afc0e, type: 3}
   fPlay: {fileID: 7518504057322826342, guid: b6cc363e1b186b042b939223b0e78a44, type: 3}
+  fPazik: {fileID: 0}
   Chicken: {fileID: 5482809992429514747, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
   Cow: {fileID: 2701849671355611132, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
   tmp: {fileID: 2740113527527679001, guid: 46fe9442a01594ce6ac0ff8e68dc890f, type: 3}
