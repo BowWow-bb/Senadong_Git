@@ -5,7 +5,10 @@ using UnityEngine;
 public class Chicken_wind : MonoBehaviour
 {
     Chicken_Attack chicken;
+    E_ch_Attack E_chicken;
     camera_shake Camera;
+
+    int power = 200;//후에 공격력으로 수정해주삼요~
 
     bool camera_shake = false;
     bool attacked = false;
@@ -44,9 +47,10 @@ public class Chicken_wind : MonoBehaviour
         //적이랑 닿으면 camera 움직임 
         if (other.gameObject.tag == "chicken_enemy")
         {
+            E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
             chicken.is_Attack = true;
             camera_shake = true;
-            if(!attacked)
+            if(!attacked)//중복 방지 
             {
                 if (chicken.is_go_right)//적이 왼쪽 이면 
                 {
@@ -59,6 +63,7 @@ public class Chicken_wind : MonoBehaviour
                     //other.transform.position = new Vector3(other.transform.position.x + 1, other.transform.position.y, other.transform.position.z);
                 }
                 transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
+                E_chicken.hpMove(power);
                 attacked = true;
             }
         }

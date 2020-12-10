@@ -8,13 +8,14 @@ public class attackArea : MonoBehaviour
     E_ch_Attack E_chicken;
     camera_shake Camera;
 
+    int power=100;//후에 공격력으로 수정해주삼요~
+
     bool camera_shake = false;
 
     // Start is called before the first frame update
     void Start()
     {
         chicken = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
-        E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
         Camera = GameObject.FindWithTag("MainCamera").GetComponent<camera_shake>();
     }
 
@@ -32,8 +33,10 @@ public class attackArea : MonoBehaviour
         //적이랑 닿으면 camera 움직임 
         if((other.gameObject.tag =="chicken_enemy")&&chicken.is_basic_attack)
         {
+            E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
+            E_chicken.hpMove(power);
+
             chicken.is_Attack = true;
-            
         }
         if (other.gameObject.tag == "tiger_enemy")
         {

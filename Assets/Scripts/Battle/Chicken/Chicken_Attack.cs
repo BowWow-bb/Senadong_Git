@@ -10,12 +10,14 @@ public class Chicken_Attack : MonoBehaviour
     Attack_Data attack_data;
     int attack; //공격력
 
-    int hp;                 //hp
+    public int hp;                 //hp
     int HPMax;              //최대 체력
     GameObject hp_bar;      //hp바
     float hpbar_sx;         //hp바 스케일 x값
     float hpbar_tx;         //hp바 위치 x값
     float hpbar_tmp;        //hp바 감소 정도
+
+    E_ch_Attack E_chicken_hp;
 
     public GameObject cow_enemy;
     public GameObject chicken_enemy;
@@ -59,6 +61,7 @@ public class Chicken_Attack : MonoBehaviour
         hpbar_tx = hp_bar.transform.localPosition.x;
         hpbar_tmp = hpbar_sx / HPMax;   //최대 체력에 따른 hp바 이동량 설정
 
+        E_chicken_hp = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
 
         //공격 레벨 가져오기
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
@@ -92,6 +95,15 @@ public class Chicken_Attack : MonoBehaviour
         //체력이 다르다면 -> 체력 가장 낮은 애한테 공격... 추후에 
         if(is_basic_attack)
         {
+            if(is_target_chicken)
+            {
+                if(E_chicken_hp.hp<=0)
+                {
+                    Debug.Log("적 치킨 죽음 ");
+                    is_target_chicken = false;
+                    is_find_target = false;
+                }
+            }
             if (!is_Attack)//닿지 않았다면 계속 가기,닿으면 그만 
             {
                 if (min_distance == cow_distance)
@@ -259,6 +271,7 @@ public class Chicken_Attack : MonoBehaviour
         }
         return true;
     }
+
     public void hpMove(int hp_delta)    //hp바 동작 구현
     {
         if (hp - hp_delta <= 0)   //0이하로 내려가는 경우 죽은걸로 판단

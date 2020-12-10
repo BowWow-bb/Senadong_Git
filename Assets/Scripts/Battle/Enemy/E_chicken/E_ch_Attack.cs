@@ -8,6 +8,16 @@ public class E_ch_Attack : MonoBehaviour
     public GameObject chicken;
     public GameObject tiger;
 
+    Chicken_Attack chicken_hp;
+
+    public int hp;                 //hp
+    int HPMax;              //최대 체력
+    GameObject hp_bar;      //hp바
+    float hpbar_sx;         //hp바 스케일 x값
+    float hpbar_tx;         //hp바 위치 x값
+    float hpbar_tmp;        //hp바 감소 정도
+
+
     float cow_distance;
     float chicken_distance;
     float tiger_distance;
@@ -36,6 +46,14 @@ public class E_ch_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HPMax = 1000;
+        hp = HPMax;
+        hp_bar = GameObject.FindWithTag("EChickenHp");
+        hpbar_sx = hp_bar.transform.localScale.x;
+        hpbar_tx = hp_bar.transform.localPosition.x;
+        hpbar_tmp = hpbar_sx / HPMax;   //최대 체력에 따른 hp바 이동량 설정
+
+        chicken_hp = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
     }
 
     // Update is called once per frame
@@ -50,6 +68,15 @@ public class E_ch_Attack : MonoBehaviour
         //체력이 다르다면 -> 체력 가장 낮은 애한테 공격... 추후에 
         if (is_basic_attack)
         {
+            if (is_target_chicken)
+            {
+                if (chicken_hp.hp <= 0)
+                {
+                    Debug.Log("치킨 죽음 ");
+                    is_target_chicken = false;
+                    is_find_target = false;
+                }
+            }
             if (!is_Attack)//닿지 않았다면 계속 가기,닿으면 그만 
             {
                 if (min_distance == cow_distance)
@@ -179,5 +206,20 @@ public class E_ch_Attack : MonoBehaviour
             is_find_target = true;//target 찾음 
         }
         return true;
+    }
+
+    public void hpMove(int hp_delta)    //hp바 동작 구현
+    {
+        if (hp - hp_delta <= 0)   //0이하로 내려가는 경우 죽은걸로 판단
+            Destroy(gameObject);
+
+        float move = ((HPMax - hp) + hp_delta) * hpbar_tmp; //hp바 이동할 크기
+        hp -= hp_delta; //hp 재설정
+
+        Vector3 Scale = hp_bar.transform.localScale;    //현재 스케일 값
+        hp_bar.transform.localScale = new Vector3(hpbar_sx - move, Scale.y, Scale.z);
+
+        Vector3 Pos = hp_bar.transform.localPosition;   //현재 포지션 값
+        hp_bar.transform.localPosition = new Vector3(hpbar_tx - move / 2.0f, Pos.y, Pos.z);   //스케일 변화의 절반 만큼 이동시, 자연스러운 감소효과 나타낼 수 o
     }
 }

@@ -38,7 +38,7 @@ public class Chicken_Attack_AI : MonoBehaviour
         seqBehavior.AddChild(find_Target);
         seqBehavior.AddChild(basic_Attack);
         seqBehavior.AddChild(special_Attack);
-        
+
         behaviorProcess = BehaviorProcess();
         StartCoroutine(behaviorProcess);
     }
