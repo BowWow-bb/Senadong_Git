@@ -5,10 +5,10 @@ using UnityEngine;
 public class Cow_Attack : MonoBehaviour
 {
     ItemManager item_manager;
-    int level;  //캐릭터 레벨
+    public float level;  //캐릭터 레벨
 
     Attack_Data attack_data;
-    int attack; //공격력
+    public float attack; //공격력
 
     public int hp;                 //hp
     int HPMax;              //최대 체력
@@ -80,6 +80,7 @@ public class Cow_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(attack);
         battackTime++;
         //죽었는지 파악 
         if (is_target_chicken)

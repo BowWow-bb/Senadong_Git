@@ -5,10 +5,10 @@ using UnityEngine;
 public class Tiger_Attack : MonoBehaviour
 {
     ItemManager item_manager;
-    int level;  //캐릭터 레벨
+    float level;  //캐릭터 레벨
 
     Attack_Data attack_data;
-    int attack; //공격력
+    float attack; //공격력
 
     public int hp;                 //hp
     int HPMax;              //최대 체력
@@ -39,7 +39,7 @@ public class Tiger_Attack : MonoBehaviour
     int battackTime = 0;//기본 공격 시간
     int skillTime = 0;
     public int C_battackTime = 100;//기본 공격 시간 조정
-    public int C_skillTime=800;
+    public int C_skillTime=1000;
     public bool is_skill_time = false;
     bool is_target_cow = false;
     bool is_target_chicken = false;
@@ -261,39 +261,39 @@ public class Tiger_Attack : MonoBehaviour
     }
     public bool Tiger_Skill()
     {
-        //if(is_skill_time)
-        //{
-        //    skillTime++;
-        //    if(skillTime> 3*battackTime)
-        //    {
-        //        cow.level = tmp_cow;
-        //        chicken.level = tmp_cow;
-        //        level = tmp_tiger;
+        if (is_skill_time)
+        {
+            skillTime++;
+            if (skillTime > 3 * battackTime)
+            {
+                cow.attack = tmp_cow;
+                chicken.attack = tmp_cow;
+                attack = tmp_tiger;
 
-        //        skillTime = 0;
-        //        fPazik.SetActive(false);
-        //        is_skill_time = false;
-        //    }
-        //}
-        //else
-        //{
-        //    skillTime++;
-        //    if(skillTime > C_skillTime && !is_basic_attack)
-        //    {
-        //        fPazik.SetActive(true);
-        //        skillTime = 0;
-        //        is_skill_time = true;
-        //        tmp_cow = cow.level;
-        //        cow.level = tmp_cow * 1.2f;
+                skillTime = 0;
+                fPazik.SetActive(false);
+                is_skill_time = false;
+            }
+        }
+        else
+        {
+            skillTime++;
+            if (skillTime > C_skillTime && !is_basic_attack)
+            {
+                fPazik.SetActive(true);
+                skillTime = 0;
+                is_skill_time = true;
+                tmp_cow = cow.attack;
+                cow.attack = tmp_cow * 1.2f;
 
-        //        tmp_chicken = chicken.level;
-        //        chicken.level = tmp_chicken * 1.2f;
+                tmp_chicken = chicken.attack;
+                chicken.attack = tmp_chicken * 1.2f;
 
-        //        tmp_tiger = level;
-        //        level = tmp_tiger * 1.2f;
-                
-        //    }
-        //}
+                tmp_tiger = attack;
+                attack = tmp_tiger * 1.2f;
+
+            }
+        }
         return true;
     }
     public void hpMove(int hp_delta)    //hp바 동작 구현

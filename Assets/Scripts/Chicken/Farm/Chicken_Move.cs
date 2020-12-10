@@ -207,12 +207,12 @@ public class Chicken_Move : MonoBehaviour
     {
         GameObject tiger = GameObject.FindWithTag("tiger");
         Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
-        if (quarrel)
+        if (quarrel)//쫓기고 있을 때 
         {
-            if (hurt)
+            if (hurt)//피해를 입었다면
             {
                 trace_length += 0.3f;
-                float x = Start_Point.x + (hurt_vec.x * trace_length);  // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
+                float x = Start_Point.x + (hurt_vec.x * trace_length);  //호랑이가 밀어버린 벡터의 방향으로 밀림
                 float y = Start_Point.y + (hurt_vec.y * trace_length);
                 tmp_Point = gameObject.transform.position;
 
@@ -230,7 +230,7 @@ public class Chicken_Move : MonoBehaviour
                 }
                 gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
-                if (trace_length >3f)
+                if (trace_length >3f)//일정 거리 밀렸다면 변수 비활성 
                 {
                     trace_length = 0;
                     hurt = false;
@@ -242,12 +242,12 @@ public class Chicken_Move : MonoBehaviour
             {
                 if ((Vector3.Distance(Start_Point, tiger.transform.position)) < 1f)
                 {
-                    hurt = true;
+                    hurt = true;//호랑이에게 잡혔다면 hurt활성화
                 }
                 else
                 {
                     Start_Point = gameObject.transform.position;
-                    hurt_vec = T_m.trace;
+                    hurt_vec = T_m.trace;// 호랑이가 쫓아오는 벡터
                     trace_length = 0;
                 }
             }
@@ -430,6 +430,11 @@ public class Chicken_Move : MonoBehaviour
                     if (x >= 3 && (y >= -6.5f && y <= -1.5f))
                     {
                         x = tmp_Point.x; 
+                        y = tmp_Point.y;
+                    }
+                    if (x >= 5.5f && (y <= 6.5f && y >= 5f))
+                    {
+                        x = tmp_Point.x;
                         y = tmp_Point.y;
                     }
                     gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동

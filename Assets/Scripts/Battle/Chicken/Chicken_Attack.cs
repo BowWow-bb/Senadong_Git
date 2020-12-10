@@ -5,10 +5,10 @@ using UnityEngine;
 public class Chicken_Attack : MonoBehaviour
 {
     ItemManager item_manager;
-    int level;  //캐릭터 레벨
+    public float level;  //캐릭터 레벨
 
     Attack_Data attack_data;
-    int attack; //공격력
+    public float attack; //공격력
 
     public int hp;                 //hp
     int HPMax;              //최대 체력

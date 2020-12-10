@@ -12,7 +12,6 @@ public class Tiger_Move : MonoBehaviour
     int hungryTime = 0; // 배고픔 재는 시간
     int BasicTime = 0; // 기본 움직임 재는 시간
     public int playTime = 0; // 심심한 시간 재는 시간
-    int wait=0;
     public bool quarreling = false; // 시비거는중 인지
     public bool playing = false; // 노는중 인지
     bool hunger; // 배고픈 상태인지 
@@ -25,7 +24,7 @@ public class Tiger_Move : MonoBehaviour
     Vector2 move_vec; // 움직일 방향벡터
     Vector3 Start_Point; // 움직일때의 시작점
     public Vector3 trace; // 마우스와 오브젝트 사이의 벡터 
-    Vector3 Mouse;
+    Vector3 Mouse; //놀아줄때 마우스와의 벡터
     Vector3 tmp_Point;
 
     //밥 추적 위함 
@@ -70,7 +69,7 @@ public class Tiger_Move : MonoBehaviour
     //애니메이터 
     Animator animator;
 
-    public bool isdrag=false;
+    public bool isdrag=false; // 현재 드래그 중인지
     bool move_check = false;
     // Start is called before the first frame update
 
@@ -127,18 +126,16 @@ public class Tiger_Move : MonoBehaviour
         {
             float x = gameObject.transform.position.x;
             float y = gameObject.transform.position.y;
-            Start_Point = new Vector3(x, y, -8);
+            Start_Point = new Vector3(x, y, -8); //현재 호랑이의 위치
             x = tmp.transform.position.x;
             y = tmp.transform.position.y;
-            Vector3 quarrel_point = new Vector3(x, y, -8);
-            trace = (quarrel_point - Start_Point); // ㅎㅎㅗㄹㅏㅇㅇㅣㅇㅗ
+            Vector3 quarrel_point = new Vector3(x, y, -8); // 시비 걸 대상의 위치
+            trace = (quarrel_point - Start_Point); // 쫓아갈 벡터 생성
             if (trace.x >= 0)
-                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
-            //gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
+                gameObject.transform.rotation = Quaternion.Euler(0, 180, 0); // 좌우 반전
+
             else
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            //gameObject.transform.localScale = new Vector3(1, 1, 1); // 오른쪽이라면 오른쪽을 봄
-
 
             x = Start_Point.x + (trace.x * trace_length);  // (시작점 + 방향벡터 * 거리)를 화면이 아닌 유니티의 좌표로 바꿔줌
             y = Start_Point.y + (trace.y * trace_length);
@@ -146,14 +143,14 @@ public class Tiger_Move : MonoBehaviour
             gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
             trace_length += 0.01f; // 빨라지는 추적속도
-            if (Vector3.Distance(gameObject.transform.position, quarrel_point) < 1f)
+            if (Vector3.Distance(gameObject.transform.position, quarrel_point) < 1f) //따라잡았다면
             {
-                quarrel_check = 0;
+                quarrel_check = 0; 
 
                 gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, Start_Point.z); // 이동
-                trace_length = 0;
-                quarreling = false;
-                fPazik.SetActive(false);
+                trace_length = 0; // 변수 초기화
+                quarreling = false; // 시비걸기 초기화
+                fPazik.SetActive(false); 
             }
         }
         else
@@ -170,19 +167,19 @@ public class Tiger_Move : MonoBehaviour
                 quarrel_check++;
             }
 
-            if (quarrel_check > 300) // 조정 
+            if (quarrel_check > 500) // 눈앞에 걸리적거림이 인내를 넘어섰다면
             {
                 quarrel_check = 0;
-                if (!isHungry && !isPoop && !isPlay && !quarreling )
+                if (!isHungry && !isPoop && !isPlay && !quarreling ) //딴짓중 아닐 때
                 {
-                    if (tmp.tag == "chicken")
+                    if (tmp.tag == "chicken") // 치킨이나 소 하나 찾아서 치킨,소가 딴짓중 아닐 때 시비걸기 ON 
                     {
                         Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
                         if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food
                             && !c_m.isEggTime && !c_m.is_follow_food && !c_m.is_follow_milk && !c_m.is_follow_egg && !c_m.isPoop)
                         {
                             quarrel_check = 0;
-                            c_m.quarrel = true;
+                            c_m.quarrel = true; // 소(치킨)의 변수 바꿔 
                             quarreling = true;
                             fPazik.SetActive(true);
                         }
@@ -209,17 +206,17 @@ public class Tiger_Move : MonoBehaviour
     public bool Hungry()
     {
         if ((Timer != 0 && Timer % hungryTimer == 0)
-            && (!isHungry && !isPoop && !isPlay && !quarreling))
+            && (!isHungry && !isPoop && !isPlay && !quarreling))//딴짓 중 아닐때 일정시간이 되어 배고파지면
         {
-            isHungry = true;
-            fHungry.SetActive(true);
+            isHungry = true; //배고픔 활성화
+            fHungry.SetActive(true); //배고픔 말풍선활성화
         }
         if (isHungry)    // 상태 유지
         {
-            statTime--;
-            if (statTime == 0)
+            statTime--; 
+            if (statTime == 0)//임계점 이하가된다면
             {
-                isHungry = false;
+                isHungry = false; 
                 fHungry.SetActive(false);
                 statTime = statMax;
             }
@@ -231,9 +228,9 @@ public class Tiger_Move : MonoBehaviour
         if ((Timer != 0 && Timer % poopTimer == 0)
             && (!isHungry && !isPoop && !isPlay && !quarreling))
         {
-            isPoop = true;
+            isPoop = true; //화장실가는거 활성화
             fPoop.SetActive(true);
-            moving = false;
+            moving = false; // 걷고있는 중이라면 비활성
             BasicTime = 0;
             //화장실 내 랜덤한 위치 설정
             tx = Random.Range(-12.6f, -7.0f);
@@ -437,13 +434,17 @@ public class Tiger_Move : MonoBehaviour
                         y = 5.7f;
                     if (y <= -6.5f)
                         y = -6.5f;
-                    if (x >= 3 && (y >= -6.5f && y <= -4f))
+                    if (x >= 3 && (y >= -6.5f && y <= -4f)) //밑의 아이템슬롯이나 위의 상점 버튼 겹치지 않게
                     {
 
                         x = tmp_Point.x; y = tmp_Point.y;
                     }
-                    else
-                        gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
+                    if (x >= 5.5f && (y <= 6.5f && y >= 5f))
+                    {
+                        x = tmp_Point.x;
+                        y = tmp_Point.y;
+                    }
+                    gameObject.transform.position = new Vector3(x, y, Start_Point.z); // 이동
 
                     move_length += 0.05f; // 거리를 차근차근 움직임
                     if (move_length > 10f) // 다 움직였다면 다시 움직임 타이머를 잼
