@@ -379,7 +379,7 @@ public class Cow_Move : MonoBehaviour
         Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
         if (quarrel)//쫓기고 있을 때 
         {
-            if (hurt)//피해를 입었다면
+            if (hurt)//피해를 입었다
             {
                 trace_length += 0.3f;
                 float x = Start_Point.x + (hurt_vec.x * trace_length);  //호랑이가 밀어버린 벡터의 방향으로 밀림
@@ -449,7 +449,7 @@ public class Cow_Move : MonoBehaviour
         if(isPoop)    //화장실로 이동
         {
             //목표지점을 향하는 벡터 이용해 이동
-            Vector3 toilet_vec = (toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
+            Vector3 toilet_vec = 5*(toiletPos - transform.position).normalized * Time.deltaTime;    //현재위치에서 화장실 위치 향해...
 
             if (toilet_vec.x <= 0)
                 gameObject.transform.localScale = new Vector3(-1, 1, 1); // 왼쪽으로 움직인다면 왼쪽을 봄
