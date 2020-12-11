@@ -128,6 +128,16 @@ public class Chicken_Attack : MonoBehaviour
                 is_find_target = false;
             }
         }
+
+        if(gameObject.transform.position.x<= -13.8f)
+        {
+            gameObject.transform.position = new Vector3(-13.8f, transform.position.y, transform.position.z);
+        }
+        else if(gameObject.transform.position.x>=13.8f)
+        {
+            gameObject.transform.position = new Vector3(13.8f, transform.position.y, transform.position.z);
+        }
+
         //if(is_special_attack)
         //{
         //    animator.SetBool("is_Attack", true);
