@@ -15,15 +15,19 @@ public class Win : MonoBehaviour
     // Update is called once per frame
     public void OnClick()
     {
-        //이긴 경우 -> 코인 소실
+        //이긴 경우 -> 코인 획
         item_manager.coin += 3000;
 
+        
+
+        //농장씬 다시 로드
+        SceneManager.LoadScene("Farm_Scene");
         //농장 캐릭터 비활성화 해제
         GameObject.Find("Chicken_p").transform.GetChild(0).gameObject.SetActive(true);
         GameObject.Find("Cow_p").transform.GetChild(0).gameObject.SetActive(true);
         GameObject.Find("Tiger_p").transform.GetChild(0).gameObject.SetActive(true);
+      
 
-        //농장씬 다시 로드
-        SceneManager.LoadScene("Farm_Scene");
+
     }
 }

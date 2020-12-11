@@ -76,6 +76,7 @@ public class Tiger_Move : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("오오야");
         //애니메이터 
         if (!moving && !isPoop && !is_follow_food && !is_follow_egg && !is_follow_milk)
         {
@@ -170,9 +171,9 @@ public class Tiger_Move : MonoBehaviour
                     quarrel_check++;
                 }
 
-                if (quarrel_check > 500) // 눈앞에 걸리적거림이 인내를 넘어섰다면
+                if (quarrel_check > 300) // 눈앞에 걸리적거림이 인내를 넘어섰다면
                 {
-                    quarrel_check = 0;
+                    Debug.Log("걸리적");
                     if (!isHungry && !isPoop && !isPlay && !quarreling) //딴짓중 아닐 때
                     {
                         if (Chicken!=null && tmp.tag == "chicken") // 치킨이나 소 하나 찾아서 치킨,소가 딴짓중 아닐 때 시비걸기 ON 
@@ -429,6 +430,7 @@ public class Tiger_Move : MonoBehaviour
                 {
                     if (moving) // 노는중 아닐 때,음식따라다니지 않을 때 , 움직이는 중
                     {
+                        Debug.Log("호랑이움");
                         float x = Start_Point.x + move_vec.x * move_length; // 시작점 + 방향벡터 * 거리
                         float y = Start_Point.y + move_vec.y * move_length;
                         tmp_Point = gameObject.transform.position;
