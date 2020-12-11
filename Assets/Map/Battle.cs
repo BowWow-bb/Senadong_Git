@@ -22,10 +22,6 @@ public class Battle : MonoBehaviour
         tiger = GameObject.FindWithTag("tiger");
         chicken = GameObject.FindWithTag("chicken");
 
-        cc= chicken.GetComponent<Chicken_Move>();
-        c= cow.GetComponent<Cow_Move>();
-        t= tiger.GetComponent<Tiger_Move>();
-
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
 
         e_attack_data = GameObject.Find("E_AttackData").GetComponent<E_AttackData>();
@@ -39,8 +35,9 @@ public class Battle : MonoBehaviour
 
         if (item_manager.coin >= 2000)
         {
-            if(!item_manager.chicken_die)
+            if (!item_manager.chicken_die)
             {
+                cc = chicken.GetComponent<Chicken_Move>();
                 item_manager.cc_exp = cc.exp;
                 item_manager.cc_hungry = cc.hungry;
                 item_manager.cc_poop = cc.poop;
@@ -50,6 +47,7 @@ public class Battle : MonoBehaviour
             }
             if (!item_manager.cow_die)
             {
+                c = cow.GetComponent<Cow_Move>();
                 item_manager.c_exp = c.exp;
                 item_manager.c_hungry = c.hungry;
                 item_manager.c_poop = c.poop;
@@ -59,6 +57,7 @@ public class Battle : MonoBehaviour
             }
             if (!item_manager.tiger_die)
             {
+                t = tiger.GetComponent<Tiger_Move>();
                 item_manager.t_exp = t.exp;
                 item_manager.t_hungry = t.hungry;
                 item_manager.t_poop = t.poop;

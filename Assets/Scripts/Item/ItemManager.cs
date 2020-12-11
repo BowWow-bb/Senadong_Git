@@ -40,9 +40,9 @@ public class ItemManager : MonoBehaviour
 
         coin = 2000;
 
-        chicken_level = 0;
-        cow_level = 0;
-        tiger_level = 0;
+        chicken_level = 2;
+        cow_level = 2;
+        tiger_level = 2;
 
         chicken_die = false;
         cow_die = false;
