@@ -34,7 +34,7 @@ public class E_AttackData : MonoBehaviour
             timer++;
             if (timer > threshold) //임계점 도달
             {
-                threshold += 1200;   //임계점 업뎃
+                threshold += 1000;   //임계점 업뎃
 
                 //적군 레벨 업
                 Echicken_level++;

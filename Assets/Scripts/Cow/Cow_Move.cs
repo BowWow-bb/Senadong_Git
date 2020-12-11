@@ -109,6 +109,8 @@ public class Cow_Move : MonoBehaviour
                 play = item_manager.c_play;
             }
         }
+        else if (item_manager.cow_die)
+            Destroy(gameObject);
         else
         {
             hungry = valueMax;
