@@ -59,11 +59,11 @@ public class E_cow_attackArea : MonoBehaviour
         }
         if (other.gameObject.tag == "chicken_wind")
         {
-            if (E_cow.is_go_right)//왼쪽에 적이 존재 
+            if (other.gameObject.transform.position.x >= E_cow.transform.position.x)//적이 오른쪽에 있다면  
             {
                 E_cow.transform.position = new Vector3(E_cow.transform.position.x + 1.5f, E_cow.transform.position.y, E_cow.transform.position.z);
             }
-            else//적이 오른쪽 
+            else//적이 왼쪽 
             {
                 E_cow.transform.position = new Vector3(E_cow.transform.position.x - 1.5f, E_cow.transform.position.y, E_cow.transform.position.z);
             }

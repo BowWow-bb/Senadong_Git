@@ -59,7 +59,7 @@ public class Cow_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       // isDie = GameObject.Find("Cow_p").transform.GetChild(0).GetComponent<Cow_Move>().isDie;
+        // isDie = GameObject.Find("Cow_p").transform.GetChild(0).GetComponent<Cow_Move>().isDie;
         HPMax = 1000;
         hp = HPMax;
         hp_bar = GameObject.FindWithTag("CowHp");
@@ -154,17 +154,17 @@ public class Cow_Attack : MonoBehaviour
         {
             if (!is_Attack)//닿지 않았다면 계속 가기,닿으면 그만 
             {
-                if (min_distance == cow_distance)
+                if (min_distance == cow_distance && cow_enemy != null)
                 {
                     is_target_cow = true;
                     transform.position = Vector3.MoveTowards(transform.position, cow_enemy.transform.position, 0.3f);
                 }
-                else if (min_distance == chicken_distance)
+                else if (min_distance == chicken_distance && chicken_enemy != null)
                 {
                     is_target_chicken = true;
                     transform.position = Vector3.MoveTowards(transform.position, chicken_enemy.transform.position, 0.3f);
                 }
-                else if (min_distance == tiger_distance)
+                else if (min_distance == tiger_distance && tiger_enemy != null)
                 {
                     is_target_tiger = true;
                     transform.position = Vector3.MoveTowards(transform.position, tiger_enemy.transform.position, 0.3f);
@@ -173,7 +173,7 @@ public class Cow_Attack : MonoBehaviour
             else//닿았다면 뒤로 간다음 다시 가게 하면 
             {
                 back_time++;
-                if (is_target_cow)
+                if (is_target_cow && cow_enemy != null)
                 {
                     if (cow_enemy.transform.position.x < transform.position.x)//소가 왼쪽이라면 -> 오른쪽으로 가기
                     {
@@ -188,7 +188,7 @@ public class Cow_Attack : MonoBehaviour
                         transform.localScale = new Vector3(1, 1, 1);
                     }
                 }
-                else if (is_target_chicken)
+                else if (is_target_chicken && chicken_enemy != null)
                 {
                     if (chicken_enemy.transform.position.x < transform.position.x)//치킨이 왼쪽이라면 -> 오른쪽으로 가기
                     {
@@ -203,7 +203,7 @@ public class Cow_Attack : MonoBehaviour
                         transform.localScale = new Vector3(1, 1, 1);
                     }
                 }
-                else if (is_target_tiger)
+                else if (is_target_tiger && tiger_enemy != null)
                 {
                     if (tiger_enemy.transform.position.x < transform.position.x)//호랑이가 왼쪽이라면 -> 오른쪽으로 가기
                     {
@@ -243,7 +243,7 @@ public class Cow_Attack : MonoBehaviour
         {
             Vector3 pos;
 
-            if(min_distance == chicken_distance)    //치킨과 가까울 때
+            if(min_distance == chicken_distance && chicken_enemy != null)    //치킨과 가까울 때
             {
                 Debug.Log("소가 닭 고유공격 !");
                 pos = chicken_enemy.transform.position;
@@ -265,7 +265,7 @@ public class Cow_Attack : MonoBehaviour
                 }
                 
             }
-            else if(min_distance == cow_distance)   //소와 가까울 때
+            else if(min_distance == cow_distance && cow_enemy != null)   //소와 가까울 때
             {
                 Debug.Log("소가 소 고유공격 !");
                 pos = cow_enemy.transform.position;
@@ -286,7 +286,7 @@ public class Cow_Attack : MonoBehaviour
                         cow_enemy.transform.position = new Vector3(pos.x + 5, pos.y, pos.z);    //뒤로 밀려남
                 }
             }
-            else if(min_distance == tiger_distance) //호랑이와 가까울 때
+            else if(min_distance == tiger_distance && tiger_enemy != null) //호랑이와 가까울 때
             {
                 Debug.Log("소가 호랑이 고유공격 !");
                 pos =tiger_enemy.transform.position;
