@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class Lose : MonoBehaviour
 {
     ItemManager item_manager;
-
-    Cow_AI cow_ai;
+    public GameObject cow;
+    public GameObject tiger;
+    public GameObject chicken;
     // Start is called before the first frame update
     void Start()
     {
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
-        cow_ai = GameObject.Find("Cow_p").transform.GetChild(0).gameObject.GetComponent<Cow_AI>();
     }
 
     // Update is called once per frame
@@ -21,10 +21,13 @@ public class Lose : MonoBehaviour
         //진 경우 -> 코인 소실
         item_manager.coin -= 2000;
 
-        //농장 캐릭터 비활성화 해제
-        GameObject.Find("Chicken_p").transform.GetChild(0).gameObject.SetActive(true);
-        GameObject.Find("Cow_p").transform.GetChild(0).gameObject.SetActive(true);
-        GameObject.Find("Tiger_p").transform.GetChild(0).gameObject.SetActive(true);
+        item_manager.cow_die = false;
+        item_manager.chicken_die = false;
+        item_manager.tiger_die = false;
+
+        //GameObject cow = Instantiate(cow);
+        //GameObject chicken = Instantiate(chicken);
+        //GameObject tiger = Instantiate(tiger);
 
         //농장씬 다시 로드
         SceneManager.LoadScene("Farm_Scene");

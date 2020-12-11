@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Cow_Attack : MonoBehaviour
 { 
-    public bool isDie = false;
     ItemManager item_manager;
     public int level;  //캐릭터 레벨
 
@@ -89,11 +88,11 @@ public class Cow_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (isDie)
-        //{
-        //    E_chicken_hp.is_find_target = false;
-        //    Destroy(gameObject, 0.001f);
-        //}
+        if (item_manager.cow_die)
+        {
+            E_chicken_hp.is_find_target = false;
+            Destroy(gameObject, 0.001f);
+        }
 
         //Debug.Log(attack);
         battackTime++;

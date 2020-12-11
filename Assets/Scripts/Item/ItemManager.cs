@@ -24,6 +24,13 @@ public class ItemManager : MonoBehaviour
     public int cow_level;
     public int tiger_level;
 
+    public bool chicken_die;
+    public bool cow_die;
+    public bool tiger_die;
+
+    public int cc_timer, cc_hungry, cc_poop, cc_play, cc_exp, cc_i = 0;
+    public int c_timer, c_hungry, c_poop, c_play, c_exp, c_i = 0;
+    public int t_timer, t_hungry, t_poop, t_play, t_exp, t_i = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +40,13 @@ public class ItemManager : MonoBehaviour
 
         coin = 2000;
 
-        chicken_level = 40;
-        cow_level = 40;
-        tiger_level = 40;
+        chicken_level = 0;
+        cow_level = 0;
+        tiger_level = 0;
+
+        chicken_die = false;
+        cow_die = false;
+        tiger_die = false;
      }
    
     // Update is called once per frame

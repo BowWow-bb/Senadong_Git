@@ -9,10 +9,10 @@ public class DontDestroyOnLoad : MonoBehaviour
     private static int count = 0;
     private int index;
 
-    void Awake()
+    void Awake()    //start 이전에 실행
     {
         index = count;
-        if (index == 0)
+        if (index == 0) //처음생성만 돈트에 넣어주기
         {
             DontDestroyOnLoad(gameObject);
         }

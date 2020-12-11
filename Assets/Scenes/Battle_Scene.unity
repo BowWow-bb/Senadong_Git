@@ -300,7 +300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03746d9e75e54668989baa4ebc9d8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDie: 0
   level: 0
   attack: 0
   hp: 0
@@ -1576,6 +1575,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5685d0da809513e45a13ac0752bb11df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cow: {fileID: 2701849671355611132, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+  tiger: {fileID: 5800524980379892179, guid: a0393188f3b204131872ed6875871b67, type: 3}
+  chicken: {fileID: 5482809992429514747, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
 --- !u!1 &1559595360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2468,6 +2470,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f6948ba6c05bf449e4718f1cc6e7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cow: {fileID: 2701849671355611132, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+  tiger: {fileID: 5800524980379892179, guid: a0393188f3b204131872ed6875871b67, type: 3}
+  chicken: {fileID: 5482809992429514747, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
 --- !u!1 &1832377583
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,7 +2954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d17675789ff405a9ce853b8f8cb897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDie: 0
   level: 0
   attack: 0
   hp: 0
@@ -3237,7 +3241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746671d26e24a460f960dfb5ce015e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isDie: 0
   level: 0
   attack: 0
   hp: 0

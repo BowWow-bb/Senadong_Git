@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Tiger_Attack : MonoBehaviour
 {
-    public bool isDie = false;
-
     ItemManager item_manager;
     public int level;  //캐릭터 레벨
 
@@ -98,12 +96,12 @@ public class Tiger_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (isDie)
-        //{
-        //    E_tiger_hp.is_find_target = false;
-        //    Destroy(gameObject, 0.001f);
-        //}
-            
+        if (item_manager.tiger_die)
+        {
+            E_tiger_hp.is_find_target = false;
+            Destroy(gameObject, 0.001f);
+        }
+
 
         battackTime++;
         if (is_target_chicken)

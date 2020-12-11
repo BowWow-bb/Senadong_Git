@@ -47,11 +47,13 @@ public class E_cow_Attack : MonoBehaviour
 
     public bool is_Attack = false;
     public bool wind_Attacked = false;
-
+    ItemManager item_manager;
     //Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
+
         cow = null; tiger = null; chicken = null;
         HPMax = 1000;
         hp = HPMax;
@@ -68,11 +70,11 @@ public class E_cow_Attack : MonoBehaviour
         attack = e_attack_data.Ecow_attack;
 
         //농장씬에서 죽었는지 파악 
-        if (GameObject.Find("Cow_p").transform.GetChild(0).GetComponent<Cow_Move>().isDie == false)
+        if (!item_manager.cow_die)
             cow = GameObject.Find("Cow").gameObject;
-        if (GameObject.Find("Chicken_p").transform.GetChild(0).GetComponent<Chicken_Move>().isDie == false)
+        if (!item_manager.chicken_die)
             chicken = GameObject.Find("Chicken").gameObject;
-        if (GameObject.Find("Tiger_p").transform.GetChild(0).GetComponent<Tiger_Move>().isDie == false)
+        if (!item_manager.tiger_die)
             tiger = GameObject.Find("tiger").gameObject;
 
         Debug.Log("적소 공격력: " + attack);

@@ -3,7 +3,10 @@ guid: 48f6948ba6c05bf449e4718f1cc6e7a2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - cow: {fileID: 2701849671355611132, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+  - tiger: {fileID: 5800524980379892179, guid: a0393188f3b204131872ed6875871b67, type: 3}
+  - chicken: {fileID: 5482809992429514747, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
