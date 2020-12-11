@@ -9,8 +9,6 @@ public class Chicken_wind : MonoBehaviour
     E_cow_Attack E_cow;
     E_t_Attack E_tiger;
 
-    GameObject big_chicken;
-
     camera_shake Camera;
 
     //int power = 200;//후에 공격력으로 수정해주삼요~
@@ -26,8 +24,6 @@ public class Chicken_wind : MonoBehaviour
         chicken = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
         Camera = GameObject.FindWithTag("MainCamera").GetComponent<camera_shake>();
 
-        big_chicken = GameObject.FindWithTag("big_chicken");
-        big_chicken.SetActive(false);
         if (chicken.is_go_right)//적이 왼쪽이라면 
         {
             pos = Vector3.left;
@@ -45,8 +41,6 @@ public class Chicken_wind : MonoBehaviour
         transform.position += pos * Time.deltaTime * speed;
         if (camera_shake)
         {
-            big_chicken.SetActive(true);
-
             Camera.cameraOn = true;
             Camera.shake = 0.15f;
         }
