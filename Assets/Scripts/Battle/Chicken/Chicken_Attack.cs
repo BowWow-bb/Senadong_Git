@@ -143,14 +143,14 @@ public class Chicken_Attack : MonoBehaviour
             gameObject.transform.position = new Vector3(13.8f, transform.position.y, transform.position.z);
         }
 
-        //if(is_special_attack)
-        //{
-        //    animator.SetBool("is_Attack", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("is_Attack", false);
-        //}
+        if (is_special_attack)
+        {
+            animator.SetBool("is_Attack", true);
+        }
+        else
+        {
+            animator.SetBool("is_Attack", false);
+        }
     }
     //행동 
     public bool Chicken_Basic_Attack()
@@ -259,8 +259,10 @@ public class Chicken_Attack : MonoBehaviour
     {
         if(is_special_attack_time)
         {
-            Vector3 Pos;    
-           
+            Vector3 Pos;
+
+            is_special_attack = true;
+
             GameObject wind = GameObject.Instantiate(chicken_wind);
             if (is_go_right)//왼쪽에 적이 존재 
             {
