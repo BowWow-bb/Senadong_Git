@@ -9,10 +9,13 @@ public class Lose : MonoBehaviour
     public GameObject cow;
     public GameObject tiger;
     public GameObject chicken;
+
+    E_AttackData e_attack_data;
     // Start is called before the first frame update
     void Start()
     {
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
+        e_attack_data = GameObject.Find("E_AttackData").GetComponent<E_AttackData>();
     }
 
     // Update is called once per frame
@@ -30,6 +33,7 @@ public class Lose : MonoBehaviour
         //GameObject tiger = Instantiate(tiger);
 
         //농장씬 다시 로드
+        e_attack_data.isBattle = false;
         SceneManager.LoadScene("Farm_Scene");
     }
 }

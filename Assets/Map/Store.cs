@@ -19,6 +19,7 @@ public class Store : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1368, 768, true);
         ItemSlot = GameObject.Find("ItemSlot");
         Pos = ItemSlot.transform.position;//상점 가기 전 위치 
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();

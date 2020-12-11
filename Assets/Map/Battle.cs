@@ -18,6 +18,7 @@ public class Battle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1368, 768, true);
         cow = GameObject.FindWithTag("cow");
         tiger = GameObject.FindWithTag("tiger");
         chicken = GameObject.FindWithTag("chicken");

@@ -11,6 +11,7 @@ public class Farm : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Screen.SetResolution(1368, 768, true);
         ItemSlot = GameObject.Find("ItemSlot");
         Pos = ItemSlot.transform.position;//농장 가기 전 위치 
 
