@@ -24,9 +24,9 @@ public class ItemManager : MonoBehaviour
     public int cow_level;
     public int tiger_level;
 
-    public bool chicken_die = false;
-    public bool cow_die =false;
-    public bool tiger_die =false;
+    public bool chicken_die = false, chicken_grow = false;
+    public bool cow_die = false, cow_grow = false;
+    public bool tiger_die = false, tiger_grow = false;
 
     public int cc_timer, cc_hungry, cc_poop, cc_play, cc_exp, cc_i = 0;
     public int c_timer, c_hungry, c_poop, c_play, c_exp, c_i = 0;

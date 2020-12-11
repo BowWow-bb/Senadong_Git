@@ -100,11 +100,21 @@ public class Chicken_Move : MonoBehaviour
 
         if (!item_manager.chicken_die && item_manager.cc_i != 0)
         {
-            Debug.Log("치킨 값 가져와ㅜㅜ"+item_manager.cc_exp);
-            exp = item_manager.cc_exp;
-            hungry = item_manager.cc_hungry;
-            poop = item_manager.cc_poop;
-            play = item_manager.cc_play;
+            if(item_manager.chicken_grow)
+            {
+                item_manager.chicken_grow = false;
+                hungry = valueMax;
+                poop = valueMax;
+                play = valueMax;
+            }
+            else
+            {
+                exp = item_manager.cc_exp;
+                hungry = item_manager.cc_hungry;
+                poop = item_manager.cc_poop;
+                play = item_manager.cc_play;
+            }
+           
         }
         else
         {
@@ -180,9 +190,10 @@ public class Chicken_Move : MonoBehaviour
         {
             GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
             GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(2).GetComponent<GetCoin>();
-            cc.tagname = transform.tag;
-            gameObject.SetActive(false);
-            //Destroy(transform.gameObject);
+            cc.tagname = "chicken";
+            item_manager.chicken_grow = true;
+            //gameObject.SetActive(false);
+            Destroy(transform.gameObject);
         }
 
         if (Timer % 40 == 0)
