@@ -110,6 +110,14 @@ public class E_cow_Attack : MonoBehaviour
                 is_find_target = false;
             }
         }
+        if (gameObject.transform.position.x <= -13.8f)
+        {
+            gameObject.transform.position = new Vector3(-13.8f, transform.position.y, transform.position.z);
+        }
+        else if (gameObject.transform.position.x >= 13.8f)
+        {
+            gameObject.transform.position = new Vector3(13.8f, transform.position.y, transform.position.z);
+        }
     }
     //행동 
     public bool E_cow_Basic_Attack()

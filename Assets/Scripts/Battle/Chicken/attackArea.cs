@@ -6,6 +6,8 @@ public class attackArea : MonoBehaviour
 {
     Chicken_Attack chicken;
 
+    
+
     E_ch_Attack E_chicken;
     E_cow_Attack E_cow;
     E_t_Attack E_tiger;
@@ -20,6 +22,7 @@ public class attackArea : MonoBehaviour
     void Start()
     {
         chicken = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
+        
         Camera = GameObject.FindWithTag("MainCamera").GetComponent<camera_shake>();
     }
 
