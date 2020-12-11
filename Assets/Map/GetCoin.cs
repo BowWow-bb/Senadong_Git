@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GetCoin : MonoBehaviour
 {
-    public GameObject ChickenPrefab;
-    public GameObject CowPrefab;
-    public GameObject TigerPrefab;
+    Chicken_Move chicken;
+    Cow_Move cow;
+    Tiger_Move tiger;
 
     ItemManager item_manager;
 
@@ -27,24 +27,26 @@ public class GetCoin : MonoBehaviour
             //성장완료 후, 새로운 캐릭터로 생성 (이전 캐릭터 보다 레벨이 높아짐)
             if (tagname == "chicken")
             {
-                GameObject clone = Instantiate(ChickenPrefab);
-                clone.transform.parent = GameObject.Find("Chicken_p").transform;
-                clone.transform.position = Pos;
+                chicken = GameObject.Find("Chicken_p").transform.GetChild(0).GetComponent<Chicken_Move>();
+                chicken.gameObject.SetActive(true);
+                chicken.hungry = chicken.valueMax; chicken.poop = chicken.valueMax;   chicken.play = chicken.valueMax;
+                chicken.exp = 0; chicken.Timer = 0;
                 item_manager.chicken_level += 2;
             }
             else if (tagname == "cow")
             {
-                Debug.Log("태그확인!");
-                GameObject clone = Instantiate(CowPrefab);
-                clone.transform.parent = GameObject.Find("Cow_p").transform;
-                clone.transform.position = Pos;
+                cow = GameObject.Find("Cow_p").transform.GetChild(0).GetComponent<Cow_Move>();
+                cow.gameObject.SetActive(true);
+                cow.hungry = cow.valueMax; cow.poop = cow.valueMax; cow.play = cow.valueMax;
+                cow.exp = 0; cow.Timer = 0;
                 item_manager.cow_level += 2;
             }
             else if (tagname == "tiger")
             {
-                GameObject clone = Instantiate(TigerPrefab);
-                clone.transform.parent = GameObject.Find("Tiger_p").transform;
-                clone.transform.position = Pos;
+                tiger = GameObject.Find("Tiger_p").transform.GetChild(0).GetComponent<Tiger_Move>();
+                tiger.gameObject.SetActive(true);
+                tiger.hungry = tiger.valueMax; tiger.poop = tiger.valueMax; tiger.play = tiger.valueMax;
+                tiger.exp = 0;  tiger.Timer = 0;
                 item_manager.tiger_level += 2;
             }
 

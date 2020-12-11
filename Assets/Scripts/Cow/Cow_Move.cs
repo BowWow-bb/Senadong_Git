@@ -170,7 +170,8 @@ public class Cow_Move : MonoBehaviour
                 GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
                 GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(2).GetComponent<GetCoin>();
                 cc.tagname = "cow";
-                Destroy(gameObject);
+                gameObject.SetActive(false);
+                //Destroy(transform.gameObject);
             }
 
             if (Timer % 40 == 0)

@@ -23,8 +23,6 @@ public class Lose : MonoBehaviour
 
         //농장 캐릭터 비활성화 해제
         GameObject.Find("Chicken_p").transform.GetChild(0).gameObject.SetActive(true);
-
-        StartCoroutine(cow_ai.behaviorProcess);
         GameObject.Find("Cow_p").transform.GetChild(0).gameObject.SetActive(true);
         GameObject.Find("Tiger_p").transform.GetChild(0).gameObject.SetActive(true);
 
