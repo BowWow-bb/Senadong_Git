@@ -170,7 +170,7 @@ public class Tiger_Move : MonoBehaviour
 
             if (quarrel_check > 300) // 눈앞에 걸리적거림이 인내를 넘어섰다면
             {
-                Debug.Log("걸리적");
+                //Debug.Log("걸리적");
                 if (!isHungry && !isPoop && !isPlay && !quarreling) //딴짓중 아닐 때
                 {
                     if (Chicken != null && tmp.tag == "chicken") // 치킨이나 소 하나 찾아서 치킨,소가 딴짓중 아닐 때 시비걸기 ON 
@@ -507,10 +507,20 @@ public class Tiger_Move : MonoBehaviour
 
         if (!item_manager.tiger_die && item_manager.t_i != 0)
         {
-            exp = item_manager.t_exp;
-            hungry = item_manager.t_hungry;
-            poop = item_manager.t_poop;
-            play = item_manager.t_play;
+            if (item_manager.tiger_grow)
+            {
+                item_manager.tiger_grow = false;
+                hungry = valueMax;
+                poop = valueMax;
+                play = valueMax;
+            }
+            else
+            {
+                exp = item_manager.t_exp;
+                hungry = item_manager.t_hungry;
+                poop = item_manager.t_poop;
+                play = item_manager.t_play;
+            }
         }
         else
         {
@@ -539,8 +549,9 @@ public class Tiger_Move : MonoBehaviour
             GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
             GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(2).GetComponent<GetCoin>();
             cc.tagname = "tiger";
-            gameObject.SetActive(false);
-            //Destroy(transform.gameObject);
+            item_manager.tiger_grow = true;
+            //gameObject.SetActive(false);
+            Destroy(transform.gameObject);
         }
 
         if (Timer % 40 == 0)

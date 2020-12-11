@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 1873814346737909372}
   - component: {fileID: 1873814346737909375}
   - component: {fileID: 1873814346737909374}
-  - component: {fileID: 901698385605730691}
+  - component: {fileID: 632773965748455081}
   m_Layer: 5
   m_Name: GetCoin
   m_TagString: Untagged
@@ -380,7 +380,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 901698385605730691}
+      - m_Target: {fileID: 632773965748455081}
         m_TargetAssemblyTypeName: GetCoin, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -392,7 +392,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &901698385605730691
+--- !u!114 &632773965748455081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -404,9 +404,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2e420f26f21e94ab537252d910aa70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChickenPrefab: {fileID: 5482809992429514747, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
-  CowPrefab: {fileID: 2701849671355611132, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
-  TigerPrefab: {fileID: 5800524980379892179, guid: a0393188f3b204131872ed6875871b67, type: 3}
+  cc: {fileID: 5482809992429514747, guid: 0ac8115eaff46404e96af7c2e59a8a87, type: 3}
+  c: {fileID: 2701849671355611132, guid: c324fc3ef02e42d4d90c1292725e659a, type: 3}
+  t: {fileID: 5800524980379892179, guid: a0393188f3b204131872ed6875871b67, type: 3}
   tagname: 
 --- !u!1 &1873814346861864475
 GameObject:

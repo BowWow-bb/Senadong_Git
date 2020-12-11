@@ -94,10 +94,20 @@ public class Cow_Move : MonoBehaviour
 
         if (!item_manager.cow_die && item_manager.c_i != 0)
         {
-            exp = item_manager.c_exp;
-            hungry = item_manager.c_hungry;
-            poop = item_manager.c_poop;
-            play = item_manager.c_play;
+            if (item_manager.cow_grow)
+            {
+                item_manager.cow_grow = false;
+                hungry = valueMax;
+                poop = valueMax;
+                play = valueMax;
+            }
+            else
+            {
+                exp = item_manager.c_exp;
+                hungry = item_manager.c_hungry;
+                poop = item_manager.c_poop;
+                play = item_manager.c_play;
+            }
         }
         else
         {
@@ -175,8 +185,9 @@ public class Cow_Move : MonoBehaviour
             GameObject.Find("Canvas").transform.GetChild(0).gameObject.SetActive(true);
             GetCoin cc = GameObject.FindWithTag("expmax_panel").transform.GetChild(2).GetComponent<GetCoin>();
             cc.tagname = "cow";
-            gameObject.SetActive(false);
-            //Destroy(transform.gameObject);
+            item_manager.cow_grow = true;
+            //gameObject.SetActive(false);
+            Destroy(transform.gameObject);
         }
 
         if (Timer % 40 == 0)
@@ -391,7 +402,7 @@ public class Cow_Move : MonoBehaviour
     }
     public bool Cow_Quarrel()
     {
-        if (!item_manager.tiger_die)
+        if (GameObject.FindWithTag("tiger").gameObject != null)
         {
             GameObject tiger = GameObject.FindWithTag("tiger").gameObject;
             Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
