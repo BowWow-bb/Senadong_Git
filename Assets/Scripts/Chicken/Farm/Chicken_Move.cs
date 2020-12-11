@@ -219,7 +219,7 @@ public class Chicken_Move : MonoBehaviour
     //행동 
     public bool Chicken_Quarrel()
     {
-        if (!item_manager.tiger_die)
+        if (GameObject.FindWithTag("tiger").gameObject != null)
         {
             GameObject tiger = GameObject.FindWithTag("tiger").gameObject;
             Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
