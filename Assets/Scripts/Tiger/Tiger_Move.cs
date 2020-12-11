@@ -522,6 +522,8 @@ public class Tiger_Move : MonoBehaviour
                 play = item_manager.t_play;
             }
         }
+        else if (item_manager.tiger_die)
+            Destroy(gameObject);
         else
         {
             hungry = valueMax;

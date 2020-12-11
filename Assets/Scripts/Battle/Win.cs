@@ -19,7 +19,7 @@ public class Win : MonoBehaviour
     // Update is called once per frame
     public void OnClick()
     {
-        //이긴 경우 -> 코인 획
+        //이긴 경우 -> 코인 획득
         item_manager.coin += 3000;
         item_manager.cow_die = false;
         item_manager.chicken_die = false;

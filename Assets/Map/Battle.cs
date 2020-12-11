@@ -33,8 +33,10 @@ public class Battle : MonoBehaviour
         //적군 공격력 증가 중지(전투 시작을 알림)
         e_attack_data.isBattle = true;
 
+        //2,000 코인이상 전장 입장 가능
         if (item_manager.coin >= 2000)
         {
+            //죽지 않은 캐릭터에 대해 데이터 전달
             if (!item_manager.chicken_die)
             {
                 cc = chicken.GetComponent<Chicken_Move>();
@@ -77,7 +79,7 @@ public class Battle : MonoBehaviour
 
     }
 
-    IEnumerator delay(float waitTime)
+    IEnumerator delay(float waitTime)   //경고 문구 띄워놓기
     {
         yield return new WaitForSeconds(waitTime);
         GameObject.Find("Canvas").transform.GetChild(3).gameObject.SetActive(false);

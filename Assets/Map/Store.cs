@@ -31,9 +31,11 @@ public class Store : MonoBehaviour
     // Update is called once per frame
     public void OnClick()
     {
+        //아이템 슬롯 숨기기
         ItemSlot.transform.position = new Vector3(Pos.x + 10, Pos.y, Pos.z);
         if (!item_manager.chicken_die)
         {
+            //죽지않은 캐릭터에 대해 데이터 전달
             cc = chicken.GetComponent<Chicken_Move>();
             item_manager.cc_exp = cc.exp;
             item_manager.cc_hungry = cc.hungry;
