@@ -61,11 +61,11 @@ public class E_t_AttackArea : MonoBehaviour
         //공격 받음 
         if (other.gameObject.tag == "chicken_wind")
         {
-            if (E_t.is_go_right)//왼쪽에 적이 존재 
+            if (other.gameObject.transform.position.x>= E_t.transform.position.x)//적이 오른쪽에 있다면 
             {
                 E_t.transform.position = new Vector3(E_t.transform.position.x + 1.5f, E_t.transform.position.y, E_t.transform.position.z);
             }
-            else//적이 오른쪽 
+            else//적이 왼쪽  
             {
                 E_t.transform.position = new Vector3(E_t.transform.position.x - 1.5f, E_t.transform.position.y, E_t.transform.position.z);
             }

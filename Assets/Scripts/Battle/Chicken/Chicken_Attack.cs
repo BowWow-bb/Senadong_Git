@@ -100,34 +100,34 @@ public class Chicken_Attack : MonoBehaviour
         {
             if (E_chicken_hp.hp <= 0)
             {
-                is_Attack = true;
                 Debug.Log("적 치킨 죽음 ");
+                is_Attack = true;
                 is_target_chicken = false;
                 is_find_target = false;
             }
         }
-        if(is_target_cow)
+        if (is_target_cow)
         {
-            if(E_cow_hp.hp<=0)
+            if (E_cow_hp.hp <= 0)
             {
+                Debug.Log("적 소 죽음 ");
                 is_Attack = true;
-                Debug.Log("적 소 죽음");
                 is_target_cow = false;
                 is_find_target = false;
             }
         }
-        if(is_target_tiger)
+        if (is_target_tiger)
         {
-            if(E_tiger_hp.hp<=0)
+            if (E_tiger_hp.hp <= 0)
             {
                 is_Attack = true;
                 Debug.Log("적 호랑이 죽음");
-                is_target_tiger= false;
+                is_target_tiger = false;
                 is_find_target = false;
             }
         }
 
-        if(gameObject.transform.position.x<= -13.8f)
+        if (gameObject.transform.position.x<= -13.8f)
         {
             gameObject.transform.position = new Vector3(-13.8f, transform.position.y, transform.position.z);
         }
@@ -136,14 +136,14 @@ public class Chicken_Attack : MonoBehaviour
             gameObject.transform.position = new Vector3(13.8f, transform.position.y, transform.position.z);
         }
 
-        //if(is_special_attack)
-        //{
-        //    animator.SetBool("is_Attack", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("is_Attack", false);
-        //}
+        if (is_special_attack)
+        {
+            animator.SetBool("is_Attack", true);
+        }
+        else
+        {
+            animator.SetBool("is_Attack", false);
+        }
     }
     //행동 
     public bool Chicken_Basic_Attack()
@@ -154,17 +154,17 @@ public class Chicken_Attack : MonoBehaviour
         {
             if (!is_Attack)//닿지 않았다면 계속 가기,닿으면 그만 
             {
-                if (min_distance == cow_distance)
+                if (min_distance == cow_distance && cow_enemy != null)
                 {
                     is_target_cow = true;
                     transform.position = Vector3.MoveTowards(transform.position, cow_enemy.transform.position, 0.3f);
                 }
-                else if (min_distance == chicken_distance)
+                else if (min_distance == chicken_distance && chicken_enemy != null)
                 {
                     is_target_chicken = true;
                     transform.position = Vector3.MoveTowards(transform.position, chicken_enemy.transform.position, 0.3f);
                 }
-                else if (min_distance == tiger_distance)
+                else if (min_distance == tiger_distance && tiger_enemy != null)
                 {
                     is_target_tiger = true;
                     transform.position = Vector3.MoveTowards(transform.position, tiger_enemy.transform.position, 0.3f);
@@ -173,7 +173,7 @@ public class Chicken_Attack : MonoBehaviour
             else//닿았다면 뒤로 간다음 다시 가게 하면 
             {
                 back_time++;
-                if (is_target_cow)
+                if (is_target_cow && cow_enemy != null)
                 {
                     //왼쪽보는 중 
                     if (cow_enemy.transform.position.x < transform.position.x)//소가 왼쪽이라면 -> 오른쪽으로 가기 (-붙으면 오른쪽 봄)
@@ -192,7 +192,7 @@ public class Chicken_Attack : MonoBehaviour
                         is_go_right = false;
                     }
                 }
-                else if (is_target_chicken)
+                else if (is_target_chicken && chicken_enemy != null)
                 {
                     if (chicken_enemy.transform.position.x < transform.position.x)//치킨이 왼쪽이라면 -> 오른쪽으로 가기
                     {
@@ -209,7 +209,7 @@ public class Chicken_Attack : MonoBehaviour
                         is_go_right = false;
                     }
                 }
-                else if (is_target_tiger)
+                else if (is_target_tiger && tiger_enemy != null)
                 {
                     if (tiger_enemy.transform.position.x < transform.position.x)//호랑이가 왼쪽이라면 -> 오른쪽으로 가기
                     {
