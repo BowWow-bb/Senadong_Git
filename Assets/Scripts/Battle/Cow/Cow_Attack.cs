@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Cow_Attack : MonoBehaviour
-{
+{ 
     public bool isDie = false;
-
     ItemManager item_manager;
     public int level;  //캐릭터 레벨
 
@@ -92,9 +91,10 @@ public class Cow_Attack : MonoBehaviour
     {
         if (isDie)
         {
-            transform.position = new Vector3(-30.0f, transform.position.y, transform.position.z);
-            Destroy(gameObject);
+            E_chicken_hp.is_find_target = false;
+            Destroy(gameObject, 0.001f);
         }
+
         //Debug.Log(attack);
         battackTime++;
         sattackTime++;

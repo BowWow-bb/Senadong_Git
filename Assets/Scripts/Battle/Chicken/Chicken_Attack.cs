@@ -92,9 +92,10 @@ public class Chicken_Attack : MonoBehaviour
     {
         if (isDie)
         {
-            transform.position = new Vector3(-30.0f, transform.position.y, transform.position.z);
-            Destroy(gameObject);
+            E_cow_hp.is_find_target = false;
+            Destroy(gameObject, 0.001f);
         }
+
         battackTime++;
         windTime++;
         if (is_target_chicken)

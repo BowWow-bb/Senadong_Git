@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03746d9e75e54668989baa4ebc9d8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDie: 0
   level: 0
   attack: 0
   hp: 0
@@ -2759,7 +2760,7 @@ GameObject:
   - component: {fileID: 198988005}
   - component: {fileID: 5482809993986223289}
   m_Layer: 0
-  m_Name: 'Chicken '
+  m_Name: Chicken
   m_TagString: chicken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2918,7 +2919,7 @@ GameObject:
   - component: {fileID: 5800524980952120303}
   - component: {fileID: 5800524980952120305}
   m_Layer: 0
-  m_Name: 'tiger '
+  m_Name: tiger
   m_TagString: tiger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2948,6 +2949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98d17675789ff405a9ce853b8f8cb897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDie: 0
   level: 0
   attack: 0
   hp: 0
@@ -3235,6 +3237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746671d26e24a460f960dfb5ce015e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDie: 0
   level: 0
   attack: 0
   hp: 0
@@ -3248,6 +3251,7 @@ MonoBehaviour:
   is_basic_attack: 1
   is_go_right: 0
   is_Attack: 0
+  is_special_attack_time: 0
 --- !u!212 &7687067579504572347
 SpriteRenderer:
   m_ObjectHideFlags: 0
