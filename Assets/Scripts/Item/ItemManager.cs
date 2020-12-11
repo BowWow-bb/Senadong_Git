@@ -34,9 +34,9 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hungry_item = 5;
-        poop_item = 5;
-        play_item = 5;
+        hungry_item = 2;
+        poop_item = 2;
+        play_item = 2;
 
         coin = 1000;
 
