@@ -66,6 +66,10 @@ public class Chicken_wind : MonoBehaviour
                 }
                 transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
                 E_chicken.hpMove(chicken.attack);
+                if (E_chicken.hp <= 0)
+                {
+                    camera_shake = false;
+                }
                 attacked = true;
             }
         }
@@ -86,6 +90,10 @@ public class Chicken_wind : MonoBehaviour
                 }
                 transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
                 E_tiger.hpMove(chicken.attack);
+                if (E_tiger.hp <= 0)
+                {
+                    camera_shake = false;
+                }
                 attacked = true;
             }
 
@@ -107,6 +115,10 @@ public class Chicken_wind : MonoBehaviour
                 }
                 transform.position = Vector3.MoveTowards(other.transform.position, pos, 0.1f);
                 E_cow.hpMove(chicken.attack);
+                if(E_cow.hp<=0)
+                {
+                    camera_shake = false;
+                }
                 attacked = true;
             }
 
