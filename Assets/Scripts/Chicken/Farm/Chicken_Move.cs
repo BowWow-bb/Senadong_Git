@@ -100,7 +100,7 @@ public class Chicken_Move : MonoBehaviour
 
         if (!item_manager.chicken_die && item_manager.cc_i != 0)
         {
-            if(item_manager.chicken_grow)
+            if (item_manager.chicken_grow)
             {
                 item_manager.chicken_grow = false;
                 hungry = valueMax;
@@ -114,8 +114,10 @@ public class Chicken_Move : MonoBehaviour
                 poop = item_manager.cc_poop;
                 play = item_manager.cc_play;
             }
-           
+
         }
+        else if (item_manager.chicken_die)
+            Destroy(gameObject);
         else
         {
             hungry = valueMax;

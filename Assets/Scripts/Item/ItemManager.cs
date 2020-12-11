@@ -38,7 +38,7 @@ public class ItemManager : MonoBehaviour
         poop_item = 5;
         play_item = 5;
 
-        coin = 2000;
+        coin = 1000;
 
         chicken_level = 2;
         cow_level = 2;
