@@ -67,6 +67,15 @@ public class E_ch_Attack : MonoBehaviour
 
         e_attack_data = GameObject.Find("E_AttackData").GetComponent<E_AttackData>();
         attack = e_attack_data.Echicken_attack;
+
+        //농장씬에서 죽었는지 파악 
+        if (GameObject.Find("Cow_p").transform.GetChild(0).GetComponent<Cow_Move>().isDie == false)
+            cow = GameObject.Find("Cow").gameObject;
+        if (GameObject.Find("Chicken_p").transform.GetChild(0).GetComponent<Chicken_Move>().isDie == false)
+            chicken = GameObject.Find("Chicken").gameObject;
+        if (GameObject.Find("Tiger_p").transform.GetChild(0).GetComponent<Tiger_Move>().isDie == false)
+            tiger = GameObject.Find("tiger").gameObject;
+
         Debug.Log("적닭 공격력: " + attack);
 
     }
@@ -74,12 +83,12 @@ public class E_ch_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.Find("Cow_p").transform.GetChild(0).GetComponent<Cow_Move>().isDie == false)
-            cow = GameObject.Find("Cow").gameObject;
-        if (GameObject.Find("Chicken_p").transform.GetChild(0).GetComponent<Chicken_Move>().isDie == false)
-            chicken = GameObject.Find("Chicken").gameObject;
-        if (GameObject.Find("Tiger_p").transform.GetChild(0).GetComponent<Tiger_Move>().isDie == false)
-            tiger = GameObject.Find("tiger").gameObject;
+        //if (GameObject.Find("Cow_p").transform.GetChild(0).GetComponent<Cow_Move>().isDie == false)
+        //    cow = GameObject.Find("Cow").gameObject;
+        //if (GameObject.Find("Chicken_p").transform.GetChild(0).GetComponent<Chicken_Move>().isDie == false)
+        //    chicken = GameObject.Find("Chicken").gameObject;
+        //if (GameObject.Find("Tiger_p").transform.GetChild(0).GetComponent<Tiger_Move>().isDie == false)
+        //    tiger = GameObject.Find("tiger").gameObject;
 
         battackTime++;
         if (is_target_chicken && chicken != null)

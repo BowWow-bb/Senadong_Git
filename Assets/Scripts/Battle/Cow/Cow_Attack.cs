@@ -89,12 +89,15 @@ public class Cow_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (hp <= 0)
+        {
+            isDie = true;
+        }
         if (isDie)
         {
             E_chicken_hp.is_find_target = false;
             Destroy(gameObject, 0.001f);
         }
-
         //Debug.Log(attack);
         battackTime++;
         sattackTime++;
@@ -362,7 +365,10 @@ public class Cow_Attack : MonoBehaviour
     public void hpMove(int hp_delta)    //hp바 동작 구현
     {
         if (hp - hp_delta <= 0)   //0이하로 내려가는 경우 죽은걸로 판단
+        {
+            isDie = true;
             Destroy(gameObject);
+        }
 
         float move = ((HPMax - hp) + hp_delta) * hpbar_tmp; //hp바 이동할 크기
         hp -= hp_delta; //hp 재설정
