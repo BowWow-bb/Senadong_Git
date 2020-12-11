@@ -28,22 +28,23 @@ public class GetCoin : MonoBehaviour
             if (tagname == "chicken")
             {
                 GameObject clone = Instantiate(ChickenPrefab);
-                clone.transform.position = Pos;
                 clone.transform.parent = GameObject.Find("Chicken_p").transform;
+                clone.transform.position = Pos;
                 item_manager.chicken_level += 2;
             }
             else if (tagname == "cow")
             {
+                Debug.Log("태그확인!");
                 GameObject clone = Instantiate(CowPrefab);
-                clone.transform.position = Pos;
                 clone.transform.parent = GameObject.Find("Cow_p").transform;
+                clone.transform.position = Pos;
                 item_manager.cow_level += 2;
             }
             else if (tagname == "tiger")
             {
                 GameObject clone = Instantiate(TigerPrefab);
-                clone.transform.position = Pos;
                 clone.transform.parent = GameObject.Find("Tiger_p").transform;
+                clone.transform.position = Pos;
                 item_manager.tiger_level += 2;
             }
 

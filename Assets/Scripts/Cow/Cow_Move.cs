@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Cow_Move : MonoBehaviour
 {
+    public GameObject ttiger;
+
     public bool isDie = false;
     ItemManager item_manager;
     int exp_check;
@@ -74,6 +76,7 @@ public class Cow_Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ttiger = GameObject.FindWithTag("tiger").gameObject;
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         exp_check = 100;
 
@@ -148,7 +151,7 @@ public class Cow_Move : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        exp = 1000;
+        //exp = 1000;
         BasicTime++;
         Timer++;
         milkTimer++;
@@ -383,11 +386,11 @@ public class Cow_Move : MonoBehaviour
     }
     public bool Cow_Quarrel()
     {
-        if (!isDie)
+        if (!isDie && ttiger != null)
         {
-            GameObject tiger = GameObject.FindWithTag("tiger");
+            GameObject tiger = GameObject.Find("Tiger_p").transform.GetChild(0).gameObject;
             Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
-            if (quarrel)//쫓기고 있을 때 
+            if (quarrel && !T_m.isDie)//쫓기고 있을 때 
             {
                 if (hurt)//피해를 입었다
                 {

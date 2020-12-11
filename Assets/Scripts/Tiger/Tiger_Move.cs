@@ -123,7 +123,7 @@ public class Tiger_Move : MonoBehaviour
     }
     public bool Quarrel()
     {
-        if(!isDie)
+        if (!isDie)
         {
             if (quarreling && (!isHungry && !isPoop && !isPlay))
             {
@@ -159,12 +159,12 @@ public class Tiger_Move : MonoBehaviour
             else
             {
 
-                if (Vector3.Distance(Cow.transform.position, gameObject.transform.position) < 5f) // 닭 / 소가 호랑이의 일정범위 내의 들어온다면 
+                if (Cow!=null && Vector3.Distance(Cow.transform.position, gameObject.transform.position) < 5f) // 닭 / 소가 호랑이의 일정범위 내의 들어온다면 
                 {
                     tmp = Cow; // 바로 전에 보인 동물
                     quarrel_check++; // 눈앞에 걸리적거림 +1
                 }
-                else if (Vector3.Distance(Chicken.transform.position, gameObject.transform.position) < 10f)
+                else if (Chicken!=null && Vector3.Distance(Chicken.transform.position, gameObject.transform.position) < 10f)
                 {
                     tmp = Chicken;
                     quarrel_check++;
@@ -175,7 +175,7 @@ public class Tiger_Move : MonoBehaviour
                     quarrel_check = 0;
                     if (!isHungry && !isPoop && !isPlay && !quarreling) //딴짓중 아닐 때
                     {
-                        if (tmp.tag == "chicken") // 치킨이나 소 하나 찾아서 치킨,소가 딴짓중 아닐 때 시비걸기 ON 
+                        if (Chicken!=null && tmp.tag == "chicken") // 치킨이나 소 하나 찾아서 치킨,소가 딴짓중 아닐 때 시비걸기 ON 
                         {
                             Chicken_Move c_m = tmp.GetComponent<Chicken_Move>();
                             if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food
@@ -188,7 +188,7 @@ public class Tiger_Move : MonoBehaviour
                             }
 
                         }
-                        else if (tmp.tag == "cow")
+                        else if (Cow!=null && tmp.tag == "cow")
                         {
                             Cow_Move c_m = tmp.GetComponent<Cow_Move>();
                             if (!c_m.playing && !c_m.isdrag && !c_m.is_follow_food

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class Chicken_Move : MonoBehaviour
 {
+    public GameObject ttiger;
+
     public bool isDie = false;
     ItemManager item_manager;
     int exp_check;
@@ -80,6 +82,7 @@ public class Chicken_Move : MonoBehaviour
 
     void Start()
     {
+        ttiger = GameObject.FindWithTag("tiger").gameObject;
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
         exp_check = 100;
 
@@ -212,11 +215,11 @@ public class Chicken_Move : MonoBehaviour
     //행동 
     public bool Chicken_Quarrel()
     {
-        if (!isDie)
+        if (!isDie && ttiger!=null)
         {
-            GameObject tiger = GameObject.FindWithTag("tiger");
+            GameObject tiger = GameObject.Find("Tiger_p").transform.GetChild(0).gameObject;
             Tiger_Move T_m = tiger.GetComponent<Tiger_Move>();
-            if (quarrel)//쫓기고 있을 때 
+            if (quarrel && !T_m.isDie)//쫓기고 있을 때 
             {
                 if (hurt)//피해를 입었다면
                 {

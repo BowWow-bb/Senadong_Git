@@ -23,7 +23,7 @@ public class Cow_AI : MonoBehaviour
     private Cow_BasicMove basicMove = new Cow_BasicMove();
     private Cow_Quarrel quarrel = new Cow_Quarrel();
     private Cow_Move m_cow;
-    private IEnumerator behaviorProcess;
+    public IEnumerator behaviorProcess;
     // Start is called before the first frame update
     void Start()
     {

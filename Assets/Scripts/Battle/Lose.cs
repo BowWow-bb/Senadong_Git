@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 public class Lose : MonoBehaviour
 {
     ItemManager item_manager;
+
+    Cow_AI cow_ai;
     // Start is called before the first frame update
     void Start()
     {
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
+        cow_ai = GameObject.Find("Cow_p").transform.GetChild(0).gameObject.GetComponent<Cow_AI>();
     }
 
     // Update is called once per frame
@@ -20,6 +23,8 @@ public class Lose : MonoBehaviour
 
         //농장 캐릭터 비활성화 해제
         GameObject.Find("Chicken_p").transform.GetChild(0).gameObject.SetActive(true);
+
+        StartCoroutine(cow_ai.behaviorProcess);
         GameObject.Find("Cow_p").transform.GetChild(0).gameObject.SetActive(true);
         GameObject.Find("Tiger_p").transform.GetChild(0).gameObject.SetActive(true);
 
