@@ -344,10 +344,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 729961039}
-  - component: {fileID: 729961040}
   m_Layer: 0
   m_Name: Chicken_p
-  m_TagString: Untagged
+  m_TagString: chicken_p
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -367,18 +366,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &729961040
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 729961038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &801034933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -818,10 +805,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1178770770}
-  - component: {fileID: 1178770771}
   m_Layer: 0
   m_Name: Tiger_p
-  m_TagString: Untagged
+  m_TagString: tiger_p
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -841,18 +827,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1178770771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1178770769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1335457937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -986,6 +960,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'tiger '
       objectReference: {fileID: 0}
+    - target: {fileID: 9164473677260310593, guid: a0393188f3b204131872ed6875871b67, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4079651826369743858, guid: a0393188f3b204131872ed6875871b67, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a0393188f3b204131872ed6875871b67, type: 3}
@@ -1003,10 +981,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1709541150}
-  - component: {fileID: 1709541151}
   m_Layer: 0
   m_Name: Cow_p
-  m_TagString: Untagged
+  m_TagString: cow_p
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1026,18 +1003,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1709541151
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709541149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8896186fc3e7a504aab378af073322a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1862217289
 PrefabInstance:
   m_ObjectHideFlags: 0

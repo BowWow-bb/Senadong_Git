@@ -31,11 +31,11 @@ public class ItemManager : MonoBehaviour
         poop_item = 5;
         play_item = 5;
 
-        coin = 1000;
+        coin = 2000;
 
-        chicken_level = 0;
-        cow_level = 0;
-        tiger_level = 0;
+        chicken_level = 40;
+        cow_level = 40;
+        tiger_level = 40;
      }
    
     // Update is called once per frame

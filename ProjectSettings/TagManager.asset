@@ -62,6 +62,9 @@ TagManager:
   - ECowHp
   - EChickenHp
   - ETigerHp
+  - chicken_p
+  - cow_p
+  - tiger_p
   layers:
   - Default
   - TransparentFX

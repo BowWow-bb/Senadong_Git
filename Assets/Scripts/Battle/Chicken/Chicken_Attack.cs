@@ -60,7 +60,7 @@ public class Chicken_Attack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isDie = GameObject.Find("Chicken_p").transform.GetChild(0).GetComponent<Chicken_Move>().isDie;
+      //  isDie = GameObject.Find("Chicken_p").transform.GetChild(0).GetComponent<Chicken_Move>().isDie;
         HPMax = 1000;
         hp = HPMax;
         hp_bar = GameObject.FindWithTag("ChickenHp");
@@ -90,11 +90,11 @@ public class Chicken_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDie)
-        {
-            E_cow_hp.is_find_target = false;
-            Destroy(gameObject, 0.001f);
-        }
+        //if (isDie)
+        //{
+        //    E_cow_hp.is_find_target = false;
+        //    Destroy(gameObject, 0.001f);
+        //}
 
         battackTime++;
         windTime++;
