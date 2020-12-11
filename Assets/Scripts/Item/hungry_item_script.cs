@@ -13,9 +13,18 @@ public class hungry_item_script : MonoBehaviour
     void Start()
     {
         item_manager = GameObject.Find("ItemManager").GetComponent<ItemManager>();
-        c_m = GameObject.FindWithTag("chicken").GetComponent<Chicken_Move>();
-        t_m = GameObject.FindWithTag("tiger").GetComponent<Tiger_Move>();
-        co_m = GameObject.FindWithTag("cow").GetComponent<Cow_Move>();
+        if(!item_manager.chicken_die)
+        {
+            c_m = GameObject.FindWithTag("chicken").GetComponent<Chicken_Move>();
+        }
+        if(!item_manager.cow_die)
+        {
+            co_m = GameObject.FindWithTag("cow").GetComponent<Cow_Move>();
+        }
+        if(!item_manager.tiger_die)
+        {
+            t_m = GameObject.FindWithTag("tiger").GetComponent<Tiger_Move>();
+        }
         item_manager.hungry_item--;
     }
 
