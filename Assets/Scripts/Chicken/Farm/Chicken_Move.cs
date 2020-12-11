@@ -100,6 +100,7 @@ public class Chicken_Move : MonoBehaviour
 
         if (!item_manager.chicken_die && item_manager.cc_i != 0)
         {
+            Debug.Log("치킨 값 가져와ㅜㅜ"+item_manager.cc_exp);
             exp = item_manager.cc_exp;
             hungry = item_manager.cc_hungry;
             poop = item_manager.cc_poop;
