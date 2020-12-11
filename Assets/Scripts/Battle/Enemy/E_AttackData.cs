@@ -34,20 +34,20 @@ public class E_AttackData : MonoBehaviour
             timer++;
             if (timer > threshold) //임계점 도달
             {
-                threshold += 1000;   //임계점 업뎃
+                threshold += 1700;   //임계점 업뎃
 
                 //적군 레벨 업
                 Echicken_level++;
                 Ecow_level++;
                 Etiger_level++;
 
-                rand_tmp = Random.Range(8, 11); //8~10 사이 랜덤값
+                rand_tmp = Random.Range(5, 11); //5~10 사이 랜덤값
                 Echicken_attack = Echicken_level * rand_tmp;    //랜덤 배수값
 
-                rand_tmp = Random.Range(8, 11); //8~10 사이 랜덤값
+                rand_tmp = Random.Range(5, 11); //5~10 사이 랜덤값
                 Ecow_attack = Ecow_level * rand_tmp;    //랜덤 배수값
 
-                rand_tmp = Random.Range(8, 11); //8~10 사이 랜덤값
+                rand_tmp = Random.Range(5, 11); //5~10 사이 랜덤값
                 Etiger_attack = Etiger_level * rand_tmp;    //랜덤 배수값
             }
         }
