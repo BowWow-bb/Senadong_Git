@@ -50,10 +50,6 @@ public class Chicken_wind : MonoBehaviour
             Camera.cameraOn = true;
             Camera.shake = 0.15f;
         }
-        else
-        {
-            big_chicken.SetActive(false);
-        }
     }
     private void OnTriggerEnter(Collider other)
     {
