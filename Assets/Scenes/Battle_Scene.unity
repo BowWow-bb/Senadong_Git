@@ -2829,7 +2829,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5336855417275088078, guid: b809c8825719a483c9cde20977281145, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2897,7 +2897,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -8226547091754595174, guid: 62c498a8728324982b9b432bf04bc278, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2965,6 +2965,9 @@ MonoBehaviour:
   C_battackTime: 100
   C_skillTime: 0
   is_skill_time: 0
+  is_target_cow: 0
+  is_target_chicken: 0
+  is_target_tiger: 0
   is_find_target: 0
   is_basic_attack: 0
   is_go_right: 0
@@ -3041,6 +3044,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6432968098728297369, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
       propertyPath: back_distance
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432968098728297372, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
+      propertyPath: m_SortingOrder
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6432968098728297373, guid: 0117cca6f72884431a4a22832e1bed6b, type: 3}
@@ -3123,6 +3130,10 @@ PrefabInstance:
     - target: {fileID: 7057757901577457006, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
       propertyPath: m_Name
       value: CowEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7057757901577457008, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7057757901577457009, guid: 7708f85878c7ced489a8214dadbd1b12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3294,7 +3305,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1629115749044580315, guid: 4be93d7f268f1495ab21cc4051790acc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3392,6 +3403,10 @@ PrefabInstance:
     - target: {fileID: 8630146778440577840, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630146778440577841, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8630146778440577843, guid: d14ccfb1d37964f1f937413f33cc6d2f, type: 3}
       propertyPath: m_Name
