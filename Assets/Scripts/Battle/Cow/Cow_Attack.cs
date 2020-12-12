@@ -39,9 +39,9 @@ public class Cow_Attack : MonoBehaviour
     int battackTime = 0;//기본 공격 시간
     public int C_battackTime = 700;//기본 공격 시간 조정
 
-    bool is_target_cow = false;
-    bool is_target_chicken = false;
-    bool is_target_tiger = false;
+    public bool is_target_cow = false;
+    public bool is_target_chicken = false;
+    public bool is_target_tiger = false;
 
     public bool is_find_target = false;
     public bool is_basic_attack = false;

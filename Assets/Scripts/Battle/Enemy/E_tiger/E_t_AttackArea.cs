@@ -37,21 +37,21 @@ public class E_t_AttackArea : MonoBehaviour
     {
         //공격 함 
         //적이랑 닿으면 camera 움직임 
-        if ((other.gameObject.tag == "cow") && E_t.is_basic_attack && !cow.is_special_attack_time)//소가 고유공격 안할때 데미지 줌
+        if ((other.gameObject.tag == "cow") && E_t.is_basic_attack && !cow.is_special_attack_time&&E_t.is_target_cow)//소가 고유공격 안할때 데미지 줌
         {
             //cow = GameObject.FindWithTag("cow").GetComponent<Cow_Attack>();
             cow.hpMove(E_t.attack);
 
             E_t.is_Attack = true;
         }
-        if ((other.gameObject.tag == "tiger") && E_t.is_basic_attack)
+        if ((other.gameObject.tag == "tiger") && E_t.is_basic_attack&&E_t.is_target_tiger)
         {
             tiger = GameObject.FindWithTag("tiger").GetComponent<Tiger_Attack>();
             tiger.hpMove(E_t.attack);
 
             E_t.is_Attack = true;
         }
-        if ((other.gameObject.tag == "chicken")&& E_t.is_basic_attack)
+        if ((other.gameObject.tag == "chicken")&& E_t.is_basic_attack&&E_t.is_target_chicken)
         {
             chicken = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
             chicken.hpMove(E_t.attack);

@@ -33,7 +33,7 @@ public class attackArea_cow : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "chicken_enemy" && (cow.is_basic_attack || cow.is_special_attack_time)) //충돌+(기본공격 or 고유공격 중)
+        if (other.gameObject.tag == "chicken_enemy" && (cow.is_basic_attack || cow.is_special_attack_time)&&cow.is_target_chicken) //충돌+(기본공격 or 고유공격 중)
         {
             E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
             E_chicken.hpMove(cow.attack);
@@ -42,12 +42,12 @@ public class attackArea_cow : MonoBehaviour
             cow.is_Attack = true;
             camera_shake = true;
         }
-        if (other.gameObject.tag == "tiger_enemy" && (cow.is_basic_attack || cow.is_special_attack_time))
+        if (other.gameObject.tag == "tiger_enemy" && (cow.is_basic_attack || cow.is_special_attack_time)&&cow.is_target_tiger)
         {
             cow.is_Attack = true;
             camera_shake = true;
         }
-        if (other.gameObject.tag == "cow_enemy" && (cow.is_basic_attack || cow.is_special_attack_time))
+        if (other.gameObject.tag == "cow_enemy" && (cow.is_basic_attack || cow.is_special_attack_time)&&cow.is_target_cow)
         {
             E_cow = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
             E_cow.hpMove(cow.attack);

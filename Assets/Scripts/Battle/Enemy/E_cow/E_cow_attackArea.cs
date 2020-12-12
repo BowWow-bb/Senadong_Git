@@ -43,14 +43,14 @@ public class E_cow_attackArea : MonoBehaviour
 
             E_cow.is_Attack = true;
         }
-        if (other.gameObject.tag == "tiger" && E_cow.is_basic_attack)
+        if (other.gameObject.tag == "tiger" && E_cow.is_basic_attack&&E_cow.is_target_tiger)
         {
             tiger = GameObject.FindWithTag("tiger").GetComponent<Tiger_Attack>();
             tiger.hpMove(E_cow.attack);
 
             E_cow.is_Attack = true;
         }
-        if (other.gameObject.tag == "chicken" && E_cow.is_basic_attack)
+        if (other.gameObject.tag == "chicken" && E_cow.is_basic_attack && E_cow.is_target_chicken)
         {
             chicken = GameObject.FindWithTag("chicken").GetComponent<Chicken_Attack>();
             chicken.hpMove(E_cow.attack);

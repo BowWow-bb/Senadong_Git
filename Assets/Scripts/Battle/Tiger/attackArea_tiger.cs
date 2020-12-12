@@ -35,21 +35,21 @@ public class attackArea_tiger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //적이랑 닿으면 camera 움직임 
-        if (other.gameObject.tag == "chicken_enemy" && tiger.is_basic_attack)
+        if (other.gameObject.tag == "chicken_enemy" && tiger.is_basic_attack&&tiger.is_target_chicken)
         {
             E_chicken = GameObject.FindWithTag("chicken_enemy").GetComponent<E_ch_Attack>();
             E_chicken.hpMove(tiger.attack);
 
             tiger.is_Attack = true;
         }
-        if (other.gameObject.tag == "tiger_enemy" && tiger.is_basic_attack)
+        if (other.gameObject.tag == "tiger_enemy" && tiger.is_basic_attack && tiger.is_target_tiger)
         {
             E_tiger = GameObject.FindWithTag("tiger_enemy").GetComponent<E_t_Attack>();
             E_tiger.hpMove(tiger.attack);
 
             tiger.is_Attack = true;
         }
-        if (other.gameObject.tag == "cow_enemy" && tiger.is_basic_attack)
+        if (other.gameObject.tag == "cow_enemy" && tiger.is_basic_attack && tiger.is_target_cow)
         {
             E_cow = GameObject.FindWithTag("cow_enemy").GetComponent<E_cow_Attack>();
             E_cow.hpMove(tiger.attack);
