@@ -20,12 +20,22 @@ Unity 기반의 육성 게임입니다.
 Screenshots
 -----
 
-![밥먹기_gif]<img src="https://user-images.githubusercontent.com/66946182/103164583-aa7f8700-4850-11eb-9386-46d27f651b2a.gif">
+1) 밥 아이템 드래그 해서 허기 채우기 가능 
 
-![드래그_gif]<img src="https://user-images.githubusercontent.com/66946182/103164914-950c5c00-4854-11eb-87b5-92b89da9782e.gif">
+<img width ="400" src="https://user-images.githubusercontent.com/66946182/103164583-aa7f8700-4850-11eb-9386-46d27f651b2a.gif">
 
-![닭고유공격_gif]<img src = "https://user-images.githubusercontent.com/66946182/103164916-9ccc0080-4854-11eb-9d6b-820c3bad5421.gif">
+2) 마우스를 이용해 동물과 아이템 드래그 가능 
 
-![밥먹기_gif]<img src="https://user-images.githubusercontent.com/66946182/103164583-aa7f8700-4850-11eb-9386-46d27f651b2a.gif">
+<img width ="400" src="https://user-images.githubusercontent.com/66946182/103164914-950c5c00-4854-11eb-87b5-92b89da9782e.gif">
 
-![기본공격_gif]<img src="https://user-images.githubusercontent.com/66946182/103164921-a190b480-4854-11eb-8cc0-65638508a511.gif">
+3) 닭의 고유 공격 장풍 
+
+<img width ="400" src = "https://user-images.githubusercontent.com/66946182/103164916-9ccc0080-4854-11eb-9d6b-820c3bad5421.gif">
+
+4) 밥 먹기 
+
+<img width ="400" src="https://user-images.githubusercontent.com/66946182/103164583-aa7f8700-4850-11eb-9386-46d27f651b2a.gif">
+
+5) 기본 공격 
+
+<img width ="400" src="https://user-images.githubusercontent.com/66946182/103164921-a190b480-4854-11eb-8cc0-65638508a511.gif">
