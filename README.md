@@ -32,10 +32,7 @@ Screenshots
 
 <img width ="400" src = "https://user-images.githubusercontent.com/66946182/103164916-9ccc0080-4854-11eb-9d6b-820c3bad5421.gif">
 
-4 ) 밥 먹기 
 
-<img width ="400" src="https://user-images.githubusercontent.com/66946182/103164583-aa7f8700-4850-11eb-9386-46d27f651b2a.gif">
-
-5 ) 기본 공격 
+4 ) 기본 공격 
 
 <img width ="400" src="https://user-images.githubusercontent.com/66946182/103164921-a190b480-4854-11eb-8cc0-65638508a511.gif">
