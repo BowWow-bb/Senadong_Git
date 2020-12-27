@@ -12,7 +12,7 @@ Unity 기반의 육성 게임입니다.
 
 
 #### 실행 영상(누르면 이동합니다)
-------
+
 
 [![video](https://img.youtube.com/vi/MRlk3otb2sA/0.jpg)](https://youtu.be/MRlk3otb2sA?t=0s)
 
