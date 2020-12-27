@@ -1,5 +1,4 @@
-# Senadong_Git (there are no bad animals in the world)
-### 세상에 나쁜 동물은 없다 
+# Senadong ( 세상에 나쁜 동물은 없다 there are no bad animals in the world )
 
 -모티브가 된 게임: 스타듀밸리, 동물농장 + 디지몬 챔피언쉽
 
