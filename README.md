@@ -30,11 +30,17 @@ Screenshots
 
 <img width ="400" src="https://user-images.githubusercontent.com/66946182/103164914-950c5c00-4854-11eb-87b5-92b89da9782e.gif">
 
-3 ) 닭의 고유 공격 장풍 
+3 ) 전장 모드 
+
+<img width ="400" src = "https://user-images.githubusercontent.com/66946182/103165018-c9cce300-4855-11eb-8119-79fe522db86c.gif">
+
+4 ) 닭의 고유 공격 장풍 
 
 <img width ="400" src = "https://user-images.githubusercontent.com/66946182/103164916-9ccc0080-4854-11eb-9d6b-820c3bad5421.gif">
 
 
-4 ) 기본 공격 
+5 ) 기본 공격 
 
 <img width ="400" src="https://user-images.githubusercontent.com/66946182/103164921-a190b480-4854-11eb-8cc0-65638508a511.gif">
+
+
