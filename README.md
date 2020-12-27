@@ -30,7 +30,7 @@ Screenshots
 
 <img width ="400" src="https://user-images.githubusercontent.com/66946182/103164914-950c5c00-4854-11eb-87b5-92b89da9782e.gif">
 
-3 ) 전장 모드 
+3 ) 전장 모드 + 추적 
 
 <img width ="400" src = "https://user-images.githubusercontent.com/66946182/103165018-c9cce300-4855-11eb-8119-79fe522db86c.gif">
 
