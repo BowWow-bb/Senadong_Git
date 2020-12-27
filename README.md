@@ -19,3 +19,13 @@ Unity 기반의 육성 게임입니다.
 
 Screenshots
 -----
+
+![밥먹기_gif]<img src="https://user-images.githubusercontent.com/66946182/103164583-aa7f8700-4850-11eb-9386-46d27f651b2a.gif">
+
+![드래그_gif]<img src="https://user-images.githubusercontent.com/66946182/103164914-950c5c00-4854-11eb-87b5-92b89da9782e.gif">
+
+![닭고유공격_gif]<img src = "https://user-images.githubusercontent.com/66946182/103164916-9ccc0080-4854-11eb-9d6b-820c3bad5421.gif">
+
+![밥먹기_gif]<img src="https://user-images.githubusercontent.com/66946182/103164583-aa7f8700-4850-11eb-9386-46d27f651b2a.gif">
+
+![기본공격_gif]<img src="https://user-images.githubusercontent.com/66946182/103164921-a190b480-4854-11eb-8cc0-65638508a511.gif">
